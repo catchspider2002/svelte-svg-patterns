@@ -51,6 +51,28 @@
       Math.round(this.strokeSize * 20) / 100 +
       "'/></svg>"
   }
+    },
+    {
+      id: 3,
+      color1: "#f00a00",
+      color2: "#000a00",
+      color1Trans: 1,
+      color2Trans: 1,
+      strokeSize: 1,
+      scale: 1,
+	  svg: function() {
+    return   "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+      (this.scale * 20 + 20) +
+      "' height='" +
+      (this.scale * 20 + 20) +
+      "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill='" +
+      hexToHSL(this.color2) +
+      "' fill-rule='evenodd' stroke='" +
+      hexToHSL(this.color2) +
+      "' stroke-width='" +
+      Math.round(this.strokeSize * 20) / 100 +
+      "'/></svg>"
+  }
     }
   ];
 
@@ -64,22 +86,6 @@
     color1HSL +
     ';\r\nbackground-image: url("data:image/svg+xml,' + svgFile + '"' +
     ')';
-  
-  // $: svg3 = () => {
-    // return (
-      // "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      // (scale * 20 + 20) +
-      // "' height='" +
-      // (scale * 20 + 20) +
-      // "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill='" +
-      // color2HSL +
-      // "' fill-rule='evenodd' stroke='" +
-      // color2HSL +
-      // "' stroke-width='" +
-      // Math.round(strokeSize * 20) / 100 +
-      // "'/></svg>"
-    // );
-  // };
 
   function download() {
     var dl = document.createElement("a");
@@ -176,11 +182,10 @@
     cursor: pointer;
   }
 
-  #pattern1,
-  #pattern2 {
-    height: 40px;
+  .pattern{
+    height: 80px;
     width: 80px;
-    background-color: lightgray;
+    background-color: white;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
@@ -200,8 +205,11 @@
     <p />
 
 	<div class="inputs">
-        <div id="pattern1" on:click={check} style={'background-color: ' + color1HSL + ';\r\nbackground-image: url("data:image/svg+xml,' + patterns[0].svg() + '"' + ')'}></div>
-        <div id="pattern2" on:click={check} style={'background-color: ' + color1HSL + ';\r\nbackground-image: url("data:image/svg+xml,' + patterns[1].svg() + '"' + ')'}></div>
+		{#each patterns as pattern}
+				<div id="pattern{pattern.id}" class="pattern"
+						 on:click={check} 
+						 style={'background-image: url("data:image/svg+xml,' + pattern.svg() + '"' + ')'}></div>
+		{/each}
     </div>
 
     <div class="inputs">
@@ -233,7 +241,7 @@
     <div
       class="download-button"
       on:click={download}
-      title="Download as SVG file.">
+      title="Download as SVG file">
       Download SVG
     </div>
     <br />
