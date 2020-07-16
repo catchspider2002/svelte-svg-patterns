@@ -57,17 +57,13 @@
   $: clickedId = 0;
   $: color1HSL = hexToHSL(patterns[clickedId].color1); // Background
   $: color2HSL = hexToHSL(patterns[clickedId].color2); // Stroke
-  $: svgFile = patterns[clickedId].svg() //svg2;
-
-  $: dataURIOld = "data:image/svg+xml," + svgFile;
-  $: dataURI = '"data:image/svg+xml,' + svgFile + '"';
+  $: svgFile = patterns[clickedId].svg()
 
   $: cssOutput =
-    "background-color: " +
+    'background-color: ' +
     color1HSL +
-    ";\r\nbackground-image: url(" +
-    dataURI +
-    ")";
+    ';\r\nbackground-image: url("data:image/svg+xml,' + svgFile + '"' +
+    ')';
   
   // $: svg3 = () => {
     // return (
@@ -88,7 +84,7 @@
   function download() {
     var dl = document.createElement("a");
     document.body.appendChild(dl); // This line makes it work in Firefox.
-    dl.setAttribute("href", dataURIOld);
+    dl.setAttribute("href", "data:image/svg+xml," + svgFile);
     dl.setAttribute("download", "test.svg");
     dl.click();
   }
@@ -185,6 +181,10 @@
     height: 40px;
     width: 80px;
     background-color: lightgray;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
   }
 
   @media (min-width: 480px) {
@@ -196,13 +196,13 @@
 </svelte:head>
 <div id="page" class="page" style={cssOutput}>
   <div class="container">
-    <div id="svgSelection">{@html svgFile}</div>
+    <div>SVG Patterns</div>
     <p />
 
-		<div class="inputs">			
-    <div id="pattern1" on:click={check}>Pattern 1</div>
-    <div id="pattern2" on:click={check}>Pattern 2</div>
-		</div>
+	<div class="inputs">
+        <div id="pattern1" on:click={check} style={'background-color: ' + color1HSL + ';\r\nbackground-image: url("data:image/svg+xml,' + patterns[0].svg() + '"' + ')'}></div>
+        <div id="pattern2" on:click={check} style={'background-color: ' + color1HSL + ';\r\nbackground-image: url("data:image/svg+xml,' + patterns[1].svg() + '"' + ')'}></div>
+    </div>
 
     <div class="inputs">
       <label>Scale</label>
