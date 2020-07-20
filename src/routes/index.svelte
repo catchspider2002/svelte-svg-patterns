@@ -10,25 +10,27 @@
       color2Trans: 1,
       strokeSize: 1,
       scale: 1,
-			svg: function() {
-    return "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      (this.scale * 20 + 20) +
-      "' height='" +
-      (this.scale * 20 + 20) +
-      "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
-      hexToHSL(this.color2) +
-      "' stroke='" +
-      hexToHSL(this.color2) +
-      "' stroke-width='" +
-      Math.round(this.strokeSize * 20) / 100 +
-      "'/><path d='M2.458 0l5.29 5.292-5.29 5.29v.001h.375l5.292-5.291L2.833 0h-.375zM7.75 0l2.833 2.835v-.376L8.125 0H7.75zM0 2.46v.373l2.458 2.459L0 7.75v.374l2.832-2.832L0 2.459zm10.583 5.29L7.75 10.582h.375l2.458-2.458v-.376z' fill='" +
-      hexToHSL(this.color2) +
-      "' fill-rule='evenodd' stroke='" +
-      hexToHSL(this.color2) +
-      "' stroke-width='" +
-      Math.round(this.strokeSize * 20) / 100 +
-      "'/></svg>"
-  }
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
+          hexToHSL(this.color2) +
+          "' stroke='" +
+          hexToHSL(this.color2) +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'/><path d='M2.458 0l5.29 5.292-5.29 5.29v.001h.375l5.292-5.291L2.833 0h-.375zM7.75 0l2.833 2.835v-.376L8.125 0H7.75zM0 2.46v.373l2.458 2.459L0 7.75v.374l2.832-2.832L0 2.459zm10.583 5.29L7.75 10.582h.375l2.458-2.458v-.376z' fill='" +
+          hexToHSL(this.color2) +
+          "' fill-rule='evenodd' stroke='" +
+          hexToHSL(this.color2) +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'/></svg>"
+        );
+      }
     },
     {
       id: 2,
@@ -38,19 +40,21 @@
       color2Trans: 1,
       strokeSize: 1,
       scale: 1,
-	  svg: function() {
-    return   "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      (this.scale * 20 + 20) +
-      "' height='" +
-      (this.scale * 20 + 20) +
-      "' viewBox='0 0 10.583 10.583'><path d='M7.752-5.292L-5.291 7.75v.376L8.127-5.291H7.75zm-5.293 0L15.873 8.125V7.75L2.835-5.29h-.377zm2.832 7.75L-5.291 13.041v.375L5.292 2.835l10.582 10.581h0v-.375L5.292 2.458zm0 5.293l-8.124 8.123h.374l7.75-7.749 7.75 7.75h.374L5.292 7.75z' fill='" +
-      hexToHSL(this.color2) +
-      "' fill-rule='evenodd' stroke='" +
-      hexToHSL(this.color2) +
-      "' stroke-width='" +
-      Math.round(this.strokeSize * 20) / 100 +
-      "'/></svg>"
-  }
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><path d='M7.752-5.292L-5.291 7.75v.376L8.127-5.291H7.75zm-5.293 0L15.873 8.125V7.75L2.835-5.29h-.377zm2.832 7.75L-5.291 13.041v.375L5.292 2.835l10.582 10.581h0v-.375L5.292 2.458zm0 5.293l-8.124 8.123h.374l7.75-7.749 7.75 7.75h.374L5.292 7.75z' fill='" +
+          hexToHSL(this.color2) +
+          "' fill-rule='evenodd' stroke='" +
+          hexToHSL(this.color2) +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'/></svg>"
+        );
+      }
     },
     {
       id: 3,
@@ -60,32 +64,60 @@
       color2Trans: 1,
       strokeSize: 1,
       scale: 1,
-	  svg: function() {
-    return   "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      (this.scale * 20 + 20) +
-      "' height='" +
-      (this.scale * 20 + 20) +
-      "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill='" +
-      hexToHSL(this.color2) +
-      "' fill-rule='evenodd' stroke='" +
-      hexToHSL(this.color2) +
-      "' stroke-width='" +
-      Math.round(this.strokeSize * 20) / 100 +
-      "'/></svg>"
-  }
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><g fill='" +
+          hexToHSL(this.color2) +
+          "' fill-rule='evenodd' stroke='" +
+          hexToHSL(this.color2) +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 4,
+      color1: "#f00a00",
+      color2: "#000a00",
+      color1Trans: 1,
+      color2Trans: 1,
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><g fill='" +
+          hexToHSL(this.color2) +
+          "' fill-rule='evenodd' stroke='" +
+          hexToHSL(this.color2) +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'><circle r='2.646' cy='5.292' cx='5.292' overflow='visible'/><path overflow='visible' d='M0 4.63h10.583v1.323H0z'/><path overflow='visible' d='M5.953 0v10.583H4.63V0z'/></g></svg>"
+        );
+      }
     }
   ];
 
   $: clickedId = 0;
   $: color1HSL = hexToHSL(patterns[clickedId].color1); // Background
   $: color2HSL = hexToHSL(patterns[clickedId].color2); // Stroke
-  $: svgFile = patterns[clickedId].svg()
+  $: svgFile = patterns[clickedId].svg();
 
   $: cssOutput =
-    'background-color: ' +
+    "background-color: " +
     color1HSL +
-    ';\r\nbackground-image: url("data:image/svg+xml,' + svgFile + '"' +
-    ')';
+    ';\r\nbackground-image: url("data:image/svg+xml,' +
+    svgFile +
+    '"' +
+    ")";
 
   function download() {
     var dl = document.createElement("a");
@@ -94,14 +126,14 @@
     dl.setAttribute("download", "test.svg");
     dl.click();
   }
-	
+
   function check() {
     for (var j = 0; j < patterns.length; j++) {
       if ("pattern" + patterns[j].id === this.id)
         clickedId = patterns[j].id - 1;
     }
   }
-	
+
   function hexToHSL(H) {
     // Convert hex to RGB first
     let r = 0,
@@ -182,14 +214,14 @@
     cursor: pointer;
   }
 
-  .pattern{
+  .pattern {
     height: 80px;
     width: 80px;
     background-color: white;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
   }
 
   @media (min-width: 480px) {
@@ -204,21 +236,39 @@
     <div>SVG Patterns</div>
     <p />
 
-	<div class="inputs">
-		{#each patterns as pattern}
-				<div id="pattern{pattern.id}" class="pattern"
-						 on:click={check} 
-						 style={'background-image: url("data:image/svg+xml,' + pattern.svg() + '"' + ')'}></div>
-		{/each}
+    <div class="inputs">
+      {#each patterns as pattern}
+        <div
+          id="pattern{pattern.id}"
+          class="pattern"
+          on:click={check}
+          style={'background-image: url("data:image/svg+xml,' + pattern.svg() + '"' + ')'} />
+      {/each}
     </div>
 
     <div class="inputs">
       <label>Scale</label>
-      <input type="range" bind:value={patterns[clickedId].scale} min="0" max="16" />
-      <input type="number" bind:value={patterns[clickedId].scale} min="0" max="16" />
+      <input
+        type="range"
+        bind:value={patterns[clickedId].scale}
+        min="0"
+        max="16" />
+      <input
+        type="number"
+        bind:value={patterns[clickedId].scale}
+        min="0"
+        max="16" />
       <label>Stroke Size</label>
-      <input type="range" bind:value={patterns[clickedId].strokeSize} min="0" max="16" />
-      <input type="number" bind:value={patterns[clickedId].strokeSize} min="0" max="16" />
+      <input
+        type="range"
+        bind:value={patterns[clickedId].strokeSize}
+        min="0"
+        max="16" />
+      <input
+        type="number"
+        bind:value={patterns[clickedId].strokeSize}
+        min="0"
+        max="16" />
       <label for="color1">Color 1</label>
       <input
         class="colorPicker"
@@ -238,11 +288,25 @@
     </div>
     <code id="svgCode">{svgFile}</code>
     <br />
+	Copy
+    <div
+      class="download-button"
+      on:click={download}
+      title="CSS">
+      CSS
+    </div>
+    <div
+      class="download-button"
+      on:click={download}
+      title="SVG">
+      SVG
+    </div>
+    <br />
     <div
       class="download-button"
       on:click={download}
       title="Download as SVG file">
-      Download SVG
+      SVG
     </div>
     <br />
     <div id="cssCode" contenteditable>{cssOutput}</div>
