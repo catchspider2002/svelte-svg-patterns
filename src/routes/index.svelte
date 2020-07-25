@@ -16,7 +16,7 @@
           (this.scale * 20 + 20) +
           "' height='" +
           (this.scale * 20 + 20) +
-          "' viewBox='0 0 10.583 10.583'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='"+ this.color2 + "'><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
           hexToHSL(this.color2) +
           "' stroke='" +
           hexToHSL(this.color2) +
@@ -170,6 +170,32 @@
 
     return "hsl(" + h + "," + s + "%," + l + "%)";
   }
+
+  function svgImage(xml) {
+    var image = new Image();
+    image.src =
+      "data:image/svg+xml;base64," +
+      window.btoa(unescape(encodeURIComponent(xml)));
+    console.log(window.btoa(xml));
+
+    image.onload = function() {
+      var canvas = document.createElement("canvas");
+      canvas.width = 1080; //image.width;
+      canvas.height = 1080; //image.height;
+      var context = canvas.getContext("2d");
+      // context.drawImage(image, 0, 0);
+      var ptrn = context.createPattern(image, "repeat"); // Create a pattern with this image, and set it to "repeat".
+      context.fillStyle = ptrn;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      var a = document.createElement("a");
+      a.download = "image.png";
+      a.href = canvas.toDataURL("image/png");
+      a.title = "This is Link";
+      document.body.appendChild(a);
+      a.click();
+    };
+  }
 </script>
 
 <style>
@@ -185,6 +211,16 @@
     background-color: whitesmoke;
   }
 
+  .px-4{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .py-4{
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
   .inputs {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -194,6 +230,15 @@
     align-items: center;
     color: black;
   }
+
+  .grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 16px;
+    }
 
   #cssCode {
     color: black;
@@ -288,25 +333,28 @@
     </div>
     <code id="svgCode">{svgFile}</code>
     <br />
-	Copy
-    <div
-      class="download-button"
-      on:click={download}
-      title="CSS">
-      CSS
-    </div>
-    <div
-      class="download-button"
-      on:click={download}
-      title="SVG">
-      SVG
+    <div class="grid">
+      Copy
+      <div class="download-button px-4 py-4"
+        on:click={download} title="CSS">CSS</div>
+      <div 
+      <div class="download-button px-4 py-4" on:click={download} title="SVG">SVG</div>
     </div>
     <br />
-    <div
-      class="download-button"
-      on:click={download}
-      title="Download as SVG file">
-      SVG
+    <div class="grid">
+      Download
+      <div
+        class="download-button px-4 py-4"
+        on:click={download}
+        title="Download as SVG file">
+        SVG
+      </div>
+      <div
+        class="download-button px-4 py-4"
+        on:click={svgImage(svgFile)}
+        title="Download as PNG file">
+        PNG1
+      </div>
     </div>
     <br />
     <div id="cssCode" contenteditable>{cssOutput}</div>
