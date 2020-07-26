@@ -261,7 +261,7 @@
   input[type="range"]:focus {
     outline: none;
   }
-  input[type="range"]::-webkit-slider-runnable-track   {
+  input[type="range"]::-webkit-slider-runnable-track {
     background: rgba(48, 113, 169, 0.78);
     border: 0.2px solid #010101;
     border-radius: 15px;
@@ -419,10 +419,10 @@
     <br />
     <div class="grid">
       <span>Copy</span>
-      <div class="button" on:click={copyText(cssOutput)} title="CSS">{cssText}</div>
-      <div <div class="button" on:click={copyText(svgFile)} title="SVG">
-        SVG
+      <div class="button" on:click={copyText(cssOutput)} title="CSS">
+        {cssText}
       </div>
+      <div class="button" on:click={copyText(svgFile)} title="SVG">SVG</div>
       <span>Download</span>
       <div class="button" on:click={downloadSVG} title="Download as SVG file">
         SVG
