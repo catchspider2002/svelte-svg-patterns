@@ -198,6 +198,7 @@
   text-align: left;
   flex: 1 1 8em;
   min-width: 8em;
+  width: 100%;
   transition: all 0.2s;
   border-radius: 0.15em;
   background: #f1f3f4;
@@ -237,6 +238,13 @@
 .pcr-app .pcr-interaction .pcr-cancel:focus,
 .pcr-app .pcr-interaction .pcr-clear:focus {
   box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.85), 0 0 0 3px rgba(244, 66, 80, 0.75);
+}
+.pcr-interaction:first-child {
+  width: 100%;
+}
+
+.pcr-interaction:not(:first-child) {
+  flex: 1;
 }
 .pcr-app .pcr-selection .pcr-picker {
   position: absolute;
