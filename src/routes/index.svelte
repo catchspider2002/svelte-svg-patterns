@@ -238,11 +238,11 @@
 
   .inputs {
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: auto 1fr;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
+    padding: 2em 0;
   }
 
   input[type="text"],
@@ -250,7 +250,21 @@
     color: #1a202c;
     /* border-color: rgb(159,122,234); */
     line-height: 1.25;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 80px;
+  }
+
+  /* Hide arrows for input number - Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide arrows for input number - Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 
   input[type="range"] {
@@ -283,8 +297,6 @@
   }
   input[type="range"]::-webkit-slider-thumb {
     margin-top: -7.5px;
-    /* margin-left: -1px; */
-    /* margin-right: 4px; */
     width: 26px;
     height: 26px;
     background: #ffffff;
@@ -361,50 +373,39 @@
         bind:value={patterns[clickedId].scale}
         min="0"
         max="16" />
-      <input
-        type="number"
-        bind:value={patterns[clickedId].scale}
-        min="0"
-        max="16" />
       <label>Stroke Size</label>
       <input
         type="range"
         bind:value={patterns[clickedId].strokeSize}
         min="0"
         max="16" />
-      <input
-        type="number"
-        bind:value={patterns[clickedId].strokeSize}
-        min="0"
-        max="16" />
       <label for="color1">Color 1</label>
-      <input
-        class="colorPicker"
-        type="color"
-        id="color1"
-        name="color1"
-        bind:value={patterns[clickedId].color1} />
-      <input type="text" bind:value={patterns[clickedId].color1} />
+      <div>
+        <input
+          class="colorPicker"
+          type="color"
+          id="color1"
+          name="color1"
+          bind:value={patterns[clickedId].color1} />
+        <input type="text" bind:value={patterns[clickedId].color1} />
+      </div>
       <label>Transparency</label>
       <input
         type="range"
         bind:value={patterns[clickedId].color1Trans}
         min="0"
         step="0.1"
-        max="1" />
-      <input
-        type="number"
-        bind:value={patterns[clickedId].color1Trans}
-        min="0"
         max="1" />
       <label for="color2">Color 2</label>
-      <input
-        class="colorPicker"
-        type="color"
-        id="color2"
-        name="color2"
-        bind:value={patterns[clickedId].color2} />
-      <input type="text" bind:value={patterns[clickedId].color2} />
+      <div>
+        <input
+          class="colorPicker"
+          type="color"
+          id="color2"
+          name="color2"
+          bind:value={patterns[clickedId].color2} />
+        <input type="text" bind:value={patterns[clickedId].color2} />
+      </div>
       <label>Transparency</label>
       <input
         type="range"
@@ -412,13 +413,7 @@
         min="0"
         step="0.1"
         max="1" />
-      <input
-        type="number"
-        bind:value={patterns[clickedId].color2Trans}
-        min="0"
-        max="1" />
     </div>
-    <br />
     <div class="grid">
       <span>Copy</span>
       <div class="button" on:click={copyText(cssOutput)} title="CSS">CSS</div>
