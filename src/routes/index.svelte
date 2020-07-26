@@ -113,7 +113,6 @@
     }
   ];
 
-  let cssText = "CSS";
   $: clickedId = 0;
   $: color1HSL = hexToHSL(
     patterns[clickedId].color1,
@@ -124,6 +123,9 @@
     patterns[clickedId].color2Trans
   ); // Stroke
   $: svgFile = patterns[clickedId].svg();
+
+  let width = 1080,
+    height = 1080;
 
   $: cssOutput =
     // 'background-color: ' +
@@ -192,8 +194,8 @@
 
     image.onload = function() {
       var canvas = document.createElement("canvas");
-      canvas.width = 1080; //image.width;
-      canvas.height = 1080; //image.height;
+      canvas.width = width;
+      canvas.height = height;
       var context = canvas.getContext("2d");
       var ptrn = context.createPattern(image, "repeat");
       context.fillStyle = ptrn;
@@ -202,7 +204,6 @@
       var a = document.createElement("a");
       a.download = "image.png";
       a.href = canvas.toDataURL("pattern/png");
-      // a.title = "This is Link";
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -216,7 +217,7 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    cssText = "Copied";
+    // cssText = "Copied";
   }
 </script>
 
@@ -225,14 +226,14 @@
     width: 100%;
     height: 100vh;
     display: block;
-    color: black;
   }
 
   .container {
     width: 80%;
     margin: 0 auto;
     padding: 2em;
-    background-color: whitesmoke;
+    background-color: #1a202c;
+    color: #edf2f7;
   }
 
   .inputs {
@@ -246,7 +247,7 @@
 
   input[type="text"],
   input[type="number"] {
-    color: rgb(179, 172, 161);
+    color: #1a202c;
     /* border-color: rgb(159,122,234); */
     line-height: 1.25;
     padding: 0.5rem 1rem;
@@ -316,6 +317,7 @@
 
   .button {
     background-color: rgb(255, 218, 6);
+    color: #1a202c;
     text-align: center;
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -419,9 +421,7 @@
     <br />
     <div class="grid">
       <span>Copy</span>
-      <div class="button" on:click={copyText(cssOutput)} title="CSS">
-        {cssText}
-      </div>
+      <div class="button" on:click={copyText(cssOutput)} title="CSS">CSS</div>
       <div class="button" on:click={copyText(svgFile)} title="SVG">SVG</div>
       <span>Download</span>
       <div class="button" on:click={downloadSVG} title="Download as SVG file">
@@ -430,6 +430,11 @@
       <div class="button" on:click={downloadPNG} title="Download as PNG file">
         PNG
       </div>
+      Width
+      <input type="number" bind:value={width} min="0" />
+      <div />
+      Height
+      <input type="number" bind:value={height} min="0" />
     </div>
   </div>
 </div>
