@@ -12,6 +12,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@simonwep/pickr": "^1.7.2",
     "compression": "^1.7.4",
     "polka": "next",
     "sirv": "^1.0.1"
