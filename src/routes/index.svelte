@@ -45,8 +45,8 @@
     },
     {
       id: 2,
-      color1: "hsla(150, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(200, 70.82650433153829%, 46.00795346001784%, 1)",
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
       scale: 1,
       svg: function() {
@@ -57,20 +57,18 @@
           (this.scale * 20 + 20) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
-          "'/><path d='M7.752-5.292L-5.291 7.75v.376L8.127-5.291H7.75zm-5.293 0L15.873 8.125V7.75L2.835-5.29h-.377zm2.832 7.75L-5.291 13.041v.375L5.292 2.835l10.582 10.581h0v-.375L5.292 2.458zm0 5.293l-8.124 8.123h.374l7.75-7.749 7.75 7.75h.374L5.292 7.75z' fill='" +
-          this.color2 +
-          "' fill-rule='evenodd' stroke='" +
+          "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'/></svg>"
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M0 13.276l5.292-5.292 5.291 5.292'/><path d='M-2.646 10.63l7.938-7.937 7.937 7.937'/><path d='M-2.646 5.338l7.938-7.937 7.937 7.937'/><path d='M-2.693 0L2.6 5.292l-5.292 5.291'/><path d='M-.047-2.646l7.938 7.938-7.938 7.937'/><path d='M5.245-2.646l7.937 7.938-7.937 7.937'/></g></svg>"
         );
       }
     },
     {
       id: 3,
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(150, 70.82650433153829%, 46.00795346001784%, 1)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
       scale: 1,
       svg: function() {
@@ -81,20 +79,18 @@
           (this.scale * 20 + 20) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
-          "'/><g fill='" +
-          this.color2 +
-          "' fill-rule='evenodd' stroke='" +
+          "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
           Math.round(this.strokeSize * 20) / 100 +
-          "'><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/></g></svg>"
+          "'><path d='M0 13.276l5.292-5.292 5.291 5.292'/><path d='M-2.646 10.63l7.938-7.937 7.937 7.937'/><path d='M-2.646 5.338l7.938-7.937 7.937 7.937'/></g></svg>"
         );
       }
     },
     {
       id: 4,
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(150, 70.82650433153829%, 46.00795346001784%, 1)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
       scale: 1,
       svg: function() {
@@ -105,20 +101,128 @@
           (this.scale * 20 + 20) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
-          "'/><g fill='" +
-          this.color2 +
-          "' fill-rule='evenodd' stroke='" +
+          "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
           Math.round(this.strokeSize * 20) / 100 +
-          "'><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/></g></svg>"
+          "'><path d='M-2.693 0L2.6 5.292l-5.292 5.291'/><path d='M-.047-2.646l7.938 7.938-7.938 7.937'/><path d='M5.245-2.646l7.937 7.938-7.937 7.937'/></g></svg>"
         );
       }
     },
     {
       id: 5,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M-1.323 2.117h13.23M-1.323 4.763h13.23M-1.323 7.408h13.23M-1.323 10.054h13.23M-1.323-.53h13.23'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 6,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M6.88-1.852v13.23M4.233-1.852v13.23M1.587-1.852v13.23M-1.058-1.852v13.23M9.525-1.852v13.23'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 7,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M-1.323-.53h13.23zm0 2.647h13.23zm0 2.646h13.23zm0 2.645h13.23zm0 2.646h13.23zm.265-11.906v13.23zm2.646 0v13.23zm2.645 0v13.23zm2.646 0v13.23zm2.646 0v13.23z'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 8,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M5.292 13.23l-7.938-7.938 7.938-7.938m5.291 15.875L2.646 5.292l7.937-7.938m2.646 13.23L7.938 5.291 13.229 0M5.292-2.646l7.937 7.938-7.937 7.937M0-2.646l7.938 7.938L0 13.229M-2.646 0l5.292 5.292-5.292 5.291'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 9,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 15) / 100 +
+          "'><path d='M-1.323-.53h13.23zm0 2.647h13.23zm0 2.646h13.23zm0 2.645h13.23zm0 2.646h13.23zm.265-11.906v13.23zm2.646 0v13.23zm2.645 0v13.23zm2.646 0v13.23zm2.646 0v13.23z'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 10,
       color1: "hsla(50, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(100, 70.82650433153829%, 46.00795346001784%, 1)",
+      color2: "hsla(200, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
       scale: 1,
       svg: function() {
@@ -147,8 +251,7 @@
   let width = 1080,
     height = 1080;
 
-  $: cssOutput =
-    'background-image: url("data:image/svg+xml,' + svgFile + '")';
+  $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function check() {
     for (var j = 0; j < patterns.length; j++) {
@@ -408,7 +511,7 @@
       <input
         type="range"
         bind:value={patterns[clickedId].strokeSize}
-        min="0"
+        min="1"
         max="16" />
       <label for="color1">Color 1</label>
       <div>
