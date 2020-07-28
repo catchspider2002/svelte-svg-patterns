@@ -93,6 +93,30 @@
     },
     {
       id: 4,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(150, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      scale: 1,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          (this.scale * 20 + 20) +
+          "' height='" +
+          (this.scale * 20 + 20) +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.color1 +
+          "'/><g fill='" +
+          this.color2 +
+          "' fill-rule='evenodd' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 20) / 100 +
+          "'><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/><path d='M2.858 5.292L.026 2.459v.374l2.46 2.459L.025 7.75v.374z' overflow='visible'/><path d='M8.151 5.292L2.861 0V0h-.375l5.29 5.292-5.29 5.29v.001h.375zM10.61 2.459L8.15 0V0h-.374l2.832 2.834zm0 5.29l-2.834 2.833v.001h.376l2.457-2.459z' overflow='visible'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 5,
       color1: "hsla(50, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(100, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
@@ -118,17 +142,12 @@
   ];
 
   $: clickedId = 0;
-  $: color1HSL = hexToHSL(patterns[clickedId].color1); // Background
-  $: color2HSL = hexToHSL(patterns[clickedId].color2); // Stroke
   $: svgFile = patterns[clickedId].svg();
 
   let width = 1080,
     height = 1080;
 
   $: cssOutput =
-    // 'background-color: ' +
-    // color1HSL +
-    // ';\r\n'+
     'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function check() {
@@ -139,43 +158,6 @@
         createPicker("color2Div", "color2");
       }
     }
-  }
-
-  function hexToHSL(H) {
-    // Convert hex to RGB first
-    let r = 0,
-      g = 0,
-      b = 0;
-    r = "0x" + H[1] + H[2];
-    g = "0x" + H[3] + H[4];
-    b = "0x" + H[5] + H[6];
-
-    // Then to HSL
-    r /= 255;
-    g /= 255;
-    b /= 255;
-    let cmin = Math.min(r, g, b),
-      cmax = Math.max(r, g, b),
-      delta = cmax - cmin,
-      h = 0,
-      s = 0,
-      l = 0;
-
-    if (delta == 0) h = 0;
-    else if (cmax == r) h = ((g - b) / delta) % 6;
-    else if (cmax == g) h = (b - r) / delta + 2;
-    else h = (r - g) / delta + 4;
-
-    h = Math.round(h * 60);
-
-    if (h < 0) h += 360;
-
-    l = (cmax + cmin) / 2;
-    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-    s = +(s * 100).toFixed(1);
-    l = +(l * 100).toFixed(1);
-
-    return "hsl(" + h + "," + s + "%," + l + "%)";
   }
 
   function downloadSVG() {
