@@ -15,31 +15,25 @@
   let patterns = [
     {
       id: 1,
-      color1: "hsla(300, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 14,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 40 40'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
-          "'/><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
-          this.color2 +
-          "' stroke='" +
+          "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'/><path d='M2.458 0l5.29 5.292-5.29 5.29v.001h.375l5.292-5.291L2.833 0h-.375zM7.75 0l2.833 2.835v-.376L8.125 0H7.75zM0 2.46v.373l2.458 2.459L0 7.75v.374l2.832-2.832L0 2.459zm10.583 5.29L7.75 10.582h.375l2.458-2.458v-.376z' fill='" +
-          this.color2 +
-          "' fill-rule='evenodd' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'/></svg>"
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 6.495zM47.5 26.495h-15l7.5-12.99z'/></g></svg>"
         );
       }
     },
@@ -48,19 +42,21 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 56) +
+          this.scale * 56 +
           "' height='" +
-          (this.scale * 100) +
-          "' viewBox='0 0 56 100'><rect x='0' y='0' height='100' width='56' fill='" +
+          this.scale * 100 +
+          "' viewBox='0 0 56 100'><rect x='0' y='0' width='56' height='100' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
+          Math.round(this.strokeSize * 200) / 100 +
           "'><path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/></g></svg>"
         );
       }
@@ -70,14 +66,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -92,14 +90,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -114,14 +114,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -136,14 +138,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -158,14 +162,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -180,14 +186,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -202,14 +210,16 @@
       color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
       color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 16,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 40 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          this.scale * 40 +
+          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
@@ -221,25 +231,119 @@
     },
     {
       id: 10,
-      color1: "hsla(50, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(200, 70.82650433153829%, 46.00795346001784%, 1)",
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
       strokeSize: 1,
+      maxStroke: 24,
       scale: 1,
+      maxScale: 16,
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 40) +
+          this.scale * 15 +
           "' height='" +
-          (this.scale * 40) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
-          this.color1 +
-          "'/><g fill='" +
+          this.scale * 15 +
+          "' viewBox='-1 -1 18.364 18.364'><path fill='red' d='M-10-10h50v50h-50z'/><circle r='1.704' cy='11.651' cx='11.848' stroke='" +
           this.color2 +
-          "' fill-rule='evenodd' stroke='" +
+          "' fill='none' stroke-width='" +
+          Math.round(this.strokeSize * 50) / 100 +
+          "' transform='translate(-3.6662179,-3.4692739)'/></svg>"
+        );
+      }
+    },
+    {
+      id: 11,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      maxStroke: 16,
+      scale: 1,
+      maxScale: 16,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          this.scale * 40 +
+          "' height='" +
+          this.scale * 40 +
+          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'><circle r='2.646' cy='5.292' cx='5.292' overflow='visible'/><path overflow='visible' d='M0 4.63h10.583v1.323H0z'/><path overflow='visible' d='M5.953 0v10.583H4.63V0z'/></g></svg>"
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 12,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      maxStroke: 16,
+      scale: 1,
+      maxScale: 16,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          this.scale * 68 +
+          "' height='" +
+          this.scale * 68 +
+          "' viewBox='0 0 37.092 37.092'><rect x='0' y='0' width='68' height='68' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M37.091 30.546l-12-12 12-12 12 12zm0 4.364L20.727 18.546 37.091 2.182l16.364 16.364zM18.546 12l-12-12 12-12 12 12zm0 4.364L2.182 0l16.364-16.364L34.91 0zm0 32.728l-12-12 12-12 12 12zm0 4.364L2.182 37.092l16.364-16.364L34.91 37.092zM0 30.546l-12-12 12-12 12 12zm0 4.363l-16.364-16.363L0 2.182l16.364 16.364z'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 13,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      maxStroke: 16,
+      scale: 1,
+      maxScale: 16,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          this.scale * 40 +
+          "' height='" +
+          this.scale * 40 +
+          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
+        );
+      }
+    },
+    {
+      id: 14,
+      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
+      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
+      strokeSize: 1,
+      maxStroke: 16,
+      scale: 1,
+      maxScale: 16,
+      svg: function() {
+        return (
+          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+          this.scale * 40 +
+          "' height='" +
+          this.scale * 40 +
+          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
+          this.color1 +
+          "'/><g fill='none' stroke='" +
+          this.color2 +
+          "' stroke-width='" +
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
         );
       }
     }
@@ -506,13 +610,13 @@
         type="range"
         bind:value={patterns[clickedId].scale}
         min="1"
-        max="16" />
+        max={patterns[clickedId].maxScale} />
       <label>Stroke Size</label>
       <input
         type="range"
         bind:value={patterns[clickedId].strokeSize}
         min="1"
-        max="16" />
+        max={patterns[clickedId].maxStroke} />
       <label for="color1">Color 1</label>
       <div>
         <div id="color1Div" />
