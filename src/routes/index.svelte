@@ -22,9 +22,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><path d='M2.46 0L0 2.458v.375L2.835 0h-.376zm5.29 0l2.833 2.833v-.375L8.125 0h-.376zM5.291 2.458L0 7.75v.375l5.292-5.29 5.29 5.29h.001V7.75L5.292 2.458zm0 5.293l-2.833 2.832h.374l2.459-2.458 2.458 2.458h.374L5.292 7.751z' fill-rule='evenodd' fill='" +
@@ -52,16 +52,16 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 56) +
           "' height='" +
-          (this.scale * 20 + 20) +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
+          (this.scale * 100) +
+          "' viewBox='0 0 56 100'><rect x='0' y='0' height='100' width='56' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
           this.color2 +
           "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M0 13.276l5.292-5.292 5.291 5.292'/><path d='M-2.646 10.63l7.938-7.937 7.937 7.937'/><path d='M-2.646 5.338l7.938-7.937 7.937 7.937'/><path d='M-2.693 0L2.6 5.292l-5.292 5.291'/><path d='M-.047-2.646l7.938 7.938-7.938 7.937'/><path d='M5.245-2.646l7.937 7.938-7.937 7.937'/></g></svg>"
+          Math.round(this.strokeSize * 50) / 100 +
+          "'><path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/></g></svg>"
         );
       }
     },
@@ -74,9 +74,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -96,9 +96,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -118,9 +118,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -140,9 +140,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -162,9 +162,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -184,9 +184,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -206,9 +206,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='none' stroke='" +
@@ -228,9 +228,9 @@
       svg: function() {
         return (
           "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' height='" +
-          (this.scale * 20 + 20) +
+          (this.scale * 40) +
           "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' height='40' width='40' fill='" +
           this.color1 +
           "'/><g fill='" +
@@ -505,7 +505,7 @@
       <input
         type="range"
         bind:value={patterns[clickedId].scale}
-        min="0"
+        min="1"
         max="16" />
       <label>Stroke Size</label>
       <input
