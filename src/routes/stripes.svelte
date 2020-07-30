@@ -1,5 +1,5 @@
 <script>
-  //   import pattern1File from "./patterns/_pattern1.js";
+  import constants from "./_constants.js";
   import { onMount } from "svelte";
   import "./_monolith.min.css";
 
@@ -92,16 +92,11 @@
     }
   }
 
-  const randomNumber = (min, max) => Math.random() * (max - min) + min;
-
-  const randomColor = () =>
-    "#" + Math.floor(Math.random() * 16777215).toString(16);
-
   function randomPattern() {
-    let randomScale = randomNumber(1, maxScale),
-      randomStroke = randomNumber(1, maxStroke),
-      randomColor1 = hexToHSL(randomColor(), 0.8),
-      randomColor2 = hexToHSL(randomColor(), 1);
+    let randomScale = constants.randomNumber(1, maxScale),
+      randomStroke = constants.randomNumber(1, maxStroke),
+      randomColor1 = constants.hexToHSL(constants.randomColor(), 0.8),
+      randomColor2 = constants.hexToHSL(constants.randomColor(), 1);
     svgFile = svgPattern1(
       randomScale,
       randomColor1,
@@ -115,8 +110,6 @@
       strokeSize: randomStroke,
       scale: randomScale
     };
-    console.log("Random color: " + randomColor1);
-    console.log("Random color: " + randomColor2);
 
     createPicker("color1Div", "color1");
     createPicker("color2Div", "color2");
@@ -153,43 +146,6 @@
       a.click();
       a.remove();
     };
-  }
-
-  function hexToHSL(H, t) {
-    // Convert hex to RGB first
-    let r = 0,
-      g = 0,
-      b = 0;
-    r = "0x" + H[1] + H[2];
-    g = "0x" + H[3] + H[4];
-    b = "0x" + H[5] + H[6];
-
-    // Then to HSL
-    r /= 255;
-    g /= 255;
-    b /= 255;
-    let cmin = Math.min(r, g, b),
-      cmax = Math.max(r, g, b),
-      delta = cmax - cmin,
-      h = 0,
-      s = 0,
-      l = 0;
-
-    if (delta == 0) h = 0;
-    else if (cmax == r) h = ((g - b) / delta) % 6;
-    else if (cmax == g) h = (b - r) / delta + 2;
-    else h = (r - g) / delta + 4;
-
-    h = Math.round(h * 60);
-
-    if (h < 0) h += 360;
-
-    l = (cmax + cmin) / 2;
-    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-    s = +(s * 100).toFixed(1);
-    l = +(l * 100).toFixed(1);
-
-    return "hsla(" + h + "," + s + "%," + l + "%, " + t + ")";
   }
 
   function copyText(text) {
@@ -263,7 +219,7 @@
   }
 
   .container {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     padding: 2em;
     background-color: #1a202c;
@@ -382,6 +338,11 @@
     margin: 0 auto;
   }
 
+  .sampleOutput {
+    width: 100%;
+    height: 500px;
+  }
+
   /* @media (min-width: 480px) {
   } */
 </style>
@@ -389,7 +350,7 @@
 <svelte:head>
   <title>SVG Patterns</title>
 </svelte:head>
-<div id="page" class="page" style={cssOutput}>
+<div id="page" class="page">
   <div class="container">
     <div>SVG Patterns</div>
     <p />
@@ -444,5 +405,7 @@
       Height
       <input type="number" bind:value={height} min="0" />
     </div>
+    <br />
+    <div class="sampleOutput" style={cssOutput} />
   </div>
 </div>
