@@ -228,7 +228,7 @@
 
   .samples {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -343,8 +343,11 @@
     height: 500px;
   }
 
-  /* @media (min-width: 480px) {
-  } */
+  @media (min-width: 1024px) {
+    .samples {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -388,6 +391,8 @@
         <div id="color2Div" />
       </div>
     </div>
+    <div class="sampleOutput" style={cssOutput} />
+    <br />
     <div class="grid">
       <span>Copy</span>
       <div class="button" on:click={copyText(cssOutput)} title="CSS">CSS</div>
@@ -405,7 +410,5 @@
       Height
       <input type="number" bind:value={height} min="0" />
     </div>
-    <br />
-    <div class="sampleOutput" style={cssOutput} />
   </div>
 </div>
