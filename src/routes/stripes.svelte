@@ -219,7 +219,7 @@
   }
 
   .container {
-    width: 100%;
+    /*width: 100%;*/
     margin: 0 auto;
     padding: 2em;
     background-color: #1a202c;
@@ -228,7 +228,8 @@
 
   .samples {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -330,8 +331,10 @@
   }
 
   .pattern {
+    /*height: 240px;
+    width: 240px;*/
     height: 240px;
-    width: 240px;
+    width: 100%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -364,7 +367,7 @@
           id="pattern{pattern.id}"
           class="pattern"
           on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern1(pattern.scale, pattern.color1, pattern.color2, pattern.strokeSize) + '"' + ')'} />
+          style={'background-image: url("data:image/svg+xml,' + svgPattern1(pattern.scale, pattern.color1, pattern.color2, pattern.strokeSize) + '"' + ')'} >1</div>
       {/each}
     </div>
 
