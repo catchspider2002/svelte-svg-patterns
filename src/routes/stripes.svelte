@@ -212,14 +212,15 @@
 </script>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap');
 
   .page {
     width: 100%;
     height: 100vh;
     display: block;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Harmattan', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
   }
 
   .container {
@@ -329,7 +330,6 @@
 
   .samples {
     display: grid;
-    /*grid-template-columns: 1fr 1fr;*/
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: 16px;
     row-gap: 16px;
@@ -338,8 +338,6 @@
   }
 
   .pattern {
-    /*height: 240px;
-    width: 240px;*/
     width: 100%;
     cursor: pointer;
     display: flex;
