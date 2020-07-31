@@ -86,6 +86,48 @@ const pattern2 = [
   ],
 ];
 
-const patterns = [pattern1, pattern2];
+// Honeycomb
+const pattern3 = [
+  2, // colors
+  7, // maxStroke
+  16, // maxScale
+  56, // width
+  100, // height
+  56, // viewBoxWidth
+  100, // viewBoxHeight
+  "<path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/>",
+  [
+    {
+      id: 1,
+      color1: "white",
+      color2: "black",
+      stroke: 1,
+      scale: 1,
+    },
+    {
+      id: 2,
+      color1: "pink",
+      color2: "red",
+      stroke: 3,
+      scale: 2,
+    },
+    {
+      id: 3,
+      color1: "hsla(100, 70%, 46%, 0.8)",
+      color2: "hsla(250, 70%, 46%, 1)",
+      stroke: 7,
+      scale: 4,
+    },
+    {
+      id: 4,
+      color1: "hsla(50, 70%, 46%, 0.8)",
+      color2: "hsla(123, 70%, 46%, 1)",
+      stroke: 5,
+      scale: 3,
+    },
+  ],
+];
+
+const patterns = [pattern1, pattern2, pattern3];
 
 export default { randomNumber, randomInteger, patterns };

@@ -36,8 +36,7 @@
       "</g></svg>"
     );
   };
-  const patterns =
-    constants.patterns[Math.round(constants.randomInteger(0, 2))];
+  const patterns = constants.patterns[constants.randomInteger(0, 3)];
 
   const colors = patterns[0],
     maxStroke = patterns[1],
