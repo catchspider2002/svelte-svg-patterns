@@ -393,12 +393,9 @@
         bind:value={selectedPattern.strokeSize}
         min="1"
         max={maxStroke} />
-      <label for="color1">Color 1</label>
+      <label for="color1">Colors</label>
       <div>
         <div id="color1Div" />
-      </div>
-      <label for="color2">Color 2</label>
-      <div>
         <div id="color2Div" />
       </div>
     </div>
