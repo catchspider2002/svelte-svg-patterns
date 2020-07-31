@@ -234,6 +234,9 @@
     align-items: center;
     padding: 2em 0;
   }
+  .py-05{
+    padding: 0.5em 0;
+  }
 
   input[type="number"] {
     color: #1a202c;
@@ -394,7 +397,7 @@
         min="1"
         max={maxStroke} />
       <label for="color1">Colors</label>
-      <div>
+      <div class="inputs py-05">
         <div id="color1Div" />
         <div id="color2Div" />
       </div>
@@ -412,10 +415,11 @@
       <div class="button" on:click={downloadPNG} title="Download as PNG file">
         PNG
       </div>
-      Width
+      <div/>
+      <span>Width</span>
+      <span>Height</span>
+      <span>Dimensions</span>
       <input type="number" bind:value={width} min="0" />
-      <div />
-      Height
       <input type="number" bind:value={height} min="0" />
     </div>
   </div>
