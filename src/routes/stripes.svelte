@@ -29,7 +29,8 @@
   };
 
   const maxStroke = 14,
-    maxScale = 16;
+    maxScale = 16,
+    colors = 2;
 
   const patterns = [
     {
@@ -155,7 +156,6 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    // cssText = "Copied";
   }
 
   function createPicker(parentDiv, colorId) {
@@ -377,7 +377,6 @@
   <div class="container">
     <div>SVG Patterns</div>
     <p />
-
     <div class="samples">
       {#each constantPatterns as pattern}
         <div
@@ -388,24 +387,28 @@
       {/each}
     </div>
 
+Business Card
+<svg xmlns="http://www.w3.org/2000/svg" width="525" height="300" viewBox="0 0 525 300"><rect x="0" y="0" width="525" height="300" fill="red"></rect><g fill="none" stroke="pink" stroke-width="0.5"><path d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 6.495zM47.5 26.495h-15l7.5-12.99z"></path></g></svg>
+
     <div class="button" on:click={randomPattern} title="Random">Random</div>
     <div class="inputs">
-      <label>Scale</label>
-      <input
+      <label for="scale">Scale</label>
+      <input id="scale"
         type="range"
         bind:value={selectedPattern.scale}
         min="1"
         max={maxScale} />
-      <label>Stroke Size</label>
-      <input
+      <label for="stroke">Stroke Size</label>
+      <input id="stroke"
         type="range"
         bind:value={selectedPattern.strokeSize}
         min="1"
         max={maxStroke} />
-      <label for="color1">Colors</label>
+      <label>Colors</label>
       <div class="inputs py-05">
-        <div id="color1Div" />
-        <div id="color2Div" />
+      {#each {length: colors} as _, i}
+        <div id="color" + i + "Div" />
+{/each}
       </div>
     </div>
     <div class="sampleOutput" style={cssOutput} />
@@ -422,11 +425,11 @@
         PNG
       </div>
       <div/>
-      <span class="text-center">Width</span>
-      <span class="text-center">Height</span>
+      <label for="width" class="text-center">Width</label>
+      <label for="height" class="text-center">Height</label>
       <span>Dimensions</span>
-      <input type="number" bind:value={width} min="0" />
-      <input type="number" bind:value={height} min="0" />
+      <input id="width" type="number" bind:value={width} min="0" />
+      <input id="height" type="number" bind:value={height} min="0" />
     </div>
   </div>
 </div>
