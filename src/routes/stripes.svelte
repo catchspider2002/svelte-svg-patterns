@@ -353,10 +353,11 @@
     height: 500px;
   }
 
-  @media (min-width: 1024px) {
-    /*.samples {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }*/
+  @media (max-width: 1024px) {
+  
+  .pattern:before {
+    padding-bottom: calc(1/2 * 100%);
+}
   }
 </style>
 
