@@ -212,10 +212,14 @@
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
   .page {
     width: 100%;
     height: 100vh;
     display: block;
+    font-family: 'Poppins', sans-serif;
   }
 
   .container {
@@ -355,6 +359,10 @@
     width: 100%;
     height: 500px;
   }
+  
+  .text-center{
+    text-align: center;
+  }
 
   @media (max-width: 1024px) {
   
@@ -416,8 +424,8 @@
         PNG
       </div>
       <div/>
-      <span>Width</span>
-      <span>Height</span>
+      <span class="text-center">Width</span>
+      <span class="text-center">Height</span>
       <span>Dimensions</span>
       <input type="number" bind:value={width} min="0" />
       <input type="number" bind:value={height} min="0" />
