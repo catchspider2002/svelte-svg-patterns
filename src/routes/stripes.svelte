@@ -407,8 +407,8 @@ Business Card
       <label>Colors</label>
       <div class="inputs py-05">
       {#each {length: colors} as _, i}
-        <div id="color" + i + "Div" />
-{/each}
+        <div id="color{i+1}Div" />
+    {/each}
       </div>
     </div>
     <div class="sampleOutput" style={cssOutput} />
