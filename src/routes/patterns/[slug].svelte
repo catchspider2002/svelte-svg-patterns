@@ -1,7 +1,23 @@
+<script context="module">
+  export async function preload({ params, query }) {
+    // the `slug` parameter is available because
+    // this file is called [slug].svelte
+    const res = await this.fetch(`patterns/${params.slug}.json`);
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return { post: data };
+    } else {
+      this.error(res.status, data.message);
+    }
+  }
+</script>
+
 <script>
-  import constants from "./_constants.js";
+  export let post;
+  import constants from "../_constants.js";
   import { onMount } from "svelte";
-  import "./_monolith.min.css";
+  import "../_monolith.min.css";
 
   let Pickr;
 
@@ -37,18 +53,18 @@
     );
   };
 
-  const patterns = constants.patterns[constants.randomInteger(0, 3)];
+//   const patterns = constants.patterns[constants.randomInteger(0, 3)];
 
-  const colors = patterns.colors,
-    maxStroke = patterns.maxStroke,
-    maxScale = patterns.maxScale,
-    width = patterns.width,
-    height = patterns.height,
-    viewBoxWidth = patterns.viewBoxWidth,
-    viewBoxHeight = patterns.viewBoxHeight,
-    path = patterns.path;
+  const colors = post.colors,
+    maxStroke = post.maxStroke,
+    maxScale = post.maxScale,
+    width = post.width,
+    height = post.height,
+    viewBoxWidth = post.viewBoxWidth,
+    viewBoxHeight = post.viewBoxHeight,
+    path = post.path;
 
-const presetPatterns =  [
+  const presetPatterns = [
     {
       id: 1,
       color1: "white",
@@ -61,23 +77,23 @@ const presetPatterns =  [
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale/2)
+      scale: constants.randomNumber(1, maxScale / 2)
     },
     {
       id: 3,
       color1: constants.randomColor(1),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale/2)
+      scale: constants.randomNumber(1, maxScale / 2)
     },
     {
       id: 4,
       color1: constants.randomColor(0.9),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale/2)
+      scale: constants.randomNumber(1, maxScale / 2)
     }
-  ]
+  ];
 
   let selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
@@ -111,8 +127,13 @@ const presetPatterns =  [
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
       scale: constants.randomNumber(1, maxScale)
-	};
-    svgFile = svgPattern(selectedPattern.color1, selectedPattern.color2, selectedPattern.stroke, selectedPattern.scale);
+    };
+    svgFile = svgPattern(
+      selectedPattern.color1,
+      selectedPattern.color2,
+      selectedPattern.stroke,
+      selectedPattern.scale
+    );
 
     createColorPickers();
   }
@@ -404,14 +425,14 @@ const presetPatterns =  [
     }
   }
 </style>
-
 <svelte:head>
-  <title>SVG Patterns</title>
+  <title>{post.title}</title>
 </svelte:head>
+
+<!-- <div class="content">{post.path}</div> -->
 <div id="page" class="page">
   <div class="container">
     <div>SVG Patterns</div>
-    <p />
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}
