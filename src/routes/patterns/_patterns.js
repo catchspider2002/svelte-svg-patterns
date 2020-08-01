@@ -117,7 +117,6 @@ const pattern2 = {
     "<path d='M0 13.276l5.292-5.292 5.291 5.292'/><path d='M-2.646 10.63l7.938-7.937 7.937 7.937'/><path d='M-2.646 5.338l7.938-7.937 7.937 7.937'/>"
 };
 
-// Honeycomb
 const pattern3 = {
   title: "Honeycomb",
   slug: "honeycomb",
@@ -131,6 +130,48 @@ const pattern3 = {
   path: "<path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/>"
 };
 
-const patterns = [pattern1, pattern2, pattern3];
+const pattern4 = {
+  title: "Vertical Chevron",
+  slug: "vertical-chevron",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M-2.693 0L2.6 5.292l-5.292 5.291'/><path d='M-.047-2.646l7.938 7.938-7.938 7.937'/><path d='M5.245-2.646l7.937 7.938-7.937 7.937'/>"
+};
+
+const pattern5 = {
+  title: "Horizontal Lines",
+  slug: "horizontal-lines",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M-1.323 2.117h13.23M-1.323 4.763h13.23M-1.323 7.408h13.23M-1.323 10.054h13.23M-1.323-.53h13.23'/>"
+};
+
+const pattern6 = {
+  title: "Vertical Lines",
+  slug: "vertical-lines",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M6.88-1.852v13.23M4.233-1.852v13.23M1.587-1.852v13.23M-1.058-1.852v13.23M9.525-1.852v13.23'/>"
+};
+
+const patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6];
 
 export default patterns;
