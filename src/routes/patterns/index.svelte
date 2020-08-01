@@ -34,9 +34,6 @@
 
 <style>
   .patternsList {
-    font-family: "Dosis", sans-serif;
-    font-family: "Harmattan", sans-serif;
-    font-family: "Josefin Sans", sans-serif;
     background-color: #1a202c;
     color: #edf2f7;
     padding: 2em;

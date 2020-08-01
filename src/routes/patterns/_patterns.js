@@ -148,7 +148,7 @@ const pattern5 = {
   title: "Horizontal Lines",
   slug: "horizontal-lines",
   colors: 2,
-  maxStroke: 7,
+  maxStroke: 5,
   maxScale: 16,
   width: 40,
   height: 40,
@@ -162,7 +162,7 @@ const pattern6 = {
   title: "Vertical Lines",
   slug: "vertical-lines",
   colors: 2,
-  maxStroke: 7,
+  maxStroke: 5,
   maxScale: 16,
   width: 40,
   height: 40,
@@ -172,6 +172,76 @@ const pattern6 = {
     "<path d='M6.88-1.852v13.23M4.233-1.852v13.23M1.587-1.852v13.23M-1.058-1.852v13.23M9.525-1.852v13.23'/>"
 };
 
-const patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6];
+const pattern7 = {
+  title: "Square Lines",
+  slug: "square-lines",
+  colors: 2,
+  maxStroke: 4,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M-1.323-.53h13.23zm0 2.647h13.23zm0 2.646h13.23zm0 2.645h13.23zm0 2.646h13.23zm.265-11.906v13.23zm2.646 0v13.23zm2.645 0v13.23zm2.646 0v13.23zm2.646 0v13.23z'/>"
+};
+
+const pattern8 = {
+  title: "Diagonal Lines",
+  slug: "diagonal-lines",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M5.292 13.23l-7.938-7.938 7.938-7.938m5.291 15.875L2.646 5.292l7.937-7.938m2.646 13.23L7.938 5.291 13.229 0M5.292-2.646l7.937 7.938-7.937 7.937M0-2.646l7.938 7.938L0 13.229M-2.646 0l5.292 5.292-5.292 5.291'/>"
+};
+
+const pattern9 = {
+  title: "Herringbone",
+  slug: "herringbone",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 10.583,
+  viewBoxHeight: 10.583,
+  path:
+    "<path d='M13.182 5.245l-7.937 7.937-7.938-7.937M13.182-.047L5.245 7.891-2.693-.047m13.23-2.646L5.245 2.6-.047-2.693m5.292 0l7.937 7.938-7.937 7.937M-.047-2.693l7.938 7.938-7.938 7.937M-2.693-.047L2.6 5.245l-5.292 5.292'/>"
+};
+
+const pattern10 = {
+  title: "Brick Wall",
+  slug: "brick-wall",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 40,
+  height: 40,
+  viewBoxWidth: 21.819,
+  viewBoxHeight: 21.819,
+  path:
+    "<path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/>"
+};
+
+const pattern11 = {
+  title: "Funny design",
+  slug: "funny-design",
+  colors: 2,
+  maxStroke: 7,
+  maxScale: 16,
+  width: 68,
+  height: 68,
+  viewBoxWidth: 37.092,
+  viewBoxHeight: 37.092,
+  path:
+    "<path d='M37.091 30.546l-12-12 12-12 12 12zm0 4.364L20.727 18.546 37.091 2.182l16.364 16.364zM18.546 12l-12-12 12-12 12 12zm0 4.364L2.182 0l16.364-16.364L34.91 0zm0 32.728l-12-12 12-12 12 12zm0 4.364L2.182 37.092l16.364-16.364L34.91 37.092zM0 30.546l-12-12 12-12 12 12zm0 4.363l-16.364-16.363L0 2.182l16.364 16.364z'/>"
+};
+
+const patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, pattern7, pattern8, pattern9, pattern10, pattern11];
 
 export default patterns;

@@ -224,9 +224,6 @@ const presetPatterns =  [
     width: 100%;
     height: 100vh;
     display: block;
-    font-family: "Dosis", sans-serif;
-    font-family: "Harmattan", sans-serif;
-    font-family: "Josefin Sans", sans-serif;
   }
 
   .container {

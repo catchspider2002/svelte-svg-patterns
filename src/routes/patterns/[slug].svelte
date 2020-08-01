@@ -245,9 +245,6 @@
     width: 100%;
     height: 100vh;
     display: block;
-    font-family: "Dosis", sans-serif;
-    font-family: "Harmattan", sans-serif;
-    font-family: "Josefin Sans", sans-serif;
   }
 
   .container {
@@ -432,7 +429,7 @@
 <!-- <div class="content">{post.path}</div> -->
 <div id="page" class="page">
   <div class="container">
-    <div>SVG Patterns</div>
+    <div>{post.title}</div>
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}

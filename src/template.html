@@ -1,40 +1,57 @@
-<!doctype html>
-<html lang='en'>
-<head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width,initial-scale=1.0'>
-	<meta name='theme-color' content='#333333'>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#333333" />
 
-	%sapper.base%
+    %sapper.base%
 
-	<link rel='stylesheet' href='global.css'>
-	<link rel='manifest' href='manifest.json' crossorigin='use-credentials'>
-	<link rel='icon' type='image/png' href='favicon.png'>
-	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="global.css" />
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-	<!-- Sapper generates a <style> tag containing critical CSS
+    <!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
 	     lazily loaded when it precaches secondary pages -->
-	%sapper.styles%
+    %sapper.styles%
 
-	<!-- This contains the contents of the <svelte:head> component, if
+    <!-- This contains the contents of the <svelte:head> component, if
 	     the current page has one -->
-	%sapper.head%
-</head>
-<body>
-	<!-- The application will be rendered inside this element,
+    %sapper.head%
+  </head>
+  <body>
+    <!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
-	<div id='sapper'>%sapper.html%</div>
+    <div id="sapper">%sapper.html%</div>
 
-	<!-- Sapper creates a <script> tag containing `src/client.js`
+    <!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
-	%sapper.scripts%
-</body>
-<style>
-body{
-	background-color: #545454;
-	color: #e29494c4;
-}	
-</style>
+    %sapper.scripts%
+  </body>
+  <style>
+    body {
+      background-color: #545454;
+      color: rgba(255, 218, 6, 1);
+      font-family: "Dosis", sans-serif;
+      font-family: "Harmattan", sans-serif;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 20px;
+    }
+    @media (max-width: 1440px) {
+      body {
+        font-size: 18px;
+      }
+    }
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+    }
+  </style>
 </html>
