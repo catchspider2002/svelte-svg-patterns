@@ -15,6 +15,7 @@
     "@simonwep/pickr": "^1.7.2",
     "compression": "^1.7.4",
     "polka": "next",
+    "prettier": "^2.0.5",
     "sirv": "^1.0.1"
   },
   "devDependencies": {
@@ -33,5 +34,24 @@
     "rollup": "^2.23.0",
     "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-terser": "^6.1.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 140,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false,
+    "vueIndentScriptAndStyle": false,
+    "rangeStart": 0
   }
 }

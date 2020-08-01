@@ -36,18 +36,50 @@
       "</g></svg>"
     );
   };
+
   const patterns = constants.patterns[constants.randomInteger(0, 3)];
 
-  const colors = patterns[0],
-    maxStroke = patterns[1],
-    maxScale = patterns[2],
-    width = patterns[3],
-    height = patterns[4],
-    viewBoxWidth = patterns[5],
-    viewBoxHeight = patterns[6],
-    path = patterns[7];
+  const colors = patterns.colors,
+    maxStroke = patterns.maxStroke,
+    maxScale = patterns.maxScale,
+    width = patterns.width,
+    height = patterns.height,
+    viewBoxWidth = patterns.viewBoxWidth,
+    viewBoxHeight = patterns.viewBoxHeight,
+    path = patterns.path;
 
-  let selectedPattern = patterns[8][0];
+const presetPatterns =  [
+    {
+      id: 1,
+      color1: "white",
+      color2: "black",
+      stroke: 1,
+      scale: 1
+    },
+    {
+      id: 2,
+      color1: constants.randomColor(0.8),
+      color2: constants.randomColor(1),
+      stroke: constants.randomNumber(1, maxStroke),
+      scale: constants.randomNumber(1, maxScale/2)
+    },
+    {
+      id: 3,
+      color1: constants.randomColor(1),
+      color2: constants.randomColor(1),
+      stroke: constants.randomNumber(1, maxStroke),
+      scale: constants.randomNumber(1, maxScale/2)
+    },
+    {
+      id: 4,
+      color1: constants.randomColor(0.9),
+      color2: constants.randomColor(1),
+      stroke: constants.randomNumber(1, maxStroke),
+      scale: constants.randomNumber(1, maxScale/2)
+    }
+  ]
+
+  let selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
     selectedPattern.color1,
     selectedPattern.color2,
@@ -64,42 +96,24 @@
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
 
-    for (var j = 0; j < patterns[8].length; j++) {
-      if ("pattern" + patterns[8][j].id === this.id) {
-        selectedPattern = patterns[8][patterns[8][j].id - 1];
+    for (var j = 0; j < presetPatterns.length; j++) {
+      if ("pattern" + presetPatterns[j].id === this.id) {
+        selectedPattern = presetPatterns[presetPatterns[j].id - 1];
         createColorPickers();
       }
     }
   }
 
   function randomPattern() {
-    let randomScale = constants.randomNumber(1, maxScale),
-      randomStroke = constants.randomNumber(1, maxStroke),
-      //   randomColor1 = constants.hexToHSL(constants.randomColor(), 0.8),
-      randomColor1 =
-        "hsla(" +
-        Math.round(constants.randomNumber(0, 360), 2) +
-        "," +
-        Math.round(constants.randomNumber(0, 100), 2) +
-        "%," +
-        Math.round(constants.randomNumber(0, 100), 2) +
-        "%, 0.8)",
-      randomColor2 =
-        "hsla(" +
-        Math.round(constants.randomNumber(0, 360), 2) +
-        "," +
-        Math.round(constants.randomNumber(0, 100), 2) +
-        "%," +
-        Math.round(constants.randomNumber(0, 100), 2) +
-        "%, 0.8)";
-    svgFile = svgPattern(randomColor1, randomColor2, randomStroke, randomScale);
+	  console.log("randomPattern")
     selectedPattern = {
       id: 5,
-      color1: randomColor1,
-      color2: randomColor2,
-      stroke: randomStroke,
-      scale: randomScale
-    };
+      color1: constants.randomColor(0.8),
+      color2: constants.randomColor(1),
+      stroke: constants.randomNumber(1, maxStroke),
+      scale: constants.randomNumber(1, maxScale)
+	};
+    svgFile = svgPattern(selectedPattern.color1, selectedPattern.color2, selectedPattern.stroke, selectedPattern.scale);
 
     createColorPickers();
   }
@@ -120,9 +134,11 @@
       window.btoa(unescape(encodeURIComponent(svgFile)));
 
     image.onload = function() {
+      console.log("Start");
+      console.log(outputWidth);
       var canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = outputWidth;
+      canvas.height = outputHeight;
       var context = canvas.getContext("2d");
       var ptrn = context.createPattern(image, "repeat");
       context.fillStyle = ptrn;
@@ -205,8 +221,6 @@
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap");
-
   .page {
     width: 100%;
     height: 100vh;
@@ -321,7 +335,7 @@
     text-decoration: none;
     background-color: rgba(255, 218, 6, 1);
     color: #ffffff;
-    font-family: sans-serif;
+    font-family: inherit;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
@@ -400,11 +414,8 @@
     <div>SVG Patterns</div>
     <p />
     <div class="samples">
-      {#each patterns[8] as pattern}
-        <button
-          id="pattern{pattern.id}"
-          class="pattern"
-          on:click={check}
+      {#each presetPatterns as pattern}
+        <button id="pattern{pattern.id}" class="pattern" on:click={check}
           style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale) + '"' + ')'} />
       {/each}
     </div>
@@ -424,24 +435,12 @@
       </g>
     </svg> -->
 
-    <button class="button" on:click={randomPattern} title="Random">
-      Inspire Me
-    </button>
+    <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
       <label for="scale">Scale</label>
-      <input
-        id="scale"
-        type="range"
-        bind:value={selectedPattern.scale}
-        min="1"
-        max={maxScale} />
-      <label for="stroke">Stroke Size</label>
-      <input
-        id="stroke"
-        type="range"
-        bind:value={selectedPattern.stroke}
-        min="1"
-        max={maxStroke} />
+      <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
+	  <label for="stroke">Stroke Size</label>
+      <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="1" max={maxStroke} />
       <label>Colors</label>
       <div class="inputs py-05">
         {#each { length: colors } as _, i}
@@ -453,31 +452,19 @@
     <br />
     <div class="grid">
       <span>Copy</span>
-      <button class="button" on:click={copyText(cssOutput)} title="CSS">
-        CSS
-      </button>
-      <button class="button" on:click={copyText(svgFile)} title="SVG">
-        SVG
-      </button>
+      <button class="button" on:click={copyText(cssOutput)} title="CSS">CSS</button>
+      <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
       <span>Download</span>
-      <button
-        class="button"
-        on:click={downloadSVG}
-        title="Download as SVG file">
-        SVG
-      </button>
-      <button
-        class="button"
-        on:click={downloadPNG}
-        title="Download as PNG file">
-        PNG
-      </button>
+      <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
+      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
       <div />
       <label for="width" class="text-center">Width</label>
       <label for="height" class="text-center">Height</label>
       <span>Dimensions</span>
-      <input id="width" type="number" bind:value={outputWidth} min="0" />
-      <input id="height" type="number" bind:value={outputHeight} min="0" />
+      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
     </div>
   </div>
 </div>
