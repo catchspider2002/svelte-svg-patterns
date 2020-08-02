@@ -5,11 +5,10 @@
     const res = await this.fetch(`patterns/${params.slug}.json`);
     const data = await res.json();
 
-    if (res.status === 200) {
+    if (res.status === 200)
       return { post: data };
-    } else {
+     else
       this.error(res.status, data.message);
-    }
   }
 </script>
 
@@ -29,23 +28,20 @@
     setSvgFile()
   });
 
-  function doStuff(){
-// 	  console.log("do Stuff")
-
-// 	  const elements1 = document.getElementsByClassName("dill");
-// 	while (elements1.length > 0) elements1[0].remove();
-	
-//     var a = document.createElement("div");
-//   a.setAttribute('class', 'dill');
-//   a.setAttribute('id', 'dill');
-// 	  document.getElementById("sampleOutput").appendChild(a);
+function setSvgFile(){
+		 svgFile = svgPattern(selectedPattern.color1,
+							  selectedPattern.color2,
+							  selectedPattern.stroke,
+							  selectedPattern.scale,
+							  selectedPattern.angle);
+        
     document.getElementById("sampleOutput").innerHTML = svgFile.replace('%23','#').replace("width='100%' height='100%'","width='"+outputWidth+"px' height='"+outputHeight+"px'");
 	
 	const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
 	createColorPickers();
 	  console.log("do Stuff End")
-  }
+}
 
   //   let svgPattern = (color1, color2, stroke, scale) => {
   //     return (
@@ -103,39 +99,6 @@
     return patternNew.replace("#", "%23");
   };
 
-//   let imagePattern = (color1, color2, stroke, scale) => {
-//     let patternNew =
-//       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-//       width / scale +
-//       "' height='" +
-//       height / scale +
-//       "' transform='scale(" +
-//       scale +
-//       ")' viewBox='0 0 " +
-//       viewBoxWidth +
-//       " " +
-//       viewBoxHeight +
-//       "'><rect x='0' y='0' width='" +
-//       width +
-//       "' height='" +
-//       height +
-//       "' fill='" +
-//       color1 +
-//       "'/><path stroke-width='" +
-//       Math.round(stroke * 200) / 100 +
-//       "' stroke = '" +
-//       color2 +
-//       "' fill='" +
-//       color2 +
-//       "' d='" +
-//       path +
-//       "'/>" +
-//       "</svg>";
-//     return patternNew;
-//   };
-
-  //   const patterns = constants.patterns[constants.randomInteger(0, 3)];
-
   const colors = post.colors,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
@@ -188,12 +151,6 @@
 	selectedPattern.scale,
 	selectedPattern.angle
   );
-//   $: imageFile = imagePattern(
-//     selectedPattern.color1,
-//     selectedPattern.color2,
-//     selectedPattern.stroke,
-//     selectedPattern.scale
-//   );
 
   let outputWidth = 1080,
     outputHeight = 1080;
@@ -208,15 +165,6 @@
       }
     }
   }
-
-function setSvgFile(){
-		 svgFile = svgPattern(selectedPattern.color1,
-							  selectedPattern.color2,
-							  selectedPattern.stroke,
-							  selectedPattern.scale,
-							  selectedPattern.angle);
-        doStuff()
-}
 
   function randomPattern() {
     selectedPattern = {
@@ -239,35 +187,7 @@ function setSvgFile(){
     a.remove();
   }
 
-//   function downloadPNG() {
-//     var image = new Image();
-//     image.src =
-//       "data:image/svg+xml;base64," +
-//       window.btoa(unescape(encodeURIComponent(imageFile)));
-//     console.log(imageFile);
-
-//     image.onload = function() {
-//       console.log("Start");
-//       var canvas = document.createElement("canvas");
-//       canvas.width = outputWidth;
-//       canvas.height = outputHeight;
-//       document.body.appendChild(canvas);
-//       var context = canvas.getContext("2d");
-//       var ptrn = context.createPattern(image, "repeat");
-//       context.fillStyle = ptrn;
-//       context.fillRect(0, 0, canvas.width, canvas.height);
-//       //   context.drawImage(image, 0, 0);
-
-//       var a = document.createElement("a");
-//       a.download = "image.png";
-//       a.href = canvas.toDataURL("pattern/png");
-//       document.body.appendChild(a);
-//       a.click();
-//       a.remove();
-//     };
-//   }
-
-  function downloadPNG2(){
+  function downloadPNG(){
 	     svg.saveSvgAsPng(document.getElementById('testId'), 'diagram.png');
   }
 
@@ -580,7 +500,7 @@ function setSvgFile(){
       <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
       <span>Download</span>
       <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button class="button" on:click={downloadPNG2} title="Download as PNG file">PNG</button>
+      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
       <div />
       <label for="width" class="text-center">Width</label>
       <label for="height" class="text-center">Height</label>
