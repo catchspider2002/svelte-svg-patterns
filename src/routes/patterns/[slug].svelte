@@ -23,17 +23,69 @@
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
-    Pickr = module.default;
+	Pickr = module.default;
     createColorPickers();
   });
 
+//   let svgPattern = (color1, color2, stroke, scale) => {
+//     return (
+//       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+//       scale * width +
+//       "' height='" +
+//       scale * height +
+//       "' viewBox='0 0 " +
+//       viewBoxWidth +
+//       " " +
+//       viewBoxHeight +
+//       "'><rect x='0' y='0' width='" +
+//       width +
+//       "' height='" +
+//       height +
+//       "' fill='" +
+//       color1 +
+//       "'/><g fill='none' stroke='" +
+//       color2 +
+//       "' stroke-width='" +
+//       Math.round(stroke * 50) / 100 +
+//       "'>" +
+//       path +
+//       "</g></svg>"
+//     );
+//   };
+
   let svgPattern = (color1, color2, stroke, scale) => {
-    return (
-      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      scale * width +
+    let patternNew =
+      "<svg xmlns='http://www.w3.org/2000/svg'><defs>" +
+      "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
+      width +
       "' height='" +
-      scale * height +
-      "' viewBox='0 0 " +
+      height +
+	  "' patternTransform='scale(" +
+	  scale +
+      ")'><rect x='0' y='0' width='" +
+      width  +
+      "' height='" +
+      height +
+      "' fill='" +
+      color1 +
+      "'/><path stroke-width='" +
+      Math.round(stroke * 200) / 100 +
+      "' stroke = '" +
+      color2 +
+      "' fill='" +
+      color2 +
+      "' d='"+path+"'/></pattern>" +
+      "</defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+    return patternNew.replace("#", "%23");
+  };
+
+  let imagePattern = (color1, color2, stroke, scale) => {
+    let patternNew =
+      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+      width / (scale) +
+      "' height='" +
+      height / (scale) +
+      "' transform='scale("+scale+")' viewBox='0 0 " +
       viewBoxWidth +
       " " +
       viewBoxHeight +
@@ -43,14 +95,15 @@
       height +
       "' fill='" +
       color1 +
-      "'/><g fill='none' stroke='" +
+      "'/><path stroke-width='" +
+      Math.round(stroke * 200) / 100 +
+      "' stroke = '" +
       color2 +
-      "' stroke-width='" +
-      Math.round(stroke * 50) / 100 +
-      "'>" +
-      path +
-      "</g></svg>"
-    );
+      "' fill='" +
+      color2 +
+      "' d='"+path+"'/>" +
+      "</svg>";
+    return patternNew;
   };
 
 //   const patterns = constants.patterns[constants.randomInteger(0, 3)];
@@ -77,7 +130,7 @@
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 2)
+      scale: constants.randomNumber(0.1, maxScale / 3)
     },
     {
       id: 3,
@@ -97,6 +150,12 @@
 
   let selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
+    selectedPattern.color1,
+    selectedPattern.color2,
+    selectedPattern.stroke,
+    selectedPattern.scale
+  );
+  $: imageFile = imagePattern(
     selectedPattern.color1,
     selectedPattern.color2,
     selectedPattern.stroke,
@@ -126,7 +185,7 @@
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale)
+	  scale: constants.randomNumber(1, maxScale)
     };
     svgFile = svgPattern(
       selectedPattern.color1,
@@ -144,25 +203,27 @@
     a.setAttribute("href", "data:image/svg+xml," + svgFile);
     a.setAttribute("download", "pattern.svg");
     a.click();
-    a.remove();
+    a.remove(); 
   }
 
   function downloadPNG() {
     var image = new Image();
     image.src =
       "data:image/svg+xml;base64," +
-      window.btoa(unescape(encodeURIComponent(svgFile)));
+	  window.btoa(unescape(encodeURIComponent(imageFile)));
+	  console.log(imageFile)
 
     image.onload = function() {
       console.log("Start");
-      console.log(outputWidth);
       var canvas = document.createElement("canvas");
       canvas.width = outputWidth;
       canvas.height = outputHeight;
+      document.body.appendChild(canvas);
       var context = canvas.getContext("2d");
-      var ptrn = context.createPattern(image, "repeat");
+	  var ptrn = context.createPattern(image, "repeat");
       context.fillStyle = ptrn;
       context.fillRect(0, 0, canvas.width, canvas.height);
+	//   context.drawImage(image, 0, 0);
 
       var a = document.createElement("a");
       a.download = "image.png";
@@ -407,7 +468,7 @@
     padding-bottom: calc(10 / 16 * 100%);
   }
 
-  .sampleOutput {
+  #sampleOutput {
     width: 100%;
     height: 500px;
   }
@@ -458,6 +519,8 @@
       <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
 	  <label for="stroke">Stroke Size</label>
       <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="1" max={maxStroke} />
+	  <!-- <label for="angle">Angle</label>
+      <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" /> -->
       <label>Colors</label>
       <div class="inputs py-05">
         {#each { length: colors } as _, i}
@@ -465,7 +528,7 @@
         {/each}
       </div>
     </div>
-    <div class="sampleOutput" style={cssOutput} />
+    <div id="sampleOutput" style={cssOutput} />
     <br />
     <div class="grid">
       <span>Copy</span>
