@@ -12,7 +12,7 @@
   export let posts;
 
   let svgPattern = (width, height, viewBoxWidth, viewBoxHeight, path) => {
-    let svgFile =
+    let svgFile = 
       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
       width +
       "' height='" +

@@ -19,21 +19,99 @@
   import { onMount } from "svelte";
   import "../_monolith.min.css";
 
-  let Pickr;
+  let Pickr, svg;
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
-	Pickr = module.default;
-    createColorPickers();
+    Pickr = module.default;
+    const module1 = await import("save-svg-as-png");
+    svg = module1.default;
+    setSvgFile()
   });
 
-//   let svgPattern = (color1, color2, stroke, scale) => {
-//     return (
+  function doStuff(){
+// 	  console.log("do Stuff")
+
+// 	  const elements1 = document.getElementsByClassName("dill");
+// 	while (elements1.length > 0) elements1[0].remove();
+	
+//     var a = document.createElement("div");
+//   a.setAttribute('class', 'dill');
+//   a.setAttribute('id', 'dill');
+// 	  document.getElementById("sampleOutput").appendChild(a);
+    document.getElementById("sampleOutput").innerHTML = svgFile.replace('%23','#').replace("width='100%' height='100%'","width='"+outputWidth+"px' height='"+outputHeight+"px'");
+	
+	const elements = document.getElementsByClassName("pcr-app");
+    while (elements.length > 0) elements[0].remove();
+	createColorPickers();
+	  console.log("do Stuff End")
+  }
+
+  //   let svgPattern = (color1, color2, stroke, scale) => {
+  //     return (
+  //       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+  //       scale * width +
+  //       "' height='" +
+  //       scale * height +
+  //       "' viewBox='0 0 " +
+  //       viewBoxWidth +
+  //       " " +
+  //       viewBoxHeight +
+  //       "'><rect x='0' y='0' width='" +
+  //       width +
+  //       "' height='" +
+  //       height +
+  //       "' fill='" +
+  //       color1 +
+  //       "'/><g fill='none' stroke='" +
+  //       color2 +
+  //       "' stroke-width='" +
+  //       Math.round(stroke * 50) / 100 +
+  //       "'>" +
+  //       path +
+  //       "</g></svg>"
+  //     );
+  //   };
+
+  let svgPattern = (color1, color2, stroke, scale, angle) => {
+    let patternNew =
+      "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
+      "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
+      width +
+      "' height='" +
+      height +
+      "' patternTransform='scale(" +
+      scale +
+      ") rotate(" +
+      angle +
+      ")'><rect x='0' y='0' width='" +
+      width +
+      "' height='" +
+      height +
+      "' fill='" +
+      color1 +
+      "'/><path stroke-width='" +
+      Math.round(stroke * 200) / 100 +
+      "' stroke = '" +
+      color2 +
+      "' fill='" +
+      color2 +
+      "' d='" +
+      path +
+      "'/></pattern>" +
+      "</defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+    return patternNew.replace("#", "%23");
+  };
+
+//   let imagePattern = (color1, color2, stroke, scale) => {
+//     let patternNew =
 //       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-//       scale * width +
+//       width / scale +
 //       "' height='" +
-//       scale * height +
-//       "' viewBox='0 0 " +
+//       height / scale +
+//       "' transform='scale(" +
+//       scale +
+//       ")' viewBox='0 0 " +
 //       viewBoxWidth +
 //       " " +
 //       viewBoxHeight +
@@ -43,70 +121,20 @@
 //       height +
 //       "' fill='" +
 //       color1 +
-//       "'/><g fill='none' stroke='" +
+//       "'/><path stroke-width='" +
+//       Math.round(stroke * 200) / 100 +
+//       "' stroke = '" +
 //       color2 +
-//       "' stroke-width='" +
-//       Math.round(stroke * 50) / 100 +
-//       "'>" +
+//       "' fill='" +
+//       color2 +
+//       "' d='" +
 //       path +
-//       "</g></svg>"
-//     );
+//       "'/>" +
+//       "</svg>";
+//     return patternNew;
 //   };
 
-  let svgPattern = (color1, color2, stroke, scale) => {
-    let patternNew =
-      "<svg xmlns='http://www.w3.org/2000/svg'><defs>" +
-      "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
-      width +
-      "' height='" +
-      height +
-	  "' patternTransform='scale(" +
-	  scale +
-      ")'><rect x='0' y='0' width='" +
-      width  +
-      "' height='" +
-      height +
-      "' fill='" +
-      color1 +
-      "'/><path stroke-width='" +
-      Math.round(stroke * 200) / 100 +
-      "' stroke = '" +
-      color2 +
-      "' fill='" +
-      color2 +
-      "' d='"+path+"'/></pattern>" +
-      "</defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
-    return patternNew.replace("#", "%23");
-  };
-
-  let imagePattern = (color1, color2, stroke, scale) => {
-    let patternNew =
-      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      width / (scale) +
-      "' height='" +
-      height / (scale) +
-      "' transform='scale("+scale+")' viewBox='0 0 " +
-      viewBoxWidth +
-      " " +
-      viewBoxHeight +
-      "'><rect x='0' y='0' width='" +
-      width +
-      "' height='" +
-      height +
-      "' fill='" +
-      color1 +
-      "'/><path stroke-width='" +
-      Math.round(stroke * 200) / 100 +
-      "' stroke = '" +
-      color2 +
-      "' fill='" +
-      color2 +
-      "' d='"+path+"'/>" +
-      "</svg>";
-    return patternNew;
-  };
-
-//   const patterns = constants.patterns[constants.randomInteger(0, 3)];
+  //   const patterns = constants.patterns[constants.randomInteger(0, 3)];
 
   const colors = post.colors,
     maxStroke = post.maxStroke,
@@ -123,28 +151,32 @@
       color1: "white",
       color2: "black",
       stroke: 1,
-      scale: 1
+      scale: 1,
+	  angle: 0
     },
     {
       id: 2,
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(0.1, maxScale / 3)
+      scale: constants.randomNumber(0.1, maxScale / 3),
+	  angle: constants.randomNumber(0, 180)
     },
     {
       id: 3,
       color1: constants.randomColor(1),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 2)
+      scale: constants.randomNumber(1, maxScale / 2),
+	  angle: constants.randomNumber(0, 180)
     },
     {
       id: 4,
       color1: constants.randomColor(0.9),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 2)
+	  scale: constants.randomNumber(1, maxScale / 2),
+	  angle: constants.randomNumber(0, 180)
     }
   ];
 
@@ -153,14 +185,15 @@
     selectedPattern.color1,
     selectedPattern.color2,
     selectedPattern.stroke,
-    selectedPattern.scale
+	selectedPattern.scale,
+	selectedPattern.angle
   );
-  $: imageFile = imagePattern(
-    selectedPattern.color1,
-    selectedPattern.color2,
-    selectedPattern.stroke,
-    selectedPattern.scale
-  );
+//   $: imageFile = imagePattern(
+//     selectedPattern.color1,
+//     selectedPattern.color2,
+//     selectedPattern.stroke,
+//     selectedPattern.scale
+//   );
 
   let outputWidth = 1080,
     outputHeight = 1080;
@@ -168,16 +201,22 @@
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function check() {
-    const elements = document.getElementsByClassName("pcr-app");
-    while (elements.length > 0) elements[0].remove();
-
     for (var j = 0; j < presetPatterns.length; j++) {
       if ("pattern" + presetPatterns[j].id === this.id) {
-        selectedPattern = presetPatterns[presetPatterns[j].id - 1];
-        createColorPickers();
+		selectedPattern = presetPatterns[presetPatterns[j].id - 1];
+		 setSvgFile()
       }
     }
   }
+
+function setSvgFile(){
+		 svgFile = svgPattern(selectedPattern.color1,
+							  selectedPattern.color2,
+							  selectedPattern.stroke,
+							  selectedPattern.scale,
+							  selectedPattern.angle);
+        doStuff()
+}
 
   function randomPattern() {
     selectedPattern = {
@@ -185,16 +224,10 @@
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-	  scale: constants.randomNumber(1, maxScale)
+      scale: constants.randomNumber(1, maxScale),
+      angle: constants.randomNumber(0, 180)
     };
-    svgFile = svgPattern(
-      selectedPattern.color1,
-      selectedPattern.color2,
-      selectedPattern.stroke,
-      selectedPattern.scale
-    );
-
-    createColorPickers();
+     setSvgFile()
   }
 
   function downloadSVG() {
@@ -203,35 +236,39 @@
     a.setAttribute("href", "data:image/svg+xml," + svgFile);
     a.setAttribute("download", "pattern.svg");
     a.click();
-    a.remove(); 
+    a.remove();
   }
 
-  function downloadPNG() {
-    var image = new Image();
-    image.src =
-      "data:image/svg+xml;base64," +
-	  window.btoa(unescape(encodeURIComponent(imageFile)));
-	  console.log(imageFile)
+//   function downloadPNG() {
+//     var image = new Image();
+//     image.src =
+//       "data:image/svg+xml;base64," +
+//       window.btoa(unescape(encodeURIComponent(imageFile)));
+//     console.log(imageFile);
 
-    image.onload = function() {
-      console.log("Start");
-      var canvas = document.createElement("canvas");
-      canvas.width = outputWidth;
-      canvas.height = outputHeight;
-      document.body.appendChild(canvas);
-      var context = canvas.getContext("2d");
-	  var ptrn = context.createPattern(image, "repeat");
-      context.fillStyle = ptrn;
-      context.fillRect(0, 0, canvas.width, canvas.height);
-	//   context.drawImage(image, 0, 0);
+//     image.onload = function() {
+//       console.log("Start");
+//       var canvas = document.createElement("canvas");
+//       canvas.width = outputWidth;
+//       canvas.height = outputHeight;
+//       document.body.appendChild(canvas);
+//       var context = canvas.getContext("2d");
+//       var ptrn = context.createPattern(image, "repeat");
+//       context.fillStyle = ptrn;
+//       context.fillRect(0, 0, canvas.width, canvas.height);
+//       //   context.drawImage(image, 0, 0);
 
-      var a = document.createElement("a");
-      a.download = "image.png";
-      a.href = canvas.toDataURL("pattern/png");
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
+//       var a = document.createElement("a");
+//       a.download = "image.png";
+//       a.href = canvas.toDataURL("pattern/png");
+//       document.body.appendChild(a);
+//       a.click();
+//       a.remove();
+//     };
+//   }
+
+  function downloadPNG2(){
+	     svg.saveSvgAsPng(document.getElementById('testId'), 'diagram.png');
   }
 
   function copyText(text) {
@@ -473,6 +510,10 @@
     height: 500px;
   }
 
+  /* #svgHolder {
+    opacity:0
+  } */
+
   .text-center {
     text-align: center;
   }
@@ -483,9 +524,11 @@
     }
   }
 </style>
+
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
+
 
 <!-- <div class="content">{post.path}</div> -->
 <div id="page" class="page">
@@ -494,7 +537,7 @@
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale) + '"' + ')'} />
+          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.angle) + '"' + ')'} />
       {/each}
     </div>
     <!-- Business Card
@@ -516,11 +559,11 @@
     <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
       <label for="scale">Scale</label>
-      <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
+      <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
 	  <label for="stroke">Stroke Size</label>
-      <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="1" max={maxStroke} />
-	  <!-- <label for="angle">Angle</label>
-      <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" /> -->
+      <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="1" max={maxStroke} />
+	  <label for="angle">Angle</label>
+      <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" />
       <label>Colors</label>
       <div class="inputs py-05">
         {#each { length: colors } as _, i}
@@ -528,7 +571,8 @@
         {/each}
       </div>
     </div>
-    <div id="sampleOutput" style={cssOutput} />
+    <!-- <div id="sampleOutput" style={cssOutput}><div id="svgHolder"></div></div> -->
+    <div id="sampleOutput" />
     <br />
     <div class="grid">
       <span>Copy</span>
@@ -536,7 +580,7 @@
       <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
       <span>Download</span>
       <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      <button class="button" on:click={downloadPNG2} title="Download as PNG file">PNG</button>
       <div />
       <label for="width" class="text-center">Width</label>
       <label for="height" class="text-center">Height</label>

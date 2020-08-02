@@ -14,9 +14,9 @@
   "dependencies": {
     "@simonwep/pickr": "^1.7.2",
     "compression": "^1.7.4",
-    "dom-to-image": "^2.6.0",
     "polka": "next",
     "prettier": "^2.0.5",
+    "save-svg-as-png": "^1.4.17",
     "sirv": "^1.0.1"
   },
   "devDependencies": {
