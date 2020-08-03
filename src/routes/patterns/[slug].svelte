@@ -29,11 +29,11 @@
   });
 
 function setSvgFile(){
-		 svgFile = svgPattern(selectedPattern.color1,
-							  selectedPattern.color2,
-							  selectedPattern.stroke,
-							  selectedPattern.scale,
-							  selectedPattern.angle);
+         svgFile = svgPattern(selectedPattern.color1,
+                              selectedPattern.color2,
+                              selectedPattern.stroke,
+                              selectedPattern.scale,
+                              selectedPattern.angle);
         
     document.getElementById("sampleOutput").innerHTML = svgFile.replace('%23','#').replace("width='100%' height='100%'","width='"+outputWidth+"px' height='"+outputHeight+"px'");
 	
@@ -285,13 +285,19 @@ function setSvgFile(){
     padding: 0.5em 0;
   }
 
-  .grid {
+  .downloadGrid {
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
     align-items: center;
     column-gap: 16px;
     row-gap: 16px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    width: 100%;
+    padding: 1em;
   }
 
   .button {
@@ -395,7 +401,7 @@ function setSvgFile(){
     <!-- <div id="sampleOutput" style={cssOutput}><div id="svgHolder"></div></div> -->
     <div id="sampleOutput" />
     <br />
-    <div class="grid">
+    <div class="downloadGrid">
       <span>Copy</span>
       <button class="button" on:click={copyText(cssOutput)} title="CSS">CSS</button>
       <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
