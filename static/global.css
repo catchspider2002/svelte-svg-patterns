@@ -2,6 +2,7 @@
   --main-bg-color: #1a202c;
   --accent-color: rgb(255, 218, 6);
   --accent-color-hover: rgba(255, 218, 6, 0.8);
+  --border-radius: 4px;
 }
 
 body {
@@ -38,6 +39,8 @@ a {
     padding: 0.5rem;
     font-size: 1rem;
     width: 80px;
+    -moz-appearance: textfield; /* Hide arrows for input number - Firefox */
+    border-radius: var(--border-radius);
   }
 
   /* Hide arrows for input number - Chrome, Safari, Edge, Opera */
@@ -45,11 +48,6 @@ a {
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  /* Hide arrows for input number - Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
   }
 
   input[type="range"] {
@@ -63,28 +61,28 @@ a {
   }
   input[type="range"]::-webkit-slider-runnable-track {
     background: var(--accent-color);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     width: 100%;
-    height: 9px;
+    height: 4px;
     cursor: pointer;
   }
   input[type="range"]::-moz-range-track {
     background: var(--accent-color);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     width: 100%;
-    height: 9px;
+    height: 4px;
     cursor: pointer;
   }
   <!-- input[type="range"]:focus::-webkit-slider-runnable-track { -->
     <!-- background: var(--accent-color-hover); -->
   <!-- } -->
   input[type="range"]::-webkit-slider-thumb {
-    margin-top: -8.5px;
+    margin-top: -10.5px;
     width: 28px;
     height: 28px;
     background: var(--main-bg-color);
-    border: 7px solid var(--accent-color);
-    border-radius: 15px;
+    border: 4px solid var(--accent-color);
+    border-radius: var(--border-radius);
     cursor: pointer;
     -webkit-appearance: none;
   }
@@ -92,8 +90,8 @@ a {
     width: 28px;
     height: 28px;
     background: var(--main-bg-color);
-    border: 7px solid var(--accent-color);
-    border-radius: 15px;
+    border: 4px solid var(--accent-color);
+    border-radius: var(--border-radius);
     cursor: pointer;
   }
 
@@ -104,6 +102,7 @@ button {
     margin: 0;
     text-decoration: none;
     background-color: var(--accent-color);
+    border-radius: var(--border-radius);
     color: #ffffff;
     font-family: inherit;
     font-size: 1rem;
