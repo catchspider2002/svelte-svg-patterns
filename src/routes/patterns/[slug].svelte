@@ -5,10 +5,8 @@
     const res = await this.fetch(`patterns/${params.slug}.json`);
     const data = await res.json();
 
-    if (res.status === 200)
-      return { post: data };
-     else
-      this.error(res.status, data.message);
+    if (res.status === 200) return { post: data };
+    else this.error(res.status, data.message);
   }
 </script>
 
@@ -25,23 +23,26 @@
     Pickr = module.default;
     const module1 = await import("save-svg-as-png");
     svg = module1.default;
-    setSvgFile()
+    doStuff();
   });
 
-function setSvgFile(){
-         svgFile = svgPattern(selectedPattern.color1,
-                              selectedPattern.color2,
-                              selectedPattern.stroke,
-                              selectedPattern.scale,
-                              selectedPattern.angle);
-        
-    document.getElementById("sampleOutput").innerHTML = svgFile.replace('%23','#').replace("width='100%' height='100%'","width='"+outputWidth+"px' height='"+outputHeight+"px'");
-	
-	const elements = document.getElementsByClassName("pcr-app");
+  function doStuff(){
+    const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
-	createColorPickers();
-	  console.log("do Stuff End")
-}
+    createColorPickers();
+    console.log("do Stuff End");
+  }
+
+  function setSvgFile() {
+    svgFile = svgPattern(
+      selectedPattern.color1,
+      selectedPattern.color2,
+      selectedPattern.stroke,
+      selectedPattern.scale,
+      selectedPattern.angle
+    );
+
+  }
 
   //   let svgPattern = (color1, color2, stroke, scale) => {
   //     return (
@@ -86,16 +87,16 @@ function setSvgFile(){
       height +
       "' fill='" +
       color1 +
-      "'/><path stroke-width='" +
+      "'/><g stroke-width='" +
       Math.round(stroke * 200) / 100 +
       "' stroke = '" +
       color2 +
       "' fill='" +
-      color2 +
-      "' d='" +
+      // color2 +
+      "none" +
+      "'>" +
       path +
-      "'/></pattern>" +
-      "</defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+      "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
   };
 
@@ -104,8 +105,6 @@ function setSvgFile(){
     maxScale = post.maxScale,
     width = post.width,
     height = post.height,
-    viewBoxWidth = post.viewBoxWidth,
-    viewBoxHeight = post.viewBoxHeight,
     path = post.path;
 
   const presetPatterns = [
@@ -115,7 +114,7 @@ function setSvgFile(){
       color2: "black",
       stroke: 1,
       scale: 1,
-	  angle: 0
+      angle: 0
     },
     {
       id: 2,
@@ -123,7 +122,7 @@ function setSvgFile(){
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
       scale: constants.randomNumber(0.1, maxScale / 3),
-	  angle: constants.randomNumber(0, 180)
+      angle: constants.randomNumber(0, 180)
     },
     {
       id: 3,
@@ -131,15 +130,15 @@ function setSvgFile(){
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-	  angle: constants.randomNumber(0, 180)
+      angle: constants.randomNumber(0, 180)
     },
     {
       id: 4,
       color1: constants.randomColor(0.9),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(1, maxStroke),
-	  scale: constants.randomNumber(1, maxScale / 2),
-	  angle: constants.randomNumber(0, 180)
+      scale: constants.randomNumber(1, maxScale / 2),
+      angle: constants.randomNumber(0, 180)
     }
   ];
 
@@ -148,8 +147,8 @@ function setSvgFile(){
     selectedPattern.color1,
     selectedPattern.color2,
     selectedPattern.stroke,
-	selectedPattern.scale,
-	selectedPattern.angle
+    selectedPattern.scale,
+    selectedPattern.angle
   );
 
   let outputWidth = 1080,
@@ -160,8 +159,8 @@ function setSvgFile(){
   function check() {
     for (var j = 0; j < presetPatterns.length; j++) {
       if ("pattern" + presetPatterns[j].id === this.id) {
-		selectedPattern = presetPatterns[presetPatterns[j].id - 1];
-		 setSvgFile()
+        selectedPattern = presetPatterns[presetPatterns[j].id - 1];
+        setSvgFile();
       }
     }
   }
@@ -175,7 +174,7 @@ function setSvgFile(){
       scale: constants.randomNumber(1, maxScale),
       angle: constants.randomNumber(0, 180)
     };
-     setSvgFile()
+    setSvgFile();
   }
 
   function downloadSVG() {
@@ -187,8 +186,14 @@ function setSvgFile(){
     a.remove();
   }
 
-  function downloadPNG(){
-	     svg.saveSvgAsPng(document.getElementById('testId'), 'diagram.png');
+  function downloadPNG() {
+    
+    document.getElementById("sampleOutput").innerHTML = svgFile
+      .replace("%23", "#")
+      .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
+
+    svg.saveSvgAsPng(document.getElementById("testId"), "diagram.png");
+    document.getElementById("sampleOutput").innerHTML = ""
   }
 
   function copyText(text) {
@@ -201,8 +206,7 @@ function setSvgFile(){
   }
 
   function createColorPickers() {
-    for (let i = 1; i <= colors; i++)
-      createPicker("color" + i + "Div", "color" + i);
+    for (let i = 1; i <= colors; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
   function createPicker(parentDiv, colorId) {
@@ -267,7 +271,7 @@ function setSvgFile(){
 
   .container {
     /*width: 100%;*/
-    margin: 0 auto;
+    margin: 0 auto 220px auto;
     padding: 2em;
     background-color: #1a202c;
     color: #edf2f7;
@@ -351,7 +355,6 @@ function setSvgFile(){
     }
   }
 </style>
-
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
@@ -398,8 +401,8 @@ function setSvgFile(){
         {/each}
       </div>
     </div>
-    <!-- <div id="sampleOutput" style={cssOutput}><div id="svgHolder"></div></div> -->
-    <div id="sampleOutput" />
+    <div id="sampleOutput" style={cssOutput}></div>
+    <!-- <div id="sampleOutput" /> -->
     <br />
     <div class="downloadGrid">
       <span>Copy</span>
@@ -419,3 +422,4 @@ function setSvgFile(){
     </div>
   </div>
 </div>
+
