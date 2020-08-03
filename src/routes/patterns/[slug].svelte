@@ -285,74 +285,6 @@ function setSvgFile(){
     padding: 0.5em 0;
   }
 
-  input[type="number"] {
-    color: #1a202c;
-    /* border-color: rgb(159,122,234); */
-    line-height: 1.25;
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 80px;
-  }
-
-  /* Hide arrows for input number - Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Hide arrows for input number - Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-
-  input[type="range"] {
-    width: 100%;
-    margin: 7.3px 0;
-    background-color: transparent;
-    -webkit-appearance: none;
-  }
-  input[type="range"]:focus {
-    outline: none;
-  }
-  input[type="range"]::-webkit-slider-runnable-track {
-    background: rgb(255, 218, 6);
-    border: 0.2px solid #ffffff;
-    border-radius: 15px;
-    width: 100%;
-    height: 11.4px;
-    cursor: pointer;
-  }
-  input[type="range"]::-moz-range-track {
-    background: rgb(255, 218, 6);
-    border: 0.2px solid #ffffff;
-    border-radius: 15px;
-    width: 100%;
-    height: 11.4px;
-    cursor: pointer;
-  }
-  input[type="range"]:focus::-webkit-slider-runnable-track {
-    background: rgba(255, 218, 6, 0.842);
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    margin-top: -7.5px;
-    width: 26px;
-    height: 26px;
-    background: #00001e;
-    border: 1.8px solid #ffffff;
-    border-radius: 15px;
-    cursor: pointer;
-    -webkit-appearance: none;
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 26px;
-    height: 26px;
-    background: #00001e;
-    border: 1.8px solid #ffffff;
-    border-radius: 15px;
-    cursor: pointer;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -360,37 +292,6 @@ function setSvgFile(){
     align-items: center;
     column-gap: 16px;
     row-gap: 16px;
-  }
-
-  button {
-    display: inline-block;
-    border: none;
-    padding: 1rem 2rem;
-    margin: 0;
-    text-decoration: none;
-    background-color: rgba(255, 218, 6, 1);
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    transition: background 250ms ease-in-out, transform 150ms ease;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-
-  button:hover,
-  button:focus {
-    background-color: rgba(255, 218, 6, 0.8);
-  }
-
-  button:focus {
-    outline: 1px solid #fff;
-    /* outline-offset: -4px; */
-  }
-
-  button:active {
-    transform: scale(0.99);
   }
 
   .button {
