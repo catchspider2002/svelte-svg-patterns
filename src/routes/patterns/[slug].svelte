@@ -88,7 +88,7 @@
       "' fill='" +
       color1 +
       "'/><g stroke-width='" +
-      Math.round(stroke * 200) / 100 +
+      stroke +
       "' stroke = '" +
       color2 +
       "' fill='" +
@@ -120,7 +120,7 @@
       id: 2,
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
-      stroke: constants.randomNumber(1, maxStroke),
+      stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(0.1, maxScale / 3),
       angle: constants.randomNumber(0, 180)
     },
@@ -128,7 +128,7 @@
       id: 3,
       color1: constants.randomColor(1),
       color2: constants.randomColor(1),
-      stroke: constants.randomNumber(1, maxStroke),
+      stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       angle: constants.randomNumber(0, 180)
     },
@@ -136,7 +136,7 @@
       id: 4,
       color1: constants.randomColor(0.9),
       color2: constants.randomColor(1),
-      stroke: constants.randomNumber(1, maxStroke),
+      stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       angle: constants.randomNumber(0, 180)
     }
@@ -170,7 +170,7 @@
       id: 5,
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
-      stroke: constants.randomNumber(1, maxStroke),
+      stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       angle: constants.randomNumber(0, 180)
     };
@@ -341,10 +341,6 @@
     height: 500px;
   }
 
-  /* #svgHolder {
-    opacity:0
-  } */
-
   .text-center {
     text-align: center;
   }
@@ -389,7 +385,7 @@
     <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
       <input type="number" bind:value={selectedPattern.scale} min="1" max="100" />
-      <input type="number" bind:value={selectedPattern.stroke} min="1" max="100" />
+      <input type="number" bind:value={selectedPattern.stroke} min="0.5" max="100" />
       <label for="scale">Scale</label>
       <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
 	  <label for="stroke">Stroke Size</label>
