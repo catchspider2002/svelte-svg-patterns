@@ -112,7 +112,7 @@
       id: 1,
       color1: "white",
       color2: "black",
-      stroke: 1,
+      stroke: 0.5,
       scale: 1,
       angle: 0
     },
@@ -388,12 +388,14 @@
 
     <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
+      <input type="number" bind:value={selectedPattern.scale} min="1" max="100" />
+      <input type="number" bind:value={selectedPattern.stroke} min="1" max="100" />
       <label for="scale">Scale</label>
       <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
 	  <label for="stroke">Stroke Size</label>
-      <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="1" max={maxStroke} />
+      <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
 	  <label for="angle">Angle</label>
-      <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" />
+      <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <label>Colors</label>
       <div class="inputs py-05">
         {#each { length: colors } as _, i}
@@ -402,7 +404,6 @@
       </div>
     </div>
     <div id="sampleOutput" style={cssOutput}></div>
-    <!-- <div id="sampleOutput" /> -->
     <br />
     <div class="downloadGrid">
       <span>Copy</span>
@@ -422,4 +423,3 @@
     </div>
   </div>
 </div>
-
