@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: var(--main-bg-color)
+    background-color: var(--main-bg-color);
     margin: 0;
     line-height: 1.5;
     background-color: #545454;
@@ -16,6 +16,9 @@ body {
     font-family: "Harmattan", sans-serif;
     font-family: "Josefin Sans", sans-serif;
     font-size: 20px;
+}
+.closed {
+  display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +106,7 @@ button {
     text-decoration: none;
     background-color: var(--accent-color);
     border-radius: var(--border-radius);
-    color: #ffffff;
+    color: #000000;
     font-family: inherit;
     font-size: 1rem;
     cursor: pointer;

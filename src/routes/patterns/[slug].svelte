@@ -15,8 +15,10 @@
   import constants from "../_constants.js";
   import { onMount } from "svelte";
   import "../_monolith.min.css";
+import { bind } from "svelte/internal";
 
   let Pickr, svg;
+  let modal, modalOverlay
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -24,13 +26,15 @@
     const module1 = await import("save-svg-as-png");
     svg = module1.default;
     doStuff();
+    modal = document.getElementById("modal");
+    modalOverlay = document.getElementById("modal-overlay");
+    closeModal()
   });
 
   function doStuff(){
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
     createColorPickers();
-    console.log("do Stuff End");
   }
 
   function setSvgFile() {
@@ -69,6 +73,17 @@
   //       "</g></svg>"
   //     );
   //   };
+
+function closeModal(){ 
+  console.log("Close Modal")
+   modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+  }
+function openModal(){
+  console.log("Open Modal")
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+  }
 
   let svgPattern = (color1, color2, stroke, scale, angle) => {
     let patternNew =
@@ -271,7 +286,7 @@
 
   .container {
     /*width: 100%;*/
-    margin: 0 auto 220px auto;
+    margin: 0 auto 0 auto;
     padding: 2em;
     background-color: #1a202c;
     color: #edf2f7;
@@ -279,7 +294,7 @@
 
   .inputs {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -289,7 +304,24 @@
     padding: 0.5em 0;
   }
 
-  .downloadGrid {
+  .uneditable{
+    border: 0 none;
+    background-color: var(--accent-color);
+    color: black;
+    height: 17px;
+    margin: 0 13px 0 0;
+    text-align: center;
+    width: 30px;
+cursor: none;
+      -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+  }
+
+  .bottomBar{
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
@@ -299,6 +331,19 @@
     position: fixed;
     bottom: 0;
     right: 0;
+    background-color: black;
+    width: 100%;
+    padding: 1em;
+
+  }
+
+  .downloadGrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 16px;
     background-color: black;
     width: 100%;
     padding: 1em;
@@ -350,6 +395,68 @@
       padding-bottom: calc(1 / 2 * 100%);
     }
   }
+
+  /* Modal */
+  
+.modal {
+  /* This way it could be display flex or grid or whatever also. */
+  /* display: block; */
+  
+  /* Probably need media queries here */
+  width: 600px;
+  max-width: 100%;  
+  height: 400px;
+  max-height: 100%;  
+  position: fixed;  
+  z-index: 100;  
+  left: 50%;
+  top: 50%;
+  
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+  
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+  
+  background: green;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px 50px 20px 20px;
+}
+
+.modal .close-button {
+  position: absolute;  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;  
+  top: 10px;
+  
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+  
+  border: 0;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+}
 </style>
 <svelte:head>
   <title>{post.title}</title>
@@ -357,6 +464,30 @@
 
 
 <!-- <div class="content">{post.path}</div> -->
+<div class="modal-overlay" id="modal-overlay"></div>
+
+<div class="modal" id="modal">
+  <button class="close-button" id="close-button" on:click={closeModal}>Close</button>
+  <div class="modal-guts">
+   
+    <div class="downloadGrid">
+      <span>Copy</span>
+      <button class="button" on:click={copyText(cssOutput)} title="CSS">CSS</button>
+      <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
+      <span>Download</span>
+      <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
+      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      <div />
+      <label for="width" class="text-center">Width</label>
+      <label for="height" class="text-center">Height</label>
+      <span>Dimensions</span>
+      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+    </div>
+  </div>
+</div>
 <div id="page" class="page">
   <div class="container">
     <div>{post.title}</div>
@@ -384,14 +515,15 @@
 
     <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
-      <input type="number" bind:value={selectedPattern.scale} min="1" max="100" />
-      <input type="number" bind:value={selectedPattern.stroke} min="0.5" max="100" />
       <label for="scale">Scale</label>
       <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
+      <input class="uneditable" bind:value={selectedPattern.scale} min="1" max="100" readonly/>
 	  <label for="stroke">Stroke Size</label>
       <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
+      <input class="uneditable" bind:value={selectedPattern.stroke} min="0.5" max="100" readonly/>
 	  <label for="angle">Angle</label>
       <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
+      <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
       <div class="inputs py-05">
         {#each { length: colors } as _, i}
@@ -401,21 +533,8 @@
     </div>
     <div id="sampleOutput" style={cssOutput}></div>
     <br />
-    <div class="downloadGrid">
-      <span>Copy</span>
-      <button class="button" on:click={copyText(cssOutput)} title="CSS">CSS</button>
-      <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
-      <span>Download</span>
-      <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
-      <div />
-      <label for="width" class="text-center">Width</label>
-      <label for="height" class="text-center">Height</label>
-      <span>Dimensions</span>
-      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
-      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+    <div class="bottomBar">
+    <button id="open-button" on:click={openModal}>Export</button>
     </div>
   </div>
 </div>
