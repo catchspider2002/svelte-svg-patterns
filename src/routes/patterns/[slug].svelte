@@ -19,7 +19,6 @@
 import { bind } from "svelte/internal";
 
   let Pickr, svg;
-  let modal, modalOverlay
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -27,9 +26,6 @@ import { bind } from "svelte/internal";
     const module1 = await import("save-svg-as-png");
     svg = module1.default;
     doStuff();
-    modal = document.getElementById("modal");
-    modalOverlay = document.getElementById("modal-overlay");
-    closeModal()
   });
 
   function doStuff(){
@@ -47,43 +43,6 @@ import { bind } from "svelte/internal";
       selectedPattern.angle
     );
 
-  }
-
-  //   let svgPattern = (color1, color2, stroke, scale) => {
-  //     return (
-  //       "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-  //       scale * width +
-  //       "' height='" +
-  //       scale * height +
-  //       "' viewBox='0 0 " +
-  //       viewBoxWidth +
-  //       " " +
-  //       viewBoxHeight +
-  //       "'><rect x='0' y='0' width='" +
-  //       width +
-  //       "' height='" +
-  //       height +
-  //       "' fill='" +
-  //       color1 +
-  //       "'/><g fill='none' stroke='" +
-  //       color2 +
-  //       "' stroke-width='" +
-  //       Math.round(stroke * 50) / 100 +
-  //       "'>" +
-  //       path +
-  //       "</g></svg>"
-  //     );
-  //   };
-
-function closeModal(){ 
-  console.log("Close Modal")
-   modal.classList.toggle("closed");
-  modalOverlay.classList.toggle("closed");
-  }
-function openModal(){
-  console.log("Open Modal")
-  modal.classList.toggle("closed");
-  modalOverlay.classList.toggle("closed");
   }
 
   let svgPattern = (color1, color2, stroke, scale, angle) => {
@@ -389,67 +348,6 @@ cursor: none;
     }
   }
 
-  /* Modal */
-  
-.modal {
-  /* This way it could be display flex or grid or whatever also. */
-  /* display: block; */
-  
-  /* Probably need media queries here */
-  width: 600px;
-  max-width: 100%;  
-  height: 400px;
-  max-height: 100%;  
-  position: fixed;  
-  z-index: 100;  
-  left: 50%;
-  top: 50%;
-  
-  /* Use this for centering if unknown width/height */
-  transform: translate(-50%, -50%);
-  
-  /* If known, negative margins are probably better (less chance of blurry text). */
-  /* margin: -200px 0 0 -200px; */
-  
-  background: green;
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  
-  background: rgba(0, 0, 0, 0.6);
-}
-.modal-guts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding: 20px 50px 20px 20px;
-}
-
-.modal .close-button {
-  position: absolute;  
-  /* don't need to go crazy with z-index here, just sits over .modal-guts */
-  z-index: 1;  
-  top: 10px;
-  
-  /* needs to look OK with or without scrollbar */
-  right: 20px;
-  
-  border: 0;
-  background: black;
-  color: white;
-  padding: 5px 10px;
-  font-size: 1.3rem;
-}
 </style>
 <svelte:head>
   <title>{post.title}</title>
@@ -464,30 +362,6 @@ cursor: none;
 
 	<TabPanel>
 		<h2>First panel</h2>
-        <div class="modal-overlay" id="modal-overlay"></div>
-
-<div class="modal" id="modal">
-  <button class="close-button" on:click={closeModal}>Close</button>
-  <div class="modal-guts">
-   
-    <div class="downloadGrid">
-      <span>Copy</span>
-      <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
-      <button on:click={copyText(svgFile)} title="SVG">SVG</button>
-      <span>Download</span>
-      <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-      <div />
-      <label for="width" class="text-center">Width</label>
-      <label for="height" class="text-center">Height</label>
-      <span>Dimensions</span>
-      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
-      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
-    </div>
-  </div>
-</div>
 <div id="page" class="page">
   <div class="container">
     <div>{post.title}</div>
@@ -497,6 +371,8 @@ cursor: none;
           style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.angle) + '"' + ')'} />
       {/each}
     </div>
+    
+    <button title="Random" on:click={randomPattern}>Inspire Me</button>
     <!-- Business Card
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -532,10 +408,7 @@ cursor: none;
     </div>
     <div id="sampleOutput" style={cssOutput}></div>
     <br />
-    <div class="bottomBar">
-    <button title="Random" on:click={randomPattern}>Inspire Me</button>
-    <button title="Export as CSS / PNG / SVG" on:click={openModal}>Export</button>
-    </div>
+    <!-- <div class="bottomBar"></div> -->
   </div>
 </div>
 	</TabPanel>
@@ -546,5 +419,24 @@ cursor: none;
 
 	<TabPanel>
 		<h2>Third panel</h2>
+        
+    <div class="downloadGrid">
+      <span>Copy</span>
+      <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
+      <button on:click={copyText(svgFile)} title="SVG">SVG</button>
+      <span>Download</span>
+      <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+      <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      <div />
+      <label for="width" class="text-center">Width</label>
+      <label for="height" class="text-center">Height</label>
+      <span>Dimensions</span>
+      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
+	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+    </div>
 	</TabPanel>
 </Tabs>
+
+<!-- <div class="content">{post.path}</div> -->
