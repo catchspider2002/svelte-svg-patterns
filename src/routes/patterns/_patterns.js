@@ -2,6 +2,7 @@ const patterns = [
   {
     title: "Don know - OK",
     slug: "don-know",
+    type: "stroke",
     colors: 2,
     maxStroke: 8.5,
     maxScale: 16,
@@ -13,6 +14,7 @@ const patterns = [
   {
     title: "Chevron - OK",
     slug: "chevron",
+    type: "stroke",
     colors: 2,
     maxStroke: 8.5,
     maxScale: 16,
@@ -23,6 +25,7 @@ const patterns = [
   {
     title: "Straight Lines - OK",
     slug: "straight-lines",
+    type: "stroke",
     colors: 2,
     maxStroke: 20,
     maxScale: 12,
@@ -33,6 +36,7 @@ const patterns = [
   {
     title: "Cross Section - OK",
     slug: "cross-section",
+    type: "stroke",
     colors: 2,
     maxStroke: 19.5,
     maxScale: 12,
@@ -43,6 +47,7 @@ const patterns = [
   {
     title: "Hexagon - OK",
     slug: "hexagon",
+    type: "stroke",
     colors: 2,
     maxStroke: 17,
     maxScale: 16,
@@ -54,6 +59,7 @@ const patterns = [
   {
     title: "Squares - OK",
     slug: "squares",
+    type: "stroke",
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
@@ -64,6 +70,7 @@ const patterns = [
   {
     title: "Circles - OK",
     slug: "circles",
+    type: "stroke",
     colors: 2,
     maxStroke: 20,
     maxScale: 10,
@@ -74,6 +81,7 @@ const patterns = [
   {
     title: "Triangles - OK",
     slug: "triangles",
+    type: "stroke",
     colors: 2,
     maxStroke: 21,
     maxScale: 10,
@@ -84,6 +92,7 @@ const patterns = [
   {
     title: "Brick Wall - OK",
     slug: "brick-wall",
+    type: "stroke",
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
@@ -95,6 +104,7 @@ const patterns = [
   {
     title: "Inverted triangles - OK",
     slug: "inverted-triangles",
+    type: "stroke",
     colors: 2,
     maxStroke: 5.5,
     maxScale: 10,
@@ -106,6 +116,7 @@ const patterns = [
   {
     title: "Herringbone",
     slug: "herringbone",
+    type: "stroke",
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -117,6 +128,7 @@ const patterns = [
   {
     title: "Funny design",
     slug: "funny-design",
+    type: "stroke",
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -128,6 +140,7 @@ const patterns = [
   {
     title: "Jigsaw",
     slug: "jigsaw",
+    type: "stroke",
     colors: 2,
     maxStroke: 7,
     maxScale: 2,
@@ -139,6 +152,7 @@ const patterns = [
   {
     title: "New",
     slug: "new-1",
+    type: "stroke",
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -150,6 +164,7 @@ const patterns = [
   {
     title: "New 2",
     slug: "new-2",
+    type: "fill",
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -161,6 +176,7 @@ const patterns = [
   {
     title: "Honeycomb",
     slug: "honeycomb",
+    type: "stroke",
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
