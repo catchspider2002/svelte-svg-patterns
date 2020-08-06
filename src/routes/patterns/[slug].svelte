@@ -70,7 +70,7 @@ import { bind } from "svelte/internal";
       color1 +
       "'/><g stroke-width='" +
       stroke +
-      "' " +
+      "'" +
       strokeFill +
       ">" +
       path +
@@ -100,7 +100,7 @@ import { bind } from "svelte/internal";
       color1: constants.randomColor(0.8),
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(0.1, maxScale / 3),
+      scale: constants.randomNumber(1, maxScale / 3),
       angle: constants.randomNumber(0, 180)
     },
     {
@@ -297,7 +297,7 @@ cursor: none;
     right: 0;
     background-color: black;
     width: 100%;
-    padding: 1em;
+    padding: 1em 0;
   }
 
   .downloadGrid {
