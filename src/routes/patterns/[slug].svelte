@@ -163,12 +163,12 @@ import { bind } from "svelte/internal";
 
   function downloadPNG() {
     
-    document.getElementById("sampleOutput").innerHTML = svgFile
+    document.getElementById("pngOutput").innerHTML = svgFile
       .replace("%23", "#")
       .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
 
     svg.saveSvgAsPng(document.getElementById("testId"), "diagram.png");
-    document.getElementById("sampleOutput").innerHTML = ""
+    document.getElementById("pngOutput").innerHTML = ""
   }
 
   function copyText(text) {
@@ -304,7 +304,6 @@ cursor: none;
     column-gap: 16px;
     row-gap: 16px;
     background-color: black;
-    width: 100%;
     padding: 1em;
   }
 
@@ -361,7 +360,6 @@ cursor: none;
 	</TabList>
 
 	<TabPanel>
-		<h2>First panel</h2>
 <div id="page" class="page">
   <div class="container">
     <div>{post.title}</div>
@@ -373,21 +371,6 @@ cursor: none;
     </div>
     
     <button title="Random" on:click={randomPattern}>Inspire Me</button>
-    <!-- Business Card
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="525"
-      height="300"
-      viewBox="0 0 525 300">
-      <rect x="0" y="0" width="525" height="300" fill="red" />
-      <g fill="none" stroke="pink" stroke-width="0.5">
-        <path
-          d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0
-          13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5
-          46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40
-          6.495zM47.5 26.495h-15l7.5-12.99z" />
-      </g>
-    </svg> -->
 
     <div class="inputs">
       <label for="scale">Scale</label>
@@ -414,11 +397,24 @@ cursor: none;
 	</TabPanel>
 
 	<TabPanel>
-		<h2>Second panel</h2>
+    Business Card
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="525"
+      height="300"
+      viewBox="0 0 525 300">
+      <rect x="0" y="0" width="525" height="300" fill="red" />
+      <g fill="none" stroke="pink" stroke-width="0.5">
+        <path
+          d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0
+          13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5
+          46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40
+          6.495zM47.5 26.495h-15l7.5-12.99z" />
+      </g>
+    </svg>
 	</TabPanel>
 
 	<TabPanel>
-		<h2>Third panel</h2>
         
     <div class="downloadGrid">
       <span>Copy</span>
@@ -436,6 +432,7 @@ cursor: none;
       <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
 	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
     </div>
+    <div id="pngOutput"></div>
 	</TabPanel>
 </Tabs>
 
