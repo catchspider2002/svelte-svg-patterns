@@ -286,7 +286,7 @@ cursor: none;
     grid-template-columns: auto auto auto;
     justify-content: center;
     align-items: center;
-    <!-- column-gap: 16px; -->
+    /*column-gap: 16px;*/
     row-gap: 16px;
     position: fixed;
     bottom: 52px;
