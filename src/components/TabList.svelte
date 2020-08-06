@@ -7,7 +7,7 @@
 		position: fixed;
 		bottom: 0;
 		left:0;
-		border-bottom: 1px solid teal;
+		border-top: 4px solid teal;	
 		background-color: black;
 		width: 100%;
 		display: grid;
