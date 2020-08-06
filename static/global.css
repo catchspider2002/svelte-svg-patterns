@@ -101,12 +101,12 @@ a {
 button {
     display: inline-block;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     margin: 0;
     text-decoration: none;
     background-color: var(--accent-color);
     border-radius: var(--border-radius);
-    color: #000000;
+    color: var(--main-bg-color);
     font-family: inherit;
     font-size: 1rem;
     cursor: pointer;
