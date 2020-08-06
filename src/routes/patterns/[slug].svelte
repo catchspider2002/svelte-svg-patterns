@@ -334,7 +334,6 @@ cursor: none;
     background-color: black;
     width: 100%;
     padding: 1em;
-
   }
 
   .downloadGrid {
@@ -347,13 +346,6 @@ cursor: none;
     background-color: black;
     width: 100%;
     padding: 1em;
-  }
-
-  .button {
-    color: #1a202c;
-    text-align: center;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
   }
 
   .samples {
@@ -467,16 +459,16 @@ cursor: none;
 <div class="modal-overlay" id="modal-overlay"></div>
 
 <div class="modal" id="modal">
-  <button class="close-button" id="close-button" on:click={closeModal}>Close</button>
+  <button class="close-button" on:click={closeModal}>Close</button>
   <div class="modal-guts">
    
     <div class="downloadGrid">
       <span>Copy</span>
-      <button class="button" on:click={copyText(cssOutput)} title="CSS">CSS</button>
-      <button class="button" on:click={copyText(svgFile)} title="SVG">SVG</button>
+      <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
+      <button on:click={copyText(svgFile)} title="SVG">SVG</button>
       <span>Download</span>
-      <button class="button" on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button class="button" on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+      <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
       <div />
       <label for="width" class="text-center">Width</label>
       <label for="height" class="text-center">Height</label>
@@ -513,15 +505,14 @@ cursor: none;
       </g>
     </svg> -->
 
-    <button class="button" on:click={randomPattern} title="Random">Inspire Me</button>
     <div class="inputs">
-      <label for="scale">Scale</label>
+      <label for="scale"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="vertical-align: -0.3em;-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></g></svg></label>
       <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
-      <input class="uneditable" bind:value={selectedPattern.scale} min="1" max="100" readonly/>
-	  <label for="stroke">Stroke Size</label>
+      <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
+	  <label for="stroke"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="vertical-align: -0.3em;-ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M0 0h20v5H0V0zm0 7h20v4H0V7zm0 6h20v3H0v-3zm0 5h20v2H0v-2z" fill="currentColor"></path></svg></label>
       <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
-      <input class="uneditable" bind:value={selectedPattern.stroke} min="0.5" max="100" readonly/>
-	  <label for="angle">Angle</label>
+      <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
+	  <label for="angle"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="vertical-align: -0.3em;-ms-transform: rotate(360deg);-webkit-transform: rotate(360deg);transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M20 19H4.09L14.18 4.43l1.64 1.14l-4.54 6.56c1.61.83 2.72 2.49 2.72 4.41c0 .16 0 .31-.03.46H20v2M7.91 17h4.05c.04-.15.04-.3.04-.46c0-1.26-.76-2.32-1.86-2.76L7.91 17z" fill="currentColor"></path></svg></label>
       <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
@@ -534,7 +525,8 @@ cursor: none;
     <div id="sampleOutput" style={cssOutput}></div>
     <br />
     <div class="bottomBar">
-    <button id="open-button" on:click={openModal}>Export</button>
+    <button title="Random" on:click={randomPattern}>Inspire Me</button>
+    <button title="Export as CSS / PNG / SVG" on:click={openModal}>Export</button>
     </div>
   </div>
 </div>
