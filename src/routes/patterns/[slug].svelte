@@ -289,7 +289,7 @@ cursor: none;
     /*column-gap: 16px;*/
     row-gap: 16px;
     position: fixed;
-    bottom: 52px;
+    bottom: 48px;
     right: 0;
     background-color: black;
     width: 100%;
@@ -332,7 +332,7 @@ cursor: none;
     padding-bottom: calc(10 / 16 * 100%);
   }
 
-  #sampleOutput {
+  #sampleOutput, #preview {
     width: 100%;
     height: 500px;
   }
@@ -398,6 +398,7 @@ cursor: none;
 
 	<TabPanel>
     Business Card
+    <div id="preview" style={cssOutput}></div>
     <!-- <svg -->
       <!-- xmlns="http://www.w3.org/2000/svg" -->
       <!-- width="525" -->
