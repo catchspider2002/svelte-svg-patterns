@@ -12,7 +12,7 @@
 	button {
 		background: none;
 		border: none;
-		border-bottom: 4px solid white;
+		border-top: 4px solid #ccc;
 		border-radius: 0;
 		margin: 0;
 		color: #ccc;
@@ -20,7 +20,7 @@
 	}
 	
 	.selected {
-		border-bottom: 4px solid var(--accent-color);
+		border-top: 4px solid var(--accent-color);
 		color: var(--accent-color);
 	}
 </style>
