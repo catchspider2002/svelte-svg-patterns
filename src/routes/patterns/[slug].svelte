@@ -83,7 +83,7 @@ import { bind } from "svelte/internal";
     maxScale = post.maxScale,
     width = post.width,
     height = post.height,
-    path = post.path
+    path = post.path,
     mode = post.type;
 
   const presetPatterns = [
