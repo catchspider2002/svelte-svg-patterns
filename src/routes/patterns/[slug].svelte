@@ -286,10 +286,10 @@ cursor: none;
     grid-template-columns: auto auto auto;
     justify-content: center;
     align-items: center;
-    column-gap: 16px;
+    <!-- column-gap: 16px; -->
     row-gap: 16px;
     position: fixed;
-    bottom: 0;
+    bottom: 52px;
     right: 0;
     background-color: black;
     width: 100%;
@@ -369,8 +369,6 @@ cursor: none;
           style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.angle) + '"' + ')'} />
       {/each}
     </div>
-    
-    <button title="Random" on:click={randomPattern}>Inspire Me</button>
 
     <div class="inputs">
       <label for="scale">Scale</label>
@@ -391,27 +389,29 @@ cursor: none;
     </div>
     <div id="sampleOutput" style={cssOutput}></div>
     <br />
-    <!-- <div class="bottomBar"></div> -->
+    <div class="bottomBar" style={cssOutput}>
+        <button title="Random" on:click={randomPattern}>Inspire Me</button>
+    </div>
   </div>
 </div>
 	</TabPanel>
 
 	<TabPanel>
     Business Card
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="525"
-      height="300"
-      viewBox="0 0 525 300">
-      <rect x="0" y="0" width="525" height="300" fill="red" />
-      <g fill="none" stroke="pink" stroke-width="0.5">
-        <path
-          d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0
-          13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5
-          46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40
-          6.495zM47.5 26.495h-15l7.5-12.99z" />
-      </g>
-    </svg>
+    <!-- <svg -->
+      <!-- xmlns="http://www.w3.org/2000/svg" -->
+      <!-- width="525" -->
+      <!-- height="300" -->
+      <!-- viewBox="0 0 525 300"> -->
+      <!-- <rect x="0" y="0" width="525" height="300" fill="red" /> -->
+      <!-- <g fill="none" stroke="pink" stroke-width="0.5"> -->
+        <!-- <path -->
+          <!-- d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 -->
+          <!-- 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 -->
+          <!-- 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 -->
+          <!-- 6.495zM47.5 26.495h-15l7.5-12.99z" /> -->
+      <!-- </g> -->
+    <!-- </svg> -->
 	</TabPanel>
 
 	<TabPanel>
@@ -435,5 +435,3 @@ cursor: none;
     <div id="pngOutput"></div>
 	</TabPanel>
 </Tabs>
-
-<!-- <div class="content">{post.path}</div> -->
