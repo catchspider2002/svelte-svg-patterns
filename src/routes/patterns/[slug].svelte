@@ -42,10 +42,16 @@ import { bind } from "svelte/internal";
       selectedPattern.scale,
       selectedPattern.angle
     );
-
+    doStuff()
   }
 
   let svgPattern = (color1, color2, stroke, scale, angle) => {
+  let strokeFill;
+  if (mode==='stroke')
+  strokeFill = " stroke = '" + color2 + "' fill='none'"
+  else
+  strokeFill = " stroke = 'none' fill='" + color2 + "'"
+  
     let patternNew =
       "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
@@ -64,12 +70,9 @@ import { bind } from "svelte/internal";
       color1 +
       "'/><g stroke-width='" +
       stroke +
-      "' stroke = '" +
-      color2 +
-      "' fill='" +
-      // color2 +
-      "none" +
-      "'>" +
+      "' " +
+      strokeFill +
+      ">" +
       path +
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
@@ -80,7 +83,8 @@ import { bind } from "svelte/internal";
     maxScale = post.maxScale,
     width = post.width,
     height = post.height,
-    path = post.path;
+    path = post.path
+    mode = post.type;
 
   const presetPatterns = [
     {
