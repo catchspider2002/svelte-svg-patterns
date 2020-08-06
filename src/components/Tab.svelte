@@ -12,16 +12,16 @@
 	button {
 		background: none;
 		border: none;
-		border-bottom: 2px solid white;
+		border-bottom: 4px solid white;
 		border-radius: 0;
 		margin: 0;
 		color: #ccc;
-		cursor: pointer;
+		padding: 1em;
 	}
 	
 	.selected {
-		border-bottom: 2px solid teal;
-		color: yellow;
+		border-bottom: 4px solid var(--accent-color);
+		color: var(--accent-color);
 	}
 </style>
 
