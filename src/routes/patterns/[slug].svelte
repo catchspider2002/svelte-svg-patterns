@@ -1,7 +1,5 @@
 <script context="module">
   export async function preload({ params, query }) {
-    // the `slug` parameter is available because
-    // this file is called [slug].svelte
     const res = await this.fetch(`patterns/${params.slug}.json`);
     const data = await res.json();
 
@@ -16,7 +14,7 @@
   import constants from "../_constants.js";
   import { onMount } from "svelte";
   import "../_monolith.min.css";
-import { bind } from "svelte/internal";
+  import { bind } from "svelte/internal";
 
   let Pickr, svg;
 
@@ -25,29 +23,18 @@ import { bind } from "svelte/internal";
     Pickr = module.default;
     const module1 = await import("save-svg-as-png");
     svg = module1.default;
-    doStuff();
+    setPickers();
   });
 
-  function doStuff(){
+  function setPickers(){
     const elements = document.getElementsByClassName("pcr-app");
-    while (elements.length > 0) elements[0].remove();
-    createColorPickers();
-  }
-
-  function setSvgFile() {
-    // svgFile = svgPattern(
-      // selectedPattern.color1,
-      // selectedPattern.color2,
-      // selectedPattern.stroke,
-      // selectedPattern.scale,
-      // selectedPattern.angle
-    // );
-    doStuff()
+    while (elements.length > 0) elements[0].remove();    
+    for (let i = 1; i <= colors; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
   let svgPattern = (color1, color2, stroke, scale, angle) => {
   let strokeFill;
-  if (mode==='stroke')
+  if (mode === 'stroke')
   strokeFill = " stroke = '" + color2 + "' fill='none'"
   else
   strokeFill = " stroke = 'none' fill='" + color2 + "'"
@@ -139,7 +126,7 @@ import { bind } from "svelte/internal";
     for (var j = 0; j < presetPatterns.length; j++) {
       if ("pattern" + presetPatterns[j].id === this.id) {
         selectedPattern = presetPatterns[presetPatterns[j].id - 1];
-        setSvgFile();
+        setPickers();
       }
     }
   }
@@ -153,7 +140,7 @@ import { bind } from "svelte/internal";
       scale: constants.randomNumber(1, maxScale),
       angle: constants.randomNumber(0, 180)
     };
-    setSvgFile();
+    setPickers();
   }
 
   function downloadSVG() {
@@ -182,10 +169,6 @@ import { bind } from "svelte/internal";
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-  }
-
-  function createColorPickers() {
-    for (let i = 1; i <= colors; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
   function createPicker(parentDiv, colorId) {
@@ -375,12 +358,11 @@ cursor: none;
     </div>
 
     <div class="inputs">
-      <label for="scale">Scale</label>
+      <label for="scale">Scale Test</label>
       <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
       <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
       {#if (mode==='stroke')}
 	  <label for="stroke">Stroke</label>
-      <!-- <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/> -->
       <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
       {/if}
