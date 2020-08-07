@@ -375,14 +375,16 @@ cursor: none;
     </div>
 
     <div class="inputs">
-      <label for="scale">Scale</label>
-      <input id="scale" type="range" on:input={setSvgFile} bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
+      <label for="scale">Scale test</label>
+      <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
       <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
+      {#if (mode==='stroke')}
 	  <label for="stroke">Stroke</label>
       <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
+      {/if}
 	  <label for="angle">Angle</label>
-      <input id="angle" type="range" on:input={setSvgFile} bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
+      <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
       <div class="inputs py-05">
