@@ -6,6 +6,7 @@ const patterns = [
     colors: 2,
     maxStroke: 8.5,
     maxScale: 16,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path:
@@ -18,6 +19,7 @@ const patterns = [
     colors: 2,
     maxStroke: 8.5,
     maxScale: 16,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M -5,7 5,12 15,7 25,12'/><path d='M -5,17 5.0000002,22 15,17 25,22'/><path d='M -5,-3 5.0000002,2 15,-3 25,2' />"
@@ -29,6 +31,7 @@ const patterns = [
     colors: 2,
     maxStroke: 20,
     maxScale: 12,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M -2.3354725e-8,9.8330078 H 20 Z'/>"
@@ -40,6 +43,7 @@ const patterns = [
     colors: 2,
     maxStroke: 19.5,
     maxScale: 12,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'/>"
@@ -51,6 +55,7 @@ const patterns = [
     colors: 2,
     maxStroke: 17,
     maxScale: 16,
+    maxSpacing: 10,
     width: 17.321,
     height: 30,
     path:
@@ -63,6 +68,7 @@ const patterns = [
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M 5,5 H 15 V 15 H 5 Z'/>"
@@ -74,6 +80,7 @@ const patterns = [
     colors: 2,
     maxStroke: 20,
     maxScale: 10,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z'/>"
@@ -85,6 +92,7 @@ const patterns = [
     colors: 2,
     maxStroke: 21,
     maxScale: 10,
+    maxSpacing: 10,
     width: 20,
     height: 20,
     path: "<path d='M15 15H5l5-10z'/>"
@@ -96,10 +104,22 @@ const patterns = [
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
+    maxSpacing: 10,
     width: 20,
     height: 20,
-    path:
-      "<path d='M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z'/>"
+    path: "<path d='M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z'/>"
+  },
+  {
+    title: "Plus",
+    slug: "plus",
+    type: "stroke",
+    colors: 2,
+    maxStroke: 9.5,
+    maxScale: 16,
+    maxSpacing: 10,
+    width: 20,
+    height: 20,
+    path: "<path d='M3.25 10h13.5M10 3.25v13.5'/>"
   },
   {
     title: "Inverted triangles - OK",
@@ -108,10 +128,10 @@ const patterns = [
     colors: 2,
     maxStroke: 5.5,
     maxScale: 10,
+    maxSpacing: 10,
     width: 20,
     height: 28,
-    path:
-      "<path d='M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z'/>"
+    path: "<path d='M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z'/>"
   },
   {
     title: "Herringbone",
@@ -120,6 +140,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
+    maxSpacing: 10,
     width: 10.583,
     height: 10.583,
     path:
@@ -132,6 +153,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
+    maxSpacing: 10,
     width: 37.092,
     height: 37.092,
     path:
@@ -144,6 +166,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 2,
+    maxSpacing: 10,
     width: 192,
     height: 192,
     path:
@@ -156,6 +179,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
+    maxSpacing: 10,
     width: 32,
     height: 32,
     path:
@@ -168,6 +192,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
+    maxSpacing: 10,
     width: 20,
     height: 21.75,
     path:
@@ -180,6 +205,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
+    maxSpacing: 10,
     width: 56,
     height: 100,
     path: "<path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/>"

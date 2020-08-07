@@ -9,7 +9,7 @@
 </script>
 
 <script>
-  import { Tabs, TabList, TabPanel, Tab } from '../../components/tabs.js';
+  import { Tabs, TabList, TabPanel, Tab } from "../../components/tabs.js";
   export let post;
   import constants from "../_constants.js";
   import { onMount } from "svelte";
@@ -26,36 +26,36 @@
     setPickers();
   });
 
-  function setPickers(){
+  function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
-    while (elements.length > 0) elements[0].remove();    
+    while (elements.length > 0) elements[0].remove();
     for (let i = 1; i <= colors; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
-  let svgPattern = (color1, color2, stroke, scale, angle) => {
-  let strokeFill;
-  if (mode === 'stroke')
-  strokeFill = " stroke = '" + color2 + "' fill='none'"
-  else
-  strokeFill = " stroke = 'none' fill='" + color2 + "'"
-  
+  let svgPattern = (color1, color2, stroke, scale, spacing, angle, join) => {
+    let strokeFill, joinMode;
+    if (mode === "stroke") 
+    {
+      strokeFill = " stroke = '" + color2 + "' fill='none'";
+      joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' "
+    }
+    else strokeFill = " stroke = 'none' fill='" + color2 + "'";
+
     let patternNew =
       "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
-      width +
+      (width + spacing) +
       "' height='" +
-      height +
+      (height + spacing) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
       angle +
-      ")'><rect x='0' y='0' width='" +
-      width +
-      "' height='" +
-      height +
-      "' fill='" +
+      ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
       color1 +
-      "'/><g stroke-width='" +
+      "'/><g "+
+      joinMode +
+      "stroke-width='" +
       stroke +
       "'" +
       strokeFill +
@@ -68,6 +68,7 @@
   const colors = post.colors,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
+    maxSpacing = post.maxSpacing,
     width = post.width,
     height = post.height,
     path = post.path,
@@ -80,7 +81,9 @@
       color2: "black",
       stroke: 0.5,
       scale: 1,
-      angle: 0
+      spacing: 0,
+      angle: 0,
+      join: 1
     },
     {
       id: 2,
@@ -88,7 +91,9 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
-      angle: constants.randomNumber(0, 180)
+      spacing: constants.randomNumber(0, maxSpacing / 3),
+      angle: constants.randomNumber(0, 180),
+      join: constants.randomNumber(1, 2)
     },
     {
       id: 3,
@@ -96,7 +101,9 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      angle: constants.randomNumber(0, 180)
+      spacing: constants.randomNumber(0, maxSpacing / 3),
+      angle: constants.randomNumber(0, 180),
+      join: constants.randomNumber(1, 2)
     },
     {
       id: 4,
@@ -104,7 +111,9 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      angle: constants.randomNumber(0, 180)
+      spacing: constants.randomNumber(0, maxSpacing / 3),
+      angle: constants.randomNumber(0, 180),
+      join: constants.randomNumber(1, 2)
     }
   ];
 
@@ -114,7 +123,9 @@
     selectedPattern.color2,
     selectedPattern.stroke,
     selectedPattern.scale,
-    selectedPattern.angle
+    selectedPattern.spacing,
+    selectedPattern.angle,
+    selectedPattern.join
   );
 
   let outputWidth = 1080,
@@ -138,7 +149,9 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
-      angle: constants.randomNumber(0, 180)
+      spacing: constants.randomNumber(1, maxSpacing),
+      angle: constants.randomNumber(0, 180),
+      join: constants.randomNumber(1, 2)
     };
     setPickers();
   }
@@ -153,13 +166,12 @@
   }
 
   function downloadPNG() {
-    
     document.getElementById("pngOutput").innerHTML = svgFile
       .replace("%23", "#")
       .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
 
     svg.saveSvgAsPng(document.getElementById("testId"), "diagram.png");
-    document.getElementById("pngOutput").innerHTML = ""
+    document.getElementById("pngOutput").innerHTML = "";
   }
 
   function copyText(text) {
@@ -251,7 +263,7 @@
     padding: 0.5em 0;
   }
 
-  .uneditable{
+  .uneditable {
     border: 0 none;
     background-color: var(--accent-color);
     color: black;
@@ -259,16 +271,16 @@
     margin: 0 13px 0 0;
     text-align: center;
     width: 30px;
-cursor: none;
-      -webkit-touch-callout: none; /* iOS Safari */
+    cursor: none;
+    -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
   }
 
-  .bottomBar{
+  .bottomBar {
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
@@ -319,7 +331,8 @@ cursor: none;
     padding-bottom: calc(10 / 16 * 100%);
   }
 
-  #sampleOutput, #preview {
+  #sampleOutput,
+  #preview {
     width: 100%;
     height: 500px;
   }
@@ -333,7 +346,6 @@ cursor: none;
       padding-bottom: calc(1 / 2 * 100%);
     }
   }
-
 </style>
 <svelte:head>
   <title>{post.title}</title>
@@ -353,7 +365,7 @@ cursor: none;
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.angle) + '"' + ')'} />
+          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
       {/each}
     </div>
 
@@ -365,7 +377,13 @@ cursor: none;
 	  <label for="stroke">Stroke</label>
       <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
+	  <label>Join</label>
+      <label><input type=radio bind:group={selectedPattern.join} value={1}>Square</label>
+      <label><input type=radio bind:group={selectedPattern.join} value={2}>Rounded</label>
       {/if}
+	  <label for="spacing">Spacing</label>
+      <input id="spacing" type="range" bind:value={selectedPattern.spacing} min="0" max={maxSpacing} step="0.5"/>
+      <input class="uneditable" bind:value={selectedPattern.spacing} readonly/>
 	  <label for="angle">Angle</label>
       <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>

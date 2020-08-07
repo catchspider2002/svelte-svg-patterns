@@ -5,16 +5,19 @@
   --border-radius: 4px;
 }
 
+html{
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-family: "Harmattan", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+}
+
 body {
     background-color: var(--main-bg-color);
     margin: 0;
     line-height: 1.5;
     background-color: #545454;
     color: var(--accent-color);
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-family: "Dosis", sans-serif;
-    font-family: "Harmattan", sans-serif;
-    font-family: "Josefin Sans", sans-serif;
     font-size: 20px;
 }
 .closed {
@@ -33,6 +36,10 @@ h1 {
 
 a {
 	color: inherit;
+}
+
+input {
+  font-family: inherit;
 }
 
   input[type="number"] {
