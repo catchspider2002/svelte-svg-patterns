@@ -35,13 +35,13 @@ import { bind } from "svelte/internal";
   }
 
   function setSvgFile() {
-    svgFile = svgPattern(
-      selectedPattern.color1,
-      selectedPattern.color2,
-      selectedPattern.stroke,
-      selectedPattern.scale,
-      selectedPattern.angle
-    );
+    // svgFile = svgPattern(
+      // selectedPattern.color1,
+      // selectedPattern.color2,
+      // selectedPattern.stroke,
+      // selectedPattern.scale,
+      // selectedPattern.angle
+    // );
     doStuff()
   }
 
@@ -375,12 +375,13 @@ cursor: none;
     </div>
 
     <div class="inputs">
-      <label for="scale">Scale test</label>
+      <label for="scale">Scale</label>
       <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
       <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
       {#if (mode==='stroke')}
 	  <label for="stroke">Stroke</label>
-      <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
+      <!-- <input id="stroke" type="range" on:input={setSvgFile} bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/> -->
+      <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
       {/if}
 	  <label for="angle">Angle</label>
