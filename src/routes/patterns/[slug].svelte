@@ -34,7 +34,7 @@
 
   let svgPattern = (color1, color2, stroke, scale, spacing, angle, join) => {
     let strokeFill, joinMode;
-    if (mode === "stroke") 
+    if (mode[0] === "stroke") 
     {
       strokeFill = " stroke = '" + color2 + "' fill='none'";
       joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' "
@@ -44,9 +44,9 @@
     let patternNew =
       "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
-      (width + spacing) +
+      (width + spacing[0]) +
       "' height='" +
-      (height + spacing) +
+      (height + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -54,6 +54,7 @@
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
       color1 +
       "'/><g "+
+      "transform='translate("+spacing[0]/2+","+spacing[1]/2+")' "+
       joinMode +
       "stroke-width='" +
       stroke +
@@ -81,7 +82,7 @@
       color2: "black",
       stroke: 0.5,
       scale: 1,
-      spacing: 0,
+      spacing: [0,0],
       angle: 0,
       join: 1
     },
@@ -91,8 +92,8 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
-      spacing: constants.randomNumber(0, maxSpacing / 3),
-      angle: constants.randomNumber(0, 180),
+      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     },
     {
@@ -101,8 +102,8 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      spacing: constants.randomNumber(0, maxSpacing / 3),
-      angle: constants.randomNumber(0, 180),
+      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     },
     {
@@ -111,8 +112,8 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      spacing: constants.randomNumber(0, maxSpacing / 3),
-      angle: constants.randomNumber(0, 180),
+      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     }
   ];
@@ -149,8 +150,8 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
-      spacing: constants.randomNumber(1, maxSpacing),
-      angle: constants.randomNumber(0, 180),
+      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     };
     setPickers();
@@ -373,7 +374,7 @@
       <label for="scale">Scale Test</label>
       <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
       <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
-      {#if (mode==='stroke')}
+      {#if (mode[0] === 'stroke')}
 	  <label for="stroke">Stroke</label>
       <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
@@ -381,9 +382,16 @@
       <label><input type=radio bind:group={selectedPattern.join} value={1}>Square</label>
       <label><input type=radio bind:group={selectedPattern.join} value={2}>Rounded</label>
       {/if}
-	  <label for="spacing">Spacing</label>
-      <input id="spacing" type="range" bind:value={selectedPattern.spacing} min="0" max={maxSpacing} step="0.5"/>
-      <input class="uneditable" bind:value={selectedPattern.spacing} readonly/>
+      {#if (mode[1] === 'yes')}
+	  <label for="hspacing">Horizontal Spacing</label>
+      <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5"/>
+      <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly/>
+      {/if}
+      {#if (mode[2] === 'yes')}
+	  <label for="vspacing">Vertical Spacing</label>
+      <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5"/>
+      <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly/>
+      {/if}
 	  <label for="angle">Angle</label>
       <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>

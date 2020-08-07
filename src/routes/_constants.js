@@ -1,5 +1,7 @@
 const randomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
 
+const randomAngle = () => Math.floor(Math.random() * 37) * 5;
+
 const randomColor = opacity =>
   "hsla(" +
   Math.round(randomNumber(0, 360), 2) +
@@ -11,4 +13,4 @@ const randomColor = opacity =>
   opacity +
   ")";
 
-export default { randomNumber, randomColor };
+export default { randomNumber, randomAngle, randomColor };
