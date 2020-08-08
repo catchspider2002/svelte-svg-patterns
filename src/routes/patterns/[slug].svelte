@@ -268,8 +268,9 @@
     border: 0 none;
     background-color: var(--accent-color);
     color: black;
-    height: 17px;
-    margin: 0 13px 0 0;
+    height: 24px;
+    font-size: 0.9em;
+    padding: 2px 2px 0 2px;
     text-align: center;
     width: 30px;
     cursor: none;
@@ -338,6 +339,12 @@
     height: 500px;
   }
 
+  .strokeJoin{
+        display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2/4;
+  }
+
   .text-center {
     text-align: center;
   }
@@ -379,8 +386,10 @@
       <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
       <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
 	  <label>Join</label>
+    <div class="strokeJoin">
       <label><input type=radio bind:group={selectedPattern.join} value={1}>Square</label>
       <label><input type=radio bind:group={selectedPattern.join} value={2}>Rounded</label>
+      </div>
       {/if}
       {#if (mode[1] === 'yes')}
 	  <label for="hspacing">Horizontal Spacing</label>
