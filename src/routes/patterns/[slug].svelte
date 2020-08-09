@@ -44,7 +44,7 @@
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
       (width + spacing[0]) +
       "' height='" +
-      (height * 2 + spacing[1]) +
+      (height * 3 + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -68,13 +68,28 @@
       "transform='translate(" +
       spacing[0] / 2 +
       "," +
-      height + spacing[1] / 2 +
+      (height + spacing[1]) +
       ")' " +
       joinMode +
       "stroke-width='" +
       stroke +
       "'" +
-      strokeFill +
+      // strokeFill +
+      " stroke = '" + "green" + "' fill='none'" +
+      ">" +
+      path +
+      "</g><g " +
+      "transform='translate(" +
+      spacing[0] / 2 +
+      "," +
+      (height*2 + spacing[1]*1.5) +
+      ")' " +
+      joinMode +
+      "stroke-width='" +
+      stroke +
+      "'" +
+      // strokeFill +
+      " stroke = '" + "blue" + "' fill='none'" +
       ">" +
       path +
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
