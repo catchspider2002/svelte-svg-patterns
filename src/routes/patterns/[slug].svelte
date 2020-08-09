@@ -34,27 +34,42 @@
 
   let svgPattern = (color1, color2, stroke, scale, spacing, angle, join) => {
     let strokeFill, joinMode;
-    if (mode[0] === "stroke") 
-    {
+    if (mode[0] === "stroke") {
       strokeFill = " stroke = '" + color2 + "' fill='none'";
-      joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' "
-    }
-    else strokeFill = " stroke = 'none' fill='" + color2 + "'";
+      joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+    } else strokeFill = " stroke = 'none' fill='" + color2 + "'";
 
     let patternNew =
       "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
       (width + spacing[0]) +
       "' height='" +
-      (height + spacing[1]) +
+      (height * 2 + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
       angle +
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
       color1 +
-      "'/><g "+
-      "transform='translate("+spacing[0]/2+","+spacing[1]/2+")' "+
+      "'/><g " +
+      "transform='translate(" +
+      spacing[0] / 2 +
+      "," +
+      spacing[1] / 2 +
+      ")' " +
+      joinMode +
+      "stroke-width='" +
+      stroke +
+      "'" +
+      strokeFill +
+      ">" +
+      path +
+      "</g><g " +
+      "transform='translate(" +
+      spacing[0] / 2 +
+      "," +
+      height + spacing[1] / 2 +
+      ")' " +
       joinMode +
       "stroke-width='" +
       stroke +
@@ -82,7 +97,7 @@
       color2: "black",
       stroke: 0.5,
       scale: 1,
-      spacing: [0,0],
+      spacing: [0, 0],
       angle: 0,
       join: 1
     },
@@ -92,7 +107,10 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
-      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      spacing: [
+        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
+        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
+      ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     },
@@ -102,7 +120,10 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      spacing: [
+        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
+        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
+      ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     },
@@ -112,7 +133,10 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
-      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      spacing: [
+        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
+        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
+      ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     }
@@ -150,7 +174,10 @@
       color2: constants.randomColor(1),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
-      spacing: [mode[1] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0, mode[2] === 'yes' ? constants.randomNumber(0, maxSpacing[0] / 3) : 0],
+      spacing: [
+        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
+        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
+      ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     };
@@ -171,7 +198,7 @@
       .replace("%23", "#")
       .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
 
-    svg.saveSvgAsPng(document.getElementById("testId"), "diagram.png");
+    svg.saveSvgAsPng(document.getElementById("testId"), "pattern.png");
     document.getElementById("pngOutput").innerHTML = "";
   }
 
@@ -339,8 +366,8 @@
     height: 500px;
   }
 
-  .strokeJoin{
-        display: grid;
+  .strokeJoin {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column: 2/4;
   }
