@@ -29,33 +29,45 @@
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
-    for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
+    // for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
+    for (let i = 1; i <= 5; i++)
+    { 
+      document.getElementById("color" + i + "Div").style.display = "block"
+      if(i <= selectedPattern.colors.length){
+      createPicker("color" + i + "Div", i - 1);
+      }
+      else{
+      document.getElementById("color" + i + "Div").style.display = "none"
+    }
+  }
   }
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
-      function multiStroke(i){
-        if (mode[0] === "stroke") {
-          strokeFill = " stroke = '" + colors[i+1] + "' fill='none'";
-          joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-        } else strokeFill = " stroke = 'none' fill='" + colors[i+1] + "'";
-    
-          return "<g transform='translate(" +
-                  spacing[0] / 2 +
-                  "," +
-                  (height* i + spacing[1] * i * 0.5) +
-                  ")' " +
-                  joinMode +
-                  "stroke-width='" +
-                  stroke +
-                  "'" +
-                   strokeFill +
-                  ">" +
-                  path +
-                  "</g>"
-      }
-      
+    function multiStroke(i) {
+      if (mode[0] === "stroke") {
+        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
+        joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+      } else strokeFill = " stroke = 'none' fill='" + colors[i + 1] + "'";
+
+      return (
+        "<g transform='translate(" +
+        spacing[0] / 2 +
+        "," +
+        (height * i + spacing[1] * i * 0.5) +
+        ")' " +
+        joinMode +
+        "stroke-width='" +
+        stroke +
+        "'" +
+        strokeFill +
+        ">" +
+        path +
+        "</g>"
+      );
+    }
+
     let strokeFill, joinMode, strokeGroup;
-    
+
     for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
 
     let patternNew =
@@ -70,7 +82,7 @@
       angle +
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
       colors[0] +
-      "'/>"+
+      "'/>" +
       strokeGroup +
       "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
@@ -133,7 +145,7 @@
     }
   ];
 
-  let selectedPattern = presetPatterns[0];
+  $: selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
     selectedPattern.colors,
     selectedPattern.stroke,
@@ -156,11 +168,10 @@
       }
     }
   }
-  
-  function randomColorSets(length){
-      let colorArray = [];
-      for (var i = 0; i < length; i++)
-            colorArray.push(constants.randomColor(1))
+
+  function randomColorSets(length) {
+    let colorArray = [];
+    for (var i = 0; i < length; i++) colorArray.push(constants.randomColor(1));
     return colorArray;
   }
 
@@ -208,59 +219,58 @@
   }
 
   function createPicker(parentDiv, colorId) {
-      console.log("createPicker: " + parentDiv)
     let colorDiv = document.getElementById(parentDiv);
 
-if (colorDiv){
-    while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
+    if (colorDiv) {
+      while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
 
-    const newElement = document.createElement("div");
-    document.getElementById(parentDiv).appendChild(newElement);
+      const newElement = document.createElement("div");
+      document.getElementById(parentDiv).appendChild(newElement);
 
-    const pickr = Pickr.create({
-      el: newElement,
-      theme: "monolith",
-      autoReposition: true,
-      comparison: false,
-      default: selectedPattern.colors[colorId],
-      // lockOpacity: true,
-      swatches: [
-        "rgba(244, 67, 54, 1)",
-        "rgba(233, 30, 99, 1)",
-        "rgba(156, 39, 176, 1)",
-        "rgba(103, 58, 183, 1)",
-        "rgba(63, 81, 181, 1)",
-        "rgba(3, 169, 244, 1)",
-        "rgba(0, 188, 212, 1)",
-        "rgba(0, 150, 136, 1)",
-        "rgba(76, 175, 80, 1)",
-        "rgba(139, 195, 74, 1)",
-        "rgba(205, 220, 57, 1)",
-        "rgba(255, 235, 59, 1)",
-        "rgba(255, 193, 7, 1)",
-        "rgba(233, 30, 99, 1)"
-      ],
-      components: {
-        // preview: true,
-        hue: true,
-        opacity: true,
-        // Input / output Options
-        interaction: {
-          hex: true,
-          rgba: true,
-          hsla: true,
-          hsva: true,
-          cmyk: false,
-          input: true,
-          clear: false
+      const pickr = Pickr.create({
+        el: newElement,
+        theme: "monolith",
+        autoReposition: true,
+        comparison: false,
+        default: selectedPattern.colors[colorId],
+        // lockOpacity: true,
+        swatches: [
+          "rgba(244, 67, 54, 1)",
+          "rgba(233, 30, 99, 1)",
+          "rgba(156, 39, 176, 1)",
+          "rgba(103, 58, 183, 1)",
+          "rgba(63, 81, 181, 1)",
+          "rgba(3, 169, 244, 1)",
+          "rgba(0, 188, 212, 1)",
+          "rgba(0, 150, 136, 1)",
+          "rgba(76, 175, 80, 1)",
+          "rgba(139, 195, 74, 1)",
+          "rgba(205, 220, 57, 1)",
+          "rgba(255, 235, 59, 1)",
+          "rgba(255, 193, 7, 1)",
+          "rgba(233, 30, 99, 1)"
+        ],
+        components: {
+          // preview: true,
+          hue: true,
+          opacity: true,
+          // Input / output Options
+          interaction: {
+            hex: true,
+            rgba: true,
+            hsla: true,
+            hsva: true,
+            cmyk: false,
+            input: true,
+            clear: false
+          }
         }
-      }
-    });
-    pickr.on("change", (color, instance) => {
-      selectedPattern.colors[colorId] = color.toHSLA().toString();
-    });
+      });
+      pickr.on("change", (color, instance) => {
+        selectedPattern.colors[colorId] = color.toHSLA().toString();
+      });
+    }
   }
-}
 </script>
 
 <style>
@@ -289,7 +299,7 @@ if (colorDiv){
 
   .colors {
     display: grid;
-    grid-template-columns: auto auto auto auto 1fr ;
+    grid-template-columns: auto auto auto auto 1fr;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -441,7 +451,10 @@ if (colorDiv){
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
       <div class="colors py-05">
-        {#each { length: selectedPattern.colors.length } as _, i}
+        <!-- {#each { length: selectedPattern.colors.length } as _, i}
+          <div id="color{i + 1}Div" />
+        {/each} -->
+        {#each { length: 5 } as _, i}
           <div id="color{i + 1}Div" />
         {/each}
       </div>
