@@ -161,7 +161,7 @@
     selectedPattern = {
       id: 5,
       // colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
-      colors: Array(constants.randomNumber(2, 5)).fill(constants.randomColor(1)),
+      colors: Array.from({ length: constants.randomNumber(2, 5) }).fill(constants.randomColor(1)),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -202,11 +202,11 @@
   }
 
   function createPicker(parentDiv, colorId) {
+      console.log("createPicker: " + parentDiv)
     let colorDiv = document.getElementById(parentDiv);
 
 if (colorDiv){
     while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
-}
 
     const newElement = document.createElement("div");
     document.getElementById(parentDiv).appendChild(newElement);
@@ -254,6 +254,7 @@ if (colorDiv){
       selectedPattern.colors[colorId] = color.toHSLA().toString();
     });
   }
+}
 </script>
 
 <style>
