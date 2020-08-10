@@ -32,12 +32,12 @@
     for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
-  let svgPattern = (color1, color2, stroke, scale, spacing, angle, join) => {
+  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     let strokeFill, joinMode;
     if (mode[0] === "stroke") {
-      strokeFill = " stroke = '" + color2 + "' fill='none'";
+      strokeFill = " stroke = '" + colors[1] + "' fill='none'";
       joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-    } else strokeFill = " stroke = 'none' fill='" + color2 + "'";
+    } else strokeFill = " stroke = 'none' fill='" + colors[1] + "'";
 
     let patternNew =
       "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -50,7 +50,7 @@
       ") rotate(" +
       angle +
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
-      color1 +
+      colors[0] +
       "'/><g " +
       "transform='translate(" +
       spacing[0] / 2 +
@@ -108,8 +108,7 @@
   const presetPatterns = [
     {
       id: 1,
-      color1: "white",
-      color2: "black",
+      colors: ["white", "black"],
       stroke: 0.5,
       scale: 1,
       spacing: [0, 0],
@@ -118,8 +117,7 @@
     },
     {
       id: 2,
-      color1: constants.randomColor(0.8),
-      color2: constants.randomColor(1),
+      colors: [constants.randomColor(0.8), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
       spacing: [
@@ -131,8 +129,7 @@
     },
     {
       id: 3,
-      color1: constants.randomColor(1),
-      color2: constants.randomColor(1),
+      colors: [constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -144,8 +141,7 @@
     },
     {
       id: 4,
-      color1: constants.randomColor(0.9),
-      color2: constants.randomColor(1),
+      colors: [constants.randomColor(0.9), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -159,8 +155,7 @@
 
   let selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
-    selectedPattern.color1,
-    selectedPattern.color2,
+    selectedPattern.colors,
     selectedPattern.stroke,
     selectedPattern.scale,
     selectedPattern.spacing,
@@ -185,8 +180,7 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      color1: constants.randomColor(0.8),
-      color2: constants.randomColor(1),
+      colors: [constants.randomColor(0.8), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -415,7 +409,7 @@
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.color1, pattern.color2, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
+          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colors, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
       {/each}
     </div>
 
