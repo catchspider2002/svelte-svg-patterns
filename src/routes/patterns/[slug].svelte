@@ -29,7 +29,7 @@
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
-    for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", "color" + i);
+    for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", i - 1);
   }
 
   let svgPattern = (colorList, stroke, scale, spacing, angle, join) => {
@@ -233,7 +233,7 @@
       theme: "monolith",
       autoReposition: true,
       comparison: false,
-      default: selectedPattern[colorId],
+      default: selectedPattern[colors[colorId]],
       // lockOpacity: true,
       swatches: [
         "rgba(244, 67, 54, 1)",
@@ -268,7 +268,7 @@
       }
     });
     pickr.on("change", (color, instance) => {
-      selectedPattern[colorId] = color.toHSLA().toString();
+      selectedPattern[colors[colorId]] = color.toHSLA().toString();
     });
   }
 </script>
