@@ -160,7 +160,8 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
+      // colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
+      colors: Array(constants.randomNumber(2, 5)).fill(constants.randomColor(1)),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -203,7 +204,9 @@
   function createPicker(parentDiv, colorId) {
     let colorDiv = document.getElementById(parentDiv);
 
+if (colorDiv){
     while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
+}
 
     const newElement = document.createElement("div");
     document.getElementById(parentDiv).appendChild(newElement);
@@ -271,6 +274,15 @@
   .inputs {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    column-gap: 16px;
+    row-gap: 16px;
+    align-items: center;
+    padding: 2em 0;
+  }
+
+  .colors {
+    display: grid;
+    grid-template-columns: auto auto auto auto 1fr ;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -421,7 +433,7 @@
       <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
-      <div class="inputs py-05">
+      <div class="colors py-05">
         {#each { length: selectedPattern.colors.length } as _, i}
           <div id="color{i + 1}Div" />
         {/each}
