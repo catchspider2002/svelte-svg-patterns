@@ -97,7 +97,7 @@
     },
     {
       id: 2,
-      colors: randomColorSets(3)
+      colors: randomColorSets(3),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
       spacing: [
@@ -109,7 +109,7 @@
     },
     {
       id: 3,
-      colors: randomColorSets(4)
+      colors: randomColorSets(4),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -121,7 +121,7 @@
     },
     {
       id: 4,
-      colors: randomColorSets(5)
+      colors: randomColorSets(5),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
