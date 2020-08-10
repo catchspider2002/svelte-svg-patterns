@@ -33,66 +33,46 @@
   }
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
-    let strokeFill, joinMode;
-    if (mode[0] === "stroke") {
-      strokeFill = " stroke = '" + colors[1] + "' fill='none'";
-      joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-    } else strokeFill = " stroke = 'none' fill='" + colors[1] + "'";
+      function multiStroke(i){
+        if (mode[0] === "stroke") {
+          strokeFill = " stroke = '" + colors[i+1] + "' fill='none'";
+          joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+        } else strokeFill = " stroke = 'none' fill='" + colors[i+1] + "'";
+    
+          return "<g transform='translate(" +
+                  spacing[0] / 2 +
+                  "," +
+                  (height* i + spacing[1] * i * 0.5) +
+                  ")' " +
+                  joinMode +
+                  "stroke-width='" +
+                  stroke +
+                  "'" +
+                   strokeFill +
+                  ">" +
+                  path +
+                  "</g>"
+      }
+      
+    let strokeFill, joinMode, strokeGroup;
+    
+    for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
 
     let patternNew =
       "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
       (width + spacing[0]) +
       "' height='" +
-      (height * 3 + spacing[1] * 1.5) +
+      (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
       angle +
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
       colors[0] +
-      "'/><g " +
-      "transform='translate(" +
-      spacing[0] / 2 +
-      "," +
-      spacing[1] / 2 +
-      ")' " +
-      joinMode +
-      "stroke-width='" +
-      stroke +
-      "'" +
-      strokeFill +
-      ">" +
-      path +
-      "</g><g " +
-      "transform='translate(" +
-      spacing[0] / 2 +
-      "," +
-      (height + spacing[1]) +
-      ")' " +
-      joinMode +
-      "stroke-width='" +
-      stroke +
-      "'" +
-      // strokeFill +
-      " stroke = '" + "green" + "' fill='none'" +
-      ">" +
-      path +
-      "</g><g " +
-      "transform='translate(" +
-      spacing[0] / 2 +
-      "," +
-      (height*2 + spacing[1]*1.5) +
-      ")' " +
-      joinMode +
-      "stroke-width='" +
-      stroke +
-      "'" +
-      // strokeFill +
-      " stroke = '" + "blue" + "' fill='none'" +
-      ">" +
-      path +
-      "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+      "'/>"+
+      strokeGroup +
+      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
   };
 
@@ -169,7 +149,7 @@
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function check() {
-    for (var j = 0; j < presetPatterns.length; j++) {
+    for (let j = 0; j < presetPatterns.length; j++) {
       if ("pattern" + presetPatterns[j].id === this.id) {
         selectedPattern = presetPatterns[presetPatterns[j].id - 1];
         setPickers();
@@ -194,7 +174,7 @@
   }
 
   function downloadSVG() {
-    var a = document.createElement("a");
+    let a = document.createElement("a");
     document.body.appendChild(a);
     a.setAttribute("href", "data:image/svg+xml," + svgFile);
     a.setAttribute("download", "pattern.svg");
@@ -212,7 +192,7 @@
   }
 
   function copyText(text) {
-    var textArea = document.createElement("textarea");
+    let textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.select();
@@ -221,7 +201,7 @@
   }
 
   function createPicker(parentDiv, colorId) {
-    var colorDiv = document.getElementById(parentDiv);
+    let colorDiv = document.getElementById(parentDiv);
 
     while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
 
