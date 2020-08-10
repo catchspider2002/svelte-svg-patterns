@@ -29,7 +29,7 @@
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
-    for (let i = 1; i <= colors; i++) createPicker("color" + i + "Div", "color" + i);
+    for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", "color" + i);
   }
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
@@ -96,7 +96,7 @@
     return patternNew.replace("#", "%23");
   };
 
-  const colors = post.colors,
+  const colorCount = post.colors,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
     maxSpacing = post.maxSpacing,
@@ -442,7 +442,7 @@
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
       <div class="inputs py-05">
-        {#each { length: colors } as _, i}
+        {#each { length: colorCount } as _, i}
           <div id="color{i + 1}Div" />
         {/each}
       </div>
