@@ -29,7 +29,7 @@
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
-    for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", i - 1);
+    for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
   }
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
@@ -97,7 +97,7 @@
     },
     {
       id: 2,
-      colors: [constants.randomColor(0.8), constants.randomColor(1), constants.randomColor(1)],
+      colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
       spacing: [
@@ -160,7 +160,7 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colors: [constants.randomColor(0.8), constants.randomColor(1), constants.randomColor(1)],
+      colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -422,7 +422,7 @@
       <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
       <label>Colors</label>
       <div class="inputs py-05">
-        {#each { length: colorCount } as _, i}
+        {#each { length: selectedPattern.colors.length } as _, i}
           <div id="color{i + 1}Div" />
         {/each}
       </div>
