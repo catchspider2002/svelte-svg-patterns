@@ -233,7 +233,7 @@
       theme: "monolith",
       autoReposition: true,
       comparison: false,
-      default: selectedPattern[colors[colorId]],
+      default: selectedPattern.colors[colorId],
       // lockOpacity: true,
       swatches: [
         "rgba(244, 67, 54, 1)",
@@ -268,7 +268,7 @@
       }
     });
     pickr.on("change", (color, instance) => {
-      selectedPattern[colors[colorId]] = color.toHSLA().toString();
+      selectedPattern.colors[colorId] = color.toHSLA().toString();
     });
   }
 </script>
