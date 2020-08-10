@@ -32,15 +32,15 @@
     for (let i = 1; i <= colorCount; i++) createPicker("color" + i + "Div", i - 1);
   }
 
-  let svgPattern = (colorList, stroke, scale, spacing, angle, join) => {
+  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     let strokeFill, joinMode;
     if (mode[0] === "stroke") {
-      strokeFill = " stroke = '" + colorList[1] + "' fill='none'";
+      strokeFill = " stroke = '" + colors[1] + "' fill='none'";
       joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-    } else strokeFill = " stroke = 'none' fill='" + colorList[1] + "'";
+    } else strokeFill = " stroke = 'none' fill='" + colors[1] + "'";
 
     let patternNew =
-      "<svg id='testId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
+      "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
       (width + spacing[0]) +
       "' height='" +
@@ -50,7 +50,7 @@
       ") rotate(" +
       angle +
       ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
-      colorList[0] +
+      colors[0] +
       "'/><g " +
       "transform='translate(" +
       spacing[0] / 2 +
@@ -108,7 +108,7 @@
   const presetPatterns = [
     {
       id: 1,
-      colorList: ["white", "black"],
+      colors: ["white", "black"],
       stroke: 0.5,
       scale: 1,
       spacing: [0, 0],
@@ -117,7 +117,7 @@
     },
     {
       id: 2,
-      colorList: [constants.randomColor(0.8), constants.randomColor(1)],
+      colors: [constants.randomColor(0.8), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
       spacing: [
@@ -129,7 +129,7 @@
     },
     {
       id: 3,
-      colorList: [constants.randomColor(1), constants.randomColor(1)],
+      colors: [constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -141,7 +141,7 @@
     },
     {
       id: 4,
-      colorList: [constants.randomColor(0.9), constants.randomColor(1)],
+      colors: [constants.randomColor(0.9), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -155,7 +155,7 @@
 
   let selectedPattern = presetPatterns[0];
   $: svgFile = svgPattern(
-    selectedPattern.colorList,
+    selectedPattern.colors,
     selectedPattern.stroke,
     selectedPattern.scale,
     selectedPattern.spacing,
@@ -180,7 +180,7 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colorList: [constants.randomColor(0.8), constants.randomColor(1)],
+      colors: [constants.randomColor(0.8), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -207,7 +207,7 @@
       .replace("%23", "#")
       .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
 
-    svg.saveSvgAsPng(document.getElementById("testId"), "pattern.png");
+    svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
     document.getElementById("pngOutput").innerHTML = "";
   }
 
@@ -409,12 +409,12 @@
     <div class="samples">
       {#each presetPatterns as pattern}
         <button id="pattern{pattern.id}" class="pattern" on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colorList, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
+          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colors, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
       {/each}
     </div>
 
     <div class="inputs">
-      <label for="scale">Test Scale</label>
+      <label for="scale">Scale</label>
       <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
       <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
       {#if (mode[0] === 'stroke')}
