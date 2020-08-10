@@ -97,7 +97,7 @@
     },
     {
       id: 2,
-      colors: [constants.randomColor(0.8), constants.randomColor(1)],
+      colors: [constants.randomColor(0.8), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 3),
       spacing: [
@@ -109,7 +109,7 @@
     },
     {
       id: 3,
-      colors: [constants.randomColor(1), constants.randomColor(1)],
+      colors: [constants.randomColor(1), constants.randomColor(1), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -121,7 +121,7 @@
     },
     {
       id: 4,
-      colors: [constants.randomColor(0.9), constants.randomColor(1)],
+      colors: [constants.randomColor(0.9), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale / 2),
       spacing: [
@@ -160,7 +160,7 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colors: [constants.randomColor(0.8), constants.randomColor(1)],
+      colors: [constants.randomColor(0.8), constants.randomColor(1), constants.randomColor(1)],
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
