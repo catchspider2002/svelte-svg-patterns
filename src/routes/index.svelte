@@ -1,647 +1,210 @@
 <script>
-  //   import pattern1File from "./patterns/_pattern1.js";
-  import { onMount } from "svelte";
-  import "./_monolith.min.css";
+  $: color = "#000646";
 
-  let Pickr;
-
-  onMount(async () => {
-    const module = await import("@simonwep/pickr");
-    Pickr = module.default;
-    createPicker("color1Div", "color1");
-    createPicker("color2Div", "color2");
-  });
-
-  let patterns = [
-    {
-      id: 1,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 14,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 40 40'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "'><path d='M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 6.495zM47.5 26.495h-15l7.5-12.99z'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 2,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 56 +
-          "' height='" +
-          this.scale * 100 +
-          "' viewBox='0 0 56 100'><rect x='0' y='0' width='56' height='100' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 200) / 100 +
-          "'><path d='M28 26L0 10v-34l28-16 28 16v34L28 26v34M28 126L0 110V76l28-16 28 16v34l-28 16v34'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 3,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'><path d='M0 13.276l5.292-5.292 5.291 5.292'/><path d='M-2.646 10.63l7.938-7.937 7.937 7.937'/><path d='M-2.646 5.338l7.938-7.937 7.937 7.937'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 4,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 20) / 100 +
-          "'><path d='M-2.693 0L2.6 5.292l-5.292 5.291'/><path d='M-.047-2.646l7.938 7.938-7.938 7.937'/><path d='M5.245-2.646l7.937 7.938-7.937 7.937'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 5,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M-1.323 2.117h13.23M-1.323 4.763h13.23M-1.323 7.408h13.23M-1.323 10.054h13.23M-1.323-.53h13.23'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 6,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M6.88-1.852v13.23M4.233-1.852v13.23M1.587-1.852v13.23M-1.058-1.852v13.23M9.525-1.852v13.23'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 7,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M-1.323-.53h13.23zm0 2.647h13.23zm0 2.646h13.23zm0 2.645h13.23zm0 2.646h13.23zm.265-11.906v13.23zm2.646 0v13.23zm2.645 0v13.23zm2.646 0v13.23zm2.646 0v13.23z'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 8,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M5.292 13.23l-7.938-7.938 7.938-7.938m5.291 15.875L2.646 5.292l7.937-7.938m2.646 13.23L7.938 5.291 13.229 0M5.292-2.646l7.937 7.938-7.937 7.937M0-2.646l7.938 7.938L0 13.229M-2.646 0l5.292 5.292-5.292 5.291'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 9,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 10.583 10.583'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 15) / 100 +
-          "'><path d='M13.182 5.245l-7.937 7.937-7.938-7.937M13.182-.047L5.245 7.891-2.693-.047m13.23-2.646L5.245 2.6-.047-2.693m5.292 0l7.937 7.938-7.937 7.937M-.047-2.693l7.938 7.938-7.938 7.937M-2.693-.047L2.6 5.245l-5.292 5.292'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 10,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 24,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 15 +
-          "' height='" +
-          this.scale * 15 +
-          "' viewBox='-1 -1 18.364 18.364'><path fill='red' d='M-10-10h50v50h-50z'/><circle r='1.704' cy='11.651' cx='11.848' stroke='" +
-          this.color2 +
-          "' fill='none' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "' transform='translate(-3.6662179,-3.4692739)'/></svg>"
-        );
-      }
-    },
-    {
-      id: 11,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 12,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 68 +
-          "' height='" +
-          this.scale * 68 +
-          "' viewBox='0 0 37.092 37.092'><rect x='0' y='0' width='68' height='68' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "'><path d='M37.091 30.546l-12-12 12-12 12 12zm0 4.364L20.727 18.546 37.091 2.182l16.364 16.364zM18.546 12l-12-12 12-12 12 12zm0 4.364L2.182 0l16.364-16.364L34.91 0zm0 32.728l-12-12 12-12 12 12zm0 4.364L2.182 37.092l16.364-16.364L34.91 37.092zM0 30.546l-12-12 12-12 12 12zm0 4.363l-16.364-16.363L0 2.182l16.364 16.364z'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 13,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
-        );
-      }
-    },
-    {
-      id: 14,
-      color1: "hsla(100, 70.82650433153829%, 46.00795346001784%, 0.8)",
-      color2: "hsla(250, 70.82650433153829%, 46.00795346001784%, 1)",
-      strokeSize: 1,
-      maxStroke: 16,
-      scale: 1,
-      maxScale: 16,
-      svg: function() {
-        return (
-          "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-          this.scale * 40 +
-          "' height='" +
-          this.scale * 40 +
-          "' viewBox='0 0 21.819 21.819'><rect x='0' y='0' width='40' height='40' fill='" +
-          this.color1 +
-          "'/><g fill='none' stroke='" +
-          this.color2 +
-          "' stroke-width='" +
-          Math.round(this.strokeSize * 50) / 100 +
-          "'><path d='M-5.455 5.455h21.819v10.909H-5.455zM16.364 5.455h21.819v10.909H16.364zM-16.364-5.455H5.455V5.454h-21.819zM5.455-5.455h21.819V5.454H5.455zM-16.364 16.364H5.455v10.909h-21.819zM5.455 16.364h21.819v10.909H5.455z'/></g></svg>"
-        );
-      }
-    }
-  ];
-
-  $: clickedId = 0;
-  $: svgFile = patterns[clickedId].svg();
-
-  let width = 1080,
-    height = 1080;
-
-  $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
-
-  function check() {
-    for (var j = 0; j < patterns.length; j++) {
-      if ("pattern" + patterns[j].id === this.id) {
-        clickedId = patterns[j].id - 1;
-        createPicker("color1Div", "color1");
-        createPicker("color2Div", "color2");
-      }
-    }
+  function changeColor1() {
+    color = "#FF00FF";
   }
-
-  function downloadSVG() {
-    var a = document.createElement("a");
-    document.body.appendChild(a);
-    a.setAttribute("href", "data:image/svg+xml," + svgFile);
-    a.setAttribute("download", "pattern.svg");
-    a.click();
-    a.remove();
+  function changeColor2() {
+    color = "#FFFF00";
   }
-
-  function downloadPNG() {
-    var image = new Image();
-    image.src =
-      "data:image/svg+xml;base64," +
-      window.btoa(unescape(encodeURIComponent(svgFile)));
-
-    image.onload = function() {
-      var canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      var context = canvas.getContext("2d");
-      var ptrn = context.createPattern(image, "repeat");
-      context.fillStyle = ptrn;
-      context.fillRect(0, 0, canvas.width, canvas.height);
-
-      var a = document.createElement("a");
-      a.download = "image.png";
-      a.href = canvas.toDataURL("pattern/png");
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
-  }
-
-  function copyText(text) {
-    var textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("Copy");
-    textArea.remove();
-    // cssText = "Copied";
-  }
-
-  function createPicker(parentDiv, colorId) {
-    var colorDiv = document.getElementById(parentDiv);
-
-    while (colorDiv.hasChildNodes()) colorDiv.removeChild(colorDiv.firstChild);
-
-    const newElement = document.createElement("div");
-    document.getElementById(parentDiv).appendChild(newElement);
-
-    const pickr = Pickr.create({
-      el: newElement,
-      theme: "monolith",
-      autoReposition: true,
-      comparison: false,
-      default: patterns[clickedId][colorId],
-      // lockOpacity: true,
-      swatches: [
-        "rgba(244, 67, 54, 1)",
-        "rgba(233, 30, 99, 1)",
-        "rgba(156, 39, 176, 1)",
-        "rgba(103, 58, 183, 1)",
-        "rgba(63, 81, 181, 1)",
-        "rgba(3, 169, 244, 1)",
-        "rgba(0, 188, 212, 1)",
-        "rgba(0, 150, 136, 1)",
-        "rgba(76, 175, 80, 1)",
-        "rgba(139, 195, 74, 1)",
-        "rgba(205, 220, 57, 1)",
-        "rgba(255, 235, 59, 1)",
-        "rgba(255, 193, 7, 1)",
-        "rgba(233, 30, 99, 1)"
-      ],
-      components: {
-        // preview: true,
-        hue: true,
-        opacity: true,
-        // Input / output Options
-        interaction: {
-          hex: true,
-          rgba: true,
-          hsla: true,
-          hsva: true,
-          cmyk: false,
-          input: true,
-          clear: false
-        }
-      }
-    });
-    pickr.on("change", (color, instance) => {
-      patterns[clickedId][colorId] = color.toHSLA().toString();
-    });
+  function reset() {
+    color = "#000646";
   }
 </script>
 
 <style>
-  .page {
+  .newmountains-container {
+    position: absolute;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* top: 250px; */
+    /* background-color: red; */
+  }
+
+  .mountains {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: slide 4s linear infinite;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-600px, 0);
+    }
+  }
+
+  .landing {
+    background-color: var(--main-bg-color);
     height: 100vh;
-    display: block;
+    display: grid;
+    color: black;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
-
-  .container {
+  .header__bg {
+    position: absolute;
+    /* top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; */
+    width: 100%;
+    height: 100px;
+    background: var(--accent-color);
+    /* transform: skewY(3deg); */
+    z-index: 1;
+    /* transform-origin: top left; */
+    clip-path: polygon(0 46%, 0 0, 100% 0);
+  }
+  .child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 80%;
-    margin: 0 auto;
-    padding: 2em;
-    background-color: #1a202c;
-    color: #edf2f7;
+    /* height: 30%; */
+    padding: 1em;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: var(--accent-color);
+    z-index: 2;
   }
 
-  .inputs {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 16px;
-    row-gap: 16px;
-    align-items: center;
-    padding: 2em 0;
+  .topSide {
+    background-color: var(--accent-color);
+    /* margin-bottom: -50px; */
   }
 
-  input[type="number"] {
-    color: #1a202c;
-    /* border-color: rgb(159,122,234); */
-    line-height: 1.25;
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 80px;
+  .h5 {
+    color: var(--text-gray-300);
+    color: var(--accent-color);
   }
 
-  /* Hide arrows for input number - Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Hide arrows for input number - Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-
-  input[type="range"] {
-    width: 100%;
-    margin: 7.3px 0;
-    background-color: transparent;
-    -webkit-appearance: none;
-  }
-  input[type="range"]:focus {
-    outline: none;
-  }
-  input[type="range"]::-webkit-slider-runnable-track {
-    background: rgb(255, 218, 6);
-    border: 0.2px solid #ffffff;
-    border-radius: 15px;
-    width: 100%;
-    height: 11.4px;
-    cursor: pointer;
-  }
-  input[type="range"]::-moz-range-track {
-    background: rgb(255, 218, 6);
-    border: 0.2px solid #ffffff;
-    border-radius: 15px;
-    width: 100%;
-    height: 11.4px;
-    cursor: pointer;
-  }
-  input[type="range"]:focus::-webkit-slider-runnable-track {
-    background: rgba(255, 218, 6, 0.842);
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    margin-top: -7.5px;
-    width: 26px;
-    height: 26px;
-    background: #00001e;
-    border: 1.8px solid #ffffff;
-    border-radius: 15px;
-    cursor: pointer;
-    -webkit-appearance: none;
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 26px;
-    height: 26px;
-    background: #00001e;
-    border: 1.8px solid #ffffff;
-    border-radius: 15px;
-    cursor: pointer;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-    column-gap: 16px;
-    row-gap: 16px;
-  }
-
-  .button {
-    background-color: rgb(255, 218, 6);
-    color: #1a202c;
-    text-align: center;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-  }
-
-  .pattern {
-    height: 80px;
-    width: 80px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 480px) {
+  .bottomSide {
+    position: relative;
+    /* z-index: 0; */
+    /* position: absolute */
+    /* background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon fill='white' points='0,100 100,0 100,100' /></svg>"); */
   }
 </style>
 
-<svelte:head>
-  <title>SVG Patterns</title>
-</svelte:head>
-<div id="page" class="page" style={cssOutput}>
-  <div class="container">
-    <div>SVG Patterns</div>
-    <p />
+<div class="landing">
+  <div class="topSide">
 
-    <div class="inputs">
-      {#each patterns as pattern}
-        <div
-          id="pattern{pattern.id}"
-          class="pattern"
-          on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + pattern.svg() + '"' + ')'} />
-      {/each}
+    <div class="px-6 pt-8 pb-12 md:max-w-3xl md:mx-auto lg:mx-0 lg:max-w-none lg:pt-0 lg:pb-16">
+      <div class="flex items-center justify-between">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            class="iconify iconify--noto-v1"
+            width="1em"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 128 128"
+            style="transform: rotate(360deg);">
+            <path
+              d="M102.26 21.7s-1.19-1.83-3.65-2.22c-3.06-.48-6.08.07-7.05 4.51c-.96 4.42-1.45 10.11 3.49 14.08l-7.6 2.13l-6.51-7.89s2.52.96
+              2.86-.91c.42-2.29.42-4.36.97-7.87c.58-3.67 1.73-7.51 5.25-9.54c1.92-1.11 4.98-1.74 5.99-2.55c.78-.63.99-2.65 1.33-4.84l5.42
+              4.16l1.7 7.4l-2.2 3.54z"
+              fill="#d7598b" />
+            <circle cx="107.39" cy="12.02" r="11.93" fill="#fcc21b" />
+            <path
+              d="M25.74 21.7s1.19-1.83 3.65-2.22c3.06-.48 6.08.07 7.05 4.51c.96 4.42 1.46 10.11-3.49 14.08l7.6
+              2.13l6.51-7.89s-2.52.96-2.86-.91c-.42-2.29-.42-4.36-.97-7.87c-.59-3.67-1.73-7.51-5.25-9.54c-1.92-1.11-4.98-1.74-5.99-2.55c-.78-.63-.99-2.65-1.33-4.84l-5.42
+              4.16l-1.7 7.4l2.2 3.54z"
+              fill="#d7598b" />
+            <circle cx="20.61" cy="12.02" r="11.93" fill="#fcc21b" />
+            <path
+              d="M107.29 114.08c-.43-2.59.02-5.5.48-7.83c.82-4.19 2.31-8.22 3.78-12.21c.47-1.29.95-2.58 1.4-3.87c1.5-4.32 2.32-8.9
+              2.32-13.67c0-25.47-16.78-46.11-51.26-46.11S12.75 51.04 12.75 76.5c0 4.45.71 8.74 2.03 12.81c2.48 7.64 6.49 15.25 6.23
+              23.48c-.15 4.94-2.97 7.47-6.43 10.44c-1.07.92-1.27 2.42.08 3.19c3.1 1.78 8.32-.19 11.33-1.4c2.69-1.08 5.21-2.93
+              7.31-5.08c1.08-1.1 2.08-2.27 3.07-3.44c.82-.96 2.18-3.42 3.74-2.72c3.4 1.53-.58 7.86-2.3 9.38c-.7.62-1.65 1.18-1.97 2.12c-.36
+              1.03.37 1.93 1.3 2.3c2.6 1.04 8.28-.72 10.88-2.46c1.86-1.25 3.41-2.85 4.71-4.68c.81-1.14 2.21-4.74 4.02-4.31c3.32.8 1.92 6.03
+              2.14 8.3c.11 1.16.78 2.32 1.94 2.77c2.52.99 4.74-.79 6.22-2.63c1.65-2.05 2.44-4.32 3.73-6.54c1.03-1.79 2.83-2.16 4.12-.31c1.88
+              2.69 3.04 5.25 6.03 6.96c2.46 1.4 5.3 2.27 8.14 2.29c1.25 0 6.79-.66
+              4.92-3.11c-.82-1.06-2.39-1.32-3.46-2.11c-1.76-1.31-2.57-3.48-2.63-5.62c-.08-3.05 2.87-2.27 4.32-.8c2.35 2.38 3.75 5.76 6.78
+              7.39c3.63 1.95 9.29 2.9 13.29 1.67c1.36-.42 2.92-1.01
+              3.01-2.65c.09-1.55-1.23-1.92-2.47-2.27c-1.59-.44-2.69-.84-3.91-2.06c-.92-.88-1.42-2.08-1.63-3.33z"
+              fill="#d7598b" />
+            <g>
+              <path
+                d="M72.04 80.73l18.22-8.71s2.54 3.93 1.92 8.56c-.38 2.77-2.22 6-6.35 7.38c-3.72
+                1.24-6.78.81-8.78-.08c-4.77-2.11-5.01-7.15-5.01-7.15z"
+                fill="#bdcf46" />
+              <path
+                d="M55.4 80.73l-18.22-8.71s-2.54 3.93-1.92 8.56c.38 2.77 2.23 6 6.35 7.38c3.72 1.24 6.78.81 8.78-.08c4.78-2.11 5.01-7.15
+                5.01-7.15z"
+                fill="#bdcf46" />
+              <path
+                d="M74.85 94.95c-.37-1.25-1.66-2.33-2.97-2.38c-1.57-.06-2.57 1.41-3.73 2.22c-1.34.94-3.01 1.61-4.67
+                1.46c-2.01-.19-3.07-1.54-4.61-2.64c-1.4-.99-3.15-1-4.39.3c-.59.62-.91 1.47-.86 2.33c.06 1.13.81 2.28 1.61 3.03c3.14 2.97
+                8.02 3.62 12.08 2.58c2.83-.73 8.73-2.93 7.54-6.9z"
+                fill="#2f2f2f" />
+            </g>
+          </svg>
+          PATTERN MONSTER
+        </div>
+      </div>
     </div>
+    <div class="px-6 md:max-w-3xl md:mx-auto lg:mx-0 lg:max-w-none">
+      <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
+      <h1
+        class="mt-3 text-3xl leading-9 font-semibold font-display text-white sm:mt-6 sm:text-4xl sm:leading-10 xl:text-5xl xl:leading-none">
+        Beautiful patterns for your next project
+      </h1>
+      <p class="mt-2 text-lg leading-7 text-gray-300 sm:mt-3 sm:text-xl sm:max-w-xl xl:mt-4 xl:text-2xl xl:max-w-2xl">
+        Create your own pattern and export in PNG or SVG.
+      </p>
+    </div>
+    <div class="mt-8 sm:mt-12 relative h-64 overflow-hidden bg-gray-300 lg:hidden">
+      <div
+        class="absolute scroll-bg"
+        style="height: 800%; width: 400%; top: -100%; left: -100%; background-size: 400px auto; background-image:
+        url('/img/hero-pattern-lg.png');" />
+    </div>
+    <button on:click={changeColor1}>Color1</button>
+    <button on:click={changeColor2}>Color2</button>
+    <button on:click={reset}>Reset</button>
+  </div>
+  <div class="bottomSide">
 
-    <div class="pickr1" />
-    <div class="inputs">
-      <label>Scale</label>
-      <input
-        type="range"
-        bind:value={patterns[clickedId].scale}
-        min="1"
-        max={patterns[clickedId].maxScale} />
-      <label>Stroke Size</label>
-      <input
-        type="range"
-        bind:value={patterns[clickedId].strokeSize}
-        min="1"
-        max={patterns[clickedId].maxStroke} />
-      <label for="color1">Color 1</label>
-      <div>
-        <div id="color1Div" />
-      </div>
-      <label for="color2">Color 2</label>
-      <div>
-        <div id="color2Div" />
+    <div class="header__bg" />
+    <div class="newmountains-container">
+      <div class="mountains">
+
+        <svg id="patternId" width="3200px" height="1200px" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(1) rotate(-5)">
+              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width="19" stroke={color} fill="none">
+                <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#a)" />
+        </svg>
+
       </div>
     </div>
-    <div class="grid">
-      <span>Copy</span>
-      <div class="button" on:click={copyText(cssOutput)} title="CSS">CSS</div>
-      <div class="button" on:click={copyText(svgFile)} title="SVG">SVG</div>
-      <span>Download</span>
-      <div class="button" on:click={downloadSVG} title="Download as SVG file">
-        SVG
-      </div>
-      <div class="button" on:click={downloadPNG} title="Download as PNG file">
-        PNG
-      </div>
-      Width
-      <input type="number" bind:value={width} min="0" />
-      <div />
-      Height
-      <input type="number" bind:value={height} min="0" />
+  </div>
+  <div class="child">
+    <p class="h5 mt-2 text-lg leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+    <div class="mt-6 sm:flex sm:mt-8 xl:mt-12">
+      <input type="email" placeholder="Enter your email" />
+      <a
+        href="/pricing"
+        class="mt-4 sm:ml-4 sm:mt-0 w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base
+        leading-6 font-semibold rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700
+        transition ease-in-out duration-150 xl:text-lg xl:py-4">
+        Join waiting list →
+      </a>
     </div>
   </div>
 </div>
