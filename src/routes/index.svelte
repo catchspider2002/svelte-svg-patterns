@@ -12,7 +12,7 @@
   }
 </script>
 
-<style>
+<style>	
   .newmountains-container {
     position: absolute;
     width: 100%;
@@ -61,17 +61,30 @@
     clip-path: polygon(0 46%, 0 0, 100% 0);
   }
   .child {
+/* 		display: none; */
     position: absolute;
     top: 50%;
     left: 50%;
     width: 80%;
-    /* height: 30%; */
-    padding: 1em;
+		padding: 1em;
     transform: translate(-50%, -50%);
-    background: white;
+    background: var(--main-bg-color);
     color: var(--accent-color);
     z-index: 2;
+		margin-bottom: -43px;
   }
+	
+	@media (max-width: 768px)
+		{
+			.child{
+				position: fixed;
+    transform: none;
+    top: unset;
+		bottom: 0;
+				left: 0;
+		width: 100%;
+			}
+	}
 
   .topSide {
     background-color: var(--accent-color);
@@ -85,16 +98,32 @@
 
   .bottomSide {
     position: relative;
-    /* z-index: 0; */
-    /* position: absolute */
-    /* background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon fill='white' points='0,100 100,0 100,100' /></svg>"); */
   }
+	.px-6{	padding-left: 1.5rem;
+padding-right: 1.5rem;} 
+	.pt-8{padding-top: 2rem;}
+	.pb-12{padding-bottom: 3rem;}
+	.flex{display: flex;} 
+	.items-center{align-items: center;} 
+	.justify-between{justify-content: space-between;}
+		.text-sm{	font-size: 0.875rem;}
+		.text-lg{font-size: 1.125rem;}
+		.text-3xl{	font-size: 1.875rem;}
+		.font-semibold{font-weight: 600;}
+		.text-gray-300{color: var(--text-gray-300)}
+		.text-white{color: white}
+		.uppercase{text-transform: uppercase;}
+		.tracking-wider{letter-spacing: 0.05em;}
+		.mt-2{	margin-top: 0.5rem;}
+		.mt-3{	margin-top: 8rem;}
+		.leading-7{	line-height: 1.75rem;}
+		.leading-9{	line-height: 2.25rem;}
 </style>
 
 <div class="landing">
   <div class="topSide">
 
-    <div class="px-6 pt-8 pb-12 md:max-w-3xl md:mx-auto lg:mx-0 lg:max-w-none lg:pt-0 lg:pb-16">
+    <div class="px-6 pt-8 pb-12">
       <div class="flex items-center justify-between">
         <div>
           <svg
@@ -153,22 +182,17 @@
         </div>
       </div>
     </div>
-    <div class="px-6 md:max-w-3xl md:mx-auto lg:mx-0 lg:max-w-none">
+    <div class="px-6">
       <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
       <h1
-        class="mt-3 text-3xl leading-9 font-semibold font-display text-white sm:mt-6 sm:text-4xl sm:leading-10 xl:text-5xl xl:leading-none">
+        class="mt-2 text-3xl leading-9 font-semibold font-display text-white">
         Beautiful patterns for your next project
       </h1>
-      <p class="mt-2 text-lg leading-7 text-gray-300 sm:mt-3 sm:text-xl sm:max-w-xl xl:mt-4 xl:text-2xl xl:max-w-2xl">
+      <p class="mt-2 text-lg leading-7 text-gray-300">
         Create your own pattern and export in PNG or SVG.
       </p>
     </div>
-    <div class="mt-8 sm:mt-12 relative h-64 overflow-hidden bg-gray-300 lg:hidden">
-      <div
-        class="absolute scroll-bg"
-        style="height: 800%; width: 400%; top: -100%; left: -100%; background-size: 400px auto; background-image:
-        url('/img/hero-pattern-lg.png');" />
-    </div>
+    
     <button on:click={changeColor1}>Color1</button>
     <button on:click={changeColor2}>Color2</button>
     <button on:click={reset}>Reset</button>
@@ -196,15 +220,8 @@
   </div>
   <div class="child">
     <p class="h5 mt-2 text-lg leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
-    <div class="mt-6 sm:flex sm:mt-8 xl:mt-12">
-      <input type="email" placeholder="Enter your email" />
-      <a
-        href="/pricing"
-        class="mt-4 sm:ml-4 sm:mt-0 w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base
-        leading-6 font-semibold rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700
-        transition ease-in-out duration-150 xl:text-lg xl:py-4">
-        Join waiting list →
-      </a>
+    <div class="mt-6">
+			<script async data-uid="c7251e438e" src="https://crafty-artist-9316.ck.page/c7251e438e/index.js"></script>
     </div>
   </div>
 </div>
