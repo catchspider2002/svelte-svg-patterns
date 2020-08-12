@@ -66,6 +66,7 @@
   }
   .child {
 		display: grid;
+		margin: 1.5rem;
 /*     position: absolute; */
 /*     top: 50%; */
 /*     left: 50%; */
@@ -80,14 +81,15 @@
 	.topGrid{
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
+		grid-column-gap: 32px;
+/* 		grid-template-rows: 1fr; */
 	}
 	
 	@media (max-width: 768px)
 		{
 	.topGrid{
 		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 1fr;
+/* 		grid-template-rows: 1fr 1fr; */
 	}
 			.child{
 /* 				position: fixed; */
