@@ -1,8 +1,11 @@
 :root {
   --main-bg-color: #1a202c;
   /* --accent-color: rgb(255, 218, 6); */
-  --accent-color: #b794f4;
-  --accent-color-hover: rgba(255, 218, 6, 0.8);
+  --accent-color: #553c9a;
+  --secondary-color: #ffc800;
+  --accent-text-color: #ffffff;
+  --secondary-text-color: #000000;
+  --accent-color-hover: rgba(85, 60, 154, 0.8);
   --border-radius: 4px;
   --text-gray-300: #e2e8f0;
 }
