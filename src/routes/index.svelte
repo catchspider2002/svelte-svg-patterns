@@ -1,6 +1,9 @@
 <script>
   $: color = "#000646";
   $: stroke = 1;
+  $: bg = "#ffc800"
+  $: angle = "90"
+  $: scale = 1
 
   function changeColor1() {
     color = "#FF00FF";
@@ -258,8 +261,12 @@
           <button on:click={changeColor2}>Color2</button>
           <button on:click={reset}>Reset</button>
 
+          <label for="scale">Scale</label>
+          <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
           <label for="stroke">Stroke</label>
           <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
+          <label for="angle">Angle</label>
+          <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
         </div>
       </div>
       <div class="child">
@@ -278,20 +285,20 @@
       <div class="mountains">
         <svg id="patternId" width="3200px" height="1200px" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
+            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
               </g>
             </pattern>
-            <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
+            <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20"patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z" />
               </g>
             </pattern>
-            <pattern id="c" patternUnits="userSpaceOnUse" width="20" height="15" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
+            <pattern id="c" patternUnits="userSpaceOnUse" width="20" height="15" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path
                   d="M-20-13.307c3.334-1.667 6.667-3.334 10-3.333 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668
@@ -300,22 +307,20 @@
                   6.667-3.333 10-6.667" />
               </g>
             </pattern>
-            <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
-              undefinedundefined
+            <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z" />
               </g>
             </pattern>
-            <pattern id="e" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
+            <pattern id="e" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%"  fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M3.25 10h13.5M10 3.25v13.5" />
               </g>
             </pattern>
-            <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale(1) rotate(0)">
-              <rect x="0" y="0" width="100%" height="100%" fill="pink" />
-              undefinedundefined
+            <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
               </g>
