@@ -12,14 +12,21 @@
   }
 </script>
 
-<style>	
+<style>
+	:root {
+    --main-bg-color: #1a202c;
+    /* --accent-color: rgb(255, 218, 6); */
+    --accent-color: #553c9a;
+    --accent-color-hover: rgba(255, 218, 6, 0.8);
+    --border-radius: 4px;
+    --text-gray-300: #e2e8f0;
+}
+	
   .newmountains-container {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* top: 250px; */
-    /* background-color: red; */
   }
 
   .mountains {
@@ -48,30 +55,23 @@
   }
   .header__bg {
     position: absolute;
-    /* top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0; */
     width: 100%;
     height: 100px;
     background: var(--accent-color);
-    /* transform: skewY(3deg); */
     z-index: 1;
-    /* transform-origin: top left; */
     clip-path: polygon(0 46%, 0 0, 100% 0);
   }
   .child {
-/* 		display: none; */
+		display: grid;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 80%;
-		padding: 1em;
+/*     width: 80%; */
+/* 		padding: 1em; */
     transform: translate(-50%, -50%);
     background: var(--main-bg-color);
     color: var(--accent-color);
     z-index: 2;
-		margin-bottom: -43px;
   }
 	
 	@media (max-width: 768px)
@@ -82,13 +82,16 @@
     top: unset;
 		bottom: 0;
 				left: 0;
+				right: 0;
 		width: 100%;
+/* 		padding: 1em; */
+		margin-bottom: -30px;
 			}
 	}
 
   .topSide {
     background-color: var(--accent-color);
-    /* margin-bottom: -50px; */
+/*     margin-bottom: -50px; */
   }
 
   .h5 {
@@ -115,7 +118,6 @@ padding-right: 1.5rem;}
 		.uppercase{text-transform: uppercase;}
 		.tracking-wider{letter-spacing: 0.05em;}
 		.mt-2{	margin-top: 0.5rem;}
-		.mt-3{	margin-top: 8rem;}
 		.leading-7{	line-height: 1.75rem;}
 		.leading-9{	line-height: 2.25rem;}
 </style>
@@ -219,8 +221,8 @@ padding-right: 1.5rem;}
     </div>
   </div>
   <div class="child">
-    <p class="h5 mt-2 text-lg leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
-    <div class="mt-6">
+    <p class="h5 mt-2 px-6 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+    <div class="px-6 justify-center">
 			<script async data-uid="c7251e438e" src="https://crafty-artist-9316.ck.page/c7251e438e/index.js"></script>
     </div>
   </div>
