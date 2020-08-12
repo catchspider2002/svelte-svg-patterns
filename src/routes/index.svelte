@@ -17,6 +17,9 @@
     --main-bg-color: #1a202c;
     /* --accent-color: rgb(255, 218, 6); */
     --accent-color: #553c9a;
+		--secondary-color: #FFC800;
+		--accent-text-color: #FFFFFF;
+		--secondary-text-color: #000000;
     --accent-color-hover: rgba(255, 218, 6, 0.8);
     --border-radius: 4px;
     --text-gray-300: #e2e8f0;
@@ -93,6 +96,10 @@
     background-color: var(--accent-color);
 /*     margin-bottom: -50px; */
   }
+	
+	h1{
+		color: var(--secondary-color)
+	}
 
   .h5 {
     color: var(--text-gray-300);
@@ -102,6 +109,12 @@
   .bottomSide {
     position: relative;
   }
+	
+	.logoText{
+		color: var(--accent-text-color);
+		font-weight: 600;
+	}
+	
 	.px-6{	padding-left: 1.5rem;
 padding-right: 1.5rem;} 
 	.pt-8{padding-top: 2rem;}
@@ -114,7 +127,6 @@ padding-right: 1.5rem;}
 		.text-3xl{	font-size: 1.875rem;}
 		.font-semibold{font-weight: 600;}
 		.text-gray-300{color: var(--text-gray-300)}
-		.text-white{color: white}
 		.uppercase{text-transform: uppercase;}
 		.tracking-wider{letter-spacing: 0.05em;}
 		.mt-2{	margin-top: 0.5rem;}
@@ -135,8 +147,8 @@ padding-right: 1.5rem;}
             focusable="false"
             role="img"
             class="iconify iconify--noto-v1"
-            width="1em"
-            height="1em"
+            width="2em"
+            height="2em"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 128 128"
             style="transform: rotate(360deg);">
@@ -180,14 +192,14 @@ padding-right: 1.5rem;}
                 fill="#2f2f2f" />
             </g>
           </svg>
-          PATTERN MONSTER
+					<span class="logoText">PATTERN MONSTER</span>
         </div>
       </div>
     </div>
     <div class="px-6">
       <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
       <h1
-        class="mt-2 text-3xl leading-9 font-semibold font-display text-white">
+        class="mt-2 text-3xl leading-9 font-semibold font-display">
         Beautiful patterns for your next project
       </h1>
       <p class="mt-2 text-lg leading-7 text-gray-300">
@@ -223,7 +235,8 @@ padding-right: 1.5rem;}
   <div class="child">
     <p class="h5 mt-2 px-6 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
     <div class="px-6 justify-center">
-			<script async data-uid="c7251e438e" src="https://crafty-artist-9316.ck.page/c7251e438e/index.js"></script>
+		<script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js"></script>
     </div>
   </div>
+	Test
 </div>
