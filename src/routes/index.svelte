@@ -122,6 +122,9 @@
     padding-left: 8px;
   }
 
+  .p-6 {
+    padding: 1.5rem;
+  }
   .px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -243,15 +246,14 @@
         <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Beautiful patterns for your next project</h1>
         <p class="mt-2 text-lg leading-7 text-gray-300">Create your own pattern and export in PNG or SVG.</p>
           <div class="subscribe">
-            <p class="h5 mt-2 px-6 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
-            <div class="px-6">
+            <p class="h5 mt-2 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+            <div>
               <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-
               </script>
             </div>
           </div>
       </div>
-        <div class="toolbox">
+        <div class="toolbox p-6">
 
           <label for="scale">Scale</label>
           <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
