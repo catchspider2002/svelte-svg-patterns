@@ -1,19 +1,10 @@
 <script>
-  $: color = "#000646";
-  $: stroke = 1;
+  $: color = "#553c9a";
   $: bg = "#ffc800"
+  $: stroke = 1; 
   $: angle = "90"
   $: scale = 1
-
-  function changeColor1() {
-    color = "#FF00FF";
-  }
-  function changeColor2() {
-    color = "#FFFF00";
-  }
-  function reset() {
-    color = "#000646";
-  }
+  const palettes = [["#553c9a", "#ffc800"],["#e9c46a", "#264653"], ["#ffcdb2", "#e5989b"],["#50514f","#f25f5c"],["#247ba0","#70c1b3"],["#f0a6ca","#9c89b8"],["#cad2c5","#84a98c"],["#1a936f","#88d498"]]
 </script>
 
 <style>
@@ -78,6 +69,7 @@
      margin: 1.5rem;
     background: var(--main-bg-color);
     grid-template-columns: auto 1fr;
+		border-radius: var(--border-radius);
   }
 
 
@@ -177,6 +169,44 @@
   .leading-9 {
     line-height: 2.25rem;
   }
+	
+	.radio-toolbar {
+  margin: 0 1rem;
+		display: grid;
+		grid-auto-flow: column;
+/* 		grid-auto-rows: auto; */
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+	height: 2em;
+	width: 2em;
+/*   margin-right: 0.5rem; */
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+/*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.radio-toolbar label:hover {
+  border: 2px solid var(--secondary-color);
+}
+
+.radio-toolbar input[type="radio"]:focus + label {
+  border: 2px solid var(--secondary-color);
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  border: 2px solid var(--secondary-color);
+}
 </style>
 
 <div class="landing">
@@ -253,7 +283,7 @@
             </div>
           </div>
       </div>
-        <div class="toolbox p-6">
+        <div class="toolbox p-6 items-center">
 
           <label for="scale">Scale</label>
           <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
@@ -261,9 +291,13 @@
           <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
           <label for="angle">Angle</label>
           <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-          <button on:click={changeColor1}>Color1</button>
-          <button on:click={changeColor2}>Color2</button>
-          <button on:click={reset}>Reset</button>
+          <label for="angle">Colors</label>
+            <div class="radio-toolbar padding-top-5">							
+      {#each palettes as palette, i}
+                <input type="radio" id="palette{i}" name="palette" value={i} on:change={() => {color = palette[0];bg = palette[1];}}> 
+                <label style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);" class="disable-select" for="palette{i}"></label> 
+      {/each}
+        </div>
         </div>
     </div>
   </div>
@@ -271,7 +305,7 @@
     <div class="header__bg" />
     <div class="newmountains-container">
       <div class="mountains">
-        <svg id="patternId" width="3000px" height="1200px" xmlns="http://www.w3.org/2000/svg">
+        <svg id="patternId" width="3000px" height="800px" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
