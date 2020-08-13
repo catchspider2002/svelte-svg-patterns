@@ -69,23 +69,17 @@
     z-index: 1;
     clip-path: polygon(0 46%, 0 0, 100% 0);
   }
-  .child {
+  .subscribe {
     display: grid;
-    margin: 1.5rem;
-    /*     position: absolute; */
-    /*     top: 50%; */
-    /*     left: 50%; */
-    /*     width: 80%; */
-    /* 		padding: 1em; */
-    /*     transform: translate(-50%, -50%); */
+  }
+  .toolbox {
+    display: grid;
+    color: var(--secondary-color);
+     margin: 1.5rem;
     background: var(--main-bg-color);
-    color: var(--accent-color);
-    /*     z-index: 2; */
+    grid-template-columns: auto 1fr;
   }
 
-  .toolbox {
-    background: var(--accent-text-color);
-  }
 
   .topGrid {
     display: grid;
@@ -99,17 +93,9 @@
       grid-template-columns: 1fr;
       /* 		grid-template-rows: 1fr 1fr; */
     }
-    .child {
-      /* 				position: fixed; */
-      /*     transform: none; */
-      /*     top: unset; */
-      /* 		bottom: 0; */
-      /* 				left: 0; */
-      /* 				right: 0; */
-      /* 		width: 100%; */
-      /* 		padding: 1em; */
-      /* 		margin-bottom: -30px; */
-    }
+  .landing {
+    height: unset;
+  }
   }
 
   .topSide {
@@ -256,10 +242,16 @@
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
         <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Beautiful patterns for your next project</h1>
         <p class="mt-2 text-lg leading-7 text-gray-300">Create your own pattern and export in PNG or SVG.</p>
+          <div class="subscribe">
+            <p class="h5 mt-2 px-6 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+            <div class="px-6">
+              <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+
+              </script>
+            </div>
+          </div>
+      </div>
         <div class="toolbox">
-          <button on:click={changeColor1}>Color1</button>
-          <button on:click={changeColor2}>Color2</button>
-          <button on:click={reset}>Reset</button>
 
           <label for="scale">Scale</label>
           <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
@@ -267,23 +259,17 @@
           <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
           <label for="angle">Angle</label>
           <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
+          <button on:click={changeColor1}>Color1</button>
+          <button on:click={changeColor2}>Color2</button>
+          <button on:click={reset}>Reset</button>
         </div>
-      </div>
-      <div class="child">
-        <p class="h5 mt-2 px-6 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
-        <div class="px-6">
-          <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-
-          </script>
-        </div>
-      </div>
     </div>
   </div>
   <div class="bottomSide">
     <div class="header__bg" />
     <div class="newmountains-container">
       <div class="mountains">
-        <svg id="patternId" width="3200px" height="1200px" xmlns="http://www.w3.org/2000/svg">
+        <svg id="patternId" width="3000px" height="1200px" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
