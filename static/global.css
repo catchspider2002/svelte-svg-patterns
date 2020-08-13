@@ -117,7 +117,7 @@ button {
     padding: 0.5rem 1rem;
     margin: 0;
     text-decoration: none;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     color: var(--main-bg-color);
     font-family: inherit;
