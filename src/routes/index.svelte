@@ -67,6 +67,8 @@
     display: grid;
     color: var(--secondary-color);
      margin: 1.5rem;
+		grid-column-gap: 1em;
+		grid-row-gap: 1em;
     background: var(--main-bg-color);
     grid-template-columns: auto 1fr;
 		border-radius: var(--border-radius);
@@ -79,17 +81,6 @@
     grid-column-gap: 32px;
     /* 		grid-template-rows: 1fr; */
   }
-
-  @media (max-width: 768px) {
-    .topGrid {
-      grid-template-columns: 1fr;
-      /* 		grid-template-rows: 1fr 1fr; */
-    }
-  .landing {
-    height: unset;
-  }
-  }
-
   .topSide {
     background-color: var(--accent-color);
     /*     margin-bottom: -50px; */
@@ -173,7 +164,8 @@
 	.radio-toolbar {
   margin: 0 1rem;
 		display: grid;
-		grid-auto-flow: column;
+		grid-template-columns: repeat(6, 1fr);
+/* 		grid-auto-flow: column; */
 /* 		grid-auto-rows: auto; */
 }
 
@@ -207,6 +199,25 @@
 .radio-toolbar input[type="radio"]:checked + label {
   border: 2px solid var(--secondary-color);
 }
+	
+
+  @media (max-width: 768px) {
+    .topGrid {
+      grid-template-columns: 1fr;
+    }
+  .landing {
+    height: unset;
+  }
+		
+	.radio-toolbar {
+		grid-template-columns: repeat(6, 1fr);
+  }
+	}
+  @media (max-width: 520px) {
+	.radio-toolbar {
+		grid-template-columns: repeat(3, 1fr);
+  }
+	}
 </style>
 
 <div class="landing">
