@@ -1,10 +1,19 @@
 <script>
   $: color = "#553c9a";
-  $: bg = "#ffc800"
-  $: stroke = 1; 
-  $: angle = "90"
-  $: scale = 1
-  const palettes = [["#553c9a", "#ffc800"],["#e9c46a", "#264653"], ["#ffcdb2", "#e5989b"],["#50514f","#f25f5c"],["#247ba0","#70c1b3"],["#f0a6ca","#9c89b8"],["#cad2c5","#84a98c"],["#1a936f","#88d498"]]
+  $: bg = "#ffc800";
+  $: stroke = 1;
+  $: angle = "90";
+  $: scale = 1;
+  const palettes = [
+    ["#553c9a", "#ffc800"],
+    ["#e9c46a", "#264653"],
+    ["#ffcdb2", "#e5989b"],
+    ["#50514f", "#f25f5c"],
+    ["#247ba0", "#70c1b3"],
+    ["#f0a6ca", "#9c89b8"],
+    ["#cad2c5", "#84a98c"],
+    ["#1a936f", "#88d498"]
+  ];
 </script>
 
 <style>
@@ -66,14 +75,13 @@
   .toolbox {
     display: grid;
     color: var(--secondary-color);
-     margin: 1.5rem;
-		grid-column-gap: 1em;
-		grid-row-gap: 1em;
+    margin: 1.5rem;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
     background: var(--main-bg-color);
     grid-template-columns: auto 1fr;
-		border-radius: var(--border-radius);
+    border-radius: var(--border-radius);
   }
-
 
   .topGrid {
     display: grid;
@@ -160,64 +168,63 @@
   .leading-9 {
     line-height: 2.25rem;
   }
-	
-	.radio-toolbar {
-  margin: 0 1rem;
-		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-/* 		grid-auto-flow: column; */
-/* 		grid-auto-rows: auto; */
-}
 
-.radio-toolbar input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
+  .radio-toolbar {
+    margin: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* 		grid-auto-flow: column; */
+    /* 		grid-auto-rows: auto; */
+  }
 
-.radio-toolbar label {
-  display: inline-block;
-	height: 2em;
-	width: 2em;
-/*   margin-right: 0.5rem; */
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-/*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  border: 2px solid transparent;
-}
+  .radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
 
-.radio-toolbar label:hover {
-  border: 2px solid var(--secondary-color);
-}
+  .radio-toolbar label {
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+    /*   margin-right: 0.5rem; */
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    /*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
 
-.radio-toolbar input[type="radio"]:focus + label {
-  border: 2px solid var(--secondary-color);
-}
+  .radio-toolbar label:hover {
+    border: 2px solid var(--secondary-color);
+  }
 
-.radio-toolbar input[type="radio"]:checked + label {
-  border: 2px solid var(--secondary-color);
-}
-	
+  .radio-toolbar input[type="radio"]:focus + label {
+    border: 2px solid var(--secondary-color);
+  }
+
+  .radio-toolbar input[type="radio"]:checked + label {
+    border: 2px solid var(--secondary-color);
+  }
 
   @media (max-width: 768px) {
     .topGrid {
       grid-template-columns: 1fr;
     }
-  .landing {
-    height: unset;
+    .landing {
+      height: unset;
+    }
+
+    .radio-toolbar {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
-		
-	.radio-toolbar {
-		grid-template-columns: repeat(6, 1fr);
-  }
-	}
   @media (max-width: 520px) {
-	.radio-toolbar {
-		grid-template-columns: repeat(3, 1fr);
+    .radio-toolbar {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
-	}
 </style>
 
 <div class="landing">
@@ -286,30 +293,42 @@
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
         <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Beautiful patterns for your next project</h1>
         <p class="mt-2 text-lg leading-7 text-gray-300">Create your own pattern and export in PNG or SVG.</p>
-          <div class="subscribe">
-            <p class="h5 mt-2 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
-            <div>
-              <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-              </script>
-            </div>
-          </div>
-      </div>
-        <div class="toolbox p-6 items-center">
+        <div class="subscribe">
+          <p class="h5 mt-2 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+          <div>
+            <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
 
-          <label for="scale">Scale</label>
-          <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
-          <label for="stroke">Stroke</label>
-          <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
-          <label for="angle">Angle</label>
-          <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-          <label for="angle">Colors</label>
-            <div class="radio-toolbar padding-top-5">							
-      {#each palettes as palette, i}
-                <input type="radio" id="palette{i}" name="palette" value={i} on:change={() => {color = palette[0];bg = palette[1];}}> 
-                <label style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);" class="disable-select" for="palette{i}"></label> 
-      {/each}
+            </script>
+          </div>
         </div>
+      </div>
+      <div class="toolbox p-6 items-center">
+
+        <label for="scale">Scale</label>
+        <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
+        <label for="stroke">Stroke</label>
+        <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
+        <label for="angle">Angle</label>
+        <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
+        <label for="angle">Colors</label>
+        <div class="radio-toolbar padding-top-5">
+          {#each palettes as palette, i}
+            <input
+              type="radio"
+              id="palette{i}"
+              name="palette"
+              value={i}
+              on:change={() => {
+                color = palette[0];
+                bg = palette[1];
+              }} />
+            <label
+              style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
+              class="disable-select"
+              for="palette{i}" />
+          {/each}
         </div>
+      </div>
     </div>
   </div>
   <div class="bottomSide">
@@ -324,7 +343,7 @@
                 <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
               </g>
             </pattern>
-            <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20"patternTransform="scale({scale}) rotate({angle})">
+            <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z" />
@@ -347,7 +366,7 @@
               </g>
             </pattern>
             <pattern id="e" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%"  fill={bg} />
+              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
                 <path d="M3.25 10h13.5M10 3.25v13.5" />
               </g>
