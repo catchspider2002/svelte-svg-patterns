@@ -2,6 +2,8 @@ Pattern Samples
 https://www.huckleberry-hearts.com/product/easter-bunny-patterns
 https://www.patternous.com/vector-patterns-03/
 https://notchris.net/patterns/
+https://doodad.dev/pattern-generator/#beautiful-dingbats
+https://creativebeacon.com/seamless-svg-patterns/
 
 Landing Page Samples
 https://trainn.co/
@@ -9,20 +11,57 @@ https://onepagelove.com/tailwind-ui
 
 https://www.reddit.com/r/web_design/comments/gw2cin/ive_created_a_royaltyfree_seamless_pattern/
 
-
+Animated pattern
+https://loading.io/pattern/
 
 Keywords
-make patterns
-pattern make
+
+svg background images
+svg image background
+free svg backgrounds
+free svg patterns
+svg background generator
+svg pattern generator
+svg background pattern
+svg background css
+pattern background css
+css background pattern
 online pattern maker
 pattern maker tool
+free pattern maker
+pattern making app
+patterns for design
+
+svg backgrounds
+svg background
+background svg
+svg patterns
+patterns svg
+pattern svg
+abstract svg
+svg wallpaper
+svg generator
+vector backgrounds
+repeatable patterns
+css patterns
+css pattern
+make patterns
+pattern make
 generate pattern
 pattern generator
 patterns generator
-free pattern maker
-pattern making app
 pattern creator
 create pattern
+
+cool patterns
+
+Hero Patterns | Free repeatable SVG background patterns for your web projects
+A collection of free repeatable SVG background patterns for you to use on your digital projects.
+Create Customizable, Hi-Def, and Scalable Backgrounds
+SVG Backgrounds hosts a collection of customizable SVG-based repeating patterns and backgrounds for websites and blogs.
+Decent Patterns | Simple SVG patterns by notchris
+Really simple SVG Patterns using single unicode characters.
+
 
 Pros
 Quick and easy 
@@ -31,7 +70,7 @@ Customizable
 Cons
 Wish there were more patterns
 Bad color picker
-Download as SVG, CSS, PNG
+
 
 Home page will display groups of patterns like stripes, floral, etc
 
@@ -56,17 +95,6 @@ Open email list to send patterns of the week, pattern collection
 Title: Seamless SVG Patterns
 Subtitle: Download as CSS / SVG / PNG
 
-Visualize brilliance
-Test out inspiring designs without watermarks and never settle for dull again
-Work faster
-Focus on the big picture when you use our vast selection of professional graphics
-Customize with ease
-Intuitive user interface helps you avoid hours sifting through blobs of SVG code
-Deploy in seconds
-Copy and paste CSS without fumbling around with image files and uploads
-
-Optimized for web
-Not all vectors are built with the same end product in mind. Illustrator exports SVGs with bulky code and browsers don't support advanced features. We thoughtfully craft patterns to shave off the fat and ensure modern-browser support.
 
 
 
@@ -90,20 +118,6 @@ Create eye-pleasing geometric patterns in a few seconds. Perfect for landing pag
 
 Create unique geometric patterns in a few seconds
 
-Speed up process
-Illustrations need time and effort. Use the MagicPattern editor to generate unlimited illustrations in seconds, literally.
-
-Boost creativity
-Do you look an empty canvas for hours, craving for inspiration? Now you're one click away from unleashing your imagination.
-
-Scale branding
-Content creation across different platform is difficult. Match unique illustrations to your brand and style.
-Make it beautiful
-Add custom illustration patterns to your digital and print assets. Create beautiful posters, business cards, or calendars!
-
-Pricing
-Create unique art without paying the 100$ per hour fee of a designer!
-
 Create unlimited patterns in seconds.
 Try it now, it's free.
 The easiest way to brand your business in a unique way
@@ -123,8 +137,6 @@ All 100 patterns are designed in a single color and ready to be placed above sol
 
 Features
 
-Effortless exports
-Instantly download PNG and SVG files for use on your startup or side projects website
 
 Easy to use
 Create dozens of creative logo designs with ease using our logo maker just for startups and side projects
@@ -138,9 +150,49 @@ Change colors with ease or pair with gradients and textures
 
 Mobile Responsive
 
+Customize foreground and background colors,
+
+Visualize brilliance
+Test out inspiring designs without watermarks and never settle for dull again
+Work faster
+Focus on the big picture when you use our vast selection of professional graphics
+Customize with ease
+Intuitive user interface helps you avoid hours sifting through blobs of SVG code
+
+Optimized for web
+Not all vectors are built with the same end product in mind. Illustrator exports SVGs with bulky code and browsers don't support advanced features. We thoughtfully craft patterns to shave off the fat and ensure modern-browser support.
+
+Speed up process
+Illustrations need time and effort. Use the MagicPattern editor to generate unlimited illustrations in seconds, literally.
+
+Boost creativity
+Do you look an empty canvas for hours, craving for inspiration? Now you're one click away from unleashing your imagination.
+
+Scale branding
+Content creation across different platform is difficult. Match unique illustrations to your brand and style.
+Make it beautiful
+Add custom illustration patterns to your digital and print assets. Create beautiful posters, business cards, or calendars!
+
+Pricing
+Create unique art without paying the 100$ per hour fee of a designer!
+
+Create seamless patterns in SVG to use as website backgrounds, header images, stationery design and package design
 
 
 Mailing
 
 Be the first to know
 We are thrilled to add you to our list
+
+
+
+OK
+
+Deploy in seconds
+Copy and paste CSS without fumbling around with image files and uploads
+
+Download as SVG, CSS, PNG
+Effortless exports
+Download PNG and SVG files for use on your startup or side projects website
+
+Copy CSS and SVG directly to your clipboard. Download 
