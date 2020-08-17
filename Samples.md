@@ -55,6 +55,36 @@ create pattern
 
 cool patterns
 
+
+Unique keywords
+
+abstract
+app
+background
+backgrounds
+cool
+create
+creator
+css
+design
+for
+free
+generate
+generator
+image
+images
+make
+maker
+making
+online
+pattern
+patterns
+repeatable
+svg
+tool
+vector
+wallpaper
+
 Hero Patterns | Free repeatable SVG background patterns for your web projects
 A collection of free repeatable SVG background patterns for you to use on your digital projects.
 Create Customizable, Hi-Def, and Scalable Backgrounds
@@ -138,20 +168,6 @@ All 100 patterns are designed in a single color and ready to be placed above sol
 Features
 
 
-Easy to use
-Create dozens of creative logo designs with ease using our logo maker just for startups and side projects
-
-Adjustable Stroke
-Modify the stroke weight on 40+ designated patterns
-
-
-Colorize With Ease
-Change colors with ease or pair with gradients and textures
-
-Mobile Responsive
-
-Customize foreground and background colors,
-
 Visualize brilliance
 Test out inspiring designs without watermarks and never settle for dull again
 Work faster
@@ -176,8 +192,21 @@ Add custom illustration patterns to your digital and print assets. Create beauti
 Pricing
 Create unique art without paying the 100$ per hour fee of a designer!
 
-Create seamless patterns in SVG to use as website backgrounds, header images, stationery design and package design
 
+Use them as backgrounds for branding projects, fabrics, packaging, fashion apparel, posters, wrapping paper, printables or just try them as web backgrounds with great results!
+
+They are perfect for your small business, branding, paper stationery, clothing, accessories, wedding, packaging, magazines and more.
+
+This shapes and patterns bundle contains a wealth (over 180 individual elements) of versatile and useful patterns, ideal for packaging and branding projects, web design, wedding invites and stationery...as well as for print graphic, apparel and home decor! And I'm sure you can find loads of many other uses.
+
+Bursting with options The set contains patterns and shapes to cover a host of styles, from the cool, quirky and edgy, to the more luxurious and even corporate; All broken down into their own folders:
+
+Geometric Shapes
+Doodle Shapes
+Organic Shapes
+Circles and Dot Grids Use the style that's appropriate for your project, or mix and match shapes to open up a world of possibilities.
+
+Each of the 100 patterns tile seamlessly on all sides, meaning you can use them as individual design elements, or repeat them as many times as you need. Perfect for use in branding and logo design projects, business cards, creating custom tees and apparel, as well as adding extra modern oomf to your posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
 
 Mailing
 
@@ -190,9 +219,37 @@ OK
 
 Deploy in seconds
 Copy and paste CSS without fumbling around with image files and uploads
-
 Download as SVG, CSS, PNG
 Effortless exports
 Download PNG and SVG files for use on your startup or side projects website
 
-Copy CSS and SVG directly to your clipboard. Download 
+
+Easy to use
+Create dozens of creative logo designs with ease using our logo maker just for startups and side projects
+
+Adjustable Stroke
+Modify the stroke weight on 40+ designated patterns
+
+Colorize With Ease
+
+
+Mobile Responsive
+
+
+
+Final
+------------------------------------------------------------------------------------------------------------
+
+Create seamless SVG patterns to use as website backgrounds, header images, stationery design and package design
+No design skills required
+
+Check https://creativemarket.com/designdell/3759290-650-ESSENTIAL-Vector-Patterns
+
+Copy CSS and SVG directly to your clipboard for web projects
+
+Download a tileable SVG or a high resolution PNG image for print
+
+Customize foreground and background colors easily
+
+Adjust the stroke weight on supported patterns
+
