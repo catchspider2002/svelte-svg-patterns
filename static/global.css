@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #1a202c;
   /* --accent-color: rgb(255, 218, 6); */
-  --accent-color: #553c9a;
+  --accent-color: #44337a;
   --secondary-color: #ffc800;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
@@ -12,7 +12,7 @@
 }
 
 html{
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: "Dosis", sans-serif;
   font-family: "Harmattan", sans-serif;
   font-family: "Josefin Sans", sans-serif;

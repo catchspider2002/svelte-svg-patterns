@@ -1,9 +1,16 @@
 <script>
-  $: color = "#553c9a";
-  $: bg = "#ffc800";
+  // $: color = "#553c9a";
+  // $: bg = "#ffc800";
+  $: color = "black";
+  $: bg = "white";
   $: stroke = 1;
   $: angle = "90";
   $: scale = 1;
+  let border = 0,
+    size = 200,
+    // yPos = -600,
+    cardSize = 200,
+    cardBackground = "white";
   const palettes = [
     ["#553c9a", "#ffc800"],
     ["#e9c46a", "#264653"],
@@ -20,7 +27,7 @@
   :root {
     --main-bg-color: #1a202c;
     /* --accent-color: rgb(255, 218, 6); */
-    --accent-color: #553c9a;
+    --accent-color: #44337a;
     --secondary-color: #ffc800;
     --accent-text-color: #ffffff;
     --secondary-text-color: #000000;
@@ -37,25 +44,29 @@
   }
 
   .mountains {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--accent-text-color);
-    animation: slide 15s linear infinite;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    /* background: var(--accent-text-color); */
+    background-color: var(--accent-color);
+    /* animation: slide 15s linear infinite; */
   }
 
-  @keyframes slide {
+  /* @keyframes slide {
     from {
       transform: translate(0, 0);
     }
     to {
       transform: translate(-1800px, 0);
     }
-  }
+  } */
 
   .landing {
     background-color: var(--main-bg-color);
-    height: 100vh;
+    /* height: 100vh; */
     display: grid;
     color: black;
     grid-template-columns: 1fr;
@@ -291,8 +302,11 @@
     <div class="topGrid">
       <div class="px-6">
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
-        <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Beautiful patterns for your next project</h1>
-        <p class="mt-2 text-lg leading-7 text-gray-300">Create your own pattern and export in PNG or SVG.</p>
+        <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Create amazing SVG patterns in seconds</h1>
+        <p class="mt-2 text-lg leading-7 text-gray-300">
+          A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging
+          design and more.
+        </p>
         <div class="subscribe">
           <p class="h5 mt-2 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
           <div>
@@ -332,10 +346,10 @@
     </div>
   </div>
   <div class="bottomSide">
-    <div class="header__bg" />
+    <!-- <div class="header__bg" /> -->
     <div class="newmountains-container">
       <div class="mountains">
-        <svg id="patternId" width="3000px" height="800px" xmlns="http://www.w3.org/2000/svg">
+        <svg id="patternId" width="1200" height="1200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
@@ -378,19 +392,107 @@
               </g>
             </pattern>
           </defs>
-          <rect x="0" width="280" height="100%" fill="url(#a)" />
-          <rect x="300" width="280" height="100%" fill="url(#b)" />
-          <rect x="600" width="280" height="100%" fill="url(#c)" />
-          <rect x="900" width="280" height="100%" fill="url(#d)" />
-          <rect x="1200" width="280" height="100%" fill="url(#e)" />
-          <rect x="1500" width="280" height="100%" fill="url(#f)" />
-          <rect x="1800" width="280" height="100%" fill="url(#a)" />
-          <rect x="2100" width="280" height="100%" fill="url(#b)" />
-          <rect x="2400" width="280" height="100%" fill="url(#c)" />
-          <rect x="2700" width="280" height="100%" fill="url(#d)" />
+          <filter id="dropshadow" height="130%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <!-- stdDeviation is how much to blur -->
+            <feOffset dx="2" dy="2" result="offsetblur" />
+            <!-- how much to offset -->
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.5" />
+              <!-- slope is the opacity of the shadow -->
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <!-- this contains the offset blurred image -->
+              <feMergeNode in="SourceGraphic" />
+              <!-- this contains the element that the filter is applied to -->
+            </feMerge>
+          </filter>
+          <!-- <g transform="translate(1200, 0) rotate(90)"> -->
+          <g >
+            <rect x={border} width={size} height="100%" fill="url(#f)" transform="translate(1000, 0)" style="filter:url(#dropshadow)" />
+            <rect x={border} width={size} height="100%" fill="url(#e)" transform="translate(800, 0)" style="filter:url(#dropshadow)" />
+            <rect x={border} width={size} height="100%" fill="url(#d)" transform="translate(600, 0)" style="filter:url(#dropshadow)" />
+            <rect x={border} width={size} height="100%" fill="url(#c)" transform="translate(400, 0)" style="filter:url(#dropshadow)" />
+            <rect x={border} width={size} height="100%" fill="url(#b)" transform="translate(200, 0)" style="filter:url(#dropshadow)" />
+            <rect x={border} width={size} height="100%" fill="url(#a)" transform="translate(0, 0)" style="filter:url(#dropshadow)" />
+          </g>
         </svg>
       </div>
     </div>
   </div>
-  Test
+
+  <section class="text-gray-500 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
+        <p class="leading-relaxed text-base">Customize foreground and background colors easily</p>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
+        <p class="leading-relaxed text-base">Adjust the stroke weight on supported patterns</p>
+      </div>
+      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
+          <circle cx="6" cy="6" r="3"></circle>
+          <circle cx="6" cy="18" r="3"></circle>
+          <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
+        <p class="leading-relaxed text-base">Download a tileable SVG or a high resolution PNG image for print</p>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
+        <p class="leading-relaxed text-base">Copy CSS and SVG directly to your clipboard for web projects</p>
+      </div>
+      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
+          <circle cx="6" cy="6" r="3"></circle>
+          <circle cx="6" cy="18" r="3"></circle>
+          <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">The 400 Blows</h2>
+        <p class="leading-relaxed text-base">Change the angle to generate unique images</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+
+
+
+
+
+
+
 </div>
