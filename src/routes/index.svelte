@@ -44,16 +44,21 @@
   }
 
   .mountains {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
+    /* position: absolute;
+    top: 0;
+    left: 0;
     display: grid;
     align-items: center;
     justify-content: center;
-    /* background: var(--accent-text-color); */
+    background: var(--accent-text-color); */
     background-color: var(--accent-color);
     /* animation: slide 15s linear infinite; */
   }
+  
+	#patternId{
+		width: 100%;
+		height: 100%
+	}
 
   /* @keyframes slide {
     from {
@@ -349,7 +354,7 @@
     <!-- <div class="header__bg" /> -->
     <div class="newmountains-container">
       <div class="mountains">
-        <svg id="patternId" width="1200" height="1200" xmlns="http://www.w3.org/2000/svg">
+        <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
@@ -410,12 +415,12 @@
           </filter>
           <!-- <g transform="translate(1200, 0) rotate(90)"> -->
           <g >
-            <rect x={border} width={size} height="100%" fill="url(#f)" transform="translate(1000, 0)" style="filter:url(#dropshadow)" />
-            <rect x={border} width={size} height="100%" fill="url(#e)" transform="translate(800, 0)" style="filter:url(#dropshadow)" />
-            <rect x={border} width={size} height="100%" fill="url(#d)" transform="translate(600, 0)" style="filter:url(#dropshadow)" />
-            <rect x={border} width={size} height="100%" fill="url(#c)" transform="translate(400, 0)" style="filter:url(#dropshadow)" />
-            <rect x={border} width={size} height="100%" fill="url(#b)" transform="translate(200, 0)" style="filter:url(#dropshadow)" />
-            <rect x={border} width={size} height="100%" fill="url(#a)" transform="translate(0, 0)" style="filter:url(#dropshadow)" />
+            <rect x=1000 width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
+            <rect x=800 width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
+            <rect x=600 width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" />
+            <rect x=400 width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
+            <rect x=200 width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
+            <rect x=-20 width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
           </g>
         </svg>
       </div>
@@ -486,13 +491,5 @@
     </div>
   </div>
 </section>
-  
-
-
-
-
-
-
-
 
 </div>
