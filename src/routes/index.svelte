@@ -46,7 +46,11 @@
 	}
 	
 	.big-icon .iconify {
-   font-size: 48px;
+   font-size: 4em;
+   line-height: 1em;
+}
+	.normal-icon .iconify {
+   font-size: 2em;
    line-height: 1em;
 }
 
@@ -83,6 +87,7 @@
     color: black;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    grid-column-gap: 32px;	
   }
   .header__bg {
     position: absolute;
@@ -267,58 +272,9 @@
     <div class="px-6 pt-8 pb-12">
       <div class="flex items-center justify-between">
         <div class="flex items-center tracking-wider">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            focusable="false"
-            role="img"
-            class="iconify iconify--noto-v1"
-            width="2em"
-            height="2em"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 128 128"
-            style="transform: rotate(360deg);">
-            <path
-              d="M102.26 21.7s-1.19-1.83-3.65-2.22c-3.06-.48-6.08.07-7.05 4.51c-.96 4.42-1.45 10.11 3.49 14.08l-7.6 2.13l-6.51-7.89s2.52.96
-              2.86-.91c.42-2.29.42-4.36.97-7.87c.58-3.67 1.73-7.51 5.25-9.54c1.92-1.11 4.98-1.74 5.99-2.55c.78-.63.99-2.65 1.33-4.84l5.42
-              4.16l1.7 7.4l-2.2 3.54z"
-              fill="#d7598b" />
-            <circle cx="107.39" cy="12.02" r="11.93" fill="#fcc21b" />
-            <path
-              d="M25.74 21.7s1.19-1.83 3.65-2.22c3.06-.48 6.08.07 7.05 4.51c.96 4.42 1.46 10.11-3.49 14.08l7.6
-              2.13l6.51-7.89s-2.52.96-2.86-.91c-.42-2.29-.42-4.36-.97-7.87c-.59-3.67-1.73-7.51-5.25-9.54c-1.92-1.11-4.98-1.74-5.99-2.55c-.78-.63-.99-2.65-1.33-4.84l-5.42
-              4.16l-1.7 7.4l2.2 3.54z"
-              fill="#d7598b" />
-            <circle cx="20.61" cy="12.02" r="11.93" fill="#fcc21b" />
-            <path
-              d="M107.29 114.08c-.43-2.59.02-5.5.48-7.83c.82-4.19 2.31-8.22 3.78-12.21c.47-1.29.95-2.58 1.4-3.87c1.5-4.32 2.32-8.9
-              2.32-13.67c0-25.47-16.78-46.11-51.26-46.11S12.75 51.04 12.75 76.5c0 4.45.71 8.74 2.03 12.81c2.48 7.64 6.49 15.25 6.23
-              23.48c-.15 4.94-2.97 7.47-6.43 10.44c-1.07.92-1.27 2.42.08 3.19c3.1 1.78 8.32-.19 11.33-1.4c2.69-1.08 5.21-2.93
-              7.31-5.08c1.08-1.1 2.08-2.27 3.07-3.44c.82-.96 2.18-3.42 3.74-2.72c3.4 1.53-.58 7.86-2.3 9.38c-.7.62-1.65 1.18-1.97 2.12c-.36
-              1.03.37 1.93 1.3 2.3c2.6 1.04 8.28-.72 10.88-2.46c1.86-1.25 3.41-2.85 4.71-4.68c.81-1.14 2.21-4.74 4.02-4.31c3.32.8 1.92 6.03
-              2.14 8.3c.11 1.16.78 2.32 1.94 2.77c2.52.99 4.74-.79 6.22-2.63c1.65-2.05 2.44-4.32 3.73-6.54c1.03-1.79 2.83-2.16 4.12-.31c1.88
-              2.69 3.04 5.25 6.03 6.96c2.46 1.4 5.3 2.27 8.14 2.29c1.25 0 6.79-.66
-              4.92-3.11c-.82-1.06-2.39-1.32-3.46-2.11c-1.76-1.31-2.57-3.48-2.63-5.62c-.08-3.05 2.87-2.27 4.32-.8c2.35 2.38 3.75 5.76 6.78
-              7.39c3.63 1.95 9.29 2.9 13.29 1.67c1.36-.42 2.92-1.01
-              3.01-2.65c.09-1.55-1.23-1.92-2.47-2.27c-1.59-.44-2.69-.84-3.91-2.06c-.92-.88-1.42-2.08-1.63-3.33z"
-              fill="#d7598b" />
-            <g>
-              <path
-                d="M72.04 80.73l18.22-8.71s2.54 3.93 1.92 8.56c-.38 2.77-2.22 6-6.35 7.38c-3.72
-                1.24-6.78.81-8.78-.08c-4.77-2.11-5.01-7.15-5.01-7.15z"
-                fill="#bdcf46" />
-              <path
-                d="M55.4 80.73l-18.22-8.71s-2.54 3.93-1.92 8.56c.38 2.77 2.23 6 6.35 7.38c3.72 1.24 6.78.81 8.78-.08c4.78-2.11 5.01-7.15
-                5.01-7.15z"
-                fill="#bdcf46" />
-              <path
-                d="M74.85 94.95c-.37-1.25-1.66-2.33-2.97-2.38c-1.57-.06-2.57 1.41-3.73 2.22c-1.34.94-3.01 1.61-4.67
-                1.46c-2.01-.19-3.07-1.54-4.61-2.64c-1.4-.99-3.15-1-4.39.3c-.59.62-.91 1.47-.86 2.33c.06 1.13.81 2.28 1.61 3.03c3.14 2.97
-                8.02 3.62 12.08 2.58c2.83-.73 8.73-2.93 7.54-6.9z"
-                fill="#2f2f2f" />
-            </g>
-          </svg>
+           <div class="normal-icon">
+   <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false"></span>
+</div>
           <span class="logoText">PATTERN MONSTER</span>
         </div>
       </div>
@@ -449,8 +405,7 @@
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
         <div class="big-icon">
-   <span class="iconify" data-icon="noto:artist-palette" data-inline="false"></span>
-</div>
+<span class="iconify" data-icon="bx:bxs-palette" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
@@ -462,19 +417,16 @@
         <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
         <p class="leading-relaxed text-base accent-text">Adjust the stroke weight on supported patterns</p>
       </div>
-      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <circle cx="6" cy="6" r="3"></circle>
-          <circle cx="6" cy="18" r="3"></circle>
-          <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-        </svg>
+      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">  
+        <div class="big-icon">
+<span class="iconify" data-icon="zondicons:stroke-width" data-inline="false"></span></div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-        </svg>
+      
+        <div class="big-icon">
+<span class="iconify" data-icon="whh:pattern" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
@@ -487,19 +439,16 @@
         <p class="leading-relaxed text-base accent-text">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
       <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <circle cx="6" cy="6" r="3"></circle>
-          <circle cx="6" cy="18" r="3"></circle>
-          <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-        </svg>
+        
+        <div class="big-icon">
+<span class="iconify" data-icon="vaadin:css" data-inline="false"></span></div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
+        
+        <div class="big-icon">
+<span class="iconify" data-icon="mdi:angle-acute" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">The 400 Blows</h2>
