@@ -120,7 +120,7 @@
 		width: 320px;
 		height: 240px;
     color: var(--secondary-color);
-    padding: 1rem;
+    padding: 1rem 2rem;
 /*     margin: 1.5rem; */
     grid-column-gap: 1em;
     grid-row-gap: 1em;
@@ -141,7 +141,10 @@
 
   h1 {
     color: var(--secondary-color);
-    font-size: 2.5em;
+    font-size: 2.5em;    
+    margin-top: 0.5rem;
+    line-height: 2.75rem;
+    font-weight: 600;
   }
 	
 	h2{
@@ -165,10 +168,6 @@
     color: var(--accent-text-color);
     font-weight: 600;
     padding-left: 8px;
-  }
-
-  .p-6 {
-    padding: 1.5rem;
   }
   .px-6 {
     padding-left: 1.5rem;
@@ -215,9 +214,6 @@
   }
   .leading-7 {
     line-height: 1.75rem;
-  }
-  .leading-9 {
-    line-height: 2.25rem;
   }
 
   .radio-toolbar {
@@ -296,7 +292,7 @@
     <div class="topGrid">
       <div class="px-6">
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
-        <h1 class="mt-2 leading-9 font-semibold font-display">Create amazing SVG patterns in seconds</h1>
+        <h1>Create amazing SVG patterns in seconds</h1>
         <p class="mt-2 text-lg leading-7 text-gray-500">
           A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.
         </p>
