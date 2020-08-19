@@ -7,10 +7,7 @@
   $: angle = "90";
   $: scale = 1;
   let border = 0,
-    size = 200,
-    // yPos = -600,
-    cardSize = 200,
-    cardBackground = "white";
+    size = 220;
   const palettes = [
     ["#553c9a", "#ffc800"],
     ["#e9c46a", "#264653"],
@@ -44,13 +41,6 @@
   }
 
   .mountains {
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent-text-color); */
     background-color: var(--accent-color);
     /* animation: slide 15s linear infinite; */
   }
@@ -74,8 +64,8 @@
     /* height: 100vh; */
     display: grid;
     color: black;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
   .header__bg {
     position: absolute;
@@ -90,8 +80,17 @@
   }
   .toolbox {
     display: grid;
+		position: absolute;		
+  left: 0; 
+  right: 0; 
+		top: 0;
+		bottom: 0;
+  margin: auto;
+		width: 320px;
+		height: 200px;
     color: var(--secondary-color);
-    margin: 1.5rem;
+    padding: 1rem;
+/*     margin: 1.5rem; */
     grid-column-gap: 1em;
     grid-row-gap: 1em;
     background: var(--main-bg-color);
@@ -101,8 +100,8 @@
 
   .topGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 32px;
+    grid-template-columns: 1fr;
+    grid-column-gap: 16px;
     /* 		grid-template-rows: 1fr; */
   }
   .topSide {
@@ -121,6 +120,7 @@
 
   .bottomSide {
     position: relative;
+		display: grid;
   }
 
   .logoText {
@@ -223,14 +223,17 @@
   .radio-toolbar input[type="radio"]:checked + label {
     border: 2px solid var(--secondary-color);
   }
-
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .topGrid {
       grid-template-columns: 1fr;
     }
     .landing {
-      height: unset;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr  1fr;
     }
+	}
+
+  @media (max-width: 768px) {
 
     .radio-toolbar {
       grid-template-columns: repeat(6, 1fr);
@@ -321,40 +324,13 @@
           </div>
         </div>
       </div>
-      <div class="toolbox p-6 items-center">
-
-        <label for="scale">Scale</label>
-        <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
-        <label for="stroke">Stroke</label>
-        <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
-        <label for="angle">Angle</label>
-        <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-        <label for="angle">Colors</label>
-        <div class="radio-toolbar padding-top-5">
-          {#each palettes as palette, i}
-            <input
-              type="radio"
-              id="palette{i}"
-              name="palette"
-              value={i}
-              on:change={() => {
-                color = palette[0];
-                bg = palette[1];
-              }} />
-            <label
-              style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
-              class="disable-select"
-              for="palette{i}" />
-          {/each}
-        </div>
-      </div>
     </div>
   </div>
   <div class="bottomSide">
     <!-- <div class="header__bg" /> -->
     <div class="newmountains-container">
       <div class="mountains">
-        <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+        <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 3600" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={bg} />
@@ -425,6 +401,32 @@
         </svg>
       </div>
     </div>
+      <div class="toolbox items-center">
+        <label for="scale">Scale</label>
+        <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
+        <label for="stroke">Stroke</label>
+        <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
+        <label for="angle">Angle</label>
+        <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
+        <label for="angle">Colors</label>
+        <div class="radio-toolbar padding-top-5">
+          {#each palettes as palette, i}
+            <input
+              type="radio"
+              id="palette{i}"
+              name="palette"
+              value={i}
+              on:change={() => {
+                color = palette[0];
+                bg = palette[1];
+              }} />
+            <label
+              style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
+              class="disable-select"
+              for="palette{i}" />
+          {/each}
+        </div>
+      </div>
   </div>
 
   <section class="text-gray-500 bg-gray-900 body-font">
