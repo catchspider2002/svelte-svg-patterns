@@ -32,6 +32,10 @@
     --border-radius: 4px;
     --text-gray-300: #e2e8f0;
   }
+	
+	.features{
+		background-color: var(--secondary-color);
+	}
 
   .newmountains-container {
     position: absolute;
@@ -101,12 +105,11 @@
   .topGrid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-column-gap: 16px;
+    grid-column-gap: 32px;
     /* 		grid-template-rows: 1fr; */
   }
   .topSide {
     background-color: var(--accent-color);
-    /*     margin-bottom: -50px; */
   }
 
   h1 {
@@ -229,11 +232,11 @@
     }
     .landing {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr  1fr;
+    grid-template-rows: 1fr 1fr;
     }
 	}
 
-  @media (max-width: 768px) {
+/*   @media (max-width: 768px) {
 
     .radio-toolbar {
       grid-template-columns: repeat(6, 1fr);
@@ -243,7 +246,7 @@
     .radio-toolbar {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
+  } */
 </style>
 
 <div class="landing">
@@ -312,14 +315,12 @@
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
         <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Create amazing SVG patterns in seconds</h1>
         <p class="mt-2 text-lg leading-7 text-gray-300">
-          A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging
-          design and more.
+          A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.
         </p>
         <div class="subscribe">
-          <p class="h5 mt-2 leading-7 text-gray-300">Sign up for project updates, early previews and to find out when it is ready</p>
+          <p class="h5 mt-2 leading-7 text-gray-300">We are thrilled to add you to our list</p>
           <div>
             <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-
             </script>
           </div>
         </div>
@@ -428,8 +429,9 @@
         </div>
       </div>
   </div>
+</div>
 
-  <section class="text-gray-500 bg-gray-900 body-font">
+  <section class="features text-gray-500 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
@@ -493,5 +495,3 @@
     </div>
   </div>
 </section>
-
-</div>
