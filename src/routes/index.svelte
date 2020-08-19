@@ -31,6 +31,8 @@
     --accent-color-hover: rgba(255, 218, 6, 0.8);
     --border-radius: 4px;
     --text-gray-300: #e2e8f0;
+    --text-gray-500: #a0aec0;
+    --text-gray-900: #1a202c;
   }
 	
 	.accent-text{
@@ -44,6 +46,13 @@
 	.features{
 		background-color: var(--secondary-color);
 	}
+    
+    .featureDescription{
+    line-height:1.625;
+    font-size:1em;
+		color: var(--main-bg-color);
+    font-family: 'Montserrat', sans-serif;
+    }
 	
 	.big-icon .iconify {
    font-size: 4em;
@@ -132,7 +141,15 @@
 
   h1 {
     color: var(--secondary-color);
+    font-size: 2.5em;
   }
+	
+	h2{
+    color: black;
+    font-weight: 600;    
+    font-size: 1.125em;
+    margin-bottom:.5rem;    
+    }
 
   .h5 {
     color: var(--text-gray-300);
@@ -176,14 +193,11 @@
     justify-content: space-between;
   }
   .text-sm {
-    font-size: 0.875rem;
+    font-size: 0.875em;
   }
   .text-lg {
-    font-size: 1.125rem;
-  }
-  .text-3xl {
-    font-size: 1.875rem;
-  }
+    font-size: 1.125em;
+  }	
   .font-semibold {
     font-weight: 600;
   }
@@ -282,8 +296,8 @@
     <div class="topGrid">
       <div class="px-6">
         <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
-        <h1 class="mt-2 text-3xl leading-9 font-semibold font-display">Create amazing SVG patterns in seconds</h1>
-        <p class="mt-2 text-lg leading-7 text-gray-300">
+        <h1 class="mt-2 leading-9 font-semibold font-display">Create amazing SVG patterns in seconds</h1>
+        <p class="mt-2 text-lg leading-7 text-gray-500">
           A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.
         </p>
         <div class="subscribe">
@@ -344,12 +358,12 @@
             </pattern>
           </defs>
           <filter id="dropshadow" height="130%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feGaussianBlur in="SourceAlpha" stdDeviation="7" />
             <!-- stdDeviation is how much to blur -->
-            <feOffset dx="2" dy="2" result="offsetblur" />
+            <feOffset dx="3" dy="3" result="offsetblur" />
             <!-- how much to offset -->
             <feComponentTransfer>
-              <feFuncA type="linear" slope="0.5" />
+              <feFuncA type="linear" slope="1.5" />
               <!-- slope is the opacity of the shadow -->
             </feComponentTransfer>
             <feMerge>
@@ -408,14 +422,14 @@
 <span class="iconify" data-icon="bx:bxs-palette" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-        <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
-        <p class="leading-relaxed text-base accent-text">Customize foreground and background colors easily</p>
+        <h2>Shooting Stars</h2>
+        <p class="featureDescription">Customize foreground and background colors easily</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-        <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
-        <p class="leading-relaxed text-base accent-text">Adjust the stroke weight on supported patterns</p>
+        <h2>The Catalyzer</h2>
+        <p class="featureDescription">Adjust the stroke weight on supported patterns</p>
       </div>
       <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">  
         <div class="big-icon">
@@ -429,14 +443,14 @@
 <span class="iconify" data-icon="whh:pattern" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-        <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
-        <p class="leading-relaxed text-base accent-text">Download a tileable SVG or a high resolution PNG image for print</p>
+        <h2>Shooting Stars</h2>
+        <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-        <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
-        <p class="leading-relaxed text-base accent-text">Copy CSS and SVG directly to your clipboard for web projects</p>
+        <h2>The Catalyzer</h2>
+        <p class="featureDescription">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
       <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
         
@@ -451,8 +465,8 @@
 <span class="iconify" data-icon="mdi:angle-acute" data-inline="false"></span></div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-        <h2 class="text-white text-lg title-font font-medium mb-2">The 400 Blows</h2>
-        <p class="leading-relaxed text-base accent-text">Change the angle to generate unique images</p>
+        <h2>The 400 Blows</h2>
+        <p class="featureDescription">Change the angle to generate unique images</p>
       </div>
     </div>
   </div>
