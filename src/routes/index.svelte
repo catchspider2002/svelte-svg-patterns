@@ -33,9 +33,22 @@
     --text-gray-300: #e2e8f0;
   }
 	
+	.accent-text{
+		color: var(--accent-color);
+	}
+	
+	.secondary-text{
+		color: var(--accent-color);
+	}
+	
 	.features{
 		background-color: var(--secondary-color);
 	}
+	
+	.big-icon .iconify {
+   font-size: 48px;
+   line-height: 1em;
+}
 
   .newmountains-container {
     position: absolute;
@@ -91,7 +104,7 @@
 		bottom: 0;
   margin: auto;
 		width: 320px;
-		height: 200px;
+		height: 240px;
     color: var(--secondary-color);
     padding: 1rem;
 /*     margin: 1.5rem; */
@@ -435,19 +448,19 @@
   <div class="container px-5 py-24 mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-        </svg>
+        <div class="big-icon">
+   <span class="iconify" data-icon="noto:artist-palette" data-inline="false"></span>
+</div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
-        <p class="leading-relaxed text-base">Customize foreground and background colors easily</p>
+        <p class="leading-relaxed text-base accent-text">Customize foreground and background colors easily</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
-        <p class="leading-relaxed text-base">Adjust the stroke weight on supported patterns</p>
+        <p class="leading-relaxed text-base accent-text">Adjust the stroke weight on supported patterns</p>
       </div>
       <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
@@ -465,13 +478,13 @@
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">Shooting Stars</h2>
-        <p class="leading-relaxed text-base">Download a tileable SVG or a high resolution PNG image for print</p>
+        <p class="leading-relaxed text-base accent-text">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">The Catalyzer</h2>
-        <p class="leading-relaxed text-base">Copy CSS and SVG directly to your clipboard for web projects</p>
+        <p class="leading-relaxed text-base accent-text">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
       <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
@@ -490,7 +503,7 @@
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-white text-lg title-font font-medium mb-2">The 400 Blows</h2>
-        <p class="leading-relaxed text-base">Change the angle to generate unique images</p>
+        <p class="leading-relaxed text-base accent-text">Change the angle to generate unique images</p>
       </div>
     </div>
   </div>
