@@ -1,8 +1,12 @@
 <script>
+  import { onMount } from "svelte";
+
   // $: color = "#553c9a";
   // $: bg = "#ffc800";
-  $: color = "black";
-  $: bg = "white";
+  // $: color = "black";
+  // $: bg = "white";
+  $: color = "white";
+  $: bg = "black";
   $: stroke = 1;
   $: angle = "90";
   $: scale = 1;
@@ -18,6 +22,73 @@
     ["#cad2c5", "#84a98c"],
     ["#1a936f", "#88d498"]
   ];
+
+  
+
+  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
+let mode = ["stroke", "no", "no"]
+let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25,22 M -5,7 5,12 15,7 25,12 m -27.5,12.5 5,-10 -5,-10 5,-10 m 15,30 5,-10 -5,-10 5,-10 m -15,30 5,-10 -5,-10 5,-10'/>"
+
+    function multiStroke(i) {
+      if (mode[0] === "stroke") {
+        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
+        joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+      } else strokeFill = " stroke = 'none' fill='" + colors[i + 1] + "'";
+
+      return (
+        "<g transform='translate(" +
+        spacing[0] / 2 +
+        "," +
+        (height * i + spacing[1] * i * 0.5) +
+        ")' " +
+        joinMode +
+        "stroke-width='" +
+        stroke +
+        "'" +
+        strokeFill +
+        ">" +
+        path +
+        "</g>"
+      );
+    }
+
+    let strokeFill, joinMode, strokeGroup;
+    let width =20, height = 20
+
+    for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
+
+    let patternNew =
+      "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
+      "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
+      (width + spacing[0]) +
+      "' height='" +
+      (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
+      "' patternTransform='scale(" +
+      scale +
+      ") rotate(" +
+      angle +
+      ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
+      colors[0] +
+      "'/>" +
+      strokeGroup +
+      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+    return patternNew//.replace("#", "%23");
+  };
+
+  $: svgFile = svgPattern(
+    ["red","green","blue"],
+    5,
+    3,
+    [0,0],
+    52,
+    1
+  );
+
+  onMount(async () => {
+  
+    document.getElementById("pngOutput").innerHTML = svgFile
+  });
+
 </script>
 
 <style>
@@ -34,34 +105,71 @@
     --text-gray-500: #a0aec0;
     --text-gray-900: #1a202c;
   }
-	
-	.accent-text{
-		color: var(--accent-color);
-	}
-	
-	.secondary-text{
-		color: var(--accent-color);
-	}
-	
-	.features{
-		background-color: var(--secondary-color);
-	}
-    
-    .featureDescription{
-    line-height:1.625;
-    font-size:1em;
-		color: var(--main-bg-color);
-    font-family: 'Montserrat', sans-serif;
-    }
-	
-	.big-icon .iconify {
-   font-size: 4em;
-   line-height: 1em;
-}
-	.normal-icon .iconify {
-   font-size: 2em;
-   line-height: 1em;
-}
+
+  .accent-text {
+    color: var(--accent-color);
+  }
+
+  .secondary-text {
+    color: var(--accent-color);
+  }
+
+  .primary-font {
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .secondary-font {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  button {
+    font-size: 1em;
+  }
+
+  #logo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    align-items: flex-end;
+  }
+
+  .comingSoon {
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 1rem;
+  }
+
+  .subtitle {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    /* line-height: 1.75rem; */
+    font-size: 1.125em;
+  }
+
+  .features {
+    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
+  }
+
+  .featureDescription {
+    line-height: 1.625;
+    font-size: 1em;
+    color: var(--main-bg-color);
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .big-icon .iconify {
+    font-size: 4em;
+    line-height: 1em;
+  }
+  .normal-icon .iconify {
+    font-size: 2em;
+    line-height: 1em;
+  }
 
   .newmountains-container {
     position: absolute;
@@ -72,31 +180,16 @@
 
   .mountains {
     background-color: var(--accent-color);
-    /* animation: slide 15s linear infinite; */
   }
-  
-	#patternId{
-		width: 100%;
-		height: 100%
-	}
-
-  /* @keyframes slide {
-    from {
-      transform: translate(0, 0);
-    }
-    to {
-      transform: translate(-1800px, 0);
-    }
-  } */
 
   .landing {
-    background-color: var(--main-bg-color);
-    /* height: 100vh; */
+    background-color: var(--accent-color);
     display: grid;
     color: black;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 32px;	
+    grid-column-gap: 32px;
+    min-height: 90vh;
   }
   .header__bg {
     position: absolute;
@@ -111,17 +204,17 @@
   }
   .toolbox {
     display: grid;
-		position: absolute;		
-  left: 0; 
-  right: 0; 
-		top: 0;
-		bottom: 0;
-  margin: auto;
-		width: 320px;
-		height: 240px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 360px;
+    height: 240px;
     color: var(--secondary-color);
-    padding: 1rem 2rem;
-/*     margin: 1.5rem; */
+    padding: 1rem 1.5rem;
+    /*     margin: 1.5rem; */
     grid-column-gap: 1em;
     grid-row-gap: 1em;
     background: var(--main-bg-color);
@@ -129,30 +222,24 @@
     border-radius: var(--border-radius);
   }
 
-  .topGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 32px;
-    /* 		grid-template-rows: 1fr; */
-  }
   .topSide {
-    background-color: var(--accent-color);
+    display: grid;
+    align-items: center;
   }
 
   h1 {
     color: var(--secondary-color);
-    font-size: 2.5em;    
+    font-size: 3.2em;
     margin-top: 0.5rem;
-    line-height: 2.75rem;
-    font-weight: 600;
+    line-height: 1em;
   }
-	
-	h2{
+
+  h2 {
     color: black;
-    font-weight: 600;    
+    font-weight: 600;
     font-size: 1.125em;
-    margin-bottom:.5rem;    
-    }
+    margin-bottom: 0.5rem;
+  }
 
   .h5 {
     color: var(--text-gray-300);
@@ -161,7 +248,7 @@
 
   .bottomSide {
     position: relative;
-		display: grid;
+    display: grid;
   }
 
   .logoText {
@@ -169,15 +256,8 @@
     font-weight: 600;
     padding-left: 8px;
   }
-  .px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  .pt-8 {
-    padding-top: 2rem;
-  }
-  .pb-12 {
-    padding-bottom: 3rem;
+  .p-6 {
+    padding: 1.5rem;
   }
   .flex {
     display: flex;
@@ -196,7 +276,7 @@
   }
   .text-lg {
     font-size: 1.125em;
-  }	
+  }
   .font-semibold {
     font-weight: 600;
   }
@@ -255,16 +335,13 @@
     border: 2px solid var(--secondary-color);
   }
   @media (max-width: 1024px) {
-    .topGrid {
-      grid-template-columns: 1fr;
-    }
     .landing {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
     }
-	}
+  }
 
-/*   @media (max-width: 768px) {
+  /*   @media (max-width: 768px) {
 
     .radio-toolbar {
       grid-template-columns: repeat(6, 1fr);
@@ -279,30 +356,23 @@
 
 <div class="landing">
   <div class="topSide">
-    <div class="px-6 pt-8 pb-12">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center tracking-wider">
-           <div class="normal-icon">
-   <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false"></span>
-</div>
-          <span class="logoText">PATTERN MONSTER</span>
+    <div class="p-6">
+      <div id="logo">
+        <div class="normal-icon">
+          <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false" />
         </div>
+        <span class="logoText">PATTERN MONSTER</span>
       </div>
-    </div>
-    <div class="topGrid">
-      <div class="px-6">
-        <p class="text-sm font-semibold text-gray-300 uppercase tracking-wider">COMING SOON</p>
-        <h1>Create amazing SVG patterns in seconds</h1>
-        <p class="mt-2 text-lg leading-7 text-gray-500">
-          A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.
-        </p>
-        <div class="subscribe">
-          <p class="h5 mt-2 leading-7 text-gray-300">We are thrilled to add you to our list</p>
-          <div>
-            <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-            </script>
-          </div>
-        </div>
+      <p class="comingSoon text-gray-400 secondary-font">COMING SOON</p>
+      <h1>Create amazing SVG patterns in seconds</h1>
+      <p class="subtitle text-gray-400 secondary-font">
+        A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging
+        design and more.
+      </p>
+      <div class="subscribe">
+        <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+
+        </script>
       </div>
     </div>
   </div>
@@ -370,52 +440,55 @@
             </feMerge>
           </filter>
           <!-- <g transform="translate(1200, 0) rotate(90)"> -->
-          <g >
-            <rect x=1000 width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
-            <rect x=800 width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
-            <rect x=600 width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" />
-            <rect x=400 width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
-            <rect x=200 width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
-            <rect x=-20 width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
+          <g>
+            <rect x="1000" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
+            <rect x="800" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
+            <rect x="600" width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" />
+            <rect x="400" width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
+            <rect x="200" width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
+            <rect x="-20" width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
           </g>
         </svg>
       </div>
     </div>
-      <div class="toolbox items-center">
-        <label for="scale">Scale</label>
-        <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
-        <label for="stroke">Stroke</label>
-        <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
-        <label for="angle">Angle</label>
-        <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-        <label for="angle">Colors</label>
-        <div class="radio-toolbar padding-top-5">
-          {#each palettes as palette, i}
-            <input
-              type="radio"
-              id="palette{i}"
-              name="palette"
-              value={i}
-              on:change={() => {
-                color = palette[0];
-                bg = palette[1];
-              }} />
-            <label
-              style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
-              class="disable-select"
-              for="palette{i}" />
-          {/each}
-        </div>
+    <div class="toolbox items-center">
+      <label for="scale">Scale</label>
+      <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
+      <label for="stroke">Stroke</label>
+      <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
+      <label for="angle">Angle</label>
+      <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
+      <label for="angle">Colors</label>
+      <div class="radio-toolbar padding-top-5">
+        {#each palettes as palette, i}
+          <input
+            type="radio"
+            id="palette{i}"
+            name="palette"
+            value={i}
+            on:change={() => {
+              color = palette[0];
+              bg = palette[1];
+            }} />
+          <label
+            style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
+            class="disable-select"
+            for="palette{i}" />
+        {/each}
       </div>
+    </div>
   </div>
 </div>
 
-  <section class="features text-gray-500 body-font">
+<section class="features text-gray-500 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
+      <div
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        flex-shrink-0">
         <div class="big-icon">
-<span class="iconify" data-icon="bx:bxs-palette" data-inline="false"></span></div>
+          <span class="iconify" data-icon="bx:bxs-palette" data-inline="false" />
+        </div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2>Shooting Stars</h2>
@@ -427,16 +500,22 @@
         <h2>The Catalyzer</h2>
         <p class="featureDescription">Adjust the stroke weight on supported patterns</p>
       </div>
-      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">  
+      <div
+        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
+        text-indigo-400 bg-gray-800 flex-shrink-0">
         <div class="big-icon">
-<span class="iconify" data-icon="zondicons:stroke-width" data-inline="false"></span></div>
+          <span class="iconify" data-icon="zondicons:stroke-width" data-inline="false" />
+        </div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-      
+      <div
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        flex-shrink-0">
+
         <div class="big-icon">
-<span class="iconify" data-icon="whh:pattern" data-inline="false"></span></div>
+          <span class="iconify" data-icon="whh:pattern" data-inline="false" />
+        </div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2>Shooting Stars</h2>
@@ -448,17 +527,23 @@
         <h2>The Catalyzer</h2>
         <p class="featureDescription">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
-      <div class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        
+      <div
+        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
+        text-indigo-400 bg-gray-800 flex-shrink-0">
+
         <div class="big-icon">
-<span class="iconify" data-icon="vaadin:css" data-inline="false"></span></div>
+          <span class="iconify" data-icon="vaadin:css" data-inline="false" />
+        </div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0">
-        
+      <div
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        flex-shrink-0">
+
         <div class="big-icon">
-<span class="iconify" data-icon="mdi:angle-acute" data-inline="false"></span></div>
+          <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
+        </div>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2>The 400 Blows</h2>
@@ -466,4 +551,5 @@
       </div>
     </div>
   </div>
+  <div id="pngOutput"></div>
 </section>
