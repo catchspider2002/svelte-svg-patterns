@@ -1,93 +1,23 @@
 <script>
   import { onMount } from "svelte";
-
-  // $: color = "#553c9a";
-  // $: bg = "#ffc800";
-  // $: color = "black";
-  // $: bg = "white";
-  $: color = "white";
-  $: bg = "black";
   $: stroke = 1;
   $: angle = "90";
   $: scale = 1;
-  let border = 0,
-    size = 220;
   const palettes = [
-    ["#553c9a", "#ffc800"],
-    ["#e9c46a", "#264653"],
-    ["#ffcdb2", "#e5989b"],
-    ["#50514f", "#f25f5c"],
-    ["#247ba0", "#70c1b3"],
-    ["#f0a6ca", "#9c89b8"],
-    ["#cad2c5", "#84a98c"],
-    ["#1a936f", "#88d498"]
+    ["#553c9a", "#ffc800", "red", "green", "blue"],
+    ["#e9c46a", "#264653", "red", "green", "white"],
+    ["#ffcdb2", "#e5989b", "red", "green", "white"],
+    ["#50514f", "#f25f5c", "red", "green", "white"],
+    ["#247ba0", "#70c1b3", "red", "green", "white"],
+    ["#f0a6ca", "#9c89b8", "red", "green", "white"],
+    ["#cad2c5", "#84a98c", "red", "green", "white"],
+    ["#1a936f", "#88d498", "red", "green", "white"],
+    ["white","blue","purple"],
+    ["white","green","blue","purple","red"],
+    ["white","red","blue","purple"]
   ];
-
-  
-
-  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
-let mode = ["stroke", "no", "no"]
-let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25,22 M -5,7 5,12 15,7 25,12 m -27.5,12.5 5,-10 -5,-10 5,-10 m 15,30 5,-10 -5,-10 5,-10 m -15,30 5,-10 -5,-10 5,-10'/>"
-
-    function multiStroke(i) {
-      if (mode[0] === "stroke") {
-        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
-        joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-      } else strokeFill = " stroke = 'none' fill='" + colors[i + 1] + "'";
-
-      return (
-        "<g transform='translate(" +
-        spacing[0] / 2 +
-        "," +
-        (height * i + spacing[1] * i * 0.5) +
-        ")' " +
-        joinMode +
-        "stroke-width='" +
-        stroke +
-        "'" +
-        strokeFill +
-        ">" +
-        path +
-        "</g>"
-      );
-    }
-
-    let strokeFill, joinMode, strokeGroup;
-    let width =20, height = 20
-
-    for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
-
-    let patternNew =
-      "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
-      "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
-      (width + spacing[0]) +
-      "' height='" +
-      (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-      "' patternTransform='scale(" +
-      scale +
-      ") rotate(" +
-      angle +
-      ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
-      colors[0] +
-      "'/>" +
-      strokeGroup +
-      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
-    return patternNew//.replace("#", "%23");
-  };
-
-  $: svgFile = svgPattern(
-    ["red","green","blue"],
-    5,
-    3,
-    [0,0],
-    52,
-    1
-  );
-
-  onMount(async () => {
-  
-    document.getElementById("pngOutput").innerHTML = svgFile
-  });
+  let size = 220
+  $: colorPalette = palettes[0];
 
 </script>
 
@@ -110,13 +40,13 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
     color: var(--accent-color);
   }
 
-  .secondary-text {
-    color: var(--accent-color);
+/*  .secondary-text {
+    color: var(--secondary-color);
   }
 
   .primary-font {
     font-family: "Josefin Sans", sans-serif;
-  }
+  }*/
 
   .secondary-font {
     font-family: "Montserrat", sans-serif;
@@ -152,7 +82,6 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
 
   .features {
     background-color: var(--secondary-color);
-    background-color: var(--accent-color);
   }
 
   .featureDescription {
@@ -171,19 +100,14 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
     line-height: 1em;
   }
 
-  .newmountains-container {
+  .svgContainer {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
 
-  .mountains {
-    background-color: var(--accent-color);
-  }
-
   .landing {
-    background-color: var(--accent-color);
     display: grid;
     color: black;
     grid-template-columns: 1fr 1fr;
@@ -191,14 +115,14 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
     grid-column-gap: 32px;
     min-height: 90vh;
   }
-  .header__bg {
+/*   .header__bg {
     position: absolute;
     width: 100%;
     height: 100px;
     background: var(--accent-color);
     z-index: 1;
     clip-path: polygon(0 46%, 0 0, 100% 0);
-  }
+  } */
   .subscribe {
     display: grid;
   }
@@ -241,11 +165,6 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
     margin-bottom: 0.5rem;
   }
 
-  .h5 {
-    color: var(--text-gray-300);
-    color: var(--accent-color);
-  }
-
   .bottomSide {
     position: relative;
     display: grid;
@@ -264,36 +183,6 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
   }
   .items-center {
     align-items: center;
-  }
-  /* .justify-center {
-    justify-content: center;
-  } */
-  .justify-between {
-    justify-content: space-between;
-  }
-  .text-sm {
-    font-size: 0.875em;
-  }
-  .text-lg {
-    font-size: 1.125em;
-  }
-  .font-semibold {
-    font-weight: 600;
-  }
-  .text-gray-300 {
-    color: var(--text-gray-300);
-  }
-  .uppercase {
-    text-transform: uppercase;
-  }
-  .tracking-wider {
-    letter-spacing: 0.05em;
-  }
-  .mt-2 {
-    margin-top: 0.5rem;
-  }
-  .leading-7 {
-    line-height: 1.75rem;
   }
 
   .radio-toolbar {
@@ -354,7 +243,7 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
   } */
 </style>
 
-<div class="landing">
+<div class="landing accent-text">
   <div class="topSide">
     <div class="p-6">
       <div id="logo">
@@ -378,25 +267,28 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
   </div>
   <div class="bottomSide">
     <!-- <div class="header__bg" /> -->
-    <div class="newmountains-container">
-      <div class="mountains">
+    <div class="svgContainer">
+      <div class="accent-text">
         <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 3600" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
-                <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
-              </g>
+            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="{(colorPalette.length-1) * 20}" patternTransform="scale({scale}) rotate({angle})">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              
+        {#each colorPalette as colorList, i}
+          <g transform="translate(0,{20*i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i+1]} fill="none">
+            <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
+          </g>
+        {/each}
             </pattern>
             <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path d="M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z" />
               </g>
             </pattern>
             <pattern id="c" patternUnits="userSpaceOnUse" width="20" height="15" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path
                   d="M-20-13.307c3.334-1.667 6.667-3.334 10-3.333 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668
                   1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668 1.667 10 3.333M-20-.407c3.334 3.335 6.668 6.668 10 6.667 3.333 0
@@ -405,20 +297,20 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
               </g>
             </pattern>
             <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path d="M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z" />
               </g>
             </pattern>
             <pattern id="e" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path d="M3.25 10h13.5M10 3.25v13.5" />
               </g>
             </pattern>
             <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={bg} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={color} fill="none">
+              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
               </g>
             </pattern>
@@ -467,8 +359,7 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
             name="palette"
             value={i}
             on:change={() => {
-              color = palette[0];
-              bg = palette[1];
+            colorPalette = palette;
             }} />
           <label
             style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
@@ -551,5 +442,4 @@ let  path="<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25
       </div>
     </div>
   </div>
-  <div id="pngOutput"></div>
 </section>
