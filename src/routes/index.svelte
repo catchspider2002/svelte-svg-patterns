@@ -1,8 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  $: stroke = 1;
-  $: angle = "90";
-  $: scale = 1;
+  $: stroke = 3;
+  $: angle = "30";
+  $: scale = 4;
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
     ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
@@ -190,8 +190,6 @@
     margin: 0 1rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    /* 		grid-auto-flow: column; */
-    /* 		grid-auto-rows: auto; */
   }
 
   .radio-toolbar input[type="radio"] {
@@ -336,11 +334,11 @@
           </filter>
           <!-- <g transform="translate(1200, 0) rotate(90)"> -->
           <g>
-            <rect x="1000" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
-            <rect x="800" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
-            <rect x="600" width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" />
-            <rect x="400" width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
-            <rect x="200" width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
+            <rect x="980" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
+            <rect x="780" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
+            <rect x="580" width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" />
+            <rect x="380" width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
+            <rect x="180" width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
             <rect x="-20" width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
           </g>
         </svg>
