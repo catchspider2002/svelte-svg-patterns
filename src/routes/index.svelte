@@ -4,16 +4,16 @@
   $: angle = "90";
   $: scale = 1;
   const palettes = [
-    ["#553c9a", "#ffc800", "red", "green", "blue"],
-    ["#e9c46a", "#264653", "red", "green", "white"],
-    ["#ffcdb2", "#e5989b", "red", "green", "white"],
-    ["#50514f", "#f25f5c", "red", "green", "white"],
-    ["#247ba0", "#70c1b3", "red", "green", "white"],
-    ["#f0a6ca", "#9c89b8", "red", "green", "white"],
-    ["#cad2c5", "#84a98c", "red", "green", "white"],
-    ["#1a936f", "#88d498", "red", "green", "white"],
+    ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
+    ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
+    ["#e63946", "#f1faee", "#a8dadc", "#457b9d", "#1d3557"],
+    ["#000000", "#14213d", "#fca311", "#e5e5e5", "#ffffff"],
+    ["#f4f1de", "#e07a5f", "#3d405b", "#81b29a", "#f2cc8f"],
+    ["#247ba0", "#70c1b3", "#b2dbbf", "#f3ffbd", "#ff1654"],
+    ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"],
+    ["#9381ff", "#b8b8ff", "#f8f7ff", "#ffeedd", "#ffd8be"],
     ["white","blue","purple"],
-    ["white","green","blue","purple","red"],
+    ["#20bf55","#0b4f6c","#01baef","#fbfbff","#757575"],
     ["white","red","blue","purple"]
   ];
   let size = 220
@@ -108,9 +108,9 @@
   }
 
   .landing {
-		background-color: var(--accent-color);
     display: grid;
     color: black;
+		background-color: var(--accent-color);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 32px;
@@ -244,7 +244,7 @@
   } */
 </style>
 
-<div class="landing">
+<div class="landing accent-text">
   <div class="topSide">
     <div class="p-6">
       <div id="logo">
@@ -309,11 +309,13 @@
                 <path d="M3.25 10h13.5M10 3.25v13.5" />
               </g>
             </pattern>
-            <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
+            <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="{(colorPalette.length-1) * 20}" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
-                <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
-              </g>
+        {#each colorPalette as colorList, i}
+          <g transform="translate(0,{20*i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i+1]} fill="none">
+            <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
+          </g>
+        {/each}
             </pattern>
           </defs>
           <filter id="dropshadow" height="130%">
@@ -422,7 +424,6 @@
       <div
         class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
         text-indigo-400 bg-gray-800 flex-shrink-0">
-
         <div class="big-icon">
           <span class="iconify" data-icon="vaadin:css" data-inline="false" />
         </div>
@@ -432,7 +433,6 @@
       <div
         class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
         flex-shrink-0">
-
         <div class="big-icon">
           <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
         </div>
