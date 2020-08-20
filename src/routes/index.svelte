@@ -108,6 +108,7 @@
   }
 
   .landing {
+		background-color: var(--accent-color);
     display: grid;
     color: black;
     grid-template-columns: 1fr 1fr;
@@ -243,7 +244,7 @@
   } */
 </style>
 
-<div class="landing accent-text">
+<div class="landing">
   <div class="topSide">
     <div class="p-6">
       <div id="logo">
