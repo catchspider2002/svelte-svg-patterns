@@ -12,13 +12,12 @@
     ["#247ba0", "#70c1b3", "#b2dbbf", "#f3ffbd", "#ff1654"],
     ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"],
     ["#9381ff", "#b8b8ff", "#f8f7ff", "#ffeedd", "#ffd8be"],
-    ["white","blue","purple"],
-    ["#20bf55","#0b4f6c","#01baef","#fbfbff","#757575"],
-    ["white","red","blue","purple"]
+    ["white", "blue", "purple"],
+    ["#20bf55", "#0b4f6c", "#01baef", "#fbfbff", "#757575"],
+    ["white", "red", "blue", "purple"]
   ];
-  let size = 220
+  let size = 220;
   $: colorPalette = palettes[0];
-
 </script>
 
 <style>
@@ -40,7 +39,7 @@
     color: var(--accent-color);
   }
 
-/*  .secondary-text {
+  /*  .secondary-text {
     color: var(--secondary-color);
   }
 
@@ -84,6 +83,11 @@
     background-color: var(--secondary-color);
   }
 
+  .featureHeading {
+    text-align: left;
+    margin-top: 1.5rem;
+  }
+
   .featureDescription {
     line-height: 1.625;
     font-size: 1em;
@@ -110,13 +114,13 @@
   .landing {
     display: grid;
     color: black;
-		background-color: var(--accent-color);
+    background-color: var(--accent-color);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 32px;
     min-height: 90vh;
   }
-/*   .header__bg {
+  /*   .header__bg {
     position: absolute;
     width: 100%;
     height: 100px;
@@ -154,9 +158,9 @@
 
   h1 {
     color: var(--secondary-color);
-    font-size: 3.2em;
+    font-size: 4em;
     margin-top: 0.5rem;
-    line-height: 1em;
+    line-height: 0.75em;
   }
 
   h2 {
@@ -228,6 +232,13 @@
       grid-template-rows: 1fr 1fr;
     }
   }
+  @media (max-width: 640px) {
+
+    .featureHeading {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
 
   /*   @media (max-width: 768px) {
 
@@ -270,14 +281,19 @@
       <div class="accent-text">
         <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 3600" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="a" patternUnits="userSpaceOnUse" width="20" height="{(colorPalette.length-1) * 20}" patternTransform="scale({scale}) rotate({angle})">
+            <pattern
+              id="a"
+              patternUnits="userSpaceOnUse"
+              width="20"
+              height={(colorPalette.length - 1) * 20}
+              patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              
-        {#each colorPalette as colorList, i}
-          <g transform="translate(0,{20*i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i+1]} fill="none">
-            <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
-          </g>
-        {/each}
+
+              {#each colorPalette as colorList, i}
+                <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
+                  <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
+                </g>
+              {/each}
             </pattern>
             <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
@@ -307,13 +323,18 @@
                 <path d="M3.25 10h13.5M10 3.25v13.5" />
               </g>
             </pattern>
-            <pattern id="f" patternUnits="userSpaceOnUse" width="20" height="{(colorPalette.length-1) * 20}" patternTransform="scale({scale}) rotate({angle})">
+            <pattern
+              id="f"
+              patternUnits="userSpaceOnUse"
+              width="20"
+              height={(colorPalette.length - 1) * 20}
+              patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-        {#each colorPalette as colorList, i}
-          <g transform="translate(0,{20*i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i+1]} fill="none">
-            <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
-          </g>
-        {/each}
+              {#each colorPalette as colorList, i}
+                <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
+                  <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
+                </g>
+              {/each}
             </pattern>
           </defs>
           <filter id="dropshadow" height="130%">
@@ -360,7 +381,7 @@
             name="palette"
             value={i}
             on:change={() => {
-            colorPalette = palette;
+              colorPalette = palette;
             }} />
           <label
             style="background:linear-gradient(-45deg, {palette[0]} 0%, {palette[0]} 50%, {palette[1]} 50%, {palette[1]} 100%);"
@@ -382,13 +403,13 @@
           <span class="iconify" data-icon="bx:bxs-palette" data-inline="false" />
         </div>
       </div>
-      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+      <div class="featureHeading">
         <h2>Shooting Stars</h2>
         <p class="featureDescription">Customize foreground and background colors easily</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+      <div class="featureHeading">
         <h2>The Catalyzer</h2>
         <p class="featureDescription">Adjust the stroke weight on supported patterns</p>
       </div>
@@ -409,13 +430,13 @@
           <span class="iconify" data-icon="whh:pattern" data-inline="false" />
         </div>
       </div>
-      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+      <div class="featureHeading">
         <h2>Shooting Stars</h2>
         <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+      <div class="featureHeading">
         <h2>The Catalyzer</h2>
         <p class="featureDescription">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
@@ -435,7 +456,7 @@
           <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
         </div>
       </div>
-      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+      <div class="featureHeading">
         <h2>The 400 Blows</h2>
         <p class="featureDescription">Change the angle to generate unique images</p>
       </div>
