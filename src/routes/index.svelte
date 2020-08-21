@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+		import { fade, draw, fly } from 'svelte/transition';
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
@@ -12,115 +13,242 @@
     ["#247ba0", "#70c1b3", "#b2dbbf", "#f3ffbd", "#ff1654"],
     ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"],
     ["#9381ff", "#b8b8ff", "#f8f7ff", "#ffeedd", "#ffd8be"],
-    ["white", "blue", "purple"],
     ["#20bf55", "#0b4f6c", "#01baef", "#fbfbff", "#757575"],
-    ["white", "red", "blue", "purple"]
   ];
   let size = 220;
   $: colorPalette = palettes[0];
+	
+	function svgIcon (strokeClass, rectClass, patternId){return '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="'+ strokeClass+'" height="80" id="'+patternId+'" patternTransform="scale(2) rotate(30)" patternUnits="userSpaceOnUse" width="20"><rect class="' + rectClass+ '" fill="#44337a" height="100%" width="100%" x="0" y="0"></rect><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="#ffc800" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="#FFFFFF" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="#FF0054" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="#00A878" class="'+strokeClass+'" d="M -2.3354725e-8,9.8330078 H 20 Z"></path></pattern></defs><g><rect fill="url(#'+patternId+')" height="100%" width="220" x="-20"></rect></g></svg>'}
+
 </script>
 
 <style>
-  :root {
-    --main-bg-color: #1a202c;
-    /* --accent-color: rgb(255, 218, 6); */
-    --accent-color: #44337a;
-    --secondary-color: #ffc800;
-    --accent-text-color: #ffffff;
-    --secondary-text-color: #000000;
-    --accent-color-hover: rgba(255, 218, 6, 0.8);
-    --border-radius: 4px;
-    --text-gray-300: #e2e8f0;
-    --text-gray-500: #a0aec0;
-    --text-gray-900: #1a202c;
-  }
-
-  .accent-text {
-    color: var(--accent-color);
-  }
-
-  /*  .secondary-text {
+:root {
+  --main-bg-color: #1a202c;
+  /* --accent-color: rgb(255, 218, 6); */
+  --accent-color: #44337a;
+  --secondary-color: #ffc800;
+  --accent-text-color: #ffffff;
+  --secondary-text-color: #000000;
+  --accent-color-hover: rgba(255, 218, 6, 0.8);
+  --border-radius: 4px;
+  --text-gray-300: #e2e8f0;
+  --text-gray-500: #a0aec0;
+  --text-gray-900: #1a202c;
+}
+.accent-text {
+  color: var(--accent-color);
+}
+/*  .secondary-text {
     color: var(--secondary-color);
   }
-
   .primary-font {
     font-family: "Josefin Sans", sans-serif;
   }*/
+.secondary-font {
+  font-family: "Montserrat", sans-serif;
+}
+button {
+  font-size: 1em;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.mx-auto {
+  margin-left:auto;
+  margin-right:auto;
+}
+.border-b{border-bottom-width:1px}
+.pb-10{padding-bottom:2.5rem}
+.mb-10{margin-bottom:2.5rem}
+.border-gray-800{border-color:#2d3748;}
 
-  .secondary-font {
-    font-family: "Montserrat", sans-serif;
-  }
+.container
+{max-width:1280px}
 
-  button {
-    font-size: 1em;
-  }
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.items-center {
+  align-items: center;
+}
+.big-icon .iconify {
+  font-size: 4em;
+  line-height: 1em;
+}
+.normal-icon .iconify {
+  font-size: 2em;
+  line-height: 1em;
+}
+.landing {
+  color: black;
+  background-color: var(--accent-color);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 32px;
+  min-height: 90vh;
+}
+.topSide {
+}
+#logo {
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5rem;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  align-items: flex-end;
+}
+#logoText {
+  color: var(--accent-text-color);
+  font-weight: 600;
+  padding-left: 8px;
+}
+.comingSoon {
+  font-size: 0.875em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 1rem;
+}
+h1 {
+  color: var(--secondary-color);
+  font-size: 4em;
+  margin-top: 0.5rem;
+  line-height: 0.75em;
+}
+h2 {
+  color: black;
+  font-weight: 600;
+  font-size: 1.125em;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  /* line-height: 1.75rem; */
+  font-size: 1.125em;
+}
+.subscribe {
+}
+.bottomSide {
+  position: relative;
+}
+.svgContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.toolbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 360px;
+  height: 240px;
+  color: var(--secondary-color);
+  padding: 1rem 1.5rem;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  background: var(--main-bg-color);
+  grid-template-columns: auto 1fr;
+  border-radius: var(--border-radius);
+}
+.features {
+  background-color: var(--secondary-color);
+}
+.featureContainer{
+padding:6rem 1.25rem;
+}
+.featureHeading {
+  text-align: left;
+  margin-top: 1.5rem;
+}
+.featureDescription {
+  line-height: 1.625;
+  font-size: 1em;
+  color: var(--main-bg-color);
+  font-family: "Montserrat", sans-serif;
+}
+.radio-toolbar {
+  margin: 0 1rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  /*   margin-right: 0.5rem; */
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  /*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.radio-toolbar label:hover {
+  border: 2px solid var(--secondary-color);
+}
+.radio-toolbar input[type="radio"]:focus + label {
+  border: 2px solid var(--secondary-color);
+}
+.radio-toolbar input[type="radio"]:checked + label {
+  border: 2px solid var(--secondary-color);
+}
+	
+	.featureIcon{
+		width:100px;
+		height:100px;
+	}
+	
+:global(.thickMorph) {
+  animation: thick-morph 5s linear infinite;
+	}
+:global(.colorMorph) {
+  animation: stroke-morph 5s linear infinite;
+	}
+.svelte-12cnh3r {
+/*   animation: rotate-morph 1s linear infinite; */
+/* 	transform-origin: top left */
+/*   transform-origin: center; */
+}
+:global(.bgMorph) {
+  animation: fill-morph 5s linear infinite;
+}
 
-  #logo {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 5rem;
-    align-items: flex-end;
-  }
+@keyframes rotate-morph {
+  0% {transform: rotate(0deg);  }
+  50% {transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
 
-  .comingSoon {
-    font-size: 0.875em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding-bottom: 1rem;
-  }
+@keyframes stroke-morph {
+  0% { stroke: #e07a5f;}
+  50% { stroke: #f4f1de;}
+  100% { stroke: #e07a5f;}
+}
 
-  .subtitle {
-    margin-top: 0.5rem;
-    margin-bottom: 2.5rem;
-    /* line-height: 1.75rem; */
-    font-size: 1.125em;
-  }
+@keyframes fill-morph {
+  0% { fill: #f4f1de;}
+  50% { fill: #e07a5f;}
+  100% { fill: #f4f1de;}
+}
 
-  .features {
-    background-color: var(--secondary-color);
-  }
-
-  .featureHeading {
-    text-align: left;
-    margin-top: 1.5rem;
-  }
-
-  .featureDescription {
-    line-height: 1.625;
-    font-size: 1em;
-    color: var(--main-bg-color);
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .big-icon .iconify {
-    font-size: 4em;
-    line-height: 1em;
-  }
-  .normal-icon .iconify {
-    font-size: 2em;
-    line-height: 1em;
-  }
-
-  .svgContainer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .landing {
-    display: grid;
-    color: black;
-    background-color: var(--accent-color);
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 32px;
-    min-height: 90vh;
-  }
-  /*   .header__bg {
+@keyframes thick-morph {
+  0% { stroke-width: 2;}
+  50% { stroke-width: 10;}
+}
+	
+/*   .header__bg {
     position: absolute;
     width: 100%;
     height: 100px;
@@ -128,158 +256,60 @@
     z-index: 1;
     clip-path: polygon(0 46%, 0 0, 100% 0);
   } */
-  .subscribe {
-    display: grid;
+@media (max-width: 1280px) {
+.container{max-width:1024px}
+  #logo {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
-  .toolbox {
-    display: grid;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    width: 360px;
-    height: 240px;
-    color: var(--secondary-color);
-    padding: 1rem 1.5rem;
-    /*     margin: 1.5rem; */
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
-    background: var(--main-bg-color);
-    grid-template-columns: auto 1fr;
-    border-radius: var(--border-radius);
+}
+@media (max-width: 1024px) {
+.container{max-width:768px}
+  .landing {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
-
-  .topSide {
-    display: grid;
-    align-items: center;
+  #logo {
+    padding-bottom: 1rem;
   }
-
-  h1 {
-    color: var(--secondary-color);
-    font-size: 4em;
-    margin-top: 0.5rem;
-    line-height: 0.75em;
+}
+@media (max-width: 768px) {
+.container{max-width:640px}
+}
+@media (max-width: 640px) {
+  .container{width:100%}
+  .featureHeading {
+    text-align: center;
+    margin-top: 0;
   }
-
-  h2 {
-    color: black;
-    font-weight: 600;
-    font-size: 1.125em;
-    margin-bottom: 0.5rem;
-  }
-
-  .bottomSide {
-    position: relative;
-    display: grid;
-  }
-
-  .logoText {
-    color: var(--accent-text-color);
-    font-weight: 600;
-    padding-left: 8px;
-  }
-  .p-6 {
-    padding: 1.5rem;
-  }
-  .flex {
-    display: flex;
-  }
-  .items-center {
-    align-items: center;
-  }
-
-  .radio-toolbar {
-    margin: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  .radio-toolbar input[type="radio"] {
-    opacity: 0;
-    position: fixed;
-    width: 0;
-  }
-
-  .radio-toolbar label {
-    display: inline-block;
-    height: 2em;
-    width: 2em;
-    /*   margin-right: 0.5rem; */
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    /*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    border: 2px solid transparent;
-  }
-
-  .radio-toolbar label:hover {
-    border: 2px solid var(--secondary-color);
-  }
-
-  .radio-toolbar input[type="radio"]:focus + label {
-    border: 2px solid var(--secondary-color);
-  }
-
-  .radio-toolbar input[type="radio"]:checked + label {
-    border: 2px solid var(--secondary-color);
-  }
-  @media (max-width: 1024px) {
-    .landing {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-    }
-  }
-  @media (max-width: 640px) {
-
-    .featureHeading {
-      text-align: center;
-      margin-top: 0;
-    }
-  }
-
-  /*   @media (max-width: 768px) {
-
-    .radio-toolbar {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-  @media (max-width: 520px) {
-    .radio-toolbar {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  } */
+}
 </style>
-
-<div class="landing accent-text">
-  <div class="topSide">
+<div class="landing grid accent-text">
+  <div class="topSide grid items-center">
     <div class="p-6">
-      <div id="logo">
+      <div id="logo" class="grid">
         <div class="normal-icon">
           <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false" />
-        </div>
-        <span class="logoText">PATTERN MONSTER</span>
-      </div>
+        </div>    
+        <span id="logoText">PATTERN MONSTER</span>  </div>
+			
       <p class="comingSoon text-gray-400 secondary-font">COMING SOON</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle text-gray-400 secondary-font">
         A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging
         design and more.
       </p>
-      <div class="subscribe">
+      <div class="subscribe grid">
         <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-
         </script>
       </div>
     </div>
   </div>
-  <div class="bottomSide">
+  <div class="bottomSide grid">
     <!-- <div class="header__bg" /> -->
     <div class="svgContainer">
       <div class="accent-text">
-        <svg id="patternId" width="100%" height="100%" viewbox="0 0 1200 3600" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewbox="0 0 1200 3600" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern
               id="a"
@@ -290,9 +320,7 @@
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
 
               {#each colorPalette as colorList, i}
-                <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
-                  <path d="M -2.3354725e-8,9.8330078 H 20 Z" />
-                </g>
+                  <path  transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none" d="M -2.3354725e-8,9.8330078 H 20 Z" />
               {/each}
             </pattern>
             <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
@@ -353,7 +381,6 @@
               <!-- this contains the element that the filter is applied to -->
             </feMerge>
           </filter>
-          <!-- <g transform="translate(1200, 0) rotate(90)"> -->
           <g>
             <rect x="980" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
             <rect x="780" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
@@ -365,7 +392,7 @@
         </svg>
       </div>
     </div>
-    <div class="toolbox items-center">
+    <div class="toolbox grid items-center">
       <label for="scale">Scale</label>
       <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
       <label for="stroke">Stroke</label>
@@ -373,7 +400,7 @@
       <label for="angle">Angle</label>
       <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
       <label for="angle">Colors</label>
-      <div class="radio-toolbar padding-top-5">
+      <div class="radio-toolbar grid">
         {#each palettes as palette, i}
           <input
             type="radio"
@@ -394,14 +421,14 @@
 </div>
 
 <section class="features text-gray-500 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container featureContainer mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
         flex-shrink-0">
-        <div class="big-icon">
-          <span class="iconify" data-icon="bx:bxs-palette" data-inline="false" />
-        </div>
+       <div class="featureIcon">
+	{@html svgIcon("colorMorph","bgMorph","a1")}
+				</div>
       </div>
       <div class="featureHeading">
         <h2>Shooting Stars</h2>
@@ -411,19 +438,19 @@
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div class="featureHeading">
         <h2>The Catalyzer</h2>
-        <p class="featureDescription">Adjust the stroke weight on supported patterns</p>
+        <p class="featureDescription">Adjust the stroke width on supported patterns</p>
       </div>
       <div
         class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
-        text-indigo-400 bg-gray-800 flex-shrink-0">
-        <div class="big-icon">
-          <span class="iconify" data-icon="zondicons:stroke-width" data-inline="false" />
-        </div>
+        bg-gray-800 flex-shrink-0">
+       <div class="featureIcon">
+	{@html svgIcon("thickMorph","","a2")}
+				</div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
         flex-shrink-0">
 
         <div class="big-icon">
@@ -442,7 +469,7 @@
       </div>
       <div
         class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
-        text-indigo-400 bg-gray-800 flex-shrink-0">
+        bg-gray-800 flex-shrink-0">
         <div class="big-icon">
           <span class="iconify" data-icon="vaadin:css" data-inline="false" />
         </div>
@@ -450,7 +477,7 @@
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
       <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
         flex-shrink-0">
         <div class="big-icon">
           <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
