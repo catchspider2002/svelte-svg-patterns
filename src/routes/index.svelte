@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { fade, draw, fly } from 'svelte/transition';
+  import { fade, draw, fly } from "svelte/transition";
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
@@ -13,242 +13,293 @@
     ["#247ba0", "#70c1b3", "#b2dbbf", "#f3ffbd", "#ff1654"],
     ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"],
     ["#9381ff", "#b8b8ff", "#f8f7ff", "#ffeedd", "#ffd8be"],
-    ["#20bf55", "#0b4f6c", "#01baef", "#fbfbff", "#757575"],
+    ["#20bf55", "#0b4f6c", "#01baef", "#fbfbff", "#757575"]
   ];
   let size = 220;
   $: colorPalette = palettes[0];
-	
-	function svgIcon (strokeClass, rectClass, patternId){return '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="'+ strokeClass+'" height="80" id="'+patternId+'" patternTransform="scale(2) rotate(30)" patternUnits="userSpaceOnUse" width="20"><rect class="' + rectClass+ '" fill="#44337a" height="100%" width="100%" x="0" y="0"></rect><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="#ffc800" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="#FFFFFF" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="'+strokeClass+'" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="#FF0054" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="#00A878" class="'+strokeClass+'" d="M -2.3354725e-8,9.8330078 H 20 Z"></path></pattern></defs><g><rect fill="url(#'+patternId+')" height="100%" width="220" x="-20"></rect></g></svg>'}
 
+  function svgIcon(strokeClass, rectClass, patternId) {
+    return (
+      '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="' +
+      strokeClass +
+      '" height="80" id="' +
+      patternId +
+      '" patternTransform="scale(2) rotate(30)" patternUnits="userSpaceOnUse" width="20"><rect class="' +
+      rectClass +
+      '" fill="#44337a" height="100%" width="100%" x="0" y="0"></rect><path class="' +
+      strokeClass +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="#ffc800" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      strokeClass +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="#FFFFFF" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      strokeClass +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="#FF0054" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="#00A878" class="' +
+      strokeClass +
+      '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path></pattern></defs><g><rect fill="url(#' +
+      patternId +
+      ')" height="100%" width="220" x="-20"></rect></g></svg>'
+    );
+  }
 </script>
 
 <style>
-:root {
-  --main-bg-color: #1a202c;
-  /* --accent-color: rgb(255, 218, 6); */
-  --accent-color: #44337a;
-  --secondary-color: #ffc800;
-  --accent-text-color: #ffffff;
-  --secondary-text-color: #000000;
-  --accent-color-hover: rgba(255, 218, 6, 0.8);
-  --border-radius: 4px;
-  --text-gray-300: #e2e8f0;
-  --text-gray-500: #a0aec0;
-  --text-gray-900: #1a202c;
-}
-.accent-text {
-  color: var(--accent-color);
-}
-/*  .secondary-text {
+  :root {
+    --main-bg-color: #1a202c;
+    /* --accent-color: rgb(255, 218, 6); */
+    --accent-color: #44337a;
+    --secondary-color: #ffc800;
+    --accent-text-color: #ffffff;
+    --secondary-text-color: #000000;
+    --accent-color-hover: rgba(255, 218, 6, 0.8);
+    --border-radius: 4px;
+    --text-gray-300: #e2e8f0;
+    --text-gray-500: #a0aec0;
+    --text-gray-900: #1a202c;
+  }
+  .accent-text {
+    color: var(--accent-color);
+  }
+  /*  .secondary-text {
     color: var(--secondary-color);
   }
   .primary-font {
     font-family: "Josefin Sans", sans-serif;
   }*/
-.secondary-font {
-  font-family: "Montserrat", sans-serif;
-}
-button {
-  font-size: 1em;
-}
-.p-6 {
-  padding: 1.5rem;
-}
-.mx-auto {
-  margin-left:auto;
-  margin-right:auto;
-}
-.border-b{border-bottom-width:1px}
-.pb-10{padding-bottom:2.5rem}
-.mb-10{margin-bottom:2.5rem}
-.border-gray-800{border-color:#2d3748;}
+  .secondary-font {
+    font-family: "Montserrat", sans-serif;
+  }
+  button {
+    font-size: 1em;
+  }
+  .p-6 {
+    padding: 1.5rem;
+  }
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .border-b {
+    border-bottom-width: 1px;
+  }
+  .pb-10 {
+    padding-bottom: 2.5rem;
+  }
+  .mb-10 {
+    margin-bottom: 2.5rem;
+  }
+  .border-gray-800 {
+    border-color: #2d3748;
+  }
 
-.container
-{max-width:1280px}
+  .container {
+    max-width: 1280px;
+  }
 
-.flex {
-  display: flex;
-}
-.grid {
-  display: grid;
-}
-.items-center {
-  align-items: center;
-}
-.big-icon .iconify {
-  font-size: 4em;
-  line-height: 1em;
-}
-.normal-icon .iconify {
-  font-size: 2em;
-  line-height: 1em;
-}
-.landing {
-  color: black;
-  background-color: var(--accent-color);
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 32px;
-  min-height: 90vh;
-}
-.topSide {
-}
-#logo {
-  grid-template-columns: auto 1fr;
-  column-gap: 0.5rem;
-  padding-top: 2rem;
-  padding-bottom: 5rem;
-  align-items: flex-end;
-}
-#logoText {
-  color: var(--accent-text-color);
-  font-weight: 600;
-  padding-left: 8px;
-}
-.comingSoon {
-  font-size: 0.875em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding-bottom: 1rem;
-}
-h1 {
-  color: var(--secondary-color);
-  font-size: 4em;
-  margin-top: 0.5rem;
-  line-height: 0.75em;
-}
-h2 {
-  color: black;
-  font-weight: 600;
-  font-size: 2em;
-  margin-bottom: 0.5rem;
-}
-.subtitle {
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
-  /* line-height: 1.75rem; */
-  font-size: 1.125em;
-}
-.subscribe {
-}
-.bottomSide {
-  position: relative;
-}
-.svgContainer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.toolbox {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 360px;
-  height: 240px;
-  color: var(--secondary-color);
-  padding: 1rem 1.5rem;
-  grid-column-gap: 1em;
-  grid-row-gap: 1em;
-  background: var(--main-bg-color);
-  grid-template-columns: auto 1fr;
-  border-radius: var(--border-radius);
-}
-.features {
-  background-color: var(--secondary-color);
-}
-.featureContainer{
-padding:6rem 1.25rem;
-}
-.featureHeading {
-  text-align: left;
-  margin-top: 1.5rem;
-}
-.featureDescription {
-  line-height: 1.625;
-  font-size: 1em;
-  color: var(--main-bg-color);
-  font-family: "Montserrat", sans-serif;
-}
-.radio-toolbar {
-  margin: 0 1rem;
-  grid-template-columns: repeat(6, 1fr);
-}
-.radio-toolbar input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-.radio-toolbar label {
-  display: inline-block;
-  height: 2em;
-  width: 2em;
-  /*   margin-right: 0.5rem; */
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  /*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.radio-toolbar label:hover {
-  border: 2px solid var(--secondary-color);
-}
-.radio-toolbar input[type="radio"]:focus + label {
-  border: 2px solid var(--secondary-color);
-}
-.radio-toolbar input[type="radio"]:checked + label {
-  border: 2px solid var(--secondary-color);
-}
-	
-	.featureIcon{
-		width:100px;
-		height:100px;
-	}
-	
-:global(.thickMorph) {
-  animation: thick-morph 5s linear infinite;
-	}
-:global(.colorMorph) {
-  animation: stroke-morph 5s linear infinite;
-	}
-.svelte-12cnh3r {
-/*   animation: rotate-morph 1s linear infinite; */
-/* 	transform-origin: top left */
-/*   transform-origin: center; */
-}
-:global(.bgMorph) {
-  animation: fill-morph 5s linear infinite;
-}
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .big-icon .iconify {
+    font-size: 4em;
+    line-height: 1em;
+  }
+  .normal-icon .iconify {
+    font-size: 2em;
+    line-height: 1em;
+  }
+  .landing {
+    color: black;
+    background-color: var(--accent-color);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 32px;
+    min-height: 90vh;
+  }
+  .topSide {
+  }
+  #logo {
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    align-items: flex-end;
+  }
+  #logoText {
+    color: var(--accent-text-color);
+    font-weight: 600;
+    padding-left: 8px;
+  }
+  .comingSoon {
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 1rem;
+  }
+  h1 {
+    color: var(--secondary-color);
+    font-size: 4em;
+    margin-top: 0.5rem;
+    line-height: 0.75em;
+  }
+  h2 {
+    color: black;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    /* line-height: 1.75rem; */
+    font-size: 1.125em;
+  }
+  .subscribe {
+  }
+  .bottomSide {
+    position: relative;
+  }
+  .svgContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .toolbox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 360px;
+    height: 240px;
+    color: var(--secondary-color);
+    padding: 1rem 1.5rem;
+    column-gap: 1em;
+    grid-row-gap: 1em;
+    background: var(--main-bg-color);
+    grid-template-columns: auto 1fr;
+    border-radius: var(--border-radius);
+  }
+  .features {
+    background-color: var(--secondary-color);
+  }
+  .featureContainer {
+    padding: 6rem 1.25rem;
+  }
+  .featureHeading {
+    text-align: left;
+    margin-top: 1.5rem;
+  }
+  .featureDescription {
+    line-height: 1.625;
+    font-size: 1em;
+    color: var(--main-bg-color);
+    font-family: "Montserrat", sans-serif;
+  }
+  .radio-toolbar {
+    margin: 0 1rem;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  .radio-toolbar label {
+    display: inline-block;
+    height: 2em;
+    width: 2em;
+    /*   margin-right: 0.5rem; */
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    /*   background:linear-gradient(-45deg, #e9c46a 0%, #e9c46a 50%, #264653 50%, #264653 100%); */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  .radio-toolbar label:hover {
+    border: 2px solid var(--secondary-color);
+  }
+  .radio-toolbar input[type="radio"]:focus + label {
+    border: 2px solid var(--secondary-color);
+  }
+  .radio-toolbar input[type="radio"]:checked + label {
+    border: 2px solid var(--secondary-color);
+  }
+  :global(.thickMorph) {
+    animation: thick-morph 4s linear infinite;
+  }
+  :global(.colorMorph) {
+    animation: stroke-morph 1s linear infinite;
+  }
+  :global(.bgMorph) {
+    animation: fill-morph 5s linear infinite;
+  }
 
-@keyframes rotate-morph {
-  0% {transform: rotate(0deg);  }
-  50% {transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes rotate-morph {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-@keyframes stroke-morph {
-  0% { stroke: #e07a5f;}
-  50% { stroke: #f4f1de;}
-  100% { stroke: #e07a5f;}
-}
+  @keyframes stroke-morph {
+    0% {
+      stroke: #e07a5f;
+    }
+    50% {
+      stroke: #f4f1de;
+    }
+    100% {
+      stroke: #e07a5f;
+    }
+  }
 
-@keyframes fill-morph {
-  0% { fill: #f4f1de;}
-  50% { fill: #e07a5f;}
-  100% { fill: #f4f1de;}
-}
+  @keyframes fill-morph {
+    0% {
+      fill: #f4f1de;
+    }
+    50% {
+      fill: #e07a5f;
+    }
+    100% {
+      fill: #f4f1de;
+    }
+  }
 
-@keyframes thick-morph {
-  0% { stroke-width: 2;}
-  50% { stroke-width: 10;}
-}
-	
-/*   .header__bg {
+  @keyframes thick-morph {
+    0% {
+      stroke-width: 3;
+    }
+    50% {
+      stroke-width: 15;
+    }
+  }
+
+  
+
+  .mockups {
+    background-color: var(--accent-color);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(640px, 1fr));
+    column-gap: 16px;
+    row-gap: 16px;
+    align-items: center;
+    /* padding: 2em 0; */
+  }
+
+  /*   .header__bg {
     position: absolute;
     width: 100%;
     height: 100px;
@@ -256,43 +307,53 @@ padding:6rem 1.25rem;
     z-index: 1;
     clip-path: polygon(0 46%, 0 0, 100% 0);
   } */
-@media (max-width: 1280px) {
-.container{max-width:1024px}
-  #logo {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1024px;
+    }
+    #logo {
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
   }
-}
-@media (max-width: 1024px) {
-.container{max-width:768px}
-  .landing {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 768px;
+    }
+    .landing {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    #logo {
+      padding-bottom: 1rem;
+    }
   }
-  #logo {
-    padding-bottom: 1rem;
+  @media (max-width: 768px) {
+    .container {
+      max-width: 640px;
+    }
   }
-}
-@media (max-width: 768px) {
-.container{max-width:640px}
-}
-@media (max-width: 640px) {
-  .container{width:100%}
-  .featureHeading {
-    text-align: center;
-    margin-top: 0;
+  @media (max-width: 640px) {
+    .container {
+      width: 100%;
+    }
+    .featureHeading {
+      text-align: center;
+      margin-top: 0;
+    }
   }
-}
 </style>
+
 <div class="landing grid accent-text">
   <div class="topSide grid items-center">
     <div class="p-6">
       <div id="logo" class="grid">
         <div class="normal-icon">
           <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false" />
-        </div>    
-        <span id="logoText">PATTERN MONSTER</span>  </div>
-			
+        </div>
+        <span id="logoText">PATTERN MONSTER</span>
+      </div>
+
       <p class="comingSoon text-gray-400 secondary-font">COMING SOON</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle text-gray-400 secondary-font">
@@ -301,6 +362,7 @@ padding:6rem 1.25rem;
       </p>
       <div class="subscribe grid">
         <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+
         </script>
       </div>
     </div>
@@ -320,7 +382,13 @@ padding:6rem 1.25rem;
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
 
               {#each colorPalette as colorList, i}
-                  <path  transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none" d="M -2.3354725e-8,9.8330078 H 20 Z" />
+                <path
+                  transform="translate(0,{20 * i})"
+                  stroke-linecap="square"
+                  stroke-width={stroke}
+                  stroke={colorPalette[i + 1]}
+                  fill="none"
+                  d="M -2.3354725e-8,9.8330078 H 20 Z" />
               {/each}
             </pattern>
             <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
@@ -423,9 +491,8 @@ padding:6rem 1.25rem;
 <section class="features text-gray-500 body-font">
   <div class="container featureContainer mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
-	{@html svgIcon("colorMorph","bgMorph","a1")}
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
+        {@html svgIcon('colorMorph', 'bgMorph', 'a1')}
       </div>
       <div class="featureHeading">
         <h2>Shooting Stars</h2>
@@ -438,14 +505,13 @@ padding:6rem 1.25rem;
         <p class="featureDescription">Adjust the stroke width on supported patterns</p>
       </div>
       <div
-        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
-	{@html svgIcon("thickMorph","","a2")}
+        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-md
+        overflow-hidden flex-shrink-0">
+        {@html svgIcon('thickMorph', '', 'a2')}
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
-        flex-shrink-0">
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800 flex-shrink-0">
 
         <div class="big-icon">
           <span class="iconify" data-icon="whh:pattern" data-inline="false" />
@@ -462,17 +528,15 @@ padding:6rem 1.25rem;
         <p class="featureDescription">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
       <div
-        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
-        bg-gray-800 flex-shrink-0">
+        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full bg-gray-800
+        flex-shrink-0">
         <div class="big-icon">
           <span class="iconify" data-icon="vaadin:css" data-inline="false" />
         </div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-      <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
-        flex-shrink-0">
+      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800 flex-shrink-0">
         <div class="big-icon">
           <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
         </div>
@@ -483,4 +547,12 @@ padding:6rem 1.25rem;
       </div>
     </div>
   </div>
+</section>
+<section class="mockups">
+<img src="coffee-cup-mockup.png">
+<img src="book-cover-mock-up.png">
+<img src="flying-pillows-mockup-set.png">
+<img src="phone-case-photoshop-mockup.png">
+<img src="book-cover-mock-up.png">
+<img src="flying-pillows-mockup-set.png">
 </section>
