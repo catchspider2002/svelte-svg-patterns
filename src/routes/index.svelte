@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-		import { fade, draw, fly } from 'svelte/transition';
+  import { fade, draw, fly } from 'svelte/transition';
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
@@ -121,7 +121,7 @@ h1 {
 h2 {
   color: black;
   font-weight: 600;
-  font-size: 1.125em;
+  font-size: 2em;
   margin-bottom: 0.5rem;
 }
 .subtitle {
@@ -424,11 +424,8 @@ padding:6rem 1.25rem;
   <div class="container featureContainer mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
       <div
-        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800
-        flex-shrink-0">
-       <div class="featureIcon">
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
 	{@html svgIcon("colorMorph","bgMorph","a1")}
-				</div>
       </div>
       <div class="featureHeading">
         <h2>Shooting Stars</h2>
@@ -441,11 +438,8 @@ padding:6rem 1.25rem;
         <p class="featureDescription">Adjust the stroke width on supported patterns</p>
       </div>
       <div
-        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full
-        bg-gray-800 flex-shrink-0">
-       <div class="featureIcon">
+        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
 	{@html svgIcon("thickMorph","","a2")}
-				</div>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
