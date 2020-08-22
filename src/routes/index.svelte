@@ -181,7 +181,7 @@
     color: var(--secondary-color);
     padding: 1rem 1.5rem;
     column-gap: 1em;
-    grid-row-gap: 1em;
+    row-gap: 1em;
     background: var(--main-bg-color);
     grid-template-columns: auto 1fr;
     border-radius: var(--border-radius);
@@ -287,8 +287,6 @@
     }
   }
 
-  
-
   .mockups {
     background-color: var(--accent-color);
     display: grid;
@@ -340,6 +338,20 @@
     .featureHeading {
       text-align: center;
       margin-top: 0;
+    }
+    .mockups {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+  }
+  @media (max-width: 400px) {
+    .toolbox {
+      width: 320px;
+      height: 400px;
+      padding: 1rem 0.5em;
+      grid-template-columns: 1fr;
+    }
+    .mockups {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
   }
 </style>
@@ -549,10 +561,10 @@
   </div>
 </section>
 <section class="mockups">
-<img src="coffee-cup-mockup.png">
-<img src="book-cover-mock-up.png">
-<img src="flying-pillows-mockup-set.png">
-<img src="phone-case-photoshop-mockup.png">
-<img src="book-cover-mock-up.png">
-<img src="flying-pillows-mockup-set.png">
+  <img src="coffee-cup-mockup.png" />
+  <img src="book-cover-mock-up.png" />
+  <img src="flying-pillows-mockup-set.png" />
+  <img src="phone-case-photoshop-mockup.png" />
+  <img src="tote-bag-mockup-3d-rendering-design.png" />
+  <img src="flying-pillows-mockup-set.png" />
 </section>
