@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { fade, draw, fly } from "svelte/transition";
 
-//   import Logo from "../components/Logo.svelte";
-  import Logo from "./Logo.svelte";
+  import Logo from "../components/Logo.svelte";
+//   import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -392,11 +392,8 @@
     }
   }
 </style>
-<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
- <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+<!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet" /> -->
 <section class="landing grid accent-text">
   <div class="grid items-center">
     <div class="p-6">
