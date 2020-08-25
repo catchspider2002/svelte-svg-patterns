@@ -2,7 +2,8 @@
   import { onMount } from "svelte";
   import { fade, draw, fly } from "svelte/transition";
 
-  import Logo from "../components/Logo.svelte";
+//   import Logo from "../components/Logo.svelte";
+  import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -64,6 +65,12 @@
   .accent-text {
     color: var(--accent-color);
   }
+  .accent-bg {
+    background-color: var(--accent-color);
+  }
+	.light-text{
+		color: var(--text-gray-300);
+	}
   /*  .secondary-text {
     color: var(--secondary-color);
   }
@@ -109,6 +116,9 @@
   .items-center {
     align-items: center;
   }
+  .justify-center{
+    justify-content: center;
+    }
   .big-icon .iconify {
     font-size: 4em;
     line-height: 1em;
@@ -282,7 +292,8 @@
   .mockups {
     background-color: var(--accent-color);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(640px, 1fr));
+/*     grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)); */
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
@@ -333,7 +344,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     padding: 0.5rem;
     padding-bottom: 2rem;
     align-self: center;
@@ -342,6 +352,9 @@
   @media (max-width: 1280px) {
     .container {
       max-width: 1024px;
+    }
+    .mockups {
+    grid-template-columns: 1fr 1fr;
     }
   }
   @media (max-width: 1024px) {
@@ -366,9 +379,6 @@
       text-align: center;
       margin-top: 0;
     }
-    .mockups {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    }
   }
   @media (max-width: 400px) {
     .toolbox {
@@ -378,12 +388,16 @@
       grid-template-columns: 1fr;
     }
     .mockups {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
     }
   }
 </style>
-
-<div class="landing grid accent-text">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+ <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+<section class="landing grid accent-text">
   <div class="grid items-center">
     <div class="p-6">
       <Logo />
@@ -519,8 +533,7 @@
       </div>
     </div>
   </div>
-</div>
-
+</section>
 <section class="features text-gray-500 body-font">
   <div class="container featureContainer mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
@@ -628,7 +641,7 @@ For designers and developers
   <header class="body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <Logo />
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <nav class="md:ml-auto flex flex-wrap items-center justify-center">
         <a href="#subscribe" class="mr-5">Link 1</a>
         <a href="#subscribe" class="mr-5">Link 2</a>
         <a href="#subscribe" class="mr-5">Link 3</a>
@@ -652,20 +665,22 @@ For designers and developers
     </div>
   </section>
 </div>
+<section class="accent-bg">
 <a name="subscribe" />
-<div class="subscribe grid">
+<div class="subscribe grid justify-center">
   <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
 
   </script>
 </div>
 
-
 <div class="grid">
   <Logo className="mx-auto" />
 </div>
 
-<div class="footer">
+<div class="footer justify-center light-text">
   Made with&nbsp;
   <span style="color:#e25555">❤</span>
   &nbsp;by Naveen CS
 </div>
+	
+</section>
