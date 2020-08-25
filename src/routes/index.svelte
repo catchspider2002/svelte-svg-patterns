@@ -71,6 +71,9 @@
 	.light-text{
 		color: var(--text-gray-300);
 	}
+	.dark-text{
+		color: var(--text-gray-900);
+	}
   /*  .secondary-text {
     color: var(--secondary-color);
   }
@@ -85,6 +88,9 @@
   }
   .p-6 {
     padding: 1.5rem;
+  }
+  .mr-5{
+  margin-right:1.25rem;
   }
   .mx-auto {
     margin-left: auto;
@@ -124,8 +130,6 @@
     line-height: 1em;
   }
   .landing {
-    color: black;
-    background-color: var(--accent-color);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     column-gap: 32px;
@@ -145,7 +149,7 @@
     line-height: 0.75em;
   }
   h2 {
-    color: black;
+    color: var(--dark-text);
     font-weight: 600;
     font-size: 2em;
     margin-bottom: 0.5rem;
@@ -290,13 +294,11 @@
   }
 
   .mockups {
-    background-color: var(--accent-color);
     display: grid;
 /*     grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)); */
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 16px;
     row-gap: 16px;
-    align-items: center;
     /* padding: 2em 0; */
   }
 
@@ -379,6 +381,9 @@
       text-align: center;
       margin-top: 0;
     }
+    .mockups {
+    grid-template-columns: 1fr;
+    }
   }
   @media (max-width: 400px) {
     .toolbox {
@@ -387,14 +392,11 @@
       padding: 1rem 0.5em;
       grid-template-columns: 1fr;
     }
-    .mockups {
-    grid-template-columns: 1fr;
-    }
   }
 </style>
-<!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
-<!--  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet" /> -->
-<section class="landing grid accent-text">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<section class="landing grid accent-text accent-bg">
   <div class="grid items-center">
     <div class="p-6">
       <Logo />
@@ -619,21 +621,14 @@
     </div>
     <div class="featureHeading">
       <h2>The 400 Blows</h2>
-      <p class="featureDescription">Speed up your website loading time without compromising on graphics</p>
+      <p class="featureDescription">Speed up your website loading time without compromising on image quality</p>
     </div>
   </div>
   <!-- </div> -->
 </section>
 For designers and developers
-<section class="mockups">
-  <img alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
-  <img alt="Mockup of Book" src="book-cover-mock-up.png" />
-  <img alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
-  <img alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
-  <img alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
-  <img alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
-</section>
 
+<h2>Digital mockup</h2>
 <div class="test">
   <header class="body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -649,7 +644,7 @@ For designers and developers
   <section>
     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
       <div class="flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium">Make vector patterns like a pro</h1>
+        <h1>Make vector patterns like a pro</h1>
         <p class="subtitle text-gray-400 secondary-font">
           A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy
           to use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and
@@ -662,6 +657,17 @@ For designers and developers
     </div>
   </section>
 </div>
+
+<h2>Print mockup</h2>
+<section class="mockups accent-bg items-center">
+  <img alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
+  <img alt="Mockup of Book" src="book-cover-mock-up.png" />
+  <img alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
+  <img alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
+  <img alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
+  <img alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
+</section>
+
 <section class="accent-bg">
 <a name="subscribe" />
 <div class="subscribe grid justify-center">
