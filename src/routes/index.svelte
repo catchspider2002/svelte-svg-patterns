@@ -197,6 +197,7 @@
     border-bottom-width: 1px;
     padding-bottom: 2.5rem;
     margin-bottom: 2.5rem;
+    width: 60%;
   }
   .featureLeft {
     grid-template-columns: 1fr auto;
@@ -374,6 +375,10 @@
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
     }
+  .featureLeft,
+  .featureRight {
+    width: 100%;
+  }
   }
   @media (max-width: 768px) {
     .container {
@@ -388,10 +393,6 @@
       text-align: center;
       margin-top: 0;
     }
-  .featureLeft,
-  .featureRight {
-    width: 100%;
-  }
     .featureLeft {
       display: flex;
       flex-direction: column;
@@ -577,7 +578,7 @@
 </section>
 <section class="features text-gray-500 body-font">
   <div class="container featureContainer mx-auto">
-    <div class="featureRight grid items-center lg:w-3/5 mx-auto border-gray-800">
+    <div class="featureRight grid items-center mx-auto border-gray-800">
       <div class="sm:w-32 sm:h-32 h-20 w-20 items-center justify-center rounded-md overflow-hidden">
         {@html svgIcon('colorMorph', 'bgMorph', 'a1')}
       </div>
