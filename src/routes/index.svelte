@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { fade, draw, fly } from "svelte/transition";
 
-   import Logo from "../components/Logo.svelte";
-//    import Logo from "./Logo.svelte";
+  import Logo from "../components/Logo.svelte";
+//     import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -19,23 +19,21 @@
     ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"]
   ];
   let size = 220;
-  $: colorPalette = palettes[0];
+  $: colorPalette = palettes[1];
 
-  function svgIcon(strokeClass, rectClass, patternId) {
+  function svgIcon(strokeClass, patternId, angle = 30, className, colorSet = colorPalette) {
     return (
-      '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="' +
+      '<svg class="' + className + '" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="' +
       strokeClass +
       '" height="80" id="' +
       patternId +
-      '" patternTransform="scale(2) rotate(30)" patternUnits="userSpaceOnUse" width="20"><rect class="' +
-      rectClass +
-      '" fill="#44337a" height="100%" width="100%" x="0" y="0"></rect><path class="' +
+      '" patternTransform="scale(2) rotate('+angle+')" patternUnits="userSpaceOnUse" width="20"><rect fill="' + colorSet[0] + '" height="100%" width="100%" x="0" y="0"></rect><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="#ffc800" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="' + colorSet[1] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="#FFFFFF" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="' + colorSet[2] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="#FF0054" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="#00A878" class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="' + colorSet[3] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="' + colorSet[4] + '" class="' +
       strokeClass +
       '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path></pattern></defs><g><rect fill="url(#' +
       patternId +
@@ -69,7 +67,7 @@
     color: var(--text-gray-300);
   }
   .dark-text {
-    color: var(--accent-color);
+    color: var(--text-gray-900);
   }
   /*  .secondary-text {
     color: var(--secondary-color);
@@ -83,15 +81,27 @@
   button {
     font-size: 1em;
   }
+  .pt-5 {
+    padding-top: 1.25rem;
+  }
+  .p-5 {
+    padding: 1.25rem;
+  }
   .p-6 {
     padding: 1.5rem;
   }
+  .px-5{padding-left:1.25rem;padding-right:1.25rem}
+  .py-24{padding-top:6rem;padding-bottom:6rem}
+  .mb-16{margin-bottom:4rem}
   .mr-5 {
     margin-right: 1.25rem;
   }
   .mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+  text-center{
+  text-align: center;
   }
   .container {
     max-width: 1280px;
@@ -108,10 +118,6 @@
   }
   .justify-center {
     justify-content: center;
-  }
-  .big-icon .iconify {
-    font-size: 4em;
-    line-height: 1em;
   }
   .landing {
     grid-template-columns: 1fr 1fr;
@@ -235,52 +241,6 @@
   :global(.thickMorph) {
     animation: thick-morph 4s linear infinite;
   }
-  :global(.colorMorph) {
-    animation: stroke-morph 1s linear infinite;
-  }
-  :global(.bgMorph) {
-    animation: fill-morph 5s linear infinite;
-  }
-
-  :global(.formkit-form[data-uid="ba0253339a"] .formkit-powered-by-convertkit) {
-    display: none;
-  }
-
-  @keyframes rotate-morph {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(180deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes stroke-morph {
-    0% {
-      stroke: #e07a5f;
-    }
-    50% {
-      stroke: #f4f1de;
-    }
-    100% {
-      stroke: #e07a5f;
-    }
-  }
-
-  @keyframes fill-morph {
-    0% {
-      fill: #f4f1de;
-    }
-    50% {
-      fill: #e07a5f;
-    }
-    100% {
-      fill: #f4f1de;
-    }
-  }
 
   @keyframes thick-morph {
     0% {
@@ -306,11 +266,11 @@
     height: 100%;
   }
 
-  .cf * {
+  :global(.cf *) {
     position: absolute;
   }
 
-  .top {
+  :global(.top) {
     animation: fade 4s step-start infinite;
   }
 
@@ -350,6 +310,10 @@
   border-radius: var(--border-radius);
 		overflow: hidden;
   }
+  
+  .navbar{
+  grid-template-columns: 1fr auto;
+  }
 
   @media (max-width: 1280px) {
     .container {
@@ -371,6 +335,9 @@
   .featureRight {
     width: 100%;
   }
+  .navbar{
+  grid-template-columns: 1fr;
+  }
   }
   @media (max-width: 768px) {
     .container {
@@ -387,7 +354,7 @@
     }
     .featureLeft {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
     .featureRight {
       display: flex;
@@ -411,10 +378,10 @@
   }
 </style>
 
- <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"/> -->
-<!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" /> -->
-<!-- <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
-<section class="landing grid accent-text accent-bg">
+<!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+ <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+ <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
+<section class="landing grid light-text accent-bg">
   <div class="grid items-center">
     <div class="p-6">
       <Logo />
@@ -573,11 +540,16 @@
     </div>
   </div>
 </section>
-<section class="features text-gray-500 body-font">
+<section class="features dark-text">
   <div class="container featureContainer mx-auto">
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-        {@html svgIcon('colorMorph', 'bgMorph', 'a1')}
+      
+        <div class="cf">          
+          {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
+          {@html svgIcon('', 'color2', 45, 'top')}
+        </div>
+      
       </div>
       <div class="featureHeading">
         <h2>Modify Colors</h2>
@@ -590,13 +562,14 @@
         <p class="featureDescription">Adjust the stroke width on supported patterns</p>
       </div>
       <div class="animatedIcon">
-        {@html svgIcon('thickMorph', '', 'a2')}
+        {@html svgIcon('thickMorph', 'a2')}
       </div>
     </div>
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-        <div class="big-icon">
-          <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
+        <div class="cf">          
+          {@html svgIcon('', 'angle1', 0, 'bottom')}
+          {@html svgIcon('', 'angle2', 45, 'top')}
         </div>
       </div>
       <div class="featureHeading">
@@ -712,25 +685,16 @@
         <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
-  <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-      <div class="animatedIcon">
-      <div class="big-icon">
-        <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
-      </div>
-    </div>
-    <div class="featureHeading">
-      <h2>The 400 Blows</h2>
-      <p class="featureDescription">Speed up your website loading time without compromising on image quality</p>
-    </div>
+      <p >Speed up your website loading time without compromising on image quality</p>
   </div>
-  </div>
+  <!-- </div> -->
   <!-- </div> -->
 </section>
 For designers and developers
 <h2>Digital mockup</h2>
 <div class="test">
-  <header class="body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+  <header>
+    <div class="container navbar mx-auto grid p-5 items-center">
       <Logo />
       <nav class="md:ml-auto flex flex-wrap items-center justify-center">
         <a href="#subscribe" class="mr-5">Link 1</a>
@@ -740,9 +704,7 @@ For designers and developers
       </nav>
     </div>
   </header>
-  <section>
-    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-      <div class="flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+  <section class="container grid mx-auto px-5 py-24 mb-16 items-center text-center">
         <h1>Make vector patterns like a pro</h1>
         <p class="subtitle text-gray-400">
           A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy
@@ -752,8 +714,6 @@ For designers and developers
         <div class="flex justify-center">
           <button>Know more</button>
         </div>
-      </div>
-    </div>
   </section>
 </div>
 
@@ -767,7 +727,7 @@ For designers and developers
   <img alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
 </section>
 
-<section class="accent-bg">
+<section class="accent-bg pt-5">
   <a name="subscribe" />
   <div class="subscribe grid justify-center">
     <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
