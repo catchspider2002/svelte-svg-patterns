@@ -255,9 +255,9 @@
     display: grid;
     /*     grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)); */
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 16px;
+    /*column-gap: 16px;
     row-gap: 16px;
-    /* padding: 2em 0; */
+     padding: 2em 0; */
   }
 
   .cf {
@@ -719,12 +719,12 @@ For designers and developers
 
 <h2>Print mockup</h2>
 <section class="mockups accent-bg items-center">
-  <img alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
   <img alt="Mockup of Book" src="book-cover-mock-up.png" />
   <img alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
   <img alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
   <img alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
   <img alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
+  <img alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
 </section>
 
 <section class="accent-bg pt-5">
