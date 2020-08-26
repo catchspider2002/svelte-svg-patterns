@@ -4,6 +4,7 @@ export let className=""
 
 <style>
   .logo {
+    display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 0.5rem;
     padding-top: 2rem;
@@ -32,7 +33,7 @@ export let className=""
   }
 </style>
 
-<div class="logo grid {className}">
+<div class="logo {className}">
   <div class="normal-icon">
     <span class="iconify" data-icon="noto-v1:alien-monster" data-inline="false" />
   </div>
