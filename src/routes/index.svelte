@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { fade, draw, fly } from "svelte/transition";
 
-  import Logo from "../components/Logo.svelte";
-  //   import Logo from "./Logo.svelte";
+   import Logo from "../components/Logo.svelte";
+//    import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -58,7 +58,6 @@
     --text-gray-400: #1a202c;
     --text-gray-500: #a0aec0;
     --text-gray-700: #1a202c;
-    --text-gray-900: #1a202c;
   }
   .accent-text {
     color: var(--accent-color);
@@ -70,7 +69,7 @@
     color: var(--text-gray-300);
   }
   .dark-text {
-    color: var(--text-gray-900);
+    color: var(--accent-color);
   }
   /*  .secondary-text {
     color: var(--secondary-color);
@@ -94,19 +93,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .border-b {
-    border-bottom-width: 1px;
-  }
-  .pb-10 {
-    padding-bottom: 2.5rem;
-  }
-  .mb-10 {
-    margin-bottom: 2.5rem;
-  }
-  .border-gray-800 {
-    border-color: #2d3748;
-  }
-
   .container {
     max-width: 1280px;
   }
@@ -358,6 +344,12 @@
     padding-bottom: 2rem;
     align-self: center;
   }
+  .animatedIcon{
+  width:8rem;
+  height:8rem;  
+  border-radius: var(--border-radius);
+		overflow: hidden;
+  }
 
   @media (max-width: 1280px) {
     .container {
@@ -401,6 +393,10 @@
       display: flex;
       flex-direction: column;
     }
+  .animatedIcon{
+  width:5rem;
+  height:5rem;
+  }
     .mockups {
       grid-template-columns: 1fr;
     }
@@ -415,8 +411,9 @@
   }
 </style>
 
+ <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"/> -->
 <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" /> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Harmattan:wght@400;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet" /> -->
+<!-- <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
 <section class="landing grid accent-text accent-bg">
   <div class="grid items-center">
     <div class="p-6">
@@ -578,8 +575,8 @@
 </section>
 <section class="features text-gray-500 body-font">
   <div class="container featureContainer mx-auto">
-    <div class="featureRight grid items-center mx-auto border-gray-800">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 items-center justify-center rounded-md overflow-hidden">
+    <div class="featureRight grid items-center mx-auto">
+      <div class="animatedIcon">
         {@html svgIcon('colorMorph', 'bgMorph', 'a1')}
       </div>
       <div class="featureHeading">
@@ -592,72 +589,27 @@
         <h2>Adjust Stroke</h2>
         <p class="featureDescription">Adjust the stroke width on supported patterns</p>
       </div>
-      <div
-        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-md
-        overflow-hidden flex-shrink-0">
+      <div class="animatedIcon">
         {@html svgIcon('thickMorph', '', 'a2')}
       </div>
     </div>
-    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800 flex-shrink-0">
-
-        <div class="cf">
-          <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M1.039 6.249q.122 0 .209-.07.089-.07.089-.185v-.728h.577q1.133 0 1.133-.746
-              0-.204-.077-.35-.076-.147-.225-.23-.147-.086-.342-.124-.193-.04-.45-.04h-.89q-.153 0-.238.086-.084.086-.084.216v1.916q0
-              .115.089.185.089.07.209.07zm.298-1.339v-.758h.553q.144 0 .24.013.097.014.176.052.08.037.118.113.037.075.037.19 0
-              .118-.037.195-.038.077-.118.12-.079.04-.18.058-.1.017-.25.017zM3.73 6.247q.108 0 .188-.06Q4 6.127 4 6.031V4.515l1.352
-              1.547q.068.08.172.134.103.051.192.051.141 0 .228-.092.087-.094.087-.242V3.994q0-.097-.08-.157t-.185-.06q-.108
-              0-.188.061-.08.06-.08.156v1.517l-1.361-1.56q-.064-.08-.166-.126-.1-.047-.192-.047-.133 0-.224.081-.089.079-.089.216V6.03q0
-              .098.079.158.08.058.186.058zM8.106 6.292q.313 0 .868-.101.155-.031.22-.103t.065-.228v-.719q0-.23-.225-.23h-.801q-.092
-              0-.143.054-.05.053-.05.121 0 .074.054.125.054.05.147.05h.433v.584q-.274.053-.539.053-.913 0-.913-.899
-              0-.207.052-.368.052-.16.162-.28.11-.122.291-.186.183-.065.429-.065.292 0 .722.11.032.014.07.014.092 0
-              .15-.06.058-.062.058-.139 0-.048-.033-.092-.033-.047-.098-.074-.38-.15-.892-.15-.379
-              0-.677.1-.298.101-.484.28-.186.177-.282.409-.095.23-.095.503 0 .416.188.709.189.292.526.438.338.144.797.144z" />
-          </svg>
-          <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
-              0-.15-.053-.262-.054-.115-.168-.199-.112-.084-.255-.142-.14-.058-.347-.113l-.303-.074-.302-.073q-.155-.043-.232-.11-.074-.068-.074-.176
-              0-.084.05-.144.05-.06.138-.092.09-.033.193-.047.105-.015.234-.015.387 0 .72.157.054.024.1.024.086 0 .148-.061.062-.064.062-.14
-              0-.076-.064-.124-.149-.106-.428-.174-.28-.07-.576-.07-.507 0-.828.191-.319.192-.319.519 0
-              .253.156.402.157.147.511.248l.683.189q.193.051.284.125.09.073.09.203 0 .158-.169.238-.168.08-.439.08-.424
-              0-.811-.191-.035-.017-.073-.017-.089 0-.163.082-.073.08-.073.164 0 .064.048.093.4.257 1.074.257zM4.804 6.266q.201 0
-              .313-.089.114-.09.207-.332l.756-1.77q.018-.047.018-.088 0-.099-.087-.16-.085-.064-.198-.064-.096
-              0-.174.048-.077.048-.112.142L4.804 5.74l-.722-1.787q-.035-.094-.114-.142-.077-.048-.172-.048-.114 0-.2.063-.085.062-.085.161 0
-              .041.018.088l.756 1.77q.093.241.205.332.114.089.314.089zM7.97 6.292q.312 0
-              .867-.101.155-.031.22-.103.066-.072.066-.228v-.719q0-.23-.226-.23h-.801q-.091 0-.143.054-.05.053-.05.121 0
-              .074.054.125.054.05.147.05h.433v.584q-.273.053-.538.053-.913 0-.913-.899
-              0-.207.051-.368.052-.16.162-.28.11-.122.292-.186.182-.065.428-.065.292 0 .723.11.03.014.07.014.091 0 .15-.06.057-.062.057-.139
-              0-.048-.033-.092-.033-.047-.097-.074-.381-.15-.892-.15-.38 0-.677.1-.298.101-.485.28-.186.177-.281.409-.096.23-.096.503 0
-              .416.189.709.188.292.526.438.337.144.797.144z" />
-          </svg>
+    <div class="featureRight grid items-center mx-auto">
+      <div class="animatedIcon">
+        <div class="big-icon">
+          <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
         </div>
       </div>
       <div class="featureHeading">
-        <h2>Download SVG and PNG</h2>
-        <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
+        <h2>The 400 Blows</h2>
+        <p class="featureDescription">Change the angle to generate unique images</p>
       </div>
     </div>
-    <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-800 sm:flex-row flex-col">
+    <div class="featureLeft grid items-center lg:w-3/5 mx-auto">
       <div class="featureHeading">
         <h2>Copy CSS and SVG</h2>
         <p class="featureDescription">Copy CSS and SVG directly to your clipboard for web projects</p>
       </div>
-      <div
-        class="sm:w-32 order-first sm:order-none sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full bg-gray-800
-        flex-shrink-0">
+      <div class="animatedIcon">
         <div class="cf">
           <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
             <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
@@ -708,20 +660,60 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-      <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800 flex-shrink-0">
-        <div class="big-icon">
-          <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
+    <div class="featureRight grid items-center mx-auto">
+      <div class="animatedIcon">
+
+        <div class="cf">
+          <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
+            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+            <path
+              style="line-height:125%"
+              aria-label="CSS"
+              stroke-width=".202"
+              fill="#ffc800"
+              d="M1.039 6.249q.122 0 .209-.07.089-.07.089-.185v-.728h.577q1.133 0 1.133-.746
+              0-.204-.077-.35-.076-.147-.225-.23-.147-.086-.342-.124-.193-.04-.45-.04h-.89q-.153 0-.238.086-.084.086-.084.216v1.916q0
+              .115.089.185.089.07.209.07zm.298-1.339v-.758h.553q.144 0 .24.013.097.014.176.052.08.037.118.113.037.075.037.19 0
+              .118-.037.195-.038.077-.118.12-.079.04-.18.058-.1.017-.25.017zM3.73 6.247q.108 0 .188-.06Q4 6.127 4 6.031V4.515l1.352
+              1.547q.068.08.172.134.103.051.192.051.141 0 .228-.092.087-.094.087-.242V3.994q0-.097-.08-.157t-.185-.06q-.108
+              0-.188.061-.08.06-.08.156v1.517l-1.361-1.56q-.064-.08-.166-.126-.1-.047-.192-.047-.133 0-.224.081-.089.079-.089.216V6.03q0
+              .098.079.158.08.058.186.058zM8.106 6.292q.313 0 .868-.101.155-.031.22-.103t.065-.228v-.719q0-.23-.225-.23h-.801q-.092
+              0-.143.054-.05.053-.05.121 0 .074.054.125.054.05.147.05h.433v.584q-.274.053-.539.053-.913 0-.913-.899
+              0-.207.052-.368.052-.16.162-.28.11-.122.291-.186.183-.065.429-.065.292 0 .722.11.032.014.07.014.092 0
+              .15-.06.058-.062.058-.139 0-.048-.033-.092-.033-.047-.098-.074-.38-.15-.892-.15-.379
+              0-.677.1-.298.101-.484.28-.186.177-.282.409-.095.23-.095.503 0 .416.188.709.189.292.526.438.338.144.797.144z" />
+          </svg>
+          <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
+            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+            <path
+              style="line-height:125%"
+              aria-label="CSS"
+              stroke-width=".202"
+              fill="#ffc800"
+              d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
+              0-.15-.053-.262-.054-.115-.168-.199-.112-.084-.255-.142-.14-.058-.347-.113l-.303-.074-.302-.073q-.155-.043-.232-.11-.074-.068-.074-.176
+              0-.084.05-.144.05-.06.138-.092.09-.033.193-.047.105-.015.234-.015.387 0 .72.157.054.024.1.024.086 0 .148-.061.062-.064.062-.14
+              0-.076-.064-.124-.149-.106-.428-.174-.28-.07-.576-.07-.507 0-.828.191-.319.192-.319.519 0
+              .253.156.402.157.147.511.248l.683.189q.193.051.284.125.09.073.09.203 0 .158-.169.238-.168.08-.439.08-.424
+              0-.811-.191-.035-.017-.073-.017-.089 0-.163.082-.073.08-.073.164 0 .064.048.093.4.257 1.074.257zM4.804 6.266q.201 0
+              .313-.089.114-.09.207-.332l.756-1.77q.018-.047.018-.088 0-.099-.087-.16-.085-.064-.198-.064-.096
+              0-.174.048-.077.048-.112.142L4.804 5.74l-.722-1.787q-.035-.094-.114-.142-.077-.048-.172-.048-.114 0-.2.063-.085.062-.085.161 0
+              .041.018.088l.756 1.77q.093.241.205.332.114.089.314.089zM7.97 6.292q.312 0
+              .867-.101.155-.031.22-.103.066-.072.066-.228v-.719q0-.23-.226-.23h-.801q-.091 0-.143.054-.05.053-.05.121 0
+              .074.054.125.054.05.147.05h.433v.584q-.273.053-.538.053-.913 0-.913-.899
+              0-.207.051-.368.052-.16.162-.28.11-.122.292-.186.182-.065.428-.065.292 0 .723.11.03.014.07.014.091 0 .15-.06.057-.062.057-.139
+              0-.048-.033-.092-.033-.047-.097-.074-.381-.15-.892-.15-.38 0-.677.1-.298.101-.485.28-.186.177-.281.409-.096.23-.096.503 0
+              .416.189.709.188.292.526.438.337.144.797.144z" />
+          </svg>
         </div>
       </div>
       <div class="featureHeading">
-        <h2>The 400 Blows</h2>
-        <p class="featureDescription">Change the angle to generate unique images</p>
+        <h2>Download SVG and PNG</h2>
+        <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
-  </div>
   <div class="flex items-center lg:w-3/5 mx-auto sm:flex-row flex-col">
-    <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-gray-800 flex-shrink-0">
+      <div class="animatedIcon">
       <div class="big-icon">
         <span class="iconify" data-icon="mdi:angle-acute" data-inline="false" />
       </div>
@@ -730,6 +722,7 @@
       <h2>The 400 Blows</h2>
       <p class="featureDescription">Speed up your website loading time without compromising on image quality</p>
     </div>
+  </div>
   </div>
   <!-- </div> -->
 </section>
