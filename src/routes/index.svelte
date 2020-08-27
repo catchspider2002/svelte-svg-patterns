@@ -83,29 +83,11 @@
   .dark-text {
     color: var(--text-gray-900);
   }
-  /*  .secondary-text {
-    color: var(--secondary-color);
-  }
-  .primary-font {
-    font-family: "Josefin Sans", sans-serif;
-  }*/
-  /* .secondary-font {
-    font-family: "Nunito", sans-serif;
-  } */
-  button {
-    font-size: 1em;
-  }
-  .pt-5 {
-    padding-top: 1.25rem;
-  }
   .pt-10 {
     padding-top: 2.5rem;
   }
-  .p-5 {
-    padding: 1.25rem;
-  }
-  .p-6 {
-    padding: 1.5rem;
+  .left {
+    padding: 3rem;
   }
   .px-5 {
     padding-left: 1.25rem;
@@ -114,9 +96,6 @@
   .py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-  .mb-16 {
-    margin-bottom: 4rem;
   }
   .mr-5 {
     margin-right: 1.25rem;
@@ -131,7 +110,6 @@
   .container {
     max-width: 1280px;
   }
-
   .flex {
     display: flex;
   }
@@ -148,13 +126,14 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     column-gap: 32px;
-    min-height: 90vh;
+    min-height: 95vh;
   }
   .comingSoon {
     font-size: 0.875em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    padding-top: 4rem;
     padding-bottom: 1rem;
   }
   h1 {
@@ -174,8 +153,6 @@
     margin-bottom: 2.5rem;
     /* line-height: 1.75rem; */
     font-size: 1.125em;
-  }
-  .subscribe {
   }
   .bottomSide {
     position: relative;
@@ -207,7 +184,7 @@
     background-color: var(--secondary-color);
   }
   .featureContainer {
-    padding: 6rem 1.25rem;
+    padding: 1.25rem 1.25rem;
   }
   .featureRight:last-child {
     border-bottom-width: 0;
@@ -215,9 +192,9 @@
   .featureLeft,
   .featureRight {
     border-bottom-width: 1px;
-    padding: 2.5rem 0;
+    padding: 4rem 0;
     width: 60%;
-    grid-gap: 2em;
+    column-gap: 2em;
   }
   .featureLeft {
     grid-template-columns: 1fr auto;
@@ -238,7 +215,6 @@
     /* margin: 0 1rem; */
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
-    column-gap: 1rem;
   }
   .radio-toolbar input[type="radio"] {
     opacity: 0;
@@ -333,6 +309,7 @@
   }
 
   .navbar {
+    padding: 1.25rem;
     grid-template-columns: 1fr auto;
   }
 
@@ -364,14 +341,19 @@
     .navbar {
       grid-template-columns: 1fr;
     }
+    .comingSoon {
+      padding-top: 0;
+    }
   }
   @media (max-width: 640px) {
     .container {
       width: 100%;
     }
+    .left {
+      padding: 1.5rem;
+    }
     .featureHeading {
       text-align: center;
-      margin-top: 0;
     }
     .featureLeft {
       display: flex;
@@ -384,6 +366,7 @@
     .animatedIcon {
       width: 5rem;
       height: 5rem;
+      margin-bottom: 1rem;
     }
     .mockups {
       grid-template-columns: 1fr;
@@ -404,7 +387,7 @@
  <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
 <section class="landing grid light-text accent-bg">
   <div class="grid items-center">
-    <div class="p-6">
+    <div class="left">
       <Logo />
 
       <p class="comingSoon text-gray-400">LAUNCHING SOON</p>
@@ -712,9 +695,9 @@ For designers and developers
 <h2 class="text-center">Digital mockup</h2>
 <div class="test">
   <header>
-    <div class="container navbar mx-auto grid p-5 items-center">
+    <div class="container navbar mx-auto grid items-center">
       <Logo />
-      <nav class="md:ml-auto flex flex-wrap items-center justify-center">
+      <nav class="flex flex-wrap items-center justify-center">
         <a href="#subscribe" class="mr-5">Link 1</a>
         <a href="#subscribe" class="mr-5">Link 2</a>
         <a href="#subscribe" class="mr-5">Link 3</a>
@@ -722,7 +705,7 @@ For designers and developers
       </nav>
     </div>
   </header>
-  <section class="container grid mx-auto px-5 py-24 mb-16 items-center text-center">
+  <section class="container grid mx-auto px-5 py-24 items-center text-center">
     <h1>Make vector patterns like a pro</h1>
     <p class="subtitle text-gray-400">
       A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to
