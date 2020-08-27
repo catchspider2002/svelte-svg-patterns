@@ -3,7 +3,7 @@
   import { fade, draw, fly } from "svelte/transition";
 
   import Logo from "../components/Logo.svelte";
-//     import Logo from "./Logo.svelte";
+  //     import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -23,17 +23,31 @@
 
   function svgIcon(strokeClass, patternId, angle = 30, className, colorSet = colorPalette) {
     return (
-      '<svg class="' + className + '" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="' +
+      '<svg class="' +
+      className +
+      '" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern class="' +
       strokeClass +
       '" height="80" id="' +
       patternId +
-      '" patternTransform="scale(2) rotate('+angle+')" patternUnits="userSpaceOnUse" width="20"><rect fill="' + colorSet[0] + '" height="100%" width="100%" x="0" y="0"></rect><path class="' +
+      '" patternTransform="scale(2) rotate(' +
+      angle +
+      ')" patternUnits="userSpaceOnUse" width="20"><rect fill="' +
+      colorSet[0] +
+      '" height="100%" width="100%" x="0" y="0"></rect><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="' + colorSet[1] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,0)" stroke="' +
+      colorSet[1] +
+      '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="' + colorSet[2] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,20)" stroke="' +
+      colorSet[2] +
+      '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path class="' +
       strokeClass +
-      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="' + colorSet[3] + '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="' + colorSet[4] + '" class="' +
+      '" fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,40)" stroke="' +
+      colorSet[3] +
+      '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path><path fill="none" stroke-linecap="square" stroke-width="3" transform="translate(0,60)" stroke="' +
+      colorSet[4] +
+      '" class="' +
       strokeClass +
       '" d="M -2.3354725e-8,9.8330078 H 20 Z"></path></pattern></defs><g><rect fill="url(#' +
       patternId +
@@ -84,15 +98,26 @@
   .pt-5 {
     padding-top: 1.25rem;
   }
+  .pt-10 {
+    padding-top: 2.5rem;
+  }
   .p-5 {
     padding: 1.25rem;
   }
   .p-6 {
     padding: 1.5rem;
   }
-  .px-5{padding-left:1.25rem;padding-right:1.25rem}
-  .py-24{padding-top:6rem;padding-bottom:6rem}
-  .mb-16{margin-bottom:4rem}
+  .px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .mb-16 {
+    margin-bottom: 4rem;
+  }
   .mr-5 {
     margin-right: 1.25rem;
   }
@@ -100,8 +125,8 @@
     margin-left: auto;
     margin-right: auto;
   }
-  text-center{
-  text-align: center;
+  .text-center {
+    text-align: center;
   }
   .container {
     max-width: 1280px;
@@ -190,18 +215,17 @@
     padding-bottom: 2.5rem;
     margin-bottom: 2.5rem;
     width: 60%;
+    grid-gap: 2em;
   }
   .featureLeft {
     grid-template-columns: 1fr auto;
-    grid-gap: 1em;
   }
   .featureRight {
     grid-template-columns: auto 1fr;
-    grid-gap: 1em;
   }
   .featureHeading {
     text-align: left;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
   }
   .featureDescription {
     line-height: 1.625;
@@ -253,11 +277,7 @@
 
   .mockups {
     display: grid;
-    /*     grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)); */
     grid-template-columns: 1fr 1fr 1fr;
-    /*column-gap: 16px;
-    row-gap: 16px;
-     padding: 2em 0; */
   }
 
   .cf {
@@ -304,15 +324,15 @@
     padding-bottom: 2rem;
     align-self: center;
   }
-  .animatedIcon{
-  width:8rem;
-  height:8rem;  
-  border-radius: var(--border-radius);
-		overflow: hidden;
+  .animatedIcon {
+    width: 7rem;
+    height: 7rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
   }
-  
-  .navbar{
-  grid-template-columns: 1fr auto;
+
+  .navbar {
+    grid-template-columns: 1fr auto;
   }
 
   @media (max-width: 1280px) {
@@ -331,17 +351,17 @@
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
     }
-  .featureLeft,
-  .featureRight {
-    width: 100%;
-  }
-  .navbar{
-  grid-template-columns: 1fr;
-  }
+    .featureLeft,
+    .featureRight {
+      width: 100%;
+    }
   }
   @media (max-width: 768px) {
     .container {
       max-width: 640px;
+    }
+    .navbar {
+      grid-template-columns: 1fr;
     }
   }
   @media (max-width: 640px) {
@@ -360,10 +380,10 @@
       display: flex;
       flex-direction: column;
     }
-  .animatedIcon{
-  width:5rem;
-  height:5rem;
-  }
+    .animatedIcon {
+      width: 5rem;
+      height: 5rem;
+    }
     .mockups {
       grid-template-columns: 1fr;
     }
@@ -389,8 +409,8 @@
       <p class="comingSoon text-gray-400">LAUNCHING SOON</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle text-gray-400">
-        A simple online pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging
-        design and more.
+        A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
+        Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
       <div class="subscribe grid">
         <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
@@ -544,12 +564,12 @@
   <div class="container featureContainer mx-auto">
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-      
-        <div class="cf">          
+
+        <div class="cf">
           {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
           {@html svgIcon('', 'color2', 45, 'top')}
         </div>
-      
+
       </div>
       <div class="featureHeading">
         <h2>Modify Colors</h2>
@@ -567,13 +587,13 @@
     </div>
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-        <div class="cf">          
+        <div class="cf">
           {@html svgIcon('', 'angle1', 0, 'bottom')}
           {@html svgIcon('', 'angle2', 45, 'top')}
         </div>
       </div>
       <div class="featureHeading">
-        <h2>The 400 Blows</h2>
+        <h2>Change the angle</h2>
         <p class="featureDescription">Change the angle to generate unique images</p>
       </div>
     </div>
@@ -685,13 +705,10 @@
         <p class="featureDescription">Download a tileable SVG or a high resolution PNG image for print</p>
       </div>
     </div>
-      <p >Speed up your website loading time without compromising on image quality</p>
   </div>
-  <!-- </div> -->
-  <!-- </div> -->
 </section>
 For designers and developers
-<h2>Digital mockup</h2>
+<h2 class="text-center">Digital mockup</h2>
 <div class="test">
   <header>
     <div class="container navbar mx-auto grid p-5 items-center">
@@ -705,29 +722,29 @@ For designers and developers
     </div>
   </header>
   <section class="container grid mx-auto px-5 py-24 mb-16 items-center text-center">
-        <h1>Make vector patterns like a pro</h1>
-        <p class="subtitle text-gray-400">
-          A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy
-          to use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and
-          apparel, posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
-        </p>
-        <div class="flex justify-center">
-          <button>Know more</button>
-        </div>
+    <h1>Make vector patterns like a pro</h1>
+    <p class="subtitle text-gray-400">
+      A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to
+      use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and
+      apparel, posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
+    </p>
+    <div class="flex justify-center">
+      <button>Know more</button>
+    </div>
   </section>
 </div>
 
-<h2>Print mockup</h2>
+<h2 class="text-center">Print mockup</h2>
 <section class="mockups accent-bg items-center">
-  <img alt="Mockup of Book" src="book-cover-mock-up.png" />
-  <img alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
-  <img alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
-  <img alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
-  <img alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
-  <img alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
+  <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
+  <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
+  <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
+  <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
+  <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
+  <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
 </section>
 
-<section class="accent-bg pt-5">
+<section class="accent-bg pt-10">
   <a name="subscribe" />
   <div class="subscribe grid justify-center">
     <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
@@ -735,7 +752,7 @@ For designers and developers
     </script>
   </div>
 
-  <div class="grid">
+  <div class="grid justify-center pt-10">
     <Logo className="mx-auto" />
   </div>
 

@@ -1,28 +1,32 @@
 :root {
-    --main-bg-color: #1a202c;
-    /* --accent-color: rgb(255, 218, 6); */
-    --accent-color: #44337a;
-    --secondary-color: #ffc800;
-    --accent-text-color: #ffffff;
-    --secondary-text-color: #000000;
-    --accent-color-hover: rgba(255, 218, 6, 0.8);
-    --border-radius: 4px;
-    --text-gray-300: #e2e8f0;
-    --text-gray-400: #1a202c;
-    --text-gray-500: #a0aec0;
-    --text-gray-700: #1a202c;
-    --text-gray-900: #1a202c;
-    --font: "Nunito", sans-serif;
+  --main-bg-color: #1a202c;
+  /* --accent-color: rgb(255, 218, 6); */
+  --accent-color: rgb(68, 51, 122);
+  --secondary-color: rgb(255, 200, 0);
+  --accent-text-color: #ffffff;
+  --secondary-text-color: #000000;
+  --accent-color-hover: rgba(68, 51, 122, 0.8);
+  --secondary-color-hover: rgba(255, 200, 0, 0.8);
+  --border-radius: 4px;
+  --text-gray-300: #e2e8f0;
+  --text-gray-400: #1a202c;
+  --text-gray-500: #a0aec0;
+  --text-gray-700: #1a202c;
+  --text-gray-900: #1a202c;
+  --font: "Nunito", sans-serif;
 }
-  *, ::after, ::before {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--accent-color);
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--accent-color);
 }
-  img, video {
-    max-width: 100%;
-    height: auto;
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 html {
@@ -48,7 +52,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.5em 0;
+  /* margin: 0 0 0.5em 0; */
   font-weight: 400;
   line-height: 1.2;
 }
@@ -59,6 +63,11 @@ h1 {
 
 a {
   color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--secondary-color);
 }
 
 input {
