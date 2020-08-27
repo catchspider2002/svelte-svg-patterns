@@ -83,8 +83,8 @@
   .dark-text {
     color: var(--text-gray-900);
   }
-  .pt-10 {
-    padding-top: 2.5rem;
+  .pt-20 {
+    padding-top: 4rem;
   }
   .left {
     padding: 3rem;
@@ -144,8 +144,6 @@
   }
   h2 {
     color: var(--dark-text);
-    font-weight: 600;
-    font-size: 1.6em;
     margin-bottom: 0.5rem;
   }
   .subtitle {
@@ -243,15 +241,6 @@
     animation: thick-morph 4s linear infinite;
   }
 
-  @keyframes thick-morph {
-    0% {
-      stroke-width: 3;
-    }
-    50% {
-      stroke-width: 15;
-    }
-  }
-
   .mockups {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -269,6 +258,15 @@
 
   :global(.top) {
     animation: fade 4s step-start infinite;
+  }
+
+  @keyframes thick-morph {
+    0% {
+      stroke-width: 3;
+    }
+    50% {
+      stroke-width: 15;
+    }
   }
 
   @keyframes fade {
@@ -295,11 +293,9 @@
 
   .footer {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     padding: 0.5rem;
     padding-bottom: 2rem;
-    align-self: center;
   }
   .animatedIcon {
     width: 7rem;
@@ -518,9 +514,9 @@
     </div>
     <div class="toolbox grid items-center">
       <label for="scale">Scale</label>
-      <input id="scale" type="range" bind:value={scale} min="0.5" max="10" step="0.5" />
+      <input id="scale" type="range" bind:value={scale} min="0.5" max="9.5" step="0.5" />
       <label for="stroke">Stroke</label>
-      <input id="stroke" type="range" bind:value={stroke} min="0.5" max="10" step="0.5" />
+      <input id="stroke" type="range" bind:value={stroke} min="0.5" max="9.5" step="0.5" />
       <label for="angle">Angle</label>
       <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
       <label for="angle">Colors</label>
@@ -728,22 +724,24 @@ For designers and developers
   <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
 </section>
 
-<section class="accent-bg pt-10">
-  <a name="subscribe" />
-  <div class="subscribe grid justify-center">
-    <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+<section class="accent-bg light-text pt-20">
+  <div class="container mx-auto justify-center">
+    <p class="text-center">Sign up for project updates and beta access.</p>
+    <a name="subscribe" />
+    <div class="subscribe grid justify-center">
+      <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
 
-    </script>
+      </script>
+    </div>
+
+    <div class="grid justify-center pt-20">
+      <Logo className="mx-auto" />
+    </div>
+
+    <div class="footer justify-center light-text">
+      Made with&nbsp;
+      <span style="color:#e25555">❤</span>
+      &nbsp;by Naveen CS
+    </div>
   </div>
-
-  <div class="grid justify-center pt-10">
-    <Logo className="mx-auto" />
-  </div>
-
-  <div class="footer justify-center light-text">
-    Made with&nbsp;
-    <span style="color:#e25555">❤</span>
-    &nbsp;by Naveen CS
-  </div>
-
 </section>
