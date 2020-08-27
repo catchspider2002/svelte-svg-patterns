@@ -8,23 +8,18 @@
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
     padding-top: 2rem;
-    padding-bottom: 2rem;
-    /* padding-bottom: 5rem; */
+    padding-bottom: 1rem;
     align-items: center;
   }
   .logoText {
-    color: var(--accent-text-color);
-    font-weight: 600;
+    color: var(--secondary-color);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	font-size: 1.125em;
   }
   @media (max-width: 1280px) {
     .logo {
-      padding-top: 1rem;
-      padding-bottom: 2rem;
-    }
-  }
-  @media (max-width: 1024px) {
-    .logo {
-      padding-bottom: 1rem;
+      padding-top: 2rem;
     }
   }
   @media (max-width: 768px) {

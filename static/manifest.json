@@ -1,8 +1,8 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"background_color": "#1a202c",
+	"theme_color": "#44337a",
+	"name": "Pattern Monster",
+	"short_name": "Pattern Monster",
 	"display": "minimal-ui",
 	"start_url": "/",
 	"icons": [

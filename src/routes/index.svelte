@@ -209,11 +209,13 @@
   .featureContainer {
     padding: 6rem 1.25rem;
   }
+  .featureRight:last-child {
+    border-bottom-width: 0;
+  }
   .featureLeft,
   .featureRight {
     border-bottom-width: 1px;
-    padding-bottom: 2.5rem;
-    margin-bottom: 2.5rem;
+    padding: 2.5rem 0;
     width: 60%;
     grid-gap: 2em;
   }
@@ -225,7 +227,6 @@
   }
   .featureHeading {
     text-align: left;
-    /* margin-top: 1.5rem; */
   }
   .featureDescription {
     line-height: 1.625;
