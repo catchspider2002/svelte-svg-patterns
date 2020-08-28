@@ -3,7 +3,7 @@
   import { fade, draw, fly } from "svelte/transition";
 
   import Logo from "../components/Logo.svelte";
-  //     import Logo from "./Logo.svelte";
+//       import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -76,6 +76,9 @@
   }
   .accent-bg {
     background-color: var(--accent-color);
+  }
+  .secondary-bg {
+    background-color: var(--secondary-color);
   }
   .light-text {
     color: var(--text-gray-300);
@@ -177,9 +180,6 @@
     background: var(--main-bg-color);
     grid-template-columns: auto 1fr;
     border-radius: var(--border-radius);
-  }
-  .features {
-    background-color: var(--secondary-color);
   }
   .featureContainer {
     padding: 1.25rem 1.25rem;
@@ -540,7 +540,7 @@
     </div>
   </div>
 </section>
-<section class="features dark-text">
+<section class="features secondary-bg dark-text">
   <div class="container featureContainer mx-auto">
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
@@ -715,7 +715,7 @@ For designers and developers
 </div>
 
 <h2 class="text-center">Print mockup</h2>
-<section class="mockups accent-bg items-center">
+<section class="mockups secondary-bg items-center">
   <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
   <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
   <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
@@ -724,7 +724,10 @@ For designers and developers
   <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
 </section>
 
-<section class="accent-bg light-text pt-20">
+<section class="accent-bg light-text">
+  <svg viewBox="0 0 1440 260" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#ffc800" fill-opacity="1" d="M0,128L60,144C120,160,240,192,360,192C480,192,600,160,720,133.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+</svg>
   <div class="container mx-auto justify-center">
     <p class="text-center">Sign up for project updates and beta access.</p>
     <a name="subscribe" />
