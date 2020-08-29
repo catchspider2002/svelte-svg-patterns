@@ -37,7 +37,7 @@ object,
 svg,
 video {
   display: block;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 
 html {
@@ -212,6 +212,12 @@ button:active {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+.p-5 {
+  padding: 1.25rem;
+}
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 .py-24 {
   padding-top: 6rem;

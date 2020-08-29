@@ -137,9 +137,6 @@
     grid-template-columns: auto 1fr;
     border-radius: var(--border-radius);
   }
-  .featureContainer {
-    padding: 1.25rem 1.25rem;
-  }
   .featureRight:last-child {
     border-bottom-width: 0;
   }
@@ -271,7 +268,6 @@
   }
 
   .navbar {
-    padding: 1.25rem;
     grid-template-columns: 1fr auto;
   }
 
@@ -338,7 +334,6 @@
     .toolbox {
       width: 320px;
       height: 400px;
-      padding: 1rem 0.5em;
       grid-template-columns: 1fr;
     }
   }
@@ -507,7 +502,7 @@
   </div>
 </section>
 <section class="features secondary-bg dark-text">
-  <div class="container featureContainer mx-auto">
+  <div class="container p-5 mx-auto">
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
 
@@ -660,7 +655,7 @@
     <div class="text-center">Copy the CSS to create the background for your web projects</div>
   </div> -->
   <header>
-    <div class="container navbar mx-auto grid items-center">
+    <div class="container navbar mx-auto grid p-5 items-center">
       <Logo />
       <nav class="flex flex-wrap items-center justify-center">
         <a href="#subscribe" class="mr-5">Link 1</a>
