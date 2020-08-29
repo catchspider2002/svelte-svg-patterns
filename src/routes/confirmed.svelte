@@ -35,7 +35,7 @@
     </p>
     <button
       class="accent-bg"
-      onclick="location.href='https://twitter.com/intent/tweet?text=Just%20got%20on%20the%20waitlist%20for%20Pattern%20Monster.%20If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%0A%0ASign%20up%20for%20early%20access%20at%20https%3A%2F%2Fpattern.monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster%0A%0Avia%20%40Pattern_Monster%20'"
+      onclick="location.href='https://twitter.com/intent/tweet?text=Just%20got%20on%20the%20waitlist%20for%20Pattern%20Monster.%20If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%0A%0ASign%20up%20for%20early%20access%20at%20https%3A%2F%2Fpattern.monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster%0A%0Avia%20%40Pattern_Monster'"
       type="button">
       Tweet
     </button>
