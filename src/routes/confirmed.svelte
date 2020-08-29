@@ -7,11 +7,11 @@
     color: var(--accent-color);
   }
 
-  div{
-	  min-height: 100vh;
+  div {
+    min-height: 100vh;
   }
 
-  .tweet {
+  button {
     height: 48px;
     padding: 10px 15px;
     color: #fff;
@@ -19,9 +19,8 @@
     margin: 0 auto;
   }
 
-  .tweet:hover {
-	opacity: 0.8;
-    color: #fff;
+  button:hover {
+    background-color: var(--accent-color-hover);
   }
 </style>
 
@@ -34,12 +33,18 @@
       You are on officially on our waitlist. We'll let you know once the beta is ready. You can skip the waitlist by sharing the below link
       with your friends.
     </p>
-    <a
-      class="tweet accent-bg"
+    <button
+      class="accent-bg"
+      onclick="location.href='https://twitter.com/intent/tweet?text=Just%20got%20on%20the%20waitlist%20for%20Pattern%20Monster.%20If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%0A%0ASign%20up%20for%20early%20access%20at%20https%3A%2F%2Fpattern.monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster%0A%0Avia%20%40Pattern_Monster%20'"
+      type="button">
+      Tweet
+    </button>
+    <!-- <a
+      class="tweet "
       href="https://twitter.com/intent/tweet?text=Just%20got%20on%20the%20waitlist%20for%20Pattern%20Monster.%20If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%0A%0ASign%20up%20for%20early%20access%20at%20https%3A%2F%2Fpattern.monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster%0A%0Avia%20%40Pattern_Monster%20"
       data-size="large">
-      Tweet
-    </a>
+      
+    </a> -->
     <svg
       class="mx-auto"
       id="875ecf71-6e24-4878-8942-f452de3ecca7"
