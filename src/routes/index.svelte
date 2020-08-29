@@ -88,73 +88,8 @@
 </script>
 
 <style>
-  :root {
-    --main-bg-color: #1a202c;
-    /* --accent-color: rgb(255, 218, 6); */
-    --accent-color: #44337a;
-    --secondary-color: #ffc800;
-    --accent-text-color: #ffffff;
-    --secondary-text-color: #000000;
-    --accent-color-hover: rgba(255, 218, 6, 0.8);
-    --border-radius: 4px;
-    --text-gray-300: #e2e8f0;
-    --text-gray-400: #1a202c;
-    --text-gray-500: #a0aec0;
-    --text-gray-700: #1a202c;
-  }
-  .accent-text {
-    color: var(--accent-color);
-  }
-  .accent-bg {
-    background-color: var(--accent-color);
-  }
-  .secondary-bg {
-    background-color: var(--secondary-color);
-  }
-  .light-text {
-    color: var(--text-gray-300);
-  }
-  .dark-text {
-    color: var(--text-gray-900);
-  }
-  .pt-20 {
-    padding-top: 4rem;
-  }
   .left {
     padding: 3rem;
-  }
-  .px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-  .py-24 {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-  .mr-5 {
-    margin-right: 1.25rem;
-  }
-  .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .text-center {
-    text-align: center;
-  }
-  .container {
-    max-width: 1280px;
-  }
-  .flex {
-    display: flex;
-  }
-  .grid {
-    display: grid;
-  }
-  .items-center {
-    align-items: center;
-  }
-  .justify-center {
-    justify-content: center;
   }
   .landing {
     grid-template-columns: 1fr 1fr;
@@ -164,21 +99,11 @@
   }
   .comingSoon {
     font-size: 0.875em;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding-top: 4rem;
     padding-bottom: 1rem;
-  }
-  h1 {
-    color: var(--secondary-color);
-    font-size: 3.2em;
-    margin-top: 0.5rem;
-    line-height: 1em;
-  }
-  h2 {
-    color: var(--dark-text);
-    margin-bottom: 0.5rem;
   }
   .subtitle {
     margin-top: 0.5rem;
@@ -409,7 +334,7 @@
       grid-template-columns: 1fr;
     }
   }
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     .toolbox {
       width: 320px;
       height: 400px;
@@ -419,7 +344,7 @@
   }
 </style>
 
-<!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+<!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
  <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
 <section class="landing grid light-text accent-bg">
