@@ -206,7 +206,7 @@ Doodle Shapes
 Organic Shapes
 Circles and Dot Grids Use the style that's appropriate for your project, or mix and match shapes to open up a world of possibilities.
 
-Each of the 100 patterns tile seamlessly on all sides, meaning you can use them as individual design elements, or repeat them as many times as you need. Perfect for use in branding and logo design projects, business cards, creating custom tees and apparel, as well as adding extra modern oomf to your posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
+Each of the 100 patterns tile seamlessly on all sides, meaning you can use them as individual design elements, or repeat them as many times as you need.
 
 Mailing
 

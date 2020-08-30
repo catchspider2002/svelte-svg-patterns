@@ -7,11 +7,11 @@
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
-  --text-gray-300: #e2e8f0;
-  --text-gray-400: #1a202c;
-  --text-gray-500: #a0aec0;
-  --text-gray-700: #1a202c;
-  --text-gray-900: #1a202c;
+  --gray-300: #e2e8f0;
+  --gray-400: #1a202c;
+  --gray-500: #a0aec0;
+  --gray-700: #1a202c;
+  --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
 }
 *,
@@ -201,10 +201,10 @@ button:active {
   background-color: var(--secondary-color);
 }
 .light-text {
-  color: var(--text-gray-300);
+  color: var(--gray-300);
 }
 .dark-text {
-  color: var(--text-gray-900);
+  color: var(--gray-900);
 }
 .pt-20 {
   padding-top: 4rem;
