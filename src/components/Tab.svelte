@@ -20,8 +20,8 @@
 	}
 	
 	.selected {
-		border-top: 4px solid var(--accent-color);
-		color: var(--accent-color);
+		border-top: 4px solid var(--secondary-color);
+		color: var(--secondary-color);
 	}
 </style>
 

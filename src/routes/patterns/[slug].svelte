@@ -13,7 +13,7 @@
   export let post;
   import constants from "../_constants.js";
   import { onMount } from "svelte";
-  import "../_monolith.min.css";
+  // import "../_monolith.min.css";
   import { bind } from "svelte/internal";
 
   let Pickr, svg;
@@ -30,16 +30,14 @@
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
     // for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
-    for (let i = 1; i <= 5; i++)
-    { 
-      document.getElementById("color" + i + "Div").style.display = "block"
-      if(i <= selectedPattern.colors.length){
-      createPicker("color" + i + "Div", i - 1);
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById("color" + i + "Div").style.display = "block";
+      if (i <= selectedPattern.colors.length) {
+        createPicker("color" + i + "Div", i - 1);
+      } else {
+        document.getElementById("color" + i + "Div").style.display = "none";
       }
-      else{
-      document.getElementById("color" + i + "Div").style.display = "none"
     }
-  }
   }
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
@@ -281,11 +279,11 @@
     display: block;
   }
 
-  .container {
+  .patternContainer {
     /*width: 100%;*/
     margin: 0 auto 0 auto;
     padding: 2em;
-    background-color: #1a202c;
+    background-color: var(--accent-color);
     color: #edf2f7;
   }
 
@@ -312,13 +310,13 @@
 
   .uneditable {
     border: 0 none;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     color: black;
     height: 24px;
     font-size: 0.9em;
     padding: 2px 2px 0 2px;
     text-align: center;
-    width: 30px;
+    width: 36px;
     cursor: none;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -401,95 +399,105 @@
     }
   }
 </style>
+
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
 
 <Tabs>
-	<TabList>
-		<Tab>design</Tab>
-		<Tab>preview</Tab>
-		<Tab>export</Tab>
-	</TabList>
+  <TabList>
+    <Tab>design</Tab>
+    <Tab>preview</Tab>
+    <Tab>export</Tab>
+  </TabList>
 
-	<TabPanel>
-<div id="page" class="page">
-  <div class="container">
-    <div>{post.title}</div>
-    <div class="samples">
-      {#each presetPatterns as pattern}
-        <button id="pattern{pattern.id}" class="pattern" on:click={check}
-          style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colors, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
-      {/each}
-    </div>
+  <TabPanel>
+    <div id="page" class="page">
+      <div class="patternContainer">
+        <div>{post.title}</div>
+        <div class="samples">
+          {#each presetPatterns as pattern}
+            <button
+              id="pattern{pattern.id}"
+              class="pattern"
+              on:click={check}
+              style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colors, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
+          {/each}
+        </div>
 
-    <div class="inputs">
-      <label for="scale">Scale</label>
-      <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} /> 
-      <input class="uneditable" bind:value={selectedPattern.scale} readonly/>
-      {#if (mode[0] === 'stroke')}
-	  <label for="stroke">Stroke</label>
-      <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5"/>
-      <input class="uneditable" bind:value={selectedPattern.stroke} readonly/>
-	  <label>Join</label>
-    <div class="strokeJoin">
-      <label><input type=radio bind:group={selectedPattern.join} value={1}>Square</label>
-      <label><input type=radio bind:group={selectedPattern.join} value={2}>Rounded</label>
-      </div>
-      {/if}
-      {#if (mode[1] === 'yes')}
-	  <label for="hspacing">Horizontal Spacing</label>
-      <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5"/>
-      <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly/>
-      {/if}
-      {#if (mode[2] === 'yes')}
-	  <label for="vspacing">Vertical Spacing</label>
-      <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5"/>
-      <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly/>
-      {/if}
-	  <label for="angle">Angle</label>
-      <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5"/>
-      <input class="uneditable" bind:value={selectedPattern.angle} readonly/>
-      <label>Colors</label>
-      <div class="colors py-05">
-        <!-- {#each { length: selectedPattern.colors.length } as _, i}
+        <div class="inputs">
+          <label for="scale">Scale</label>
+          <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} />
+          <input class="uneditable" bind:value={selectedPattern.scale} readonly />
+          {#if mode[0] === 'stroke'}
+            <label for="stroke">Stroke</label>
+            <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
+            <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
+            <label>Join</label>
+            <div class="strokeJoin">
+              <label>
+                <input type="radio" bind:group={selectedPattern.join} value={1} />
+                Square
+              </label>
+              <label>
+                <input type="radio" bind:group={selectedPattern.join} value={2} />
+                Rounded
+              </label>
+            </div>
+          {/if}
+          {#if mode[1] === 'yes'}
+            <label for="hspacing">Horizontal Spacing</label>
+            <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5" />
+            <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
+          {/if}
+          {#if mode[2] === 'yes'}
+            <label for="vspacing">Vertical Spacing</label>
+            <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5" />
+            <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
+          {/if}
+          <label for="angle">Angle</label>
+          <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5" />
+          <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+          <label>Colors</label>
+          <div class="colors py-05">
+            <!-- {#each { length: selectedPattern.colors.length } as _, i}
           <div id="color{i + 1}Div" />
         {/each} -->
-        {#each { length: 5 } as _, i}
-          <div id="color{i + 1}Div" />
-        {/each}
+            {#each { length: 5 } as _, i}
+              <div id="color{i + 1}Div" />
+            {/each}
+          </div>
+        </div>
+        <div id="sampleOutput" style={cssOutput} />
+        <br />
+        <div class="bottomBar" style={cssOutput}>
+          <button title="Random" on:click={randomPattern}>Inspire Me</button>
+        </div>
       </div>
     </div>
-    <div id="sampleOutput" style={cssOutput}></div>
-    <br />
-    <div class="bottomBar" style={cssOutput}>
-        <button title="Random" on:click={randomPattern}>Inspire Me</button>
-    </div>
-  </div>
-</div>
-	</TabPanel>
+  </TabPanel>
 
-	<TabPanel>
+  <TabPanel>
     Business Card
-    <div id="preview" style={cssOutput}></div>
+    <div id="preview" style={cssOutput} />
     <!-- <svg -->
-      <!-- xmlns="http://www.w3.org/2000/svg" -->
-      <!-- width="525" -->
-      <!-- height="300" -->
-      <!-- viewBox="0 0 525 300"> -->
-      <!-- <rect x="0" y="0" width="525" height="300" fill="red" /> -->
-      <!-- <g fill="none" stroke="pink" stroke-width="0.5"> -->
-        <!-- <path -->
-          <!-- d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 -->
-          <!-- 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 -->
-          <!-- 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 -->
-          <!-- 6.495zM47.5 26.495h-15l7.5-12.99z" /> -->
-      <!-- </g> -->
+    <!-- xmlns="http://www.w3.org/2000/svg" -->
+    <!-- width="525" -->
+    <!-- height="300" -->
+    <!-- viewBox="0 0 525 300"> -->
+    <!-- <rect x="0" y="0" width="525" height="300" fill="red" /> -->
+    <!-- <g fill="none" stroke="pink" stroke-width="0.5"> -->
+    <!-- <path -->
+    <!-- d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 -->
+    <!-- 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 -->
+    <!-- 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 -->
+    <!-- 6.495zM47.5 26.495h-15l7.5-12.99z" /> -->
+    <!-- </g> -->
     <!-- </svg> -->
-	</TabPanel>
+  </TabPanel>
 
-	<TabPanel>
-        
+  <TabPanel>
+
     <div class="downloadGrid">
       <span>Copy</span>
       <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
@@ -501,11 +509,25 @@
       <label for="width" class="text-center">Width</label>
       <label for="height" class="text-center">Height</label>
       <span>Dimensions</span>
-      <input id="width" type="number" bind:value={outputWidth} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
-      <input id="height" type="number" bind:value={outputHeight} min="0" max="9999" 
-	  on:input={e => {if (e.target.value.length > 4) e.target.value = e.target.value.slice(0,4)}}/>
+      <input
+        id="width"
+        type="number"
+        bind:value={outputWidth}
+        min="0"
+        max="9999"
+        on:input={e => {
+          if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+        }} />
+      <input
+        id="height"
+        type="number"
+        bind:value={outputHeight}
+        min="0"
+        max="9999"
+        on:input={e => {
+          if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+        }} />
     </div>
-    <div id="pngOutput"></div>
-	</TabPanel>
+    <div id="pngOutput" />
+  </TabPanel>
 </Tabs>

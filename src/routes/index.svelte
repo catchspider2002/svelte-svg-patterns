@@ -1,6 +1,5 @@
 <script>
   import Logo from "../components/Logo.svelte";
-  //       import Logo from "./Logo.svelte";
 
   $: stroke = 3;
   $: angle = "30";
