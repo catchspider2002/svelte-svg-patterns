@@ -374,7 +374,8 @@
   }
   @media (max-width: 480px) {
     .toolbox {
-      width: 320px;
+      width: 100%;
+      max-width: 320px;
       height: 400px;
       grid-template-columns: 1fr;
     }

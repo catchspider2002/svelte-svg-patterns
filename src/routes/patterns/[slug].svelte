@@ -377,8 +377,7 @@
     padding-bottom: calc(10 / 16 * 100%);
   }
 
-  #sampleOutput,
-  #preview {
+  #sampleOutput {
     width: 100%;
     height: 500px;
   }
@@ -407,7 +406,6 @@
 <Tabs>
   <TabList>
     <Tab>design</Tab>
-    <Tab>preview</Tab>
     <Tab>export</Tab>
   </TabList>
 
@@ -478,27 +476,7 @@
   </TabPanel>
 
   <TabPanel>
-    Business Card
-    <div id="preview" style={cssOutput} />
-    <!-- <svg -->
-    <!-- xmlns="http://www.w3.org/2000/svg" -->
-    <!-- width="525" -->
-    <!-- height="300" -->
-    <!-- viewBox="0 0 525 300"> -->
-    <!-- <rect x="0" y="0" width="525" height="300" fill="red" /> -->
-    <!-- <g fill="none" stroke="pink" stroke-width="0.5"> -->
-    <!-- <path -->
-    <!-- d="M-7.5 33.505h15L0 46.495zM-7.5-6.495h15L0 6.495zM7.5 26.495h-15L0 -->
-    <!-- 13.505zM27.5 6.495h-15L20-6.495zM12.5 13.505h15L20 26.495zM27.5 -->
-    <!-- 46.495h-15l7.5-12.99zM32.5 33.505h15L40 46.495zM32.5-6.495h15L40 -->
-    <!-- 6.495zM47.5 26.495h-15l7.5-12.99z" /> -->
-    <!-- </g> -->
-    <!-- </svg> -->
-  </TabPanel>
-
-  <TabPanel>
-
-    <div class="downloadGrid">
+    <div class="downloadGrid" style={cssOutput}>
       <span>Copy</span>
       <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
       <button on:click={copyText(svgFile)} title="SVG">SVG</button>
