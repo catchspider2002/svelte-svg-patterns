@@ -314,15 +314,57 @@
   .text-center {
     text-align: center;
   }
+
+  .exportGrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 16px;
+    align-items: center;
+  }
+  .dimensionGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 16px;
+    align-items: center;
+  }
+
+  .mobileBg {
+    display: none;
+  }
+
+  .controls {
+    z-index: 1;
+  }
+  @media (max-width: 640px) {
+    .page {
+      grid-template-columns: 1fr;
+    }
+    .mobileBg {
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+    .controls {
+      background-color: var(--accent-color);
+      padding: 2rem;
+    }
+    .preview {
+      display: none;
+    }
+  }
 </style>
 
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
 
-<div id="page" class="page">
+<div class="page">
   <div class="patternContainer justify-center items-center">
-    <div>
+    <div class="mobileBg" style={cssOutput} />
+    <div class="controls">
       <div>{post.title}</div>
 
       <div class="inputs">
@@ -369,40 +411,44 @@
         <button title="Reset" on:click={resetPattern}>Reset</button>
       </div>
       <div class="bottomBar">
+        <div class="exportGrid">
+          <span>Copy</span>
+          <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
+          <button on:click={copyText(svgFile)} title="SVG">SVG</button>
+        </div>
+        <div class="exportGrid">
+          <span>Download</span>
+          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+        </div>
+        <div class="dimensionGrid">
+          <label for="width" class="text-center">Width</label>
+          <input
+            id="width"
+            type="number"
+            bind:value={outputWidth}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
+          <label for="height" class="text-center">Height</label>
+          <input
+            id="height"
+            type="number"
+            bind:value={outputHeight}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
 
-        <span>Copy</span>
-        <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
-        <button on:click={copyText(svgFile)} title="SVG">SVG</button>
-        <span>Download</span>
-        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-        <div />
-        <label for="width" class="text-center">Width</label>
-        <label for="height" class="text-center">Height</label>
-        <span>Dimensions</span>
-        <input
-          id="width"
-          type="number"
-          bind:value={outputWidth}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-        <input
-          id="height"
-          type="number"
-          bind:value={outputHeight}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-
+          <div />
+        </div>
       </div>
     </div>
   </div>
-  <div class="right" style={cssOutput}>
+  <div class="preview" style={cssOutput}>
     <div id="pngOutput" />
 
   </div>
