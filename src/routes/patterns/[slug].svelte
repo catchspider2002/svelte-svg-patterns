@@ -9,11 +9,9 @@
 </script>
 
 <script>
-  import { Tabs, TabList, TabPanel, Tab } from "../../components/tabs.js";
   export let post;
   import constants from "../_constants.js";
   import { onMount } from "svelte";
-  // import "../_monolith.min.css";
   import { bind } from "svelte/internal";
 
   let Pickr, svg;
@@ -95,55 +93,17 @@
     path = post.path,
     mode = post.type;
 
-  const presetPatterns = [
-    {
-      id: 1,
-      colors: ["white", "black"],
-      stroke: 0.5,
-      scale: 1,
-      spacing: [0, 0],
-      angle: 0,
-      join: 1
-    },
-    {
-      id: 2,
-      colors: randomColorSets(3),
-      stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 3),
-      spacing: [
-        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
-        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
-      ],
-      angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2)
-    },
-    {
-      id: 3,
-      colors: randomColorSets(4),
-      stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 2),
-      spacing: [
-        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
-        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
-      ],
-      angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2)
-    },
-    {
-      id: 4,
-      colors: randomColorSets(5),
-      stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(1, maxScale / 2),
-      spacing: [
-        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
-        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
-      ],
-      angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2)
-    }
-  ];
+  const presetPattern = {
+    id: 1,
+    colors: ["black", "white"],
+    stroke: 0.5,
+    scale: 1,
+    spacing: [0, 0],
+    angle: 0,
+    join: 1
+  };
 
-  $: selectedPattern = presetPatterns[0];
+  $: selectedPattern = presetPattern;
   $: svgFile = svgPattern(
     selectedPattern.colors,
     selectedPattern.stroke,
@@ -158,19 +118,15 @@
 
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
-  function check() {
-    for (let j = 0; j < presetPatterns.length; j++) {
-      if ("pattern" + presetPatterns[j].id === this.id) {
-        selectedPattern = presetPatterns[presetPatterns[j].id - 1];
-        setPickers();
-      }
-    }
-  }
-
   function randomColorSets(length) {
     let colorArray = [];
     for (var i = 0; i < length; i++) colorArray.push(constants.randomColor(1));
     return colorArray;
+  }
+
+  function resetPattern() {
+    selectedPattern = presetPattern;
+    setPickers();
   }
 
   function randomPattern() {
@@ -274,17 +230,20 @@
 
 <style>
   .page {
-    width: 100%;
-    height: 100vh;
-    display: block;
+    /* width: 100%; */
+    /* height: 100vh; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .patternContainer {
     /*width: 100%;*/
-    margin: 0 auto 0 auto;
+    /* margin: 0 auto 0 auto; */
     padding: 2em;
     background-color: var(--accent-color);
     color: #edf2f7;
+    min-height: 100vh;
+    display: grid;
   }
 
   .inputs {
@@ -327,59 +286,23 @@
   }
 
   .bottomBar {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: auto auto auto; */
     justify-content: center;
     align-items: center;
     /*column-gap: 16px;*/
     row-gap: 16px;
     position: fixed;
-    bottom: 48px;
+    bottom: 0;
     right: 0;
     background-color: black;
     width: 100%;
     padding: 1em 0;
   }
 
-  .downloadGrid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-    column-gap: 16px;
-    row-gap: 16px;
-    background-color: black;
-    padding: 1em;
-  }
-
-  .samples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    column-gap: 16px;
-    row-gap: 16px;
-    align-items: center;
-    padding: 2em 0;
-  }
-
-  .pattern {
-    width: 100%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  .pattern:before {
-    content: "";
-    display: block;
-    height: 0;
-    width: 0;
-    padding-bottom: calc(10 / 16 * 100%);
-  }
-
-  #sampleOutput {
-    width: 100%;
-    height: 500px;
+  .bottomBar * {
+    margin: 0 5px;
   }
 
   .strokeJoin {
@@ -391,121 +314,96 @@
   .text-center {
     text-align: center;
   }
-
-  @media (max-width: 1024px) {
-    .pattern:before {
-      padding-bottom: calc(1 / 2 * 100%);
-    }
-  }
 </style>
 
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
 
-<Tabs>
-  <TabList>
-    <Tab>design</Tab>
-    <Tab>export</Tab>
-  </TabList>
+<div id="page" class="page">
+  <div class="patternContainer justify-center items-center">
+    <div>
+      <div>{post.title}</div>
 
-  <TabPanel>
-    <div id="page" class="page">
-      <div class="patternContainer">
-        <div>{post.title}</div>
-        <div class="samples">
-          {#each presetPatterns as pattern}
-            <button
-              id="pattern{pattern.id}"
-              class="pattern"
-              on:click={check}
-              style={'background-image: url("data:image/svg+xml,' + svgPattern(pattern.colors, pattern.stroke, pattern.scale, pattern.spacing, pattern.angle, pattern.join) + '"' + ')'} />
+      <div class="inputs">
+        <label for="scale">Scale</label>
+        <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} />
+        <input class="uneditable" bind:value={selectedPattern.scale} readonly />
+        {#if mode[0] === 'stroke'}
+          <label for="stroke">Stroke</label>
+          <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
+          <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
+          <label>Join</label>
+          <div class="strokeJoin">
+            <label>
+              <input type="radio" bind:group={selectedPattern.join} value={1} />
+              Square
+            </label>
+            <label>
+              <input type="radio" bind:group={selectedPattern.join} value={2} />
+              Rounded
+            </label>
+          </div>
+        {/if}
+        {#if mode[1] === 'yes'}
+          <label for="hspacing">Horizontal Spacing</label>
+          <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5" />
+          <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
+        {/if}
+        {#if mode[2] === 'yes'}
+          <label for="vspacing">Vertical Spacing</label>
+          <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5" />
+          <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
+        {/if}
+        <label for="angle">Angle</label>
+        <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5" />
+        <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+        <label>Colors</label>
+        <div class="colors py-05">
+          {#each { length: 5 } as _, i}
+            <div id="color{i + 1}Div" />
           {/each}
         </div>
+        <div />
+        <button title="Random" on:click={randomPattern}>Inspire Me</button>
+        <button title="Reset" on:click={resetPattern}>Reset</button>
+      </div>
+      <div class="bottomBar">
 
-        <div class="inputs">
-          <label for="scale">Scale</label>
-          <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} />
-          <input class="uneditable" bind:value={selectedPattern.scale} readonly />
-          {#if mode[0] === 'stroke'}
-            <label for="stroke">Stroke</label>
-            <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
-            <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
-            <label>Join</label>
-            <div class="strokeJoin">
-              <label>
-                <input type="radio" bind:group={selectedPattern.join} value={1} />
-                Square
-              </label>
-              <label>
-                <input type="radio" bind:group={selectedPattern.join} value={2} />
-                Rounded
-              </label>
-            </div>
-          {/if}
-          {#if mode[1] === 'yes'}
-            <label for="hspacing">Horizontal Spacing</label>
-            <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5" />
-            <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
-          {/if}
-          {#if mode[2] === 'yes'}
-            <label for="vspacing">Vertical Spacing</label>
-            <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5" />
-            <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
-          {/if}
-          <label for="angle">Angle</label>
-          <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5" />
-          <input class="uneditable" bind:value={selectedPattern.angle} readonly />
-          <label>Colors</label>
-          <div class="colors py-05">
-            <!-- {#each { length: selectedPattern.colors.length } as _, i}
-          <div id="color{i + 1}Div" />
-        {/each} -->
-            {#each { length: 5 } as _, i}
-              <div id="color{i + 1}Div" />
-            {/each}
-          </div>
-        </div>
-        <div id="sampleOutput" style={cssOutput} />
-        <br />
-        <div class="bottomBar" style={cssOutput}>
-          <button title="Random" on:click={randomPattern}>Inspire Me</button>
-        </div>
+        <span>Copy</span>
+        <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
+        <button on:click={copyText(svgFile)} title="SVG">SVG</button>
+        <span>Download</span>
+        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+        <div />
+        <label for="width" class="text-center">Width</label>
+        <label for="height" class="text-center">Height</label>
+        <span>Dimensions</span>
+        <input
+          id="width"
+          type="number"
+          bind:value={outputWidth}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+        <input
+          id="height"
+          type="number"
+          bind:value={outputHeight}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+
       </div>
     </div>
-  </TabPanel>
-
-  <TabPanel>
-    <div class="downloadGrid" style={cssOutput}>
-      <span>Copy</span>
-      <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
-      <button on:click={copyText(svgFile)} title="SVG">SVG</button>
-      <span>Download</span>
-      <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-      <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-      <div />
-      <label for="width" class="text-center">Width</label>
-      <label for="height" class="text-center">Height</label>
-      <span>Dimensions</span>
-      <input
-        id="width"
-        type="number"
-        bind:value={outputWidth}
-        min="0"
-        max="9999"
-        on:input={e => {
-          if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-        }} />
-      <input
-        id="height"
-        type="number"
-        bind:value={outputHeight}
-        min="0"
-        max="9999"
-        on:input={e => {
-          if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-        }} />
-    </div>
+  </div>
+  <div class="right" style={cssOutput}>
     <div id="pngOutput" />
-  </TabPanel>
-</Tabs>
+
+  </div>
+</div>
