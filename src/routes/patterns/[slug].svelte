@@ -15,6 +15,7 @@
   import { bind } from "svelte/internal";
 
   let Pickr, svg;
+  $: hide = false;
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -249,8 +250,8 @@
   .inputs {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    column-gap: 16px;
-    row-gap: 16px;
+    column-gap: 1rem;
+    row-gap: 2rem;
     align-items: center;
     padding: 2em 0;
   }
@@ -258,10 +259,11 @@
   .colors {
     display: grid;
     grid-template-columns: auto auto auto auto 1fr;
-    column-gap: 16px;
-    row-gap: 16px;
+    column-gap: 1rem;
+    row-gap: 1rem;
     align-items: center;
     padding: 2em 0;
+    grid-column: 2/4;
   }
   .py-05 {
     padding: 0.5em 0;
@@ -291,8 +293,7 @@
     /* grid-template-columns: auto auto auto; */
     justify-content: center;
     align-items: center;
-    /*column-gap: 16px;*/
-    row-gap: 16px;
+    row-gap: 1rem;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -307,8 +308,9 @@
 
   .strokeJoin {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     grid-column: 2/4;
+    column-gap: 1rem;
   }
 
   .text-center {
@@ -318,13 +320,13 @@
   .exportGrid {
     display: grid;
     grid-template-columns: auto auto auto;
-    row-gap: 16px;
+    row-gap: 1rem;
     align-items: center;
   }
   .dimensionGrid {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    row-gap: 16px;
+    row-gap: 1rem;
     align-items: center;
   }
 
@@ -334,6 +336,28 @@
 
   .controls {
     z-index: 1;
+  }
+  button {
+    max-width: 150px;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 1/4;
+    column-gap: 1rem;
+    justify-items: center;
+  }
+  .hideCheckbox {
+    display: none;
+  }
+
+  .pattern {
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
   }
   @media (max-width: 640px) {
     .page {
@@ -346,6 +370,9 @@
       width: 100%;
       left: 0;
       top: 0;
+    }
+    .hideCheckbox {
+      display: block;
     }
     .controls {
       background-color: var(--accent-color);
@@ -364,8 +391,15 @@
 <div class="page">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
-    <div class="controls">
+
+    <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
+    <div class="controls" style="visibility: {hide ? 'hidden' : 'visible'}">
       <div>{post.title}</div>
+
+      <div
+        id="ax"
+        class="pattern"
+        style={'background-image: url("data:image/svg+xml,' + svgPattern(presetPattern.colors, presetPattern.stroke, presetPattern.scale, presetPattern.spacing, presetPattern.angle, presetPattern.join) + '"' + ')'} />
 
       <div class="inputs">
         <label for="scale">Scale</label>
@@ -406,50 +440,53 @@
             <div id="color{i + 1}Div" />
           {/each}
         </div>
-        <div />
-        <button title="Random" on:click={randomPattern}>Inspire Me</button>
-        <button title="Reset" on:click={resetPattern}>Reset</button>
-      </div>
-      <div class="bottomBar">
-        <div class="exportGrid">
-          <span>Copy</span>
-          <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
-          <button on:click={copyText(svgFile)} title="SVG">SVG</button>
-        </div>
-        <div class="exportGrid">
-          <span>Download</span>
-          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-        </div>
-        <div class="dimensionGrid">
-          <label for="width" class="text-center">Width</label>
-          <input
-            id="width"
-            type="number"
-            bind:value={outputWidth}
-            min="0"
-            max="9999"
-            on:input={e => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-          <label for="height" class="text-center">Height</label>
-          <input
-            id="height"
-            type="number"
-            bind:value={outputHeight}
-            min="0"
-            max="9999"
-            on:input={e => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-
-          <div />
+        <div class="buttons">
+          <button title="Random" on:click={randomPattern}>Inspire Me</button>
+          <button title="Reset" on:click={resetPattern}>Reset</button>
         </div>
       </div>
+    </div>
+    <div class="bottomBar">
+      <div class="exportGrid">
+        <span>Copy</span>
+        <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
+        <button on:click={copyText(svgFile)} title="SVG">SVG</button>
+      </div>
+      <div class="exportGrid">
+        <span>Download</span>
+        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      </div>
+      <div class="dimensionGrid">
+        <label for="width" class="text-center">Width</label>
+        <input
+          id="width"
+          type="number"
+          bind:value={outputWidth}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+        <label for="height" class="text-center">Height</label>
+        <input
+          id="height"
+          type="number"
+          bind:value={outputHeight}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+      </div>
+      <label class="hideCheckbox">
+        <input type="checkbox" bind:checked={hide} />
+        <!-- <input type="checkbox" /> -->
+        Hide Controls
+      </label>
     </div>
   </div>
   <div class="preview" style={cssOutput}>
     <div id="pngOutput" />
-
   </div>
 </div>
