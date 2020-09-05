@@ -15,30 +15,6 @@ const patterns = [
       "<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25,22 M -5,7 5,12 15,7 25,12 m -27.5,12.5 5,-10 -5,-10 5,-10 m 15,30 5,-10 -5,-10 5,-10 m -15,30 5,-10 -5,-10 5,-10'/>"
   },
   {
-    title: "Chevron - OK",
-    slug: "chevron",
-    type: ["stroke", "no", "yes"],
-    colors: 2,
-    maxStroke: 8.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 20,
-    path: "<path d='M -5,7 5,12 15,7 25,12'/><path d='M -5,17 5.0000002,22 15,17 25,22'/><path d='M -5,-3 5.0000002,2 15,-3 25,2' />"
-  },
-  {
-    title: "Chevron - NEW",
-    slug: "chevrons",
-    type: ["stroke", "no", "yes"],
-    colors: 2,
-    maxStroke: 8.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 10,
-    path: "<path d='M -10,-2 10,8 30,-2' />"
-  },
-  {
     title: "Wave - 1",
     slug: "wave",
     type: ["stroke", "no", "yes"],
@@ -46,21 +22,9 @@ const patterns = [
     maxStroke: 6.5,
     maxScale: 16,
     maxSpacing: [10, 10],
-    width: 20,
-    height: 10,
-    path: "<path d='M-20 6.693c3.334-1.667 6.667-3.334 10-3.333 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668 1.667 10 3.333' />"
-  },
-  {
-    title: "Wave - 2",
-    slug: "wave2",
-    type: ["stroke", "no", "yes"],
-    colors: 2,
-    maxStroke: 5.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 10,
-    path: "<path d='M-20-13.307c3.334-1.667 6.667-3.334 10-3.333 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668 1.667 10 1.666 3.334 0 6.667-1.667 10-1.666 3.335 0 6.668 1.667 10 3.333M-20-.407c3.334 3.335 6.668 6.668 10 6.667 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-6.667' />"
+    width: 120,
+    height: 20,
+    path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685' />"
   },
   {
     title: "Wave - 3",
@@ -70,13 +34,13 @@ const patterns = [
     maxStroke: 5.5,
     maxScale: 16,
     maxSpacing: [10, 10],
-    width: 20,
-    height: 10,
-    path: "<path d='M-30-.407c3.334 3.335 6.668 6.668 10 6.667 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-6.667m-50 0c3.334 3.335 6.668 6.668 10 6.667 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-3.333 3.334 0 6.668 3.334 10 3.333 3.333 0 6.667-3.333 10-6.667' />"
-  },
+    width: 80,
+    height: 20,
+    path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432' />"
+  }, 
   {
-    title: "Wave - 4",
-    slug: "wave4",
+    title: "Wave - 5",
+    slug: "wave5",
     type: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 5.5,
@@ -84,7 +48,91 @@ const patterns = [
     maxSpacing: [10, 10],
     width: 40,
     height: 20,
-    path: "<path d='M-5.663 6.264C-3.994 5.226-2.12 4.5-.198 4.5c1.922.001 3.795.73 5.464 1.769C6.934 7.31 8.422 8.653 9.9 9.99c1.478 1.338 2.965 2.683 4.632 3.726 1.666 1.042 3.538 1.776 5.46 1.784 1.92.009 3.797-.708 5.47-1.738 1.672-1.03 3.165-2.366 4.646-3.7 1.48-1.333 2.966-2.678 4.628-3.727s3.526-1.798 5.446-1.834c1.918-.036 3.803.64 5.49 1.636' />"
+    path: "<path d='M-4.798 13.573C-3.149 12.533-1.446 11.306 0 10c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176' />"
+  },
+  {
+    title: "Chevron - 1",
+    slug: "chevron1",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 6.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 120,
+    height: 20,
+    path: "<path d='M-30 7.5l60 5 60-5 60 5' />"
+  },
+  {
+    title: "Chevron - 2",
+    slug: "chevron2",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 5.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 100,
+    height: 20,
+    path: "<path d='M-25 7.5l50 5 50-5 50 5' />"
+  },
+  {
+    title: "Chevron - 3",
+    slug: "chevron3",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 5.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 80,
+    height: 20,
+    path: "<path d='M-20 7.5l40 5 40-5 40 5' />"
+  },
+  {
+    title: "Chevron - 4",
+    slug: "chevron4",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 5.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 60,
+    height: 20,
+    path: "<path d='M-15 7.5l30 5 30-5 30 5' />"
+  },
+  {
+    title: "Chevron - 5",
+    slug: "chevron5",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 5.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 40,
+    height: 20,
+    path: "<path d='M-10 7.5l20 5 20-5 20 5' />"
+  },
+  {
+    title: "Chevron - 6",
+    slug: "chevron6",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 4.5,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 10,
+    path: "<path d='M-5 2.5l10 5 10-5 10 5' />"
+  },
+  {
+    title: "Chevron - 7",
+    slug: "chevron7",
+    type: ["stroke", "no", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 20,
+    path: "<path d='M-5 5L5.1 15 15 5l10 10' />"
   },
   {
     title: "Straight Lines - OK",

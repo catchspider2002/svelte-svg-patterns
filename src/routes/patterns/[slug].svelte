@@ -295,6 +295,7 @@
     align-items: center;
     row-gap: 1rem;
     position: fixed;
+    z-index: 2;
     bottom: 0;
     right: 0;
     background-color: black;
@@ -336,6 +337,7 @@
 
   .controls {
     z-index: 1;
+    padding: 2em;
   }
   button {
     max-width: 150px;
