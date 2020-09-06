@@ -24,7 +24,7 @@
       width +
       "' height='" +
       height +
-      "' fill='white'/><g stroke-width='0.5' stroke='black' fill='none'>" +
+      "' fill='black'/><g stroke-width='1' stroke='white' fill='none'>" +
       path +
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';

@@ -135,6 +135,97 @@ const patterns = [
       "<path d='M5.212 7.525l-8.66 5-8.66-5v-10l8.66-5 8.66 5zm17.321 30l-8.66 5-8.66-5v-10l8.66-5 8.66 5zm-17.321 0l-8.66 5-8.66-5v-10l8.66-5 8.66 5zm17.321-30l-8.66 5-8.66-5v-10l8.66-5 8.66 5zm8.661 15l-8.66 5-8.661-5v-10L19.25 9.42l3.283-1.895 8.66 5z'/>"
   },
   {
+    title: "Herringbone",
+    slug: "herringbone",
+    type: ["stroke", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 40,
+    height: 20,
+    path:
+      "<path d='M40 0L20-10V0l20 10zm0 10L20 0v10l20 10zm0 10L20 10v10l20 10zM0 20l20-10v10L0 30zm0-10L20 0v10L0 20zM0 0l20-10V0L0 10z'/>"
+  },
+  {
+    title: "Herringbone 1",
+    slug: "herringbone1",
+    type: ["stroke", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 40,
+    height: 40,
+    path:
+      "<path d='M0 0h10v20H0zM30 0v10H10V0zM10 10h10v20H10zM40 10v10H20V10zM20 20h10v20H20zM50 20v10H30V20zM30 30h10v20H30zM20 30v10H0V30zM10 20v10h-20V20zM30-10h10v20H30z'/>"
+  },
+  {
+    title: "Herringbone 2",
+    slug: "herringbone2",
+    type: ["stroke", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 40,
+    height: 40,
+    path:
+      "<path d='M15 5h10v30H15zM35-5V5H5V-5zM35 35v10H5V35zM35-15h10v30H35zM55 15v10H25V15zM15 15v10h-30V15zM35 25h10v30H35zM-5 25H5v30H-5zM-5-15H5v30H-5z'/>"
+  },
+  {
+    title: "Flower Fill",
+    slug: "flower-fill",
+    type: ["fill", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 20,
+    path:
+      "<path d='M10 .059a10 10 0 01-10 9.98 10 10 0 0110 9.98 10 10 0 019.98-9.98A10 10 0 0110 .06zm10.02 9.95a10 10 0 01-10 9.981 10 10 0 0110 9.98A10 10 0 0130 19.99a10 10 0 01-9.98-9.98zM0 10.03a10 10 0 01-10 9.98A10 10 0 010 29.99a10 10 0 019.98-9.98A10 10 0 010 10.03zM20.02-9.95a10 10 0 01-10 9.98 10 10 0 0110 9.98A10 10 0 0130 .03a10 10 0 01-9.98-9.98zM0-9.931a10 10 0 01-10 9.98 10 10 0 0110 9.98A10 10 0 019.98.05 10 10 0 010-9.931z'/>"
+  },
+  {
+    title: "Flower Stroke",
+    slug: "flower-stroke",
+    type: ["stroke", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 20,
+    path:
+      "<path d='M10 .059a10 10 0 01-10 9.98 10 10 0 0110 9.98 10 10 0 019.98-9.98A10 10 0 0110 .06zm10.02 9.95a10 10 0 01-10 9.981 10 10 0 0110 9.98A10 10 0 0130 19.99a10 10 0 01-9.98-9.98zM0 10.03a10 10 0 01-10 9.98A10 10 0 010 29.99a10 10 0 019.98-9.98A10 10 0 010 10.03zM20.02-9.95a10 10 0 01-10 9.98 10 10 0 0110 9.98A10 10 0 0130 .03a10 10 0 01-9.98-9.98zM0-9.931a10 10 0 01-10 9.98 10 10 0 0110 9.98A10 10 0 019.98.05 10 10 0 010-9.931z'/>"
+  },
+  {
+    title: "Checkerboard",
+    slug: "checkerboard",
+    type: ["fill", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 20,
+    path:
+      "<path d='M0 0h10v10H0zM10 10h10v10H10z'/>"
+  },
+  {
+    title: "Plus",
+    slug: "checkerboard1",
+    type: ["stroke", "yes", "yes"],
+    colors: 2,
+    maxStroke: 7,
+    maxScale: 16,
+    maxSpacing: [10, 10],
+    width: 20,
+    height: 20,
+    path:
+      "<path d='M10-6V6M10 14v12M26 10H14M6 10H-6'/>"
+  },
+  {
     title: "Squares - OK",
     slug: "squares",
     type: ["stroke", "yes", "yes"],
@@ -193,19 +284,6 @@ const patterns = [
     width: 20,
     height: 28,
     path: "<path d='M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z'/>"
-  },
-  {
-    title: "Herringbone",
-    slug: "herringbone",
-    type: ["stroke", "yes", "yes"],
-    colors: 2,
-    maxStroke: 7,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 10.583,
-    height: 10.583,
-    path:
-      "<path d='M13.182 5.245l-7.937 7.937-7.938-7.937M13.182-.047L5.245 7.891-2.693-.047m13.23-2.646L5.245 2.6-.047-2.693m5.292 0l7.937 7.938-7.937 7.937M-.047-2.693l7.938 7.938-7.938 7.937M-2.693-.047L2.6 5.245l-5.292 5.292'/>"
   },
   {
     title: "Funny design",

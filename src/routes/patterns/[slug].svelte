@@ -321,13 +321,15 @@
   .exportGrid {
     display: grid;
     grid-template-columns: auto auto auto;
-    row-gap: 1rem;
+    /* column-gap: 0.5rem; */
+    padding: 0.125rem;
     align-items: center;
   }
   .dimensionGrid {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    row-gap: 1rem;
+    /* column-gap: 0.5rem; */
+    padding: 0.125rem;
     align-items: center;
   }
 
