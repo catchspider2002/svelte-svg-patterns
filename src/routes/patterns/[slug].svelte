@@ -137,8 +137,8 @@
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
-        mode[1] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
-        mode[2] === "yes" ? constants.randomNumber(0, maxSpacing[0] / 3) : 0
+        maxSpacing[0] > 0 ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
+        maxSpacing[1] > 0 ? constants.randomNumber(0, maxSpacing[1] / 3) : 0
       ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
@@ -425,12 +425,12 @@
             </label>
           </div>
         {/if}
-        {#if mode[1] === 'yes'}
+        {#if maxSpacing[0] > 0}
           <label for="hspacing">Horizontal Spacing</label>
           <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5" />
           <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
         {/if}
-        {#if mode[2] === 'yes'}
+        {#if maxSpacing[1] > 0}
           <label for="vspacing">Vertical Spacing</label>
           <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5" />
           <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
