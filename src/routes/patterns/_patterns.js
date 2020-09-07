@@ -112,11 +112,11 @@ const patterns = [
   {
     title: "Herringbone",
     slug: "herringbone",
-    mode: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [7, 10],
     width: 40,
     height: 20,
     path:
@@ -125,11 +125,11 @@ const patterns = [
   {
     title: "Herringbone 1",
     slug: "herringbone1",
-    mode: ["stroke", "yes", "yes"],
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 0],
     width: 40,
     height: 40,
     path:
@@ -138,11 +138,11 @@ const patterns = [
   {
     title: "Herringbone 2",
     slug: "herringbone2",
-    mode: ["stroke", "yes", "yes"],
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 0],
     width: 40,
     height: 40,
     path:
