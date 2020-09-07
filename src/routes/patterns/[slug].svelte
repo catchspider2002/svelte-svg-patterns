@@ -92,7 +92,7 @@
     width = post.width,
     height = post.height,
     path = post.path,
-    mode = post.type;
+    mode = post.mode;
 
   const presetPattern = {
     id: 1,

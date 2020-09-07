@@ -12,11 +12,9 @@
   export let posts;
 
   let svgPattern = (width, height, path, mode) => {
-		let strokeFill = "stroke-width='1' stroke='white' fill='none'"
-		if (mode[0]==='fill'){
-			strokeFill = "stroke='none' fill='white'"
-		}
-			
+    let strokeFill = "stroke-width='1' stroke='white' fill='none'";
+    if (mode[0] === "fill") strokeFill = "stroke='none' fill='white'";
+
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
@@ -27,13 +25,13 @@
       width +
       "' height='" +
       height +
-      "' fill='black'/><g "+strokeFill+">" +
+      "' fill='black'/><g " +
+      strokeFill +
+      ">" +
       path +
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
-
-
 </script>
 
 <style>
@@ -92,11 +90,7 @@
 
   <div class="samples">
     {#each posts as post}
-      <a
-        rel="prefetch"
-        href="patterns/{post.slug}"
-        class="pattern"
-        style={svgPattern(post.width, post.height, post.path, post.type)}>
+      <a rel="prefetch" href="patterns/{post.slug}" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
         <span>{post.title}</span>
       </a>
     {/each}

@@ -1,10 +1,10 @@
-// type=[stroke/fill, horizontal spacing, vertical spacing ]
+// mode=[stroke/fill, horizontal spacing, vertical spacing ]
 
 const patterns = [
   {
     title: "Wave - 1",
-    slug: "wave",
-    type: ["stroke", "no", "yes"],
+    slug: "wave1",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 6.5,
     maxScale: 16,
@@ -14,9 +14,9 @@ const patterns = [
     path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685' />"
   },
   {
-    title: "Wave - 3",
-    slug: "wave3",
-    type: ["stroke", "no", "yes"],
+    title: "Wave - 2",
+    slug: "wave2",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
@@ -26,9 +26,9 @@ const patterns = [
     path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432' />"
   }, 
   {
-    title: "Wave - 5",
-    slug: "wave5",
-    type: ["stroke", "no", "yes"],
+    title: "Wave - 3",
+    slug: "wave3",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
@@ -38,21 +38,9 @@ const patterns = [
     path: "<path d='M-4.798 13.573C-3.149 12.533-1.446 11.306 0 10c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176' />"
   },
   {
-    title: "Chevron - 3",
-    slug: "chevron3",
-    type: ["stroke", "no", "yes"],
-    colors: 2,
-    maxStroke: 5.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 80,
-    height: 20,
-    path: "<path d='M-20 7.5l40 5 40-5 40 5' />"
-  },
-  {
-    title: "Chevron - 5",
-    slug: "chevron5",
-    type: ["stroke", "no", "yes"],
+    title: "Chevron - 1",
+    slug: "chevron1",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
@@ -62,9 +50,9 @@ const patterns = [
     path: "<path d='M-10 7.5l20 5 20-5 20 5' />"
   },
   {
-    title: "Chevron - 6",
-    slug: "chevron6",
-    type: ["stroke", "no", "yes"],
+    title: "Chevron - 2",
+    slug: "chevron2",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 4.5,
     maxScale: 16,
@@ -74,9 +62,9 @@ const patterns = [
     path: "<path d='M-10 5l20 10L30 5l20 10' />"
   },
   {
-    title: "Chevron - 7",
-    slug: "chevron7",
-    type: ["stroke", "no", "yes"],
+    title: "Chevron - 3",
+    slug: "chevron3",
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -86,9 +74,9 @@ const patterns = [
     path: "<path d='M-5 5L5.1 15 15 5l10 10' />"
   },
   {
-    title: "Straight Lines - OK",
+    title: "Straight Lines",
     slug: "straight-lines",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 20,
     maxScale: 12,
@@ -98,9 +86,9 @@ const patterns = [
     path: "<path d='M -2.3354725e-8,9.8330078 H 20 Z'/>"
   },
   {
-    title: "Cross Section - OK",
+    title: "Cross Section",
     slug: "cross-section",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 19.5,
     maxScale: 12,
@@ -110,9 +98,9 @@ const patterns = [
     path: "<path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'/>"
   },
   {
-    title: "Brick Wall - OK",
-    slug: "brick-wall2",
-    type: ["stroke", "no", "no"],
+    title: "Brick Wall",
+    slug: "brick-wall",
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
@@ -124,7 +112,7 @@ const patterns = [
   {
     title: "Herringbone",
     slug: "herringbone",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -137,7 +125,7 @@ const patterns = [
   {
     title: "Herringbone 1",
     slug: "herringbone1",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -150,7 +138,7 @@ const patterns = [
   {
     title: "Herringbone 2",
     slug: "herringbone2",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -163,7 +151,7 @@ const patterns = [
   {
     title: "Flower Fill",
     slug: "flower-fill",
-    type: ["fill", "yes", "yes"],
+    mode: ["fill", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -176,7 +164,7 @@ const patterns = [
   {
     title: "Flower Stroke",
     slug: "flower-stroke",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -189,7 +177,7 @@ const patterns = [
   {
     title: "Checkerboard",
     slug: "checkerboard",
-    type: ["fill", "yes", "yes"],
+    mode: ["fill", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -202,7 +190,7 @@ const patterns = [
   {
     title: "Plus",
     slug: "checkerboard1",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -215,7 +203,7 @@ const patterns = [
   {
     title: "Concentric Circles",
     slug: "concentric1",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -228,7 +216,7 @@ const patterns = [
   {
     title: "Concentric Circles",
     slug: "concentric2",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -241,7 +229,7 @@ const patterns = [
   {
     title: "Concentric Circles",
     slug: "concentric3",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -254,7 +242,7 @@ const patterns = [
   {
     title: "Adjointed Circles",
     slug: "adjointed",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -267,7 +255,7 @@ const patterns = [
   {
     title: " Fill",
     slug: "hexa",
-    type: ["fill", "yes", "yes"],
+    mode: ["fill", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -280,7 +268,7 @@ const patterns = [
   {
     title: "Hexa1",
     slug: "hexa1",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -293,7 +281,7 @@ const patterns = [
   {
     title: "Hexa2",
     slug: "hexa2",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -306,7 +294,7 @@ const patterns = [
   {
     title: "Hexa3",
     slug: "hexa3",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -319,7 +307,7 @@ const patterns = [
   {
     title: "Cubes",
     slug: "cubes",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -332,7 +320,7 @@ const patterns = [
   {
     title: "Cubes2",
     slug: "cubes2",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -345,7 +333,7 @@ const patterns = [
   {
     title: "Squares - OK",
     slug: "squares",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
@@ -357,7 +345,7 @@ const patterns = [
   {
     title: "Circles - OK",
     slug: "circles",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 20,
     maxScale: 10,
@@ -369,7 +357,7 @@ const patterns = [
   {
     title: "Triangles - OK",
     slug: "triangles",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 21,
     maxScale: 10,
@@ -381,7 +369,7 @@ const patterns = [
   {
     title: "Plus - OK",
     slug: "plus",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 9.5,
     maxScale: 16,
@@ -393,7 +381,7 @@ const patterns = [
   {
     title: "Inverted triangles - OK",
     slug: "inverted-triangles",
-    type: ["stroke", "no", "yes"],
+    mode: ["stroke", "no", "yes"],
     colors: 2,
     maxStroke: 5.5,
     maxScale: 10,
@@ -405,7 +393,7 @@ const patterns = [
   {
     title: "Funny design",
     slug: "funny-design",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -418,7 +406,7 @@ const patterns = [
   {
     title: "Jigsaw",
     slug: "jigsaw",
-    type: ["stroke", "yes", "yes"],
+    mode: ["stroke", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 2,
@@ -431,7 +419,7 @@ const patterns = [
   {
     title: "New - OK",
     slug: "new-1",
-    type: ["stroke", "no", "no"],
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -444,7 +432,7 @@ const patterns = [
   {
     title: "New 2 - OK",
     slug: "new-2",
-    type: ["fill", "yes", "yes"],
+    mode: ["fill", "yes", "yes"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -457,7 +445,7 @@ const patterns = [
   {
     title: "Check OK",
     slug: "check",
-    type: ["fill", "no", "no"],
+    mode: ["fill", "no", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
@@ -470,7 +458,7 @@ const patterns = [
   {
     title: "Don know - OK",
     slug: "don-know",
-    type: ["stroke", "no", "no"],
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 8.5,
     maxScale: 16,
@@ -483,7 +471,7 @@ const patterns = [
   {
     title: "New 3 - OK",
     slug: "new-3",
-    type: ["stroke", "no", "no"],
+    mode: ["stroke", "no", "no"],
     colors: 2,
     maxStroke: 7,
     maxScale: 16,

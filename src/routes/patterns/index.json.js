@@ -6,7 +6,8 @@ const contents = JSON.stringify(patterns.map(pattern => {
 		slug: pattern.slug,
 		width: pattern.width,
 		height: pattern.height,
-		path: pattern.path
+		path: pattern.path,
+		mode: pattern.mode
 	};
 }));
 
