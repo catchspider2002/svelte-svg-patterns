@@ -11,9 +11,12 @@
 <script>
   export let posts;
 
-  
-
-  let svgPattern = (width, height, path) => {
+  let svgPattern = (width, height, path, mode) => {
+		let strokeFill = "stroke-width='1' stroke='white' fill='none'"
+		if (mode[0]==='fill'){
+			strokeFill = "stroke='none' fill='white'"
+		}
+			
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
@@ -24,31 +27,13 @@
       width +
       "' height='" +
       height +
-      "' fill='black'/><g stroke-width='1' stroke='white' fill='none'>" +
+      "' fill='black'/><g "+strokeFill+">" +
       path +
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
 
-  // let svgPattern = (width, height, path) => {
-  //   let svgFile = 
-  //     "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-  //     width +
-  //     "' height='" +
-  //     height +
-  //     "' viewBox='0 0 " +
-  //     width +
-  //     " " +
-  //     height +
-  //     "'><rect x='0' y='0' width='" +
-  //     width +
-  //     "' height='" +
-  //     height +
-  //     "' fill='white'/><g fill='none' stroke='black' stroke-width='0.5'>" +
-  //     path +
-  //     "</g></svg>";
-  //   return 'background-image: url("data:image/svg+xml,' + svgFile + '")';
-  // };
+
 </script>
 
 <style>
@@ -67,8 +52,8 @@
   }
 
   a span {
-    background: black;
-    color: white;
+    background: white;
+    color: black;
     align-self: center;
     padding: 4px 8px;
   }
@@ -111,7 +96,7 @@
         rel="prefetch"
         href="patterns/{post.slug}"
         class="pattern"
-        style={svgPattern(post.width, post.height, post.path)}>
+        style={svgPattern(post.width, post.height, post.path, post.type)}>
         <span>{post.title}</span>
       </a>
     {/each}
