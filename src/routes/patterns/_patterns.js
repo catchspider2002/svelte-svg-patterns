@@ -8,7 +8,7 @@ const patterns = [
     colors: 2,
     maxStroke: 6.5,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 120,
     height: 20,
     path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685' />"
@@ -20,7 +20,7 @@ const patterns = [
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 80,
     height: 20,
     path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432' />"
@@ -32,7 +32,7 @@ const patterns = [
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 40,
     height: 20,
     path: "<path d='M-4.798 13.573C-3.149 12.533-1.446 11.306 0 10c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176' />"
@@ -44,7 +44,7 @@ const patterns = [
     colors: 2,
     maxStroke: 5.5,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 40,
     height: 20,
     path: "<path d='M-10 7.5l20 5 20-5 20 5' />"
@@ -56,7 +56,7 @@ const patterns = [
     colors: 2,
     maxStroke: 4.5,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 40,
     height: 20,
     path: "<path d='M-10 5l20 10L30 5l20 10' />"
@@ -68,7 +68,7 @@ const patterns = [
     colors: 2,
     maxStroke: 7,
     maxScale: 16,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 20,
     height: 20,
     path: "<path d='M-5 5L5.1 15 15 5l10 10' />"
@@ -385,7 +385,7 @@ const patterns = [
     colors: 2,
     maxStroke: 5.5,
     maxScale: 10,
-    maxSpacing: [10, 10],
+    maxSpacing: [0, 10],
     width: 20,
     height: 28,
     path: "<path d='M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z'/>"
