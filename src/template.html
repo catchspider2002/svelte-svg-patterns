@@ -24,6 +24,7 @@
     <!-- <link rel="stylesheet" href="tailwind.min.css" /> -->
     <link rel="stylesheet" href="global.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+    <GoogleAuth clientId="your-google-auth-client-id" on:auth-success={e => console.dir(e.detail.user)} />
 
     <link rel="canonical" href="https://pattern.monster/" />
     <meta name="description" content="A simple online pattern generator to create repeatable SVG patterns" />
