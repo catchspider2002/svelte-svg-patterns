@@ -718,12 +718,12 @@
   <header>
     <div class="container navbar mx-auto grid p-5 items-center">
       <Logo className="accent-text" color="var(--accent-color)" />
-      <nav class="flex flex-wrap items-center justify-center">
+      <!-- <nav class="flex flex-wrap items-center justify-center">
         <a href="#subscribe" class="mr-5">Link 1</a>
         <a href="#subscribe" class="mr-5">Link 2</a>
         <a href="#subscribe" class="mr-5">Link 3</a>
         <a href="#subscribe" class="mr-5">Link 4</a>
-      </nav>
+      </nav> -->
     </div>
   </header>
   <section class="container grid mx-auto px-5 py-24 items-center text-center">
