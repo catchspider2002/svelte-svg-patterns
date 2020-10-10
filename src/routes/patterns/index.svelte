@@ -9,13 +9,11 @@
 </script>
 
 <script>
-
-  import { GoogleAuth } from '@beyonk/svelte-social-auth'
   export let posts;
 
   let svgPattern = (width, height, path, mode) => {
     let strokeFill = "stroke-width='1' stroke='white' fill='none'";
-    if (mode[0] === "fill") strokeFill = "stroke='none' fill='white'";
+    if (mode === "fill") strokeFill = "stroke='none' fill='white'";
 
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -89,8 +87,6 @@
 </svelte:head>
 <div class="patternsList">
   <!-- <h1>List of Patterns</h1> -->
-  
-    <GoogleAuth clientId="205385094273-1miipi41vudre12k31hv3j4qk9tlfq2i.apps.googleusercontent.com" on:auth-success={e => console.dir(e.detail.user)} />
 
   <div class="samples">
     {#each posts as post}

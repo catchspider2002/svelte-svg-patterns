@@ -41,9 +41,11 @@
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
-      if (mode[0] === "stroke") {
+      if (mode === "stroke-join") {
         strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
         joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+      } else if (mode === "stroke") {
+        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
       } else strokeFill = " stroke = 'none' fill='" + colors[i + 1] + "'";
 
       return (
@@ -63,7 +65,9 @@
       );
     }
 
-    let strokeFill, joinMode, strokeGroup;
+    let strokeFill = "",
+      joinMode = "",
+      strokeGroup = "";
 
     for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
 
@@ -72,7 +76,8 @@
       "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
       (width + spacing[0]) +
       "' height='" +
-      (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
+      // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
+      (height * (colors.length - 1) + spacing[1] * (colors.length - 1)) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -98,7 +103,7 @@
     id: 1,
     colors: ["black", "white"],
     stroke: 0.5,
-    scale: 1,
+    scale: 2,
     spacing: [0, 0],
     angle: 0,
     join: 1
@@ -133,7 +138,7 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colors: randomColorSets(constants.randomNumber(2, 5)),
+      colors: randomColorSets(constants.randomNumber(2, colorCount)),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -358,7 +363,7 @@
   .pattern {
     width: 100%;
     height: 60px;
-    cursor: pointer;
+    /* cursor: pointer; */
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -409,7 +414,7 @@
         <label for="scale">Scale</label>
         <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} />
         <input class="uneditable" bind:value={selectedPattern.scale} readonly />
-        {#if mode[0] === 'stroke'}
+        {#if mode === 'stroke-join'}
           <label for="stroke">Stroke</label>
           <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
           <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
@@ -424,6 +429,10 @@
               Rounded
             </label>
           </div>
+          {:else if mode === 'stroke'}
+            <label for="stroke">Stroke</label>
+            <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
+            <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
         {/if}
         {#if maxSpacing[0] > 0}
           <label for="hspacing">Horizontal Spacing</label>
@@ -486,6 +495,7 @@
       <label class="hideCheckbox">
         <input type="checkbox" bind:checked={hide} />
         <!-- <input type="checkbox" /> -->
+        
         Hide Controls
       </label>
     </div>
