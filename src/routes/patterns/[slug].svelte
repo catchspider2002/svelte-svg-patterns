@@ -14,8 +14,8 @@
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
 
-  import { fly } from "svelte/transition";
-  let visible = true;
+  import { fly, fade, slide } from "svelte/transition";
+  let visible = false;
 
   let Pickr, svg;
   $: hide = false;
@@ -332,11 +332,12 @@
     column-gap: 1rem;
   }
 
-  .text-center {
-    text-align: center;
-  }
-
-  .exportGrid, .exportGridFlyout, .downloadGrid, .downloadGridFlyout, .dimensionGrid, .dimensionGridFlyout {
+  .exportGrid,
+  .exportGridFlyout,
+  .downloadGrid,
+  .downloadGridFlyout,
+  .dimensionGrid,
+  .dimensionGridFlyout {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5em;
@@ -396,7 +397,7 @@
       top: 0;
     }
     .bottomBar {
-      /* height: 4em */
+      height: 4em;
     }
     .hideCheckbox,
     .exportButton {
@@ -412,9 +413,19 @@
     .exportGrid {
       display: none;
     }
-    .exportFlyout{
+    .exportFlyout {
       z-index: 2;
-      display: absolute;
+      position: absolute;
+      bottom: 4em;
+      left: 0;
+      right: 0;
+      /* top: 0; */
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .innerFlyout{
+      place-content: center;
+      place-items: center;
+      padding: 1em;
     }
   }
 </style>
@@ -427,8 +438,10 @@
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
     {#if visible}
-      <div class="exportFlyout" transition:fly={{ y: 200, duration: 2000 }}>
-        <p >Flies in and out</p>
+      <!-- <div class="exportFlyout" transition:fade={{ y: 200, duration: 1000 }}> -->
+      <div class="exportFlyout" transition:fade={{ duration: 200 }}>
+        <div class="innerFlyout">
+
         <div class="exportGridFlyout">
           <span>Copy</span>
           <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
@@ -464,6 +477,7 @@
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
         </div>
+      </div>
       </div>
     {/if}
 
@@ -564,6 +578,10 @@
       <label class="hideCheckbox">
         <input type="checkbox" bind:checked={hide} />
         <!-- <input type="checkbox" /> -->
+        
+        
+        
+        
         
         
         
