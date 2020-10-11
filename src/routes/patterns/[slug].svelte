@@ -14,8 +14,16 @@
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
 
+  import { fly } from "svelte/transition";
+  let visible = true;
+
   let Pickr, svg;
   $: hide = false;
+
+  let toggleVisibility = () => {
+    visible = visible ? false : true;
+    console.log(visible);
+  };
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -132,6 +140,11 @@
 
   function resetPattern() {
     selectedPattern = presetPattern;
+    selectedPattern.scale = 2;
+    selectedPattern.stroke = 0.5;
+    selectedPattern.spacing = [0, 0];
+    selectedPattern.join = 1;
+    selectedPattern.angle = 0;
     setPickers();
   }
 
@@ -245,7 +258,7 @@
   .patternContainer {
     /*width: 100%;*/
     /* margin: 0 auto 0 auto; */
-    padding: 2em;
+    padding: 0 2em 4em;
     background-color: var(--accent-color);
     color: #edf2f7;
     min-height: 100vh;
@@ -323,18 +336,11 @@
     text-align: center;
   }
 
-  .exportGrid {
+  .exportGrid, .exportGridFlyout, .downloadGrid, .downloadGridFlyout, .dimensionGrid, .dimensionGridFlyout {
     display: grid;
-    grid-template-columns: auto auto auto;
-    /* column-gap: 0.5rem; */
-    padding: 0.125rem;
-    align-items: center;
-  }
-  .dimensionGrid {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    /* column-gap: 0.5rem; */
-    padding: 0.125rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5em;
+    padding: 0.5em;
     align-items: center;
   }
 
@@ -356,7 +362,8 @@
     column-gap: 1rem;
     justify-items: center;
   }
-  .hideCheckbox {
+  .hideCheckbox,
+  .exportButton {
     display: none;
   }
 
@@ -368,9 +375,17 @@
     align-items: center;
     margin: 0 auto;
   }
+  @media (max-width: 1024px) {
+    .patternContainer {
+      padding: 0 1em 8em;
+    }
+  }
   @media (max-width: 640px) {
     .page {
       grid-template-columns: 1fr;
+    }
+    .patternContainer {
+      padding: 0 1em 4em;
     }
     .mobileBg {
       display: block;
@@ -380,15 +395,26 @@
       left: 0;
       top: 0;
     }
-    .hideCheckbox {
+    .bottomBar {
+      /* height: 4em */
+    }
+    .hideCheckbox,
+    .exportButton {
       display: block;
     }
     .controls {
       background-color: var(--accent-color);
       padding: 2rem;
     }
-    .preview {
+    .preview,
+    .dimensionGrid,
+    .downloadGrid,
+    .exportGrid {
       display: none;
+    }
+    .exportFlyout{
+      z-index: 2;
+      display: absolute;
     }
   }
 </style>
@@ -400,11 +426,50 @@
 <div class="page">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
+    {#if visible}
+      <div class="exportFlyout" transition:fly={{ y: 200, duration: 2000 }}>
+        <p >Flies in and out</p>
+        <div class="exportGridFlyout">
+          <span>Copy</span>
+          <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+          <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+        </div>
+        <div class="downloadGridFlyout">
+          <span>Download</span>
+          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+        </div>
+        <div class="dimensionGridFlyout">
+          <span>Dimensions</span>
+          <input
+            id="width"
+            type="number"
+            title="Width"
+            placeholder="Width"
+            bind:value={outputWidth}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
+          <input
+            id="height"
+            type="number"
+            title="Height"
+            placeholder="Height"
+            bind:value={outputHeight}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
+        </div>
+      </div>
+    {/if}
 
     <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
     <div class="controls" style="visibility: {hide ? 'hidden' : 'visible'}">
       <div>{post.title}</div>
-
       <div
         id="ax"
         class="pattern"
@@ -460,31 +525,35 @@
       </div>
     </div>
     <div class="bottomBar">
+      <button class="exportButton" on:click={toggleVisibility} title="Export">Export</button>
       <div class="exportGrid">
         <span>Copy</span>
-        <button on:click={copyText(cssOutput)} title="CSS">CSS</button>
-        <button on:click={copyText(svgFile)} title="SVG">SVG</button>
+        <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+        <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
       </div>
-      <div class="exportGrid">
+      <div class="downloadGrid">
         <span>Download</span>
         <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
         <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
       </div>
       <div class="dimensionGrid">
-        <label for="width" class="text-center">Width</label>
+        <span>Dimensions</span>
         <input
           id="width"
           type="number"
+          title="Width"
+          placeholder="Width"
           bind:value={outputWidth}
           min="0"
           max="9999"
           on:input={e => {
             if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
           }} />
-        <label for="height" class="text-center">Height</label>
         <input
           id="height"
           type="number"
+          title="Height"
+          placeholder="Height"
           bind:value={outputHeight}
           min="0"
           max="9999"
@@ -495,6 +564,8 @@
       <label class="hideCheckbox">
         <input type="checkbox" bind:checked={hide} />
         <!-- <input type="checkbox" /> -->
+        
+        
         
         Hide Controls
       </label>
