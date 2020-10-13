@@ -62,7 +62,7 @@
     column-gap: 32px;
     row-gap: 32px;
     align-items: center;
-    padding: 2em 0;
+    /* padding: 2em 0; */
   }
 
   .pattern {
