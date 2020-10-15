@@ -333,11 +333,8 @@
   }
 
   .exportGrid,
-  .exportGridFlyout,
   .downloadGrid,
-  .downloadGridFlyout,
-  .dimensionGrid,
-  .dimensionGridFlyout {
+  .dimensionGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5em;
@@ -363,8 +360,7 @@
     column-gap: 1rem;
     justify-items: center;
   }
-  .hideCheckbox,
-  .exportButton {
+  .hideCheckbox {
     display: none;
   }
 
@@ -397,35 +393,18 @@
       top: 0;
     }
     .bottomBar {
-      height: 4em;
+      /* height: 4em; */
+    position: unset;
     }
-    .hideCheckbox,
-    .exportButton {
+    .hideCheckbox {
       display: block;
     }
     .controls {
       background-color: var(--accent-color);
       padding: 2rem;
     }
-    .preview,
-    .dimensionGrid,
-    .downloadGrid,
-    .exportGrid {
+    .preview {
       display: none;
-    }
-    .exportFlyout {
-      z-index: 2;
-      position: absolute;
-      bottom: 4em;
-      left: 0;
-      right: 0;
-      /* top: 0; */
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-    .innerFlyout{
-      place-content: center;
-      place-items: center;
-      padding: 1em;
     }
   }
 </style>
@@ -437,49 +416,6 @@
 <div class="page">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
-    {#if visible}
-      <!-- <div class="exportFlyout" transition:fade={{ y: 200, duration: 1000 }}> -->
-      <div class="exportFlyout" transition:fade={{ duration: 200 }}>
-        <div class="innerFlyout">
-
-        <div class="exportGridFlyout">
-          <span>Copy</span>
-          <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
-          <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
-        </div>
-        <div class="downloadGridFlyout">
-          <span>Download</span>
-          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-        </div>
-        <div class="dimensionGridFlyout">
-          <span>Dimensions</span>
-          <input
-            id="width"
-            type="number"
-            title="Width"
-            placeholder="Width"
-            bind:value={outputWidth}
-            min="0"
-            max="9999"
-            on:input={e => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-          <input
-            id="height"
-            type="number"
-            title="Height"
-            placeholder="Height"
-            bind:value={outputHeight}
-            min="0"
-            max="9999"
-            on:input={e => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-        </div>
-      </div>
-      </div>
-    {/if}
 
     <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
     <div class="controls" style="visibility: {hide ? 'hidden' : 'visible'}">
@@ -539,7 +475,6 @@
       </div>
     </div>
     <div class="bottomBar">
-      <button class="exportButton" on:click={toggleVisibility} title="Export">Export</button>
       <div class="exportGrid">
         <span>Copy</span>
         <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
@@ -578,6 +513,7 @@
       <label class="hideCheckbox">
         <input type="checkbox" bind:checked={hide} />
         <!-- <input type="checkbox" /> -->
+        
         
         
         
