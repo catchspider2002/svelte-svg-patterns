@@ -269,7 +269,7 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     column-gap: 1rem;
-    row-gap: 2rem;
+    gap: 2rem;
     align-items: center;
     padding: 2em 0;
   }
@@ -278,7 +278,7 @@
     display: grid;
     grid-template-columns: auto auto auto auto 1fr;
     column-gap: 1rem;
-    row-gap: 1rem;
+    gap: 1rem;
     align-items: center;
     padding: 2em 0;
     grid-column: 2/4;
@@ -311,7 +311,7 @@
     /* grid-template-columns: auto auto auto; */
     justify-content: center;
     align-items: center;
-    row-gap: 1rem;
+    gap: 1rem;
     position: fixed;
     z-index: 2;
     bottom: 0;
@@ -319,6 +319,9 @@
     background-color: black;
     width: 100%;
     padding: 1em 0;
+  }
+  .toolBar {
+    display: none;
   }
 
   .bottomBar * {
@@ -382,7 +385,8 @@
       grid-template-columns: 1fr;
     }
     .patternContainer {
-      padding: 0 1em 4em;
+      padding: 0 1em 1em;
+      min-height: unset;
     }
     .mobileBg {
       display: block;
@@ -393,8 +397,25 @@
       top: 0;
     }
     .bottomBar {
-      /* height: 4em; */
-    position: unset;
+      position: unset;
+    }
+    .buttons {
+      display: none;
+    }
+
+    .toolBar {
+      height: 4em;
+      display: grid;
+      grid-auto-flow: column;
+      place-items: center;
+      gap: 1rem;
+      position: fixed;
+      z-index: 2;
+      bottom: 0;
+      right: 0;
+      background-color: black;
+      width: 100%;
+      padding: 1em;
     }
     .hideCheckbox {
       display: block;
@@ -418,7 +439,7 @@
     <div class="mobileBg" style={cssOutput} />
 
     <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
-    <div class="controls" style="visibility: {hide ? 'hidden' : 'visible'}">
+    <div class="controls" style="display: {hide ? 'none' : 'block'}">
       <div>{post.title}</div>
       <div
         id="ax"
@@ -474,7 +495,7 @@
         </div>
       </div>
     </div>
-    <div class="bottomBar">
+    <div class="bottomBar" style="display: {hide ? 'none' : 'flex'}">
       <div class="exportGrid">
         <span>Copy</span>
         <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
@@ -510,18 +531,13 @@
             if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
           }} />
       </div>
+    </div>
+    <div class="toolBar">
+      <button title="Random" on:click={randomPattern}>Inspire Me</button>
+      <button title="Reset" on:click={resetPattern}>Reset</button>
       <label class="hideCheckbox">
-        <input type="checkbox" bind:checked={hide} />
-        <!-- <input type="checkbox" /> -->
-        
-        
-        
-        
-        
-        
-        
-        
-        Hide Controls
+        <input type="checkbox" bind:checked={hide} />        
+        Hide UI
       </label>
     </div>
   </div>
