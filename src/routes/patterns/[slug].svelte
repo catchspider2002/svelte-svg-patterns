@@ -324,9 +324,6 @@
     /* padding: 1em 0; */
     /* height: 4em; */
   }
-  /* .toolBar {
-    display: none;
-  } */
 
   .bottomBar .buttons {
     margin: 0.5em;
@@ -428,23 +425,6 @@
       display: grid;
     }
 
-    /* .toolBar {
-      height: 4em;
-      display: grid;
-      grid-auto-flow: column;
-      place-items: center;
-      gap: 1rem;
-      position: fixed;
-      z-index: 2;
-      bottom: 0;
-      right: 0;
-      background-color: black;
-      width: 100%;
-      padding: 1em;
-    } */
-    /* .hideCheckbox {
-      display: block;
-    } */
     .controls {
       background-color: var(--accent-color);
       padding: 2rem;
