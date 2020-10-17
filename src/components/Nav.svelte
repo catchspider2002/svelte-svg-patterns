@@ -4,6 +4,14 @@
 </script>
 
 <style>
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: var(--main-bg-color);
+    height :4em;
+}
+
   .logo {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -23,6 +31,9 @@
   @media (max-width: 768px) {
     .logo {
       justify-self: center;
+    }
+    .brandName{
+      display: none;
     }
   }
 
@@ -92,7 +103,7 @@
           <circle r="11.93" cy="18.02" cx="20.61" />
         </g>
       </svg>
-      <span>PATTERN MONSTER</span>
+      <span class="brandName">PATTERN MONSTER</span>
     </div>
   </a>
   <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a>

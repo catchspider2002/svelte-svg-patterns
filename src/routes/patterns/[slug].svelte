@@ -151,7 +151,8 @@
   function randomPattern() {
     selectedPattern = {
       id: 5,
-      colors: randomColorSets(constants.randomNumber(2, colorCount)),
+      // colors: randomColorSets(constants.randomNumber(2, colorCount)),
+      colors: randomColorSets(2),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
@@ -258,10 +259,10 @@
   .patternContainer {
     /*width: 100%;*/
     /* margin: 0 auto 0 auto; */
-    padding: 0 2em 4em;
+    padding: 2em;
     background-color: var(--accent-color);
     color: #edf2f7;
-    min-height: 100vh;
+    min-height: calc(100vh - 8em);
     display: grid;
   }
 
@@ -318,11 +319,12 @@
     right: 0;
     background-color: black;
     width: 100%;
-    padding: 1em 0;
+    /* padding: 1em 0; */
+    height: 4em;
   }
-  .toolBar {
+  /* .toolBar {
     display: none;
-  }
+  } */
 
   .bottomBar * {
     margin: 0 5px;
@@ -363,9 +365,19 @@
     column-gap: 1rem;
     justify-items: center;
   }
-  .hideCheckbox {
+
+  .exportBar .exportGrid,
+  .exportBar .downloadGrid,
+  .exportBar .dimensionGrid {
     display: none;
   }
+
+.bottomBar .buttons {
+  display: none;
+}
+  /* .hideCheckbox {
+    display: none;
+  } */
 
   .pattern {
     width: 100%;
@@ -377,7 +389,7 @@
   }
   @media (max-width: 1024px) {
     .patternContainer {
-      padding: 0 1em 8em;
+      padding: 1em;
     }
   }
   @media (max-width: 640px) {
@@ -385,25 +397,38 @@
       grid-template-columns: 1fr;
     }
     .patternContainer {
-      padding: 0 1em 1em;
+      padding: 1em;
       min-height: unset;
     }
     .mobileBg {
       display: block;
       position: fixed;
-      height: 100%;
+      height: calc(100% - 8em);
       width: 100%;
       left: 0;
-      top: 0;
+      top: 4em;
+      bottom: 4em;
     }
-    .bottomBar {
-      position: unset;
+    .bottomBar .exportGrid,
+    .bottomBar .downloadGrid,
+    .bottomBar .dimensionGrid {
+      display: none;
     }
+    .exportBar .exportGrid,
+    .exportBar .downloadGrid,
+    .exportBar .dimensionGrid {
+      display: grid;
+    }
+
     .buttons {
       display: none;
     }
 
-    .toolBar {
+    .bottomBar .buttons {
+      display: grid;
+    }
+
+    /* .toolBar {
       height: 4em;
       display: grid;
       grid-auto-flow: column;
@@ -416,10 +441,10 @@
       background-color: black;
       width: 100%;
       padding: 1em;
-    }
-    .hideCheckbox {
+    } */
+    /* .hideCheckbox {
       display: block;
-    }
+    } */
     .controls {
       background-color: var(--accent-color);
       padding: 2rem;
@@ -494,8 +519,8 @@
           <button title="Reset" on:click={resetPattern}>Reset</button>
         </div>
       </div>
-    </div>
-    <div class="bottomBar" style="display: {hide ? 'none' : 'flex'}">
+      
+    <div class="exportBar">
       <div class="exportGrid">
         <span>Copy</span>
         <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
@@ -532,14 +557,57 @@
           }} />
       </div>
     </div>
-    <div class="toolBar">
+    </div>
+    <div class="bottomBar">
+      <div class="exportGrid">
+        <span>Copy</span>
+        <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+        <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+      </div>
+      <div class="downloadGrid">
+        <span>Download</span>
+        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+      </div>
+      <div class="dimensionGrid">
+        <span>Dimensions</span>
+        <input
+          id="width"
+          type="number"
+          title="Width"
+          placeholder="Width"
+          bind:value={outputWidth}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+        <input
+          id="height"
+          type="number"
+          title="Height"
+          placeholder="Height"
+          bind:value={outputHeight}
+          min="0"
+          max="9999"
+          on:input={e => {
+            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+          }} />
+      </div>
+      <div class="buttons">
+        <button title="Random" on:click={randomPattern}>Inspire Me</button>
+        <button title="Reset" on:click={resetPattern}>Reset</button>
+      </div>
+      <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> Hide UI </label>
+    </div>
+    <!-- <div class="toolBar">
       <button title="Random" on:click={randomPattern}>Inspire Me</button>
       <button title="Reset" on:click={resetPattern}>Reset</button>
       <label class="hideCheckbox">
         <input type="checkbox" bind:checked={hide} />        
         Hide UI
       </label>
-    </div>
+    </div> -->
   </div>
   <div class="preview" style={cssOutput}>
     <div id="pngOutput" />
