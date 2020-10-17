@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
     "export": "sapper export --entry '/ patterns confirmed'",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",

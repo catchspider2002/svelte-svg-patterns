@@ -324,7 +324,7 @@ const patterns = [
     colors: 2,
     maxStroke: 10,
     maxScale: 16,
-    maxSpacing: [29, 10],
+    maxSpacing: [0, 0],
     width: 29,
     height: 50.115,
     path:

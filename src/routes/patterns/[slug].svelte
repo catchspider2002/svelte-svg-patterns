@@ -13,17 +13,13 @@
   import constants from "../_constants.js";
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
+  let w;
 
   import { fly, fade, slide } from "svelte/transition";
   let visible = false;
 
   let Pickr, svg;
   $: hide = false;
-
-  let toggleVisibility = () => {
-    visible = visible ? false : true;
-    console.log(visible);
-  };
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -253,14 +249,15 @@
     /* width: 100%; */
     /* height: 100vh; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-auto-flow: column; */
+    /* grid-template-columns: 1fr 1fr; */
   }
 
   .patternContainer {
     /*width: 100%;*/
     /* margin: 0 auto 0 auto; */
-    padding: 2em;
-    /* background-color: var(--accent-color); */
+    /* padding: 2em; */
+    background-color: var(--accent-color);
     color: #edf2f7;
     /* min-height: calc(100vh - 8em); */
     display: grid;
@@ -318,14 +315,12 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    /* position: fixed; */
     grid-row-start: 2;
-  grid-row-end: 3;
+    grid-row-end: 3;
     z-index: 2;
-    /* bottom: 0;
-    right: 0; */
     background-color: black;
     width: 100%;
+    padding: 0.5em;
     /* padding: 1em 0; */
     /* height: 4em; */
   }
@@ -350,7 +345,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5em;
-    padding: 0.5em;
+    /* padding: 0.5em; */
     align-items: center;
   }
 
@@ -382,41 +377,37 @@
   .bottomBar .buttons {
     display: none;
   }
-  /* .hideCheckbox {
-    display: none;
-  } */
+  .preview {
+    display: grid;
+    place-content: center;
+  }
+  .preview .buttons {
+    gap: 4em;
+  }
 
-  .pattern {
-    width: 100%;
-    height: 60px;
-    /* cursor: pointer; */
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-  }
-  @media (max-width: 1024px) {
-    .patternContainer {
-      padding: 1em;
-    }
-  }
   @media (max-width: 640px) {
-    .page {
-      grid-template-columns: 1fr;
-    }
     .patternContainer {
       padding: 1em;
-      /* min-height: unset; */
+      margin-top: -1em;
+      margin-bottom: 2em;
     }
     .mobileBg {
       display: block;
       position: fixed;
-      height: 100%;
+      min-height: 100%;
       /* calc(100% - 8em); */
       width: 100%;
       left: 0;
-      top: 4em;
-      bottom: 4em;
+      /* top: 4em; */
+      /* padding-bottom: 4em; */
+      /* bottom: 4em; */
     }
+    .bottomBar {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+
     .bottomBar .exportGrid,
     .bottomBar .downloadGrid,
     .bottomBar .dimensionGrid {
@@ -426,6 +417,7 @@
     .exportBar .downloadGrid,
     .exportBar .dimensionGrid {
       display: grid;
+      padding: 0.5em;
     }
 
     .buttons {
@@ -456,6 +448,7 @@
     .controls {
       background-color: var(--accent-color);
       padding: 2rem;
+      margin: 1rem 0 2.5rem;
     }
     .preview {
       display: none;
@@ -467,17 +460,17 @@
   <title>{post.title}</title>
 </svelte:head>
 
-<div class="page">
+<div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 640 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
 
     <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
     <div class="controls" style="display: {hide ? 'none' : 'block'}">
       <div>{post.title}</div>
-      <div
+      <!-- <div
         id="ax"
         class="pattern"
-        style={'background-image: url("data:image/svg+xml,' + svgPattern(presetPattern.colors, presetPattern.stroke, presetPattern.scale, presetPattern.spacing, presetPattern.angle, presetPattern.join) + '"' + ')'} />
+        style={'background-image: url("data:image/svg+xml,' + svgPattern(presetPattern.colors, presetPattern.stroke, presetPattern.scale, presetPattern.spacing, presetPattern.angle, presetPattern.join) + '"' + ')'} /> -->
 
       <div class="inputs">
         <label for="scale">Scale</label>
@@ -566,17 +559,14 @@
       </div>
     </div>
     </div>
-    <!-- <div class="toolBar">
-      <button title="Random" on:click={randomPattern}>Inspire Me</button>
-      <button title="Reset" on:click={resetPattern}>Reset</button>
-      <label class="hideCheckbox">
-        <input type="checkbox" bind:checked={hide} />        
-        Hide UI
-      </label>
-    </div> -->
   </div>
   <div class="preview" style={cssOutput}>
     <div id="pngOutput" />
+
+    <div class="buttons" style="display: {hide ? 'grid' : 'none'}">
+      <button title="Random" on:click={randomPattern}>Inspire Me</button>
+      <button title="Reset" on:click={resetPattern}>Reset</button>
+    </div>
   </div>
 </div>
 
