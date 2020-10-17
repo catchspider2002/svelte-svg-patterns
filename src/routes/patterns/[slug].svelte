@@ -260,10 +260,15 @@
     /*width: 100%;*/
     /* margin: 0 auto 0 auto; */
     padding: 2em;
+    /* background-color: var(--accent-color); */
+    color: #edf2f7;
+    /* min-height: calc(100vh - 8em); */
+    display: grid;
+  }
+
+  .bottomBar {
     background-color: var(--accent-color);
     color: #edf2f7;
-    min-height: calc(100vh - 8em);
-    display: grid;
   }
 
   .inputs {
@@ -313,21 +318,23 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    position: fixed;
+    /* position: fixed; */
+    grid-row-start: 2;
+  grid-row-end: 3;
     z-index: 2;
-    bottom: 0;
-    right: 0;
+    /* bottom: 0;
+    right: 0; */
     background-color: black;
     width: 100%;
     /* padding: 1em 0; */
-    height: 4em;
+    /* height: 4em; */
   }
   /* .toolBar {
     display: none;
   } */
 
-  .bottomBar * {
-    margin: 0 5px;
+  .bottomBar .buttons {
+    margin: 0.5em;
   }
 
   .strokeJoin {
@@ -372,9 +379,9 @@
     display: none;
   }
 
-.bottomBar .buttons {
-  display: none;
-}
+  .bottomBar .buttons {
+    display: none;
+  }
   /* .hideCheckbox {
     display: none;
   } */
@@ -398,12 +405,13 @@
     }
     .patternContainer {
       padding: 1em;
-      min-height: unset;
+      /* min-height: unset; */
     }
     .mobileBg {
       display: block;
       position: fixed;
-      height: calc(100% - 8em);
+      height: 100%;
+      /* calc(100% - 8em); */
       width: 100%;
       left: 0;
       top: 4em;
@@ -558,48 +566,6 @@
       </div>
     </div>
     </div>
-    <div class="bottomBar">
-      <div class="exportGrid">
-        <span>Copy</span>
-        <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
-        <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
-      </div>
-      <div class="downloadGrid">
-        <span>Download</span>
-        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-      </div>
-      <div class="dimensionGrid">
-        <span>Dimensions</span>
-        <input
-          id="width"
-          type="number"
-          title="Width"
-          placeholder="Width"
-          bind:value={outputWidth}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-        <input
-          id="height"
-          type="number"
-          title="Height"
-          placeholder="Height"
-          bind:value={outputHeight}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-      </div>
-      <div class="buttons">
-        <button title="Random" on:click={randomPattern}>Inspire Me</button>
-        <button title="Reset" on:click={resetPattern}>Reset</button>
-      </div>
-      <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> Hide UI </label>
-    </div>
     <!-- <div class="toolBar">
       <button title="Random" on:click={randomPattern}>Inspire Me</button>
       <button title="Reset" on:click={resetPattern}>Reset</button>
@@ -612,4 +578,47 @@
   <div class="preview" style={cssOutput}>
     <div id="pngOutput" />
   </div>
+</div>
+
+<div class="bottomBar">
+  <div class="exportGrid">
+    <span>Copy</span>
+    <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+    <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+  </div>
+  <div class="downloadGrid">
+    <span>Download</span>
+    <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+    <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+  </div>
+  <div class="dimensionGrid">
+    <span>Dimensions</span>
+    <input
+      id="width"
+      type="number"
+      title="Width"
+      placeholder="Width"
+      bind:value={outputWidth}
+      min="0"
+      max="9999"
+      on:input={e => {
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+      }} />
+    <input
+      id="height"
+      type="number"
+      title="Height"
+      placeholder="Height"
+      bind:value={outputHeight}
+      min="0"
+      max="9999"
+      on:input={e => {
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+      }} />
+  </div>
+  <div class="buttons">
+    <button title="Random" on:click={randomPattern}>Inspire Me</button>
+    <button title="Reset" on:click={resetPattern}>Reset</button>
+  </div>
+  <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> Hide UI </label>
 </div>

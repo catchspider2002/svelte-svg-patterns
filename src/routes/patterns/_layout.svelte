@@ -12,6 +12,9 @@
 		/* padding: 2em; */
 		margin: 0 auto;
 		box-sizing: border-box;
+		display: grid;
+		min-height: calc(100vh - 4em);
+		grid-template-rows: 1fr auto;
 	}
 </style>
 
