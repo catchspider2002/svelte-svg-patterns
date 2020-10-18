@@ -16,7 +16,7 @@
   let w;
 
   import { fly, fade, slide } from "svelte/transition";
-  let visible = false;
+  let changing = false;
 
   let Pickr, svg;
   $: hide = false;
@@ -46,11 +46,11 @@
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
       if (mode === "stroke-join") {
-        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
+        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
         joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
       } else if (mode === "stroke") {
-        strokeFill = " stroke = '" + colors[i + 1] + "' fill='none'";
-      } else strokeFill = " stroke = 'none' fill='" + colors[i + 1] + "'";
+        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
+      } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
 
       return (
         "<g transform='translate(" +
@@ -246,20 +246,18 @@
 
 <style>
   .page {
-    /* width: 100%; */
-    /* height: 100vh; */
     display: grid;
-    /* grid-auto-flow: column; */
-    /* grid-template-columns: 1fr 1fr; */
+  }
+
+  .grid {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.5em
   }
 
   .patternContainer {
-    /*width: 100%;*/
-    /* margin: 0 auto 0 auto; */
-    /* padding: 2em; */
     background-color: var(--accent-color);
     color: #edf2f7;
-    /* min-height: calc(100vh - 8em); */
     display: grid;
   }
 
@@ -270,12 +268,19 @@
 
   .inputs {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    column-gap: 1rem;
+    grid-template-columns: auto auto 1fr 1fr;
     gap: 2rem;
     align-items: center;
     padding: 2em 0;
   }
+
+.leftColumn{
+  grid-column: 1/3;
+}
+
+.rightColumn{
+  grid-column: 3/5;
+}
 
   .colors {
     display: grid;
@@ -311,29 +316,22 @@
   .bottomBar {
     display: flex;
     flex-wrap: wrap;
-    /* grid-template-columns: auto auto auto; */
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    padding: 1em;
     grid-row-start: 2;
     grid-row-end: 3;
     z-index: 2;
     background-color: black;
     width: 100%;
-    padding: 0.5em;
-    /* padding: 1em 0; */
-    /* height: 4em; */
-  }
-
-  .bottomBar .buttons {
-    margin: 0.5em;
   }
 
   .strokeJoin {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-column: 2/4;
-    column-gap: 1rem;
+    /* grid-template-columns: auto auto;
+    grid-column: 2/4; */
+    column-gap: 1em;
   }
 
   .exportGrid,
@@ -342,7 +340,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5em;
-    /* padding: 0.5em; */
     align-items: center;
   }
 
@@ -382,7 +379,7 @@
     gap: 4em;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .patternContainer {
       padding: 1em;
       margin-top: -1em;
@@ -392,12 +389,8 @@
       display: block;
       position: fixed;
       min-height: 100%;
-      /* calc(100% - 8em); */
       width: 100%;
       left: 0;
-      /* top: 4em; */
-      /* padding-bottom: 4em; */
-      /* bottom: 4em; */
     }
     .bottomBar {
       position: fixed;
@@ -414,7 +407,7 @@
     .exportBar .downloadGrid,
     .exportBar .dimensionGrid {
       display: grid;
-      padding: 0.5em;
+      padding: 0.5em 0;
     }
 
     .buttons {
@@ -440,55 +433,90 @@
   <title>{post.title}</title>
 </svelte:head>
 
-<div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 640 ? '1fr' : '1fr 1fr'}">
+<div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
 
-    <!-- <div class="controls" style="visibility: {hide ? true : 'hidden'}"> -->
-    <div class="controls" style="display: {hide ? 'none' : 'block'}">
+    <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.25' : '1'}">
       <div>{post.title}</div>
-      <!-- <div
-        id="ax"
-        class="pattern"
-        style={'background-image: url("data:image/svg+xml,' + svgPattern(presetPattern.colors, presetPattern.stroke, presetPattern.scale, presetPattern.spacing, presetPattern.angle, presetPattern.join) + '"' + ')'} /> -->
-
       <div class="inputs">
-        <label for="scale">Scale</label>
-        <input id="scale" type="range" bind:value={selectedPattern.scale} min="1" max={maxScale} />
-        <input class="uneditable" bind:value={selectedPattern.scale} readonly />
-        {#if mode === 'stroke-join'}
-          <label for="stroke">Stroke</label>
-          <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
-          <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
-          <label>Join</label>
-          <div class="strokeJoin">
-            <label>
-              <input type="radio" bind:group={selectedPattern.join} value={1} />
-              Square
-            </label>
-            <label>
-              <input type="radio" bind:group={selectedPattern.join} value={2} />
-              Rounded
-            </label>
-          </div>
-          {:else if mode === 'stroke'}
-            <label for="stroke">Stroke</label>
-            <input id="stroke" type="range" bind:value={selectedPattern.stroke} min="0.5" max={maxStroke} step="0.5" />
+        <label class="leftColumn" for="scale">Scale</label>
+        <div class="grid rightColumn">
+          <input
+            id="scale"
+            type="range"
+            bind:value={selectedPattern.scale}
+            min="1"
+            max={maxScale}
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)} />
+          <input class="uneditable" bind:value={selectedPattern.scale} readonly />
+        </div>
+        {#if mode === 'stroke-join' || mode === 'stroke'}
+          <label class="leftColumn" for="stroke">Stroke</label>
+          <div class="grid rightColumn">
+            <input
+              id="stroke"
+              type="range"
+              bind:value={selectedPattern.stroke}
+              min="0.5"
+              max={maxStroke}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)} />
             <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
+          </div>
+        {/if}
+        {#if mode === 'stroke-join'}
+          <label class="leftColumn">Join</label>
+          <div class="strokeJoin grid rightColumn">
+            <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
+            <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
+          </div>
         {/if}
         {#if maxSpacing[0] > 0}
-          <label for="hspacing">Horizontal Spacing</label>
-          <input id="hspacing" type="range" bind:value={selectedPattern.spacing[0]} min="0" max={maxSpacing[0]} step="0.5" />
-          <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
+          <label class="leftColumn" for="hspacing">Horizontal Spacing</label>
+          <div class="grid rightColumn">
+            <input
+              id="hspacing"
+              type="range"
+              bind:value={selectedPattern.spacing[0]}
+              min="0"
+              max={maxSpacing[0]}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)} />
+            <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
+          </div>
         {/if}
         {#if maxSpacing[1] > 0}
-          <label for="vspacing">Vertical Spacing</label>
-          <input id="vspacing" type="range" bind:value={selectedPattern.spacing[1]} min="0" max={maxSpacing[1]} step="0.5" />
-          <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
+          <label class="leftColumn" for="vspacing">Vertical Spacing</label>
+          <div class="grid rightColumn">
+            <input
+              id="vspacing"
+              type="range"
+              bind:value={selectedPattern.spacing[1]}
+              min="0"
+              max={maxSpacing[1]}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)} />
+            <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
+          </div>
         {/if}
-        <label for="angle">Angle</label>
-        <input id="angle" type="range" bind:value={selectedPattern.angle} min="0" max="180" step="5" />
+        <label class="leftColumn" for="angle">Angle</label>
+        <div class="grid rightColumn">
+        <input
+          id="angle"
+          type="range"
+          bind:value={selectedPattern.angle}
+          min="0"
+          max="180"
+          step="5"
+          on:input={() => (changing = true)}
+          on:change={() => (changing = false)} />
         <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+      </div>
         <label>Colors</label>
         <div class="colors py-05">
           {#each { length: 5 } as _, i}
@@ -500,44 +528,44 @@
           <button title="Reset" on:click={resetPattern}>Reset</button>
         </div>
       </div>
-      
-    <div class="exportBar">
-      <div class="exportGrid">
-        <span>Copy</span>
-        <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
-        <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+
+      <div class="exportBar">
+        <div class="exportGrid">
+          <span>Copy</span>
+          <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+          <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+        </div>
+        <div class="downloadGrid">
+          <span>Download</span>
+          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
+          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+        </div>
+        <div class="dimensionGrid">
+          <span>Dimensions</span>
+          <input
+            id="width"
+            type="number"
+            title="Width"
+            placeholder="Width"
+            bind:value={outputWidth}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
+          <input
+            id="height"
+            type="number"
+            title="Height"
+            placeholder="Height"
+            bind:value={outputHeight}
+            min="0"
+            max="9999"
+            on:input={e => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }} />
+        </div>
       </div>
-      <div class="downloadGrid">
-        <span>Download</span>
-        <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-        <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
-      </div>
-      <div class="dimensionGrid">
-        <span>Dimensions</span>
-        <input
-          id="width"
-          type="number"
-          title="Width"
-          placeholder="Width"
-          bind:value={outputWidth}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-        <input
-          id="height"
-          type="number"
-          title="Height"
-          placeholder="Height"
-          bind:value={outputHeight}
-          min="0"
-          max="9999"
-          on:input={e => {
-            if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-          }} />
-      </div>
-    </div>
     </div>
   </div>
   <div class="preview" style={cssOutput}>

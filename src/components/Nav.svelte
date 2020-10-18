@@ -23,11 +23,6 @@ nav{
     letter-spacing: 0.05em;
     font-size: 1.125em;
   }
-  @media (max-width: 1280px) {
-    .logo {
-      /* padding-top: 2rem; */
-    }
-  }
   @media (max-width: 768px) {
     .logo {
       justify-self: center;
