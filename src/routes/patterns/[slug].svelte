@@ -252,7 +252,7 @@
   .grid {
     display: grid;
     grid-auto-flow: column;
-    gap: 0.5em
+    gap: 0.5em;
   }
 
   .patternContainer {
@@ -268,28 +268,27 @@
 
   .inputs {
     display: grid;
-    grid-template-columns: auto auto 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr auto 1fr 1fr;
+    gap: 2em;
     align-items: center;
     padding: 2em 0;
   }
 
-.leftColumn{
-  grid-column: 1/3;
-}
+  .leftColumn {
+    grid-column: 1/3;
+  }
 
-.rightColumn{
-  grid-column: 3/5;
-}
+  .rightColumn {
+    grid-column: 3/5;
+  }
 
   .colors {
     display: grid;
     grid-template-columns: auto auto auto auto 1fr;
-    column-gap: 1rem;
-    gap: 1rem;
+    gap: 1em;
     align-items: center;
     padding: 2em 0;
-    grid-column: 2/4;
+    /* grid-column: 2/4; */
   }
   .py-05 {
     padding: 0.5em 0;
@@ -329,9 +328,8 @@
 
   .strokeJoin {
     display: grid;
-    /* grid-template-columns: auto auto;
-    grid-column: 2/4; */
-    column-gap: 1em;
+    grid-template-columns: auto auto;
+    gap: 1em;
   }
 
   .exportGrid,
@@ -357,8 +355,8 @@
   .buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column: 1/4;
-    column-gap: 1rem;
+    grid-column: 1/5;
+    gap: 1em;
     justify-items: center;
   }
 
@@ -379,6 +377,10 @@
     gap: 4em;
   }
 
+  hr {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     .patternContainer {
       padding: 1em;
@@ -396,6 +398,9 @@
       position: fixed;
       bottom: 0;
       right: 0;
+    }
+    .exportBar {
+      padding-top: 2em;
     }
 
     .bottomBar .exportGrid,
@@ -426,6 +431,50 @@
     .preview {
       display: none;
     }
+
+    hr {
+      display: block;
+      border: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.8);
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+      /* background: rgba(var(--text-color), 0.8);
+  background-image: linear-gradient(to right, rgba(var(--bg-color), 0.8), rgba(var(--text-color), 0.8), rgba(var(--bg-color), 0.8)); */
+    }
+  }
+  @media (max-width: 408px) {
+    .controls {
+      margin: 1rem 0 5rem;
+    }
+    .inputs {
+      padding: 1em 0;
+      gap: 1em;
+    }
+
+    .leftColumn {
+      grid-column: 1/5;
+      padding-top: 1em;
+    }
+
+    .rightColumn {
+      grid-column: 1/5;
+      grid-template-columns: 1fr auto;
+    }
+
+    .strokeJoin {
+      grid-template-columns: auto auto;
+    }
+    .exportBar .exportGrid,
+    .exportBar .downloadGrid,
+    .exportBar .dimensionGrid {
+      grid-template-columns: 1fr 1fr;
+      padding: 0.5em 0;
+    }
+    .exportBar .exportGrid span,
+    .exportBar .downloadGrid span,
+    .exportBar .dimensionGrid span {
+      grid-column: 1/3;
+    }
   }
 </style>
 
@@ -437,7 +486,7 @@
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
 
-    <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.25' : '1'}">
+    <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
       <div>{post.title}</div>
       <div class="inputs">
         <label class="leftColumn" for="scale">Scale</label>
@@ -469,7 +518,7 @@
         {/if}
         {#if mode === 'stroke-join'}
           <label class="leftColumn">Join</label>
-          <div class="strokeJoin grid rightColumn">
+          <div class="rightColumn strokeJoin">
             <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
             <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
           </div>
@@ -506,19 +555,19 @@
         {/if}
         <label class="leftColumn" for="angle">Angle</label>
         <div class="grid rightColumn">
-        <input
-          id="angle"
-          type="range"
-          bind:value={selectedPattern.angle}
-          min="0"
-          max="180"
-          step="5"
-          on:input={() => (changing = true)}
-          on:change={() => (changing = false)} />
-        <input class="uneditable" bind:value={selectedPattern.angle} readonly />
-      </div>
-        <label>Colors</label>
-        <div class="colors py-05">
+          <input
+            id="angle"
+            type="range"
+            bind:value={selectedPattern.angle}
+            min="0"
+            max="180"
+            step="5"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)} />
+          <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+        </div>
+        <label class="leftColumn">Colors</label>
+        <div class="rightColumn colors py-05">
           {#each { length: 5 } as _, i}
             <div id="color{i + 1}Div" />
           {/each}
@@ -528,6 +577,8 @@
           <button title="Reset" on:click={resetPattern}>Reset</button>
         </div>
       </div>
+
+      <hr />
 
       <div class="exportBar">
         <div class="exportGrid">
