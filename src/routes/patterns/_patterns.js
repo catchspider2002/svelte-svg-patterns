@@ -769,68 +769,55 @@ const patterns = [
     path:
       "<path d='M16 6l10 10-10 10L6 16z'/><path d='M16-10L26 0 16 10 6 0zM16 22l10 10-10 10L6 32zM32 6l10 10-10 10-10-10zM0 6l10 10L0 26l-10-10z'/><path d='M32-10L42 0 32 10 22 0zM0-10L10 0 0 10-10 0zM0 22l10 10L0 42l-10-10zM32 22l10 10-10 10-10-10z'/>"
   },
-  {
-    title: "Zebra",
-    slug: "zebra2",
-    mode: "stroke-join",
-    colors: 2,
-    maxStroke: 9.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 40,
-    height: 40,
-    path:
-      "<path d='M33.32 19.884L19.885 33.319m.23-26.64L6.68 20.114M46.858-7.03L32.716 7.11M7.108 32.719L-7.034 46.86m2.382-51.514l49.308 49.308'/>"
-  },
-  {
-    title: "Aztecs - Redo",
-    slug: "aztecs",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 9.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 60,
-    height: 75,
-    path:
-      "<path d='M56.333 56.333V85.5m-75.238-66.833H3.667M56.333-19v30.133h15.048M33.761 3.6v-15.067H48.81v30.134H18.714v-30.134H3.667V3.6m37.619-7.533v15.066H26.238V-19H-3.857v30.133H11.19V-3.933m-7.523 22.6V48.8h-15.048M3.667 18.667h30.095m7.524 37.666h22.571M26.238 41.267V26.2H11.19v30.133h30.096V26.2h15.047v15.067m-37.619-7.534V48.8h15.048V18.667h30.095V48.8H48.81V33.733m0 22.6H26.238m7.524 22.6V63.867H48.81V94H18.714V63.867H3.667v15.066M41.286 71.4v15.067H26.238V56.333H-3.857v30.134H11.19V71.4'/>"
-  },
-  {
-    title: "Squares - OK",
-    slug: "squares",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 9.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 20,
-    path: "<path d='M 5,5 H 15 V 15 H 5 Z'/>"
-  },
-  {
-    title: "Circles - OK",
-    slug: "circles",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 20,
-    maxScale: 10,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 20,
-    path: "<path d='M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z'/>"
-  },
-  {
-    title: "Triangles - OK",
-    slug: "triangles",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 21,
-    maxScale: 10,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 20,
-    path: "<path d='M15 15H5l5-10z'/>"
-  },
+  // {
+  //   title: "Aztecs - Redo",
+  //   slug: "aztecs",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 9.5,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 60,
+  //   height: 75,
+  //   path:
+  //     "<path d='M56.333 56.333V85.5m-75.238-66.833H3.667M56.333-19v30.133h15.048M33.761 3.6v-15.067H48.81v30.134H18.714v-30.134H3.667V3.6m37.619-7.533v15.066H26.238V-19H-3.857v30.133H11.19V-3.933m-7.523 22.6V48.8h-15.048M3.667 18.667h30.095m7.524 37.666h22.571M26.238 41.267V26.2H11.19v30.133h30.096V26.2h15.047v15.067m-37.619-7.534V48.8h15.048V18.667h30.095V48.8H48.81V33.733m0 22.6H26.238m7.524 22.6V63.867H48.81V94H18.714V63.867H3.667v15.066M41.286 71.4v15.067H26.238V56.333H-3.857v30.134H11.19V71.4'/>"
+  // },
+  // {
+  //   title: "Squares - OK",
+  //   slug: "squares",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 9.5,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 20,
+  //   path: "<path d='M 5,5 H 15 V 15 H 5 Z'/>"
+  // },
+  // {
+  //   title: "Circles - OK",
+  //   slug: "circles",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 20,
+  //   maxScale: 10,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 20,
+  //   path: "<path d='M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z'/>"
+  // },
+  // {
+  //   title: "Triangles - OK",
+  //   slug: "triangles",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 21,
+  //   maxScale: 10,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 20,
+  //   path: "<path d='M15 15H5l5-10z'/>"
+  // },
   {
     title: "Inverted triangles - OK",
     slug: "inverted-triangles",
@@ -839,36 +826,36 @@ const patterns = [
     maxStroke: 5.5,
     maxScale: 10,
     maxSpacing: [0, 10],
-    width: 20,
-    height: 28,
-    path: "<path d='M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z'/>"
+    width: 16.5,
+    height: 32.87700,
+    path: "<path d='M-5 2l5 10L5 2zm16.5 0l5 10 5-10zM8.25 4.438l-5 10h10zm-5 14l5 10.001 5-10zM0 20.878l-5 10H5zm16.5 0l-5 10h10z'/>"
   },
-  {
-    title: "Funny design",
-    slug: "funny-design",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 7,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 37.092,
-    height: 37.092,
-    path:
-      "<path d='M37.091 30.546l-12-12 12-12 12 12zm0 4.364L20.727 18.546 37.091 2.182l16.364 16.364zM18.546 12l-12-12 12-12 12 12zm0 4.364L2.182 0l16.364-16.364L34.91 0zm0 32.728l-12-12 12-12 12 12zm0 4.364L2.182 37.092l16.364-16.364L34.91 37.092zM0 30.546l-12-12 12-12 12 12zm0 4.363l-16.364-16.363L0 2.182l16.364 16.364z'/>"
-  },
-  {
-    title: "New 2 - OK",
-    slug: "new-2",
-    mode: "fill",
-    colors: 2,
-    maxStroke: 7,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 21.75,
-    path:
-      "<path d='M13.262 16.611v-1.065h.533V14.48H12.73v3.199h3.199v-5.33h-5.331v7.463h7.463V1.94h-7.463v7.464h5.331V4.073h-3.2v3.199h1.067V6.205h-.533V5.14h1.598v3.196h-3.196V3.008h5.329v7.46H3.007v-7.46h5.329v5.328H5.14V5.14h1.598v1.065h-.534v1.067h1.068v-3.2h-3.2v5.332h5.332V1.941H1.94V19.81h7.464v-7.463H4.072v5.33h3.2V14.48H6.205v1.067h.533v1.065H5.14v-3.197h3.197v5.329h-5.33v-7.46H16.995v7.46h-5.33v-5.33h3.196v3.197h-1.598m5.863 4.265H.875v-20h18.25v20'/>"
-  },
+  // {
+  //   title: "Funny design",
+  //   slug: "funny-design",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 7,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 37.092,
+  //   height: 37.092,
+  //   path:
+  //     "<path d='M37.091 30.546l-12-12 12-12 12 12zm0 4.364L20.727 18.546 37.091 2.182l16.364 16.364zM18.546 12l-12-12 12-12 12 12zm0 4.364L2.182 0l16.364-16.364L34.91 0zm0 32.728l-12-12 12-12 12 12zm0 4.364L2.182 37.092l16.364-16.364L34.91 37.092zM0 30.546l-12-12 12-12 12 12zm0 4.363l-16.364-16.363L0 2.182l16.364 16.364z'/>"
+  // },
+  // {
+  //   title: "New 2 - OK",
+  //   slug: "new-2",
+  //   mode: "fill",
+  //   colors: 2,
+  //   maxStroke: 7,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 21.75,
+  //   path:
+  //     "<path d='M13.262 16.611v-1.065h.533V14.48H12.73v3.199h3.199v-5.33h-5.331v7.463h7.463V1.94h-7.463v7.464h5.331V4.073h-3.2v3.199h1.067V6.205h-.533V5.14h1.598v3.196h-3.196V3.008h5.329v7.46H3.007v-7.46h5.329v5.328H5.14V5.14h1.598v1.065h-.534v1.067h1.068v-3.2h-3.2v5.332h5.332V1.941H1.94V19.81h7.464v-7.463H4.072v5.33h3.2V14.48H6.205v1.067h.533v1.065H5.14v-3.197h3.197v5.329h-5.33v-7.46H16.995v7.46h-5.33v-5.33h3.196v3.197h-1.598m5.863 4.265H.875v-20h18.25v20'/>"
+  // },
   {
     title: "Check OK",
     slug: "check2",
@@ -882,31 +869,31 @@ const patterns = [
     path:
       "<path d='M-4.793 4.438l8.788 12.156 12.156-8.79M8.42 62.57l6.408 2.818 2.817-6.408M62.644 27.187l2.746 1.208 1.207-2.746M31.998 30.542l-13.232 7.066 7.067 13.23M50.772 43.744l-4.859-5.038-5.038 4.86M59.713 62.882v3h3M-9.003 38.035l-3.81 14.508 14.508 3.809M54.983 27.574L52.625 16.83 41.88 19.189M26.88 23.931l4.838-5.058-5.058-4.838M4.838 25.543l-1.972 2.26 2.261 1.972M31.98-4.869l2.735 10.654L45.37 3.048M65.207 4.438l8.788 12.156 12.155-8.79M31.98 65.131l2.735 10.654 10.654-2.737M60.998 38.035l-3.811 14.508 14.508 3.809M12.778 46.169l-2.21-2.029-2.028 2.21M37.802 53.484l.556 2.948 2.948-.556'/>"
   },
-  {
-    title: "Don know - OK",
-    slug: "don-know",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 8.5,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 20,
-    path:
-      "<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25,22 M -5,7 5,12 15,7 25,12 m -27.5,12.5 5,-10 -5,-10 5,-10 m 15,30 5,-10 -5,-10 5,-10 m -15,30 5,-10 -5,-10 5,-10'/>"
-  },
-  {
-    title: "New 3 - OK",
-    slug: "new-3",
-    mode: "stroke",
-    colors: 2,
-    maxStroke: 7,
-    maxScale: 16,
-    maxSpacing: [10, 10],
-    width: 20,
-    height: 10,
-    path: "<path d='M1.5 2h7M1.5 5h7M1.5 8h7M12 1.5v7M15 1.5v7M18 1.5v7'/>"
-  },
+  // {
+  //   title: "Don know - OK",
+  //   slug: "don-know",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 8.5,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 20,
+  //   path:
+  //     "<path d='M -5,-3 5.0000002,2 15,-3 25,2 M -5,17 5.0000002,22 15,17 25,22 M -5,7 5,12 15,7 25,12 m -27.5,12.5 5,-10 -5,-10 5,-10 m 15,30 5,-10 -5,-10 5,-10 m -15,30 5,-10 -5,-10 5,-10'/>"
+  // },
+  // {
+  //   title: "New 3 - OK",
+  //   slug: "new-3",
+  //   mode: "stroke",
+  //   colors: 2,
+  //   maxStroke: 7,
+  //   maxScale: 16,
+  //   maxSpacing: [10, 10],
+  //   width: 20,
+  //   height: 10,
+  //   path: "<path d='M1.5 2h7M1.5 5h7M1.5 8h7M12 1.5v7M15 1.5v7M18 1.5v7'/>"
+  // },
   {
     title: "New 4 - OK",
     slug: "new-4",
@@ -1002,6 +989,18 @@ const patterns = [
     width: 40,
     height: 59.428,
     path: "<path d='M0 70.975V47.881m20-1.692L8.535 52.808v13.239L20 72.667l11.465-6.62V52.808zm0-32.95l11.465-6.62V-6.619L20-13.24 8.535-6.619V6.619L20 13.24m8.535 4.927v13.238L40 38.024l11.465-6.62V18.166L40 11.546zM20 36.333L0 47.88m0 0v23.094m0 0l20 11.548 20-11.548V47.88m0 0L20 36.333m0 0l20 11.549M0 11.547l-11.465 6.619v13.239L0 38.025l11.465-6.62v-13.24L0 11.548v-23.094l20-11.547 20 11.547v23.094M20 36.333V13.24'/>"
+  },
+  {
+    title: "Japanese Pattern 4",
+    slug: "japanese-14",
+    mode: "stroke-join",
+    colors: 2,
+    maxStroke: 8,
+    maxScale: 10,
+    maxSpacing: [0, 0],
+    width: 40,
+    height: 40,
+    path: "<path d='M-13.774 40h70M-15 40.565h70m-70-40h70m-70 20h70M30 34.422v11.156M10 34.422v11.156M30-5.578V5.578M10-5.578V5.578M0 14.987v11.156m40-11.156v11.156M20 14.422v11.156m-35-5.013h70M-13.774 0h70'/>"
   }
 ];
 export default patterns;

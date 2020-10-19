@@ -106,7 +106,7 @@
   const presetPattern = {
     id: 1,
     colors: ["black", "white"],
-    stroke: 0.5,
+    stroke: 1,
     scale: 2,
     spacing: [0, 0],
     angle: 0,
@@ -137,7 +137,7 @@
   function resetPattern() {
     selectedPattern = presetPattern;
     selectedPattern.scale = 2;
-    selectedPattern.stroke = 0.5;
+    selectedPattern.stroke = 1;
     selectedPattern.spacing = [0, 0];
     selectedPattern.join = 1;
     selectedPattern.angle = 0;
