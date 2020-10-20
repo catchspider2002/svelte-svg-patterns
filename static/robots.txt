@@ -1,0 +1,3 @@
+Sitemap: https://pattern.monster/sitemap.xml
+User-agent: * 
+Crawl-Delay: 20
