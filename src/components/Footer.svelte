@@ -3,6 +3,14 @@
 </script>
 
 <style>
+  .footerOuter {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 0 1fr 1fr;
+    padding-bottom: 20px;
+    align-items: center;
+  }
+
   .footer {
     display: flex;
     flex-wrap: wrap;
@@ -18,21 +26,29 @@
   p {
     color: white;
   }
+  @media (max-width: 768px) {
+  .footerOuter {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+  }
 </style>
 
 <!-- <footer class="accent-bg light-text"> -->
 <footer>
-  <div class="container mx-auto justify-center">
+  <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
       <p class="text-center pb-5">Sign up for project updates and beta access</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
       </script>
     </div>
-    <div class="grid justify-center pt-20">
-      <Logo className="mx-auto" />
-    </div>
+    <div>
+      <div class="grid justify-center">
+        <Logo className="mx-auto" />
+      </div>
 
-    <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+      <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+    </div>
   </div>
 </footer>

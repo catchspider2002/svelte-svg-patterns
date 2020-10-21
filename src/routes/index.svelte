@@ -296,6 +296,14 @@
     max-width: 520px;
   }
 
+  .footerOuter {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 0 1fr 1fr;
+    padding-bottom: 20px;
+    align-items: center;
+  }
+
   .footer {
     display: flex;
     flex-wrap: wrap;
@@ -343,6 +351,10 @@
     }
     .comingSoon {
       padding-top: 0;
+    }
+    .footerOuter {
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
     }
   }
   @media (max-width: 640px) {
@@ -396,7 +408,10 @@
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
         Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
-      <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js"></script></div>
+      <div class="subscribe grid">
+        <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+        </script>
+      </div>
     </div>
   </div>
   <div class="bottomSide grid">
@@ -726,9 +741,7 @@
       use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and
       apparel, posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
     </p>
-    <div class="flex justify-center">
-      <button class="accent-bg" onclick="location.href='#subscribe'" type="button">Know more</button>
-    </div>
+    <div class="flex justify-center"><button class="accent-bg" onclick="location.href='#subscribe'" type="button">Know more</button></div>
   </section>
 </div>
 
@@ -759,7 +772,7 @@
       fill-opacity="1"
       d="M0,128L60,144C120,160,240,192,360,192C480,192,600,160,720,133.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" />
   </svg>
-  <div class="container mx-auto justify-center">
+  <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
       <p class="text-center pb-5">Sign up for project updates and beta access</p>
@@ -767,10 +780,12 @@
       </script>
     </div>
 
-    <div class="grid justify-center pt-20">
-      <Logo className="mx-auto" />
-    </div>
+    <div>
+      <div class="grid justify-center">
+        <Logo className="mx-auto" />
+      </div>
 
-    <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+      <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+    </div>
   </div>
 </footer>
