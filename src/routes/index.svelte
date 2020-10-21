@@ -396,7 +396,7 @@
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
         Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
-      <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js" ✂prettier:content✂="CgogICAgICAgIA==">{}</script></div>
+      <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js"></script></div>
     </div>
   </div>
   <div class="bottomSide grid">

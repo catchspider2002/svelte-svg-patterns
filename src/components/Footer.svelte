@@ -8,12 +8,15 @@
     flex-wrap: wrap;
     padding: 0.5rem;
     padding-bottom: 2rem;
-    color:white
+    color: white;
   }
 
   .subscribe-bottom {
     padding: 1.5rem;
     max-width: 520px;
+  }
+  p {
+    color: white;
   }
 </style>
 
@@ -24,7 +27,6 @@
     <div class="subscribe-bottom grid mx-auto">
       <p class="text-center pb-5">Sign up for project updates and beta access</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
-
       </script>
     </div>
     <div class="grid justify-center pt-20">
