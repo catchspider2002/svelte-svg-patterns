@@ -1,16 +1,15 @@
 <script>
   export let segment;
-  import Logo from "./Logo.svelte";
 </script>
 
 <style>
-nav{
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  background-color: var(--main-bg-color);
-    height :4em;
-}
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background-color: var(--main-bg-color);
+    height: 4em;
+  }
 
   .logo {
     display: grid;
@@ -21,13 +20,13 @@ nav{
     align-items: center;
     font-weight: 700;
     letter-spacing: 0.05em;
-    font-size: 1.125em;
+    font-size: 1em;
   }
   @media (max-width: 768px) {
     .logo {
       justify-self: center;
     }
-    .brandName{
+    .brandName {
       display: none;
     }
   }

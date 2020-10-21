@@ -14,6 +14,7 @@
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
   let w;
+  let website = "https://pattern.monster"
 
   import { fly, fade, slide } from "svelte/transition";
   let changing = false;
@@ -478,9 +479,29 @@
   }
 </style>
 
+
+
 <svelte:head>
   <title>{post.title}</title>
+  <link rel="canonical" href="{website}/{post.slug}" />
+  <meta name="description" content={post.slug} />
+  <meta name="keywords" content={post.slug} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="blog" />
+  <meta property="og:url" content="{website}/{post.slug}" />
+  <meta property="og:title" content={post.title} />
+  <meta property="og:description" content={post.slug} />
+  <meta property="og:image" content="{website}/social/{post.slug}.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{website}/{post.slug}" />
+  <meta property="twitter:title" content={post.title} />
+  <meta property="twitter:description" content={post.slug} />
+  <meta property="twitter:image" content="{website}/social/{post.slug}.png" />
 </svelte:head>
+
 
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">

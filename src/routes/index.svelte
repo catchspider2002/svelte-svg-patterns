@@ -396,11 +396,7 @@
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
         Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
-      <div class="subscribe grid">
-        <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-
-        </script>
-      </div>
+      <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js" ✂prettier:content✂="CgogICAgICAgIA==">{}</script></div>
     </div>
   </div>
   <div class="bottomSide grid">
@@ -559,12 +555,10 @@
   <div class="container p-5 mx-auto">
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-
         <div class="cf">
           {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
           {@html svgIcon('', 'color2', 45, 'top')}
         </div>
-
       </div>
       <div class="featureHeading">
         <h2>Tweak Colors</h2>
@@ -650,7 +644,6 @@
     </div>
     <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
-
         <div class="cf">
           <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
             <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
@@ -759,7 +752,7 @@
   <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
 </section>
 
-<section class="accent-bg light-text">
+<footer class="accent-bg light-text">
   <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
     <path
       fill="#ffc800"
@@ -771,7 +764,6 @@
     <div class="subscribe-bottom grid mx-auto">
       <p class="text-center pb-5">Sign up for project updates and beta access</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
-
       </script>
     </div>
 
@@ -779,10 +771,6 @@
       <Logo className="mx-auto" />
     </div>
 
-    <div class="footer justify-center light-text">
-      Made with&nbsp;
-      <span style="color:#e25555">❤</span>
-      &nbsp;by Naveen CS
-    </div>
+    <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
   </div>
-</section>
+</footer>
