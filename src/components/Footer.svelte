@@ -9,6 +9,7 @@
     grid-template-columns: 0 1fr 1fr;
     padding-bottom: 20px;
     align-items: center;
+    background-color: black;
   }
 
   .footer {
@@ -27,10 +28,10 @@
     color: white;
   }
   @media (max-width: 768px) {
-  .footerOuter {
-    grid-auto-flow: row;
-    grid-template-columns: 1fr;
-  }
+    .footerOuter {
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 

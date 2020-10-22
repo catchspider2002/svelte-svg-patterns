@@ -1,15 +1,27 @@
 <script context="module">
   export function preload({ params, query }) {
-    return this.fetch(`patterns.json`)
-      .then(r => r.json())
-      .then(posts => {
-        return { posts };
-      });
+    return (
+      this.fetch(`patterns.json`)
+        .then(r => r.json())
+        // .then((r, postMode) => r.filter(pattern => pattern.mode === postMode))
+        .then(posts => {
+          return { posts };
+        })
+    );
   }
 </script>
 
 <script>
+  // function reload() {
+  //   console.log("Reload");
+  //   return posts => {
+  //     posts.filter(pattern => pattern.mode === "fill");
+  //   };
+  // }
+  import Footer from "../../components/Footer.svelte";
+
   export let posts;
+  // export const postMode = "fill";
 
   let svgPattern = (width, height, path, mode) => {
     let strokeFill = "stroke-width='1' stroke='white' fill='none'";
@@ -88,6 +100,17 @@
 <div class="patternsList">
   <!-- <h1>List of Patterns</h1> -->
 
+  <!-- <div>
+    <button
+      on:click={() => {
+        console.log('Clciked');
+        reload();
+      }}>All</button>
+    <button>Stroke</button>
+    <button>Fill</button>
+    <button>All</button>
+    <button>All</button>
+  </div> -->
   <div class="samples">
     {#each posts as post}
       <a rel="prefetch" href="patterns/{post.slug}" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
@@ -95,5 +118,6 @@
       </a>
     {/each}
   </div>
-
 </div>
+
+<Footer />
