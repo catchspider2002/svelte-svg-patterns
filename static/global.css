@@ -194,6 +194,10 @@ button:active {
 .accent-text {
   color: var(--accent-color);
 }
+
+.secondary-text {
+  color: var(--secondary-color);
+}
 .accent-bg {
   background-color: var(--accent-color);
 }

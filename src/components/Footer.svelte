@@ -49,7 +49,11 @@
         <Logo className="mx-auto" />
       </div>
 
-      <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+      <div class="footer justify-center light-text">
+        Made with&nbsp;
+        <span style="color:#e25555">❤</span>
+        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/Mrnaveencs">Naveen CS</a>
+      </div>
     </div>
   </div>
 </footer>

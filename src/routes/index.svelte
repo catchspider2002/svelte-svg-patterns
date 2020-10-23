@@ -90,17 +90,17 @@
   button {
     height: 48px;
     padding: 10px 15px;
-    color: var(--accent-text-color);
+    /* color: var(--accent-text-color); */
     margin: 0 auto;
   }
 
   button:hover,
   button:focus {
-    background-color: var(--accent-color-hover);
+    background-color: var(--secondary-color-hover);
   }
 
   a {
-    color: var(--secondary-text-color);
+    /* color: var(--secondary-text-color); */
   }
 
   a:hover,
@@ -310,6 +310,10 @@
     padding: 0.5rem;
     padding-bottom: 2rem;
   }
+
+  footer {
+    background-color: black;
+  }
   .animatedIcon {
     width: 7rem;
     height: 7rem;
@@ -402,16 +406,15 @@
     <div class="left">
       <Logo />
 
-      <p class="comingSoon">LAUNCHING SOON</p>
+      <p class="comingSoon">AVAILABLE NOW</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle">
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
         Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
-      <div class="subscribe grid">
-        <script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
-        </script>
-      </div>
+      <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button>
+      <!-- <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+        </script></div> -->
     </div>
   </div>
   <div class="bottomSide grid">
@@ -556,7 +559,7 @@
     </div>
   </div>
 </section>
-<div class="overlapCard accent-bg text-center">
+<!-- <div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
     Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.
   </div>
@@ -567,8 +570,8 @@
   </svg>
 </div>
 <section class="features secondary-bg dark-text">
-  <div class="container p-5 mx-auto">
-    <div class="featureRight grid items-center mx-auto">
+  <div class="container p-5 mx-auto"> -->
+<!-- <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
         <div class="cf">
           {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
@@ -656,8 +659,8 @@
           </svg>
         </div>
       </div>
-    </div>
-    <div class="featureRight grid items-center mx-auto">
+    </div> -->
+<!-- <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
         <div class="cf">
           <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
@@ -707,11 +710,11 @@
         <h2>Download Options</h2>
         <p class="featureDescription">Download a tileable SVG or a high resolution seamless PNG image for print</p>
       </div>
-    </div>
-  </div>
-</section>
+    </div> -->
+<!-- </div>
+</section> -->
 <!-- For designers and developers -->
-<div class="overlapCard accent-bg text-center">
+<!-- <div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
     Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of
     styles, from the cool, quirky and edgy, to the more luxurious designs.
@@ -726,12 +729,6 @@
   <header>
     <div class="container navbar mx-auto grid p-5 items-center">
       <Logo className="accent-text" color="var(--accent-color)" />
-      <!-- <nav class="flex flex-wrap items-center justify-center">
-        <a href="#subscribe" class="mr-5">Link 1</a>
-        <a href="#subscribe" class="mr-5">Link 2</a>
-        <a href="#subscribe" class="mr-5">Link 3</a>
-        <a href="#subscribe" class="mr-5">Link 4</a>
-      </nav> -->
     </div>
   </header>
   <section class="container grid mx-auto px-5 py-24 items-center text-center">
@@ -755,23 +752,23 @@
   <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0 0 100 0 50 10" />
   </svg>
-</div>
-<section class="digitalMockup secondary-bg items-center">
+</div> -->
+<!-- <section class="digitalMockup secondary-bg items-center">
   <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
   <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
   <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
   <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
   <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
   <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
-</section>
+</section> -->
 
 <footer class="accent-bg light-text">
-  <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
     <path
       fill="#ffc800"
       fill-opacity="1"
       d="M0,128L60,144C120,160,240,192,360,192C480,192,600,160,720,133.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" />
-  </svg>
+  </svg> -->
   <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
@@ -785,7 +782,11 @@
         <Logo className="mx-auto" />
       </div>
 
-      <div class="footer justify-center light-text">Made with&nbsp; <span style="color:#e25555">❤</span> &nbsp;by Naveen CS</div>
+      <div class="footer justify-center light-text">
+        Made with&nbsp;
+        <span style="color:#e25555">❤</span>
+        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/Mrnaveencs">Naveen CS</a>
+      </div>
     </div>
   </div>
 </footer>

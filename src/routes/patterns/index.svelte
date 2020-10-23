@@ -23,9 +23,12 @@
   export let posts;
   // export const postMode = "fill";
 
+  let background = "white";
+  let foreground = "black";
+
   let svgPattern = (width, height, path, mode) => {
-    let strokeFill = "stroke-width='1' stroke='white' fill='none'";
-    if (mode === "fill") strokeFill = "stroke='none' fill='white'";
+    let strokeFill = "stroke-width='1' stroke='" + foreground + "' fill='none'";
+    if (mode === "fill") strokeFill = "stroke='none' fill='" + foreground + "'";
 
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -37,7 +40,9 @@
       width +
       "' height='" +
       height +
-      "' fill='black'/><g " +
+      "' fill='" +
+      background +
+      "'/><g " +
       strokeFill +
       ">" +
       path +
@@ -48,8 +53,8 @@
 
 <style>
   .patternsList {
-    background-color: #1a202c;
-    color: #edf2f7;
+    color: #1a202c;
+    background-color: #edf2f7;
     padding: 2em;
   }
 
@@ -59,11 +64,12 @@
     align-content: center;
     justify-content: center;
     text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   a span {
-    background: white;
-    color: black;
+    color: white;
+    background-color: black;
     align-self: center;
     padding: 4px 8px;
   }
