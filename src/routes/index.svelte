@@ -5,7 +5,7 @@
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
-  let website = "https://pattern.monster"
+  let website = "https://pattern.monster";
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
@@ -291,24 +291,24 @@
     background-repeat: no-repeat; */
   }
 
-  .subscribe {
+  /* .subscribe {
     max-width: 520px;
   }
 
   .subscribe-bottom {
     padding: 1.5rem;
     max-width: 520px;
-  }
+  } */
 
-  .footerOuter {
+  /* .footerOuter {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 0 1fr 1fr;
     padding-bottom: 20px;
     align-items: center;
-  }
+  } */
 
-  .footer {
+  /* .footer {
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem;
@@ -317,7 +317,7 @@
 
   footer {
     background-color: black;
-  }
+  } */
   .animatedIcon {
     width: 7rem;
     height: 7rem;
@@ -341,6 +341,9 @@
     .container {
       max-width: 768px;
     }
+    .leftOuter {
+      min-height: 80vh;
+    }
     .landing {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
@@ -360,10 +363,10 @@
     .comingSoon {
       padding-top: 0;
     }
-    .footerOuter {
+    /* .footerOuter {
       grid-auto-flow: row;
       grid-template-columns: 1fr;
-    }
+    } */
   }
   @media (max-width: 640px) {
     .container {
@@ -402,8 +405,6 @@
   }
 </style>
 
-
-
 <svelte:head>
   <title>Pattern Monster</title>
   <link rel="canonical" href="{website}/" />
@@ -411,20 +412,20 @@
   <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
 
   <!-- Open Graph / Facebook -->
-    <meta property="og:site_name" content="Pattern.Monster" />
-    <meta property="og:title" content="Pattern Monster" />
-    <meta property="og:description" content="A simple online pattern generator to create repeatable SVG patterns" />
-    <meta property="og:image" content="{website}/TwitterBG1.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{website}/" />
+  <meta property="og:site_name" content="Pattern.Monster" />
+  <meta property="og:title" content="Pattern Monster" />
+  <meta property="og:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+  <meta property="og:image" content="{website}/TwitterBG1.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{website}/" />
 
   <!-- Twitter -->
-    <meta name="twitter:title" content="Pattern Monster" />
-    <meta name="twitter:description" content="A simple online pattern generator to create repeatable SVG patterns" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@pattern_monster" />
-    <meta name="twitter:image" content="{website}/TwitterBG1.png" />
-    <meta name="twitter:image:src" content="{website}/TwitterBG1.png" />
+  <meta name="twitter:title" content="Pattern Monster" />
+  <meta name="twitter:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@pattern_monster" />
+  <meta name="twitter:image" content="{website}/TwitterBG1.png" />
+  <meta name="twitter:image:src" content="{website}/TwitterBG1.png" />
 
   <!-- <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="{website}/{post.slug}" />
@@ -437,7 +438,7 @@
  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
  <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
 <section class="landing grid light-text accent-bg">
-  <div class="grid items-center">
+  <div class="leftOuter grid items-center">
     <div class="left">
       <Logo />
 

@@ -252,7 +252,8 @@
     display: grid;
   }
   .hidden {
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
   }
 
   .grid {
@@ -262,14 +263,14 @@
   }
 
   .patternContainer {
-    background-color: var(--accent-color);
-    color: #edf2f7;
+    background-color: var(--pattern-bg);
+    color: var(--secondary-text-color);
     display: grid;
   }
 
   .bottomBar {
     background-color: var(--accent-color);
-    color: #edf2f7;
+    color: var(--secondary-text-color);
   }
 
   .inputs {
@@ -430,7 +431,7 @@
     }
 
     .controls {
-      background-color: var(--accent-color);
+      background-color: var(--pattern-bg);
       padding: 2rem;
       margin: 1rem 0 2.5rem;
     }
@@ -442,8 +443,8 @@
       display: block;
       border: 0;
       height: 1px;
-      background: rgba(255, 255, 255, 0.8);
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+      background:var(--secondary-text-color);
+      background-image: linear-gradient(to right, var(--pattern-bg), var(--secondary-text-color), var(--pattern-bg));
       /* background: rgba(var(--text-color), 0.8);
   background-image: linear-gradient(to right, rgba(var(--bg-color), 0.8), rgba(var(--text-color), 0.8), rgba(var(--bg-color), 0.8)); */
     }
@@ -523,7 +524,7 @@
             max={maxScale}
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
-          <input class="uneditable" bind:value={selectedPattern.scale} readonly />
+          <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
         </div>
         {#if mode === 'stroke-join' || mode === 'stroke'}
           <label class="leftColumn" for="stroke">Stroke</label>
@@ -537,7 +538,7 @@
               step="0.5"
               on:input={() => (changing = true)}
               on:change={() => (changing = false)} />
-            <input class="uneditable" bind:value={selectedPattern.stroke} readonly />
+            <input class="uneditable hidden" bind:value={selectedPattern.stroke} readonly />
           </div>
         {/if}
         {#if mode === 'stroke-join'}
@@ -559,7 +560,7 @@
               step="0.5"
               on:input={() => (changing = true)}
               on:change={() => (changing = false)} />
-            <input class="uneditable" bind:value={selectedPattern.spacing[0]} readonly />
+            <input class="uneditable hidden" bind:value={selectedPattern.spacing[0]} readonly />
           </div>
         {/if}
         {#if maxSpacing[1] > 0}
@@ -574,7 +575,7 @@
               step="0.5"
               on:input={() => (changing = true)}
               on:change={() => (changing = false)} />
-            <input class="uneditable" bind:value={selectedPattern.spacing[1]} readonly />
+            <input class="uneditable hidden" bind:value={selectedPattern.spacing[1]} readonly />
           </div>
         {/if}
         <label class="leftColumn" for="angle">Angle</label>

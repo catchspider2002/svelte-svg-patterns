@@ -2,6 +2,7 @@
   --main-bg-color: rgb(42, 42, 48);
   --accent-color: #44337a;
   --pattern-bg: rgb(235, 235, 235);
+  --card-bg: rgb(245, 245, 245);
   --secondary-color: #ffc800;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
@@ -17,6 +18,9 @@
 }
 [data-theme="dark"] {
   --pattern-bg: rgb(24, 24, 30);
+  --card-bg: rgb(42, 42, 48);
+  --accent-text-color: #000000;
+  --secondary-text-color: #ffffff;
 }
 
 *,
@@ -98,11 +102,12 @@ a:hover {
 
 input {
   font-family: var(--font);
-  color: var(--main-bg-color);
+  background-color: var(--card-bg);
 }
 
 input[type="number"] {
-  color: var(--main-bg-color);
+  /* color: var(--pattern-bg); */
+  color: var(--secondary-text-color);
   /* border-color: rgb(159,122,234); */
   line-height: 1.25;
   padding: 0.5rem;
@@ -149,7 +154,7 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -10.5px;
   width: 28px;
   height: 28px;
-  background: var(--main-bg-color);
+  background: var(--pattern-bg);
   border: 4px solid var(--secondary-color);
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -158,7 +163,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   width: 28px;
   height: 28px;
-  background: var(--main-bg-color);
+  background: var(--pattern-bg);
   border: 4px solid var(--secondary-color);
   border-radius: var(--border-radius);
   cursor: pointer;
