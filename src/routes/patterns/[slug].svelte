@@ -487,9 +487,9 @@
 </style>
 
 <svelte:head>
-  <title>{post.title}</title>
+  <title>{post.title} - Pattern Monster</title>
   <link rel="canonical" href="{website}/{post.slug}" />
-  <meta name="description" content={post.slug} />
+  <meta name="description" content="{post.slug} - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta name="keywords" content={post.slug} />
 
   <!-- Open Graph / Facebook -->
