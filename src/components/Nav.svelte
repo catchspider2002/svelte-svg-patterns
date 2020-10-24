@@ -1,26 +1,56 @@
 <script>
   export let segment;
   import { fly } from "svelte/transition";
-  import { createEventDispatcher } from "svelte";
+  // import { createEventDispatcher } from "svelte";
+  import { onMount } from "svelte";
 
-  const dispatch = createEventDispatcher();
+  // const dispatch = createEventDispatcher();
 
   // const triggerEvent = () => {
   //   dispatch("hello", "Rock");
   // };
 
   let dark =
-    "M406.17 372.075c-10 2-21 3-31 3-35 0-67-9-97-26-29-17-52-40-70-70-17-29-25-61-25-96 0-37 10-71 29-102-38 11-69 33-93 65-25 32-37 69-37 110 0 25 5 48 15 71 9 23 22 42 39 58 16 17 35 30 58 39 23 10 46 15 71 15 27 0 53-6 78-18 25-11 46-28 63-49zm58-24c-18 39-45 70-81 93s-75 34-118 34c-30 0-58-5-85-17s-51-27-70-47c-20-19-35-43-47-70s-17-55-17-85c0-29 5-57 16-84 11-26 26-49 45-69 18-19 41-35 67-47 26-11 54-18 83-19 8-1 14 3 17 11 4 8 2 15-4 21-17 14-29 32-38 51-8 20-13 41-13 63 0 28 7 54 21 78s33 43 57 56c24 14 50 21 78 21 22 0 44-5 65-14 8-4 15-2 20 3 3 3 5 6 5 10 1 4 1 8-1 11z";
+    "M12 3c0.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z";
   let light =
-    "M384 256c0 35-14 67-37 91-24 23-56 37-91 37-35 0-67-14-91-37-23-24-37-56-37-91 0-35 14-67 37-91 24-23 56-37 91-37 35 0 67 14 91 37 23 24 37 56 37 91z m-43 0c0-24-9-45-25-60-15-16-36-25-60-25-24 0-45 9-60 25-16 15-25 36-25 60 0 24 9 45 25 60 15 16 36 25 60 25 24 0 45-9 60-25 16-15 25-36 25-60z m-106 235l0-43c0-12 9-21 21-21 12 0 21 9 21 21l0 43c0 11-9 21-21 21-12 0-21-10-21-21z m0-427l0-43c0-11 9-21 21-21 12 0 21 10 21 21l0 43c0 12-9 21-21 21-12 0-21-9-21-21z m-160 343l30-30c9-9 22-9 30 0 9 8 9 21 0 30l-30 30c-8 8-22 8-30 0-8-8-8-22 0-30z m302-302l30-30c8-8 22-8 30 0 8 8 8 22 0 30l-30 30c-9 9-22 9-30 0-9-8-9-21 0-30z m-356 130l43 0c12 0 21 9 21 21 0 12-9 21-21 21l-43 0c-11 0-21-9-21-21 0-12 10-21 21-21z m427 0l43 0c11 0 21 9 21 21 0 12-10 21-21 21l-43 0c-12 0-21-9-21-21 0-12 9-21 21-21z m-343-160l30 30c9 9 9 22 0 30-8 9-21 9-30 0l-30-30c-8-8-8-22 0-30 8-8 22-8 30 0z m302 302l30 30c8 8 8 22 0 30-8 8-22 8-30 0l-30-30c-9-9-9-22 0-30 8-9 21-9 30 0z";
-  let theme = dark;
-  let themeColor = "dark";
+    "m 3,12 h 1 m 8,-9 v 1 m 8,8 h 1 m -9,8 v 1 M 5.6,5.6 6.3,6.3 M 18.4,5.6 17.7,6.3 m 0,11.4 0.7,0.7 M 6.3,17.7 5.6,18.4 M 16,12 a 4,4 0 0 1 -4,4 4,4 0 0 1 -4,-4 4,4 0 0 1 4,-4 4,4 0 0 1 4,4 z";
+  let theme = light;
+  // let themeColor = "dark";
+
+  let defaultNewTheme;
+  onMount(async () => {
+    defaultNewTheme = localStorage.getItem("defaultNewTheme");
+
+    if (!defaultNewTheme) {
+      defaultNewTheme = "light";
+
+      if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) defaultNewTheme = "dark";
+        else defaultNewTheme = "light";
+      }
+
+      localStorage.setItem("defaultNewTheme", defaultNewTheme);
+    }
+    document.documentElement.setAttribute("data-theme", defaultNewTheme);
+  });
 
   function changeTheme() {
-    theme = theme === dark ? light : dark;
-    themeColor = themeColor === "dark" ? "light" : "dark";
+    console.log("changeTheme");
+    console.log("defaultNewTheme: " + defaultNewTheme);
+    if (defaultNewTheme === "dark") {
+      theme = light;
+      defaultNewTheme = "light";
+    } else {
+      theme = dark;
+      defaultNewTheme = "dark";
+    }
 
-    dispatch("theme", themeColor);
+    // theme = theme === dark ? light : dark;
+    // themeColor = themeColor === "dark" ? "light" : "dark";
+    localStorage.setItem("defaultNewTheme", defaultNewTheme);
+    document.documentElement.setAttribute("data-theme", defaultNewTheme);
+
+    // dispatch("theme", themeColor);
   }
 </script>
 
@@ -41,9 +71,20 @@
     align-items: center;
   }
 
+  .icon {
+    width: 1.5em;
+    height: 1.5em;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
   button {
     color: var(--secondary-color);
     background-color: transparent;
+    padding: 0.5em;
   }
   button:hover {
     background-color: transparent;
@@ -137,12 +178,17 @@
   <!-- <div /> -->
   <div class="justify-self-end" />
   <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a>
+  <a rel="prefetch" href="https://github.com/catchspider2002/svelte-svg-patterns">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path
+        d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+    </svg></a>
   <button on:click={() => changeTheme()}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512" stroke="currentColor" fill="currentColor">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       {#if theme === light}
-        <path transition:fly={{ y: 200, duration: 600 }} d={theme} />
+        <path transition:fly={{ y: 100, duration: 300 }} d={theme} />
       {:else}
-        <path transition:fly={{ y: -200, duration: 600 }} d={theme} />
+        <path transition:fly={{ y: -100, duration: 300 }} d={theme} />
       {/if}
     </svg>
   </button>

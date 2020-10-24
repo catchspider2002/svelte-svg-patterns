@@ -5,6 +5,7 @@
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
+  let website = "https://pattern.monster"
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
@@ -99,15 +100,6 @@
   button:focus {
     /* background-color: var(--secondary-color-hover); */
     background-color: var(--accent-color-hover);
-  }
-
-  a {
-    /* color: var(--secondary-text-color); */
-  }
-
-  a:hover,
-  a:focus {
-    color: var(--secondary-color-hover);
   }
 
   .cta {
@@ -410,6 +402,37 @@
   }
 </style>
 
+
+
+<svelte:head>
+  <title>Pattern Monster</title>
+  <link rel="canonical" href="{website}/" />
+  <meta name="description" content="A simple online pattern generator to create repeatable SVG patterns" />
+  <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
+
+  <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Pattern.Monster" />
+    <meta property="og:title" content="Pattern Monster" />
+    <meta property="og:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+    <meta property="og:image" content="{website}/TwitterBG1.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{website}/" />
+
+  <!-- Twitter -->
+    <meta name="twitter:title" content="Pattern Monster" />
+    <meta name="twitter:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pattern_monster" />
+    <meta name="twitter:image" content="{website}/TwitterBG1.png" />
+    <meta name="twitter:image:src" content="{website}/TwitterBG1.png" />
+
+  <!-- <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{website}/{post.slug}" />
+  <meta property="twitter:title" content={post.title} />
+  <meta property="twitter:description" content={post.slug} />
+  <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
+</svelte:head>
+
 <!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
  <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
@@ -418,7 +441,7 @@
     <div class="left">
       <Logo />
 
-      <p class="comingSoon">AVAILABLE NOW</p>
+      <p class="comingSoon">OPEN SOURCE</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle">
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.

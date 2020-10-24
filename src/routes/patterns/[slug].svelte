@@ -251,6 +251,9 @@
   .page {
     display: grid;
   }
+  .hidden {
+    visibility: hidden;
+  }
 
   .grid {
     display: grid;
@@ -488,7 +491,7 @@
   <meta name="keywords" content={post.slug} />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="blog" />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="{website}/{post.slug}" />
   <meta property="og:title" content={post.title} />
   <meta property="og:description" content={post.slug} />
@@ -499,7 +502,8 @@
   <meta property="twitter:url" content="{website}/{post.slug}" />
   <meta property="twitter:title" content={post.title} />
   <meta property="twitter:description" content={post.slug} />
-  <meta property="twitter:image" content="{website}/social/{post.slug}.png" />
+  <meta name="twitter:image" content="{website}/TwitterBG1.png" />
+  <!-- <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
 
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">

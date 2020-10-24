@@ -20,6 +20,8 @@
   // }
   import Footer from "../../components/Footer.svelte";
 
+  let website = "https://pattern.monster"
+  
   export let posts;
   // export const postMode = "fill";
 
@@ -100,9 +102,31 @@
   }
 </style>
 
+
 <svelte:head>
-  <title>Patterns</title>
+  <title>Pattern Monster</title>
+  <link rel="canonical" href="{website}/" />
+  <meta name="description" content="A simple online pattern generator to create repeatable SVG patterns" />
+  <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
+
+  <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Pattern.Monster" />
+    <meta property="og:title" content="Pattern Monster" />
+    <meta property="og:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+    <meta property="og:image" content="{website}/TwitterBG1.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{website}/" />
+
+  <!-- Twitter -->
+    <meta name="twitter:title" content="Pattern Monster" />
+    <meta name="twitter:description" content="A simple online pattern generator to create repeatable SVG patterns" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pattern_monster" />
+    <meta name="twitter:image" content="{website}/TwitterBG1.png" />
+    <meta name="twitter:image:src" content="{website}/TwitterBG1.png" />
+
 </svelte:head>
+
 <div class="patternsList">
   <!-- <h1>List of Patterns</h1> -->
 
