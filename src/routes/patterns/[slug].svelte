@@ -329,8 +329,9 @@
     grid-row-start: 2;
     grid-row-end: 3;
     z-index: 2;
-    background-color: black;
+    background-color: var(--card-bg);
     width: 100%;
+    color: var(--secondary-text-color);
   }
 
   .strokeJoin {
@@ -443,7 +444,7 @@
       display: block;
       border: 0;
       height: 1px;
-      background:var(--secondary-text-color);
+      background: var(--secondary-text-color);
       background-image: linear-gradient(to right, var(--pattern-bg), var(--secondary-text-color), var(--pattern-bg));
       /* background: rgba(var(--text-color), 0.8);
   background-image: linear-gradient(to right, rgba(var(--bg-color), 0.8), rgba(var(--text-color), 0.8), rgba(var(--bg-color), 0.8)); */

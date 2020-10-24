@@ -9,7 +9,7 @@
     grid-template-columns: 0 1fr 1fr;
     padding-bottom: 20px;
     align-items: center;
-    background-color: var(--main-bg-color)
+    background-color: var(--main-bg-color);
   }
 
   .footer {
@@ -46,7 +46,9 @@
     </div>
     <div>
       <div class="grid justify-center">
-        <Logo className="mx-auto" />
+        <a href=".">
+          <Logo className="mx-auto" />
+        </a>
       </div>
 
       <div class="footer justify-center light-text">
