@@ -54,7 +54,7 @@
 <style>
   .patternsList {
     color: #1a202c;
-    background-color: #edf2f7;
+    background-color: var(--pattern-bg);
     padding: 2em;
   }
 

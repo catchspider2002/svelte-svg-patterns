@@ -9,7 +9,7 @@
     grid-template-columns: 0 1fr 1fr;
     padding-bottom: 20px;
     align-items: center;
-    background-color: black;
+    background-color: var(--main-bg-color)
   }
 
   .footer {
@@ -40,7 +40,7 @@
   <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
-      <p class="text-center pb-5">Sign up for project updates and beta access</p>
+      <p class="text-center pb-5">Sign up for project updates and free patterns delivered monthly to your inbox</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
       </script>
     </div>

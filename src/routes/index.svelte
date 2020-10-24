@@ -1,5 +1,6 @@
 <script>
   import Logo from "../components/Logo.svelte";
+  import Footer from "../components/Footer.svelte";
 
   $: stroke = 3;
   $: angle = "30";
@@ -90,13 +91,14 @@
   button {
     height: 48px;
     padding: 10px 15px;
-    /* color: var(--accent-text-color); */
+    color: var(--accent-text-color);
     margin: 0 auto;
   }
 
   button:hover,
   button:focus {
-    background-color: var(--secondary-color-hover);
+    /* background-color: var(--secondary-color-hover); */
+    background-color: var(--accent-color-hover);
   }
 
   a {
@@ -105,6 +107,16 @@
 
   a:hover,
   a:focus {
+    color: var(--secondary-color-hover);
+  }
+
+  .cta {
+    padding: 0.5em 1em;
+    color: var(--accent-color);
+  }
+
+  .cta:hover,
+  .cta:focus {
     color: var(--accent-color-hover);
   }
 
@@ -412,7 +424,8 @@
         A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
         Perfect for website backgrounds, apparel, branding, packaging design and more.
       </p>
-      <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button>
+      <!-- <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button> -->
+      <a class="secondary-bg dark-text cta" href="patterns">Explore patterns</a>
       <!-- <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
         </script></div> -->
     </div>
@@ -559,7 +572,7 @@
     </div>
   </div>
 </section>
-<!-- <div class="overlapCard accent-bg text-center">
+<div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
     Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.
   </div>
@@ -570,8 +583,8 @@
   </svg>
 </div>
 <section class="features secondary-bg dark-text">
-  <div class="container p-5 mx-auto"> -->
-<!-- <div class="featureRight grid items-center mx-auto">
+  <div class="container p-5 mx-auto">
+    <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
         <div class="cf">
           {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
@@ -659,8 +672,8 @@
           </svg>
         </div>
       </div>
-    </div> -->
-<!-- <div class="featureRight grid items-center mx-auto">
+    </div>
+    <div class="featureRight grid items-center mx-auto">
       <div class="animatedIcon">
         <div class="cf">
           <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
@@ -710,11 +723,11 @@
         <h2>Download Options</h2>
         <p class="featureDescription">Download a tileable SVG or a high resolution seamless PNG image for print</p>
       </div>
-    </div> -->
-<!-- </div>
-</section> -->
+    </div>
+  </div>
+</section>
 <!-- For designers and developers -->
-<!-- <div class="overlapCard accent-bg text-center">
+<div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
     Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of
     styles, from the cool, quirky and edgy, to the more luxurious designs.
@@ -752,30 +765,28 @@
   <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="0 0 100 0 50 10" />
   </svg>
-</div> -->
-<!-- <section class="digitalMockup secondary-bg items-center">
+</div>
+<section class="digitalMockup secondary-bg items-center">
   <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
   <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
   <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
   <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
   <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
   <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
-</section> -->
+</section>
 
-<footer class="accent-bg light-text">
-  <!-- <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
+<!-- <footer class="accent-bg light-text">
+  <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
     <path
       fill="#ffc800"
       fill-opacity="1"
       d="M0,128L60,144C120,160,240,192,360,192C480,192,600,160,720,133.3C840,107,960,85,1080,74.7C1200,64,1320,64,1380,64L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" />
-  </svg> -->
+  </svg>
   <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
-      <p class="text-center pb-5">Sign up for project updates and beta access</p>
-      <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
-      </script>
-    </div>
+      <p class="text-center pb-5">Sign up for project updates and beta access</p><script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
+      </script></div>
 
     <div>
       <div class="grid justify-center">
@@ -785,8 +796,9 @@
       <div class="footer justify-center light-text">
         Made with&nbsp;
         <span style="color:#e25555">❤</span>
-        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/Mrnaveencs">Naveen CS</a>
+        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
       </div>
     </div>
   </div>
-</footer>
+</footer> -->
+<Footer />

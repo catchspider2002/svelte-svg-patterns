@@ -1,6 +1,7 @@
 :root {
   --main-bg-color: #1a202c;
   --accent-color: #44337a;
+  --pattern-bg: rgb(235, 235, 235);
   --secondary-color: #ffc800;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
@@ -14,6 +15,10 @@
   --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
 }
+[data-theme="dark"] {
+  --pattern-bg: rgb(24, 24, 30);
+}
+
 *,
 ::after,
 ::before {
@@ -288,12 +293,6 @@ button:active {
     width: 100%;
   }
 }
-
-
-
-
-
-
 
 /*! Pickr 1.7.2 MIT | https://github.com/Simonwep/pickr */
 .pickr {

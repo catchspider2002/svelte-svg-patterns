@@ -14,7 +14,7 @@
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
   let w;
-  let website = "https://pattern.monster"
+  let website = "https://pattern.monster";
 
   import { fly, fade, slide } from "svelte/transition";
   let changing = false;
@@ -106,7 +106,7 @@
 
   const presetPattern = {
     id: 1,
-    colors: ["black", "white"],
+    colors: ["white", "black"],
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
@@ -220,7 +220,9 @@
           "rgba(255, 235, 59, 1)",
           "rgba(255, 193, 7, 1)",
           "rgba(233, 30, 99, 1)",
-          "#44337a"
+          "#44337a",
+          "rgba(255, 255, 255, 1)",
+          "rgba(0, 0, 0, 1)"
         ],
         components: {
           // preview: true,
@@ -479,8 +481,6 @@
   }
 </style>
 
-
-
 <svelte:head>
   <title>{post.title}</title>
   <link rel="canonical" href="{website}/{post.slug}" />
@@ -501,7 +501,6 @@
   <meta property="twitter:description" content={post.slug} />
   <meta property="twitter:image" content="{website}/social/{post.slug}.png" />
 </svelte:head>
-
 
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">

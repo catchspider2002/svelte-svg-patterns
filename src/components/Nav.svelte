@@ -1,5 +1,27 @@
 <script>
   export let segment;
+  import { fly } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  // const triggerEvent = () => {
+  //   dispatch("hello", "Rock");
+  // };
+
+  let dark =
+    "M406.17 372.075c-10 2-21 3-31 3-35 0-67-9-97-26-29-17-52-40-70-70-17-29-25-61-25-96 0-37 10-71 29-102-38 11-69 33-93 65-25 32-37 69-37 110 0 25 5 48 15 71 9 23 22 42 39 58 16 17 35 30 58 39 23 10 46 15 71 15 27 0 53-6 78-18 25-11 46-28 63-49zm58-24c-18 39-45 70-81 93s-75 34-118 34c-30 0-58-5-85-17s-51-27-70-47c-20-19-35-43-47-70s-17-55-17-85c0-29 5-57 16-84 11-26 26-49 45-69 18-19 41-35 67-47 26-11 54-18 83-19 8-1 14 3 17 11 4 8 2 15-4 21-17 14-29 32-38 51-8 20-13 41-13 63 0 28 7 54 21 78s33 43 57 56c24 14 50 21 78 21 22 0 44-5 65-14 8-4 15-2 20 3 3 3 5 6 5 10 1 4 1 8-1 11z";
+  let light =
+    "M384 256c0 35-14 67-37 91-24 23-56 37-91 37-35 0-67-14-91-37-23-24-37-56-37-91 0-35 14-67 37-91 24-23 56-37 91-37 35 0 67 14 91 37 23 24 37 56 37 91z m-43 0c0-24-9-45-25-60-15-16-36-25-60-25-24 0-45 9-60 25-16 15-25 36-25 60 0 24 9 45 25 60 15 16 36 25 60 25 24 0 45-9 60-25 16-15 25-36 25-60z m-106 235l0-43c0-12 9-21 21-21 12 0 21 9 21 21l0 43c0 11-9 21-21 21-12 0-21-10-21-21z m0-427l0-43c0-11 9-21 21-21 12 0 21 10 21 21l0 43c0 12-9 21-21 21-12 0-21-9-21-21z m-160 343l30-30c9-9 22-9 30 0 9 8 9 21 0 30l-30 30c-8 8-22 8-30 0-8-8-8-22 0-30z m302-302l30-30c8-8 22-8 30 0 8 8 8 22 0 30l-30 30c-9 9-22 9-30 0-9-8-9-21 0-30z m-356 130l43 0c12 0 21 9 21 21 0 12-9 21-21 21l-43 0c-11 0-21-9-21-21 0-12 10-21 21-21z m427 0l43 0c11 0 21 9 21 21 0 12-10 21-21 21l-43 0c-12 0-21-9-21-21 0-12 9-21 21-21z m-343-160l30 30c9 9 9 22 0 30-8 9-21 9-30 0l-30-30c-8-8-8-22 0-30 8-8 22-8 30 0z m302 302l30 30c8 8 8 22 0 30-8 8-22 8-30 0l-30-30c-9-9-9-22 0-30 8-9 21-9 30 0z";
+  let theme = dark;
+  let themeColor = "dark";
+
+  function changeTheme() {
+    theme = theme === dark ? light : dark;
+    themeColor = themeColor === "dark" ? "light" : "dark";
+
+    dispatch("theme", themeColor);
+  }
 </script>
 
 <style>
@@ -9,6 +31,22 @@
     z-index: 3;
     background-color: var(--main-bg-color);
     height: 4em;
+    /* border-bottom: 1px solid rgba(255, 62, 0, 0.1); */
+    font-weight: 300;
+    padding: 1em 2em;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr auto;
+    gap: 1em;
+    align-items: center;
+  }
+
+  button {
+    color: var(--secondary-color);
+    background-color: transparent;
+  }
+  button:hover {
+    background-color: transparent;
   }
 
   .logo {
@@ -31,17 +69,6 @@
     }
   }
 
-  nav {
-    /* border-bottom: 1px solid rgba(255, 62, 0, 0.1); */
-    font-weight: 300;
-    padding: 1em 2em;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr auto;
-    gap: 1em;
-    align-items: center;
-  }
-
   [aria-current] {
     position: relative;
     display: inline-block;
@@ -57,6 +84,13 @@
     bottom: -1px;
   }
 
+  .justify-self-start {
+    justify-self: start;
+  }
+  .justify-self-end {
+    justify-self: end;
+  }
+
   a {
     text-decoration: none;
     /* padding: 1em 0.5em; */
@@ -66,7 +100,7 @@
 </style>
 
 <nav>
-  <a aria-current={segment === undefined ? 'page' : undefined} href=".">
+  <a aria-current={segment === undefined ? 'page' : undefined} href="." class="justify-self-start">
     <div class="logo" style="color: var(--secondary-color)">
       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2em" height="2em" viewBox="0 0 128 128" data-inline="false">
         <g transform="translate(0 -3)" style="fill: var(--secondary-color)">
@@ -100,7 +134,18 @@
       <span class="brandName">PATTERN MONSTER</span>
     </div>
   </a>
+  <!-- <div /> -->
+  <div class="justify-self-end" />
   <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a>
+  <button on:click={() => changeTheme()}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512" stroke="currentColor" fill="currentColor">
+      {#if theme === light}
+        <path transition:fly={{ y: 200, duration: 600 }} d={theme} />
+      {:else}
+        <path transition:fly={{ y: -200, duration: 600 }} d={theme} />
+      {/if}
+    </svg>
+  </button>
   <!-- <li><a aria-current="{segment === 'stripes' ? 'page' : undefined}" href="stripes">stripes</a></li> -->
   <!-- <li>
       <a aria-current={segment === 'about' ? 'page' : undefined} href="about">about</a>

@@ -1,12 +1,36 @@
 <script>
   import Nav from "../../components/Nav.svelte";
+  import { onMount } from "svelte";
   export let segment;
+
+  const sayHello = e => {
+    defaultNewTheme = e.detail;
+    localStorage.setItem("defaultNewTheme", defaultNewTheme);
+    document.documentElement.setAttribute("data-theme", defaultNewTheme);
+  };
+
+  let defaultNewTheme;
+  onMount(async () => {
+    defaultNewTheme = localStorage.getItem("defaultNewTheme");
+
+    if (!defaultNewTheme) {
+      defaultNewTheme = "light";
+
+      if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) defaultNewTheme = "dark";
+        else defaultNewTheme = "light";
+      }
+
+      localStorage.setItem("defaultNewTheme", defaultNewTheme);
+    }
+    document.documentElement.setAttribute("data-theme", defaultNewTheme);
+  });
 </script>
 
 <style>
   main {
     position: relative;
-    background-color: black;
+    background-color: var(--main-bg-color);
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
@@ -15,7 +39,7 @@
   }
 </style>
 
-<Nav {segment} />
+<Nav {segment} on:theme={sayHello} />
 
 <main>
   <slot />
