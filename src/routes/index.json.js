@@ -1,7 +1,7 @@
-import patterns from "./_patterns.js";
+import index from "./_index.js";
 
 const contents = JSON.stringify(
-  patterns
+  index
     // .filter(pattern => {
     //   return pattern.mode !== "fill";
     // })

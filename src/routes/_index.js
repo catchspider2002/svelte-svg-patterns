@@ -1,6 +1,6 @@
 // mode=[stroke/fill, horizontal spacing, vertical spacing ]
 
-const patterns = [
+const index = [
   {
     title: "Wave - 1",
     slug: "wave-1",
@@ -1078,4 +1078,4 @@ const patterns = [
   //   path: "<path d='M1.5 2h7M1.5 5h7M1.5 8h7M12 1.5v7M15 1.5v7M18 1.5v7'/>"
   // },
 ];
-export default patterns;
+export default index;

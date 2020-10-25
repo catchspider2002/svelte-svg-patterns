@@ -33,8 +33,8 @@
   });
 
   function changeTheme() {
-    console.log("changeTheme");
-    console.log("defaultNewTheme: " + defaultNewTheme);
+    // console.log("changeTheme");
+    // console.log("defaultNewTheme: " + defaultNewTheme);
     if (defaultNewTheme === "dark") {
       theme = light;
       defaultNewTheme = "light";
@@ -89,7 +89,7 @@
   </a>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
-    <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a>
+    <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
     <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />

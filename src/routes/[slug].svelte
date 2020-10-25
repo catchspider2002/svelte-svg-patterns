@@ -1,6 +1,6 @@
 <script context="module">
   export async function preload({ params, query }) {
-    const res = await this.fetch(`patterns/${params.slug}.json`);
+    const res = await this.fetch(`${params.slug}.json`);
     const data = await res.json();
 
     if (res.status === 200) return { post: data };
@@ -10,7 +10,7 @@
 
 <script>
   export let post;
-  import constants from "../_constants.js";
+  import constants from "./_constants.js";
   import { onMount } from "svelte";
   import { bind } from "svelte/internal";
   let w;

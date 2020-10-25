@@ -1,4 +1,4 @@
-import patterns from './_patterns.js';
+import patterns from './_index.js';
 
 const lookup = new Map();
 patterns.forEach(post => {
