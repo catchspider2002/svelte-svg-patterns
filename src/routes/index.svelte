@@ -19,18 +19,26 @@
   //   };
   // }
   import Footer from "../components/Footer.svelte";
+  import { onMount } from "svelte";
+  export let posts;
+  import { themeStore } from "./stores.js";
+
+  // let count_value;
+  // themeStore.subscribe(value => {
+  //   count_value = value;
+  //   // console.log("store Theme: " + value);
+  // });
 
   let website = "https://pattern.monster";
 
-  export let posts;
-  // export const postMode = "fill";
+  // $: colors = ["white", "black"];
+  $: colors = [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "black" : "white"];
 
-  let background = "white";
-  let foreground = "black";
+  // let Pickr;
 
-  let svgPattern = (width, height, path, mode) => {
-    let strokeFill = "stroke-width='1' stroke='" + foreground + "' fill='none'";
-    if (mode === "fill") strokeFill = "stroke='none' fill='" + foreground + "'";
+  $: svgPattern = (width, height, path, mode) => {
+    let strokeFill = "stroke-width='1' stroke='" + colors[1] + "' fill='none'";
+    if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[1] + "'";
 
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -43,7 +51,7 @@
       "' height='" +
       height +
       "' fill='" +
-      background +
+      colors[0] +
       "'/><g " +
       strokeFill +
       ">" +
@@ -51,6 +59,18 @@
       "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
+
+  // let defaultColors
+  // onMount(async () => {
+  //   defaultColors = localStorage.getItem("defaultColors");
+
+  //   if (!defaultColors) {
+  //     defaultColors = ["white", "black"];
+
+  //     localStorage.setItem("defaultColors", defaultColors);
+  //   }
+  //   // document.documentElement.setAttribute("dat/a-theme", defaultColors);
+  // });
 </script>
 
 <style>
@@ -99,30 +119,37 @@
     width: 0;
     padding-bottom: calc(10 / 16 * 100%);
   }
-  h1{
+  h1 {
     font-size: 2em;
     text-align: center;
     padding: 1em 0.5em;
+    color: var(--secondary-text-color);
   }
 </style>
 
 <svelte:head>
   <title>Pattern Monster - SVG Pattern Generator</title>
   <link rel="canonical" href="{website}/" />
-  <meta name="description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
+  <meta
+    name="description"
+    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:site_name" content="Pattern.Monster" />
   <meta property="og:title" content="Pattern Monster" />
-  <meta property="og:description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
+  <meta
+    property="og:description"
+    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta property="og:image" content="{website}/TwitterBG1.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{website}/" />
 
   <!-- Twitter -->
   <meta name="twitter:title" content="Pattern Monster" />
-  <meta name="twitter:description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
+  <meta
+    name="twitter:description"
+    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@pattern_monster" />
   <meta name="twitter:image" content="{website}/TwitterBG1.png" />
@@ -136,8 +163,7 @@
 </svelte:head>
 
 <div class="patternsList">
-  <h1>78 free customizable patterns for your projects</h1>
-
+  <h1>80 free customizable patterns for your projects</h1>
   <!-- <div>
     <button
       on:click={() => {
@@ -151,7 +177,7 @@
   </div> -->
   <div class="samples">
     {#each posts as post}
-      <a rel="prefetch" href="{post.slug}" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+      <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
         <span>{post.title}</span>
       </a>
     {/each}

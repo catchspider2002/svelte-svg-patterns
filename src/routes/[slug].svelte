@@ -12,11 +12,14 @@
   export let post;
   import constants from "./_constants.js";
   import { onMount } from "svelte";
-  import { bind } from "svelte/internal";
+
+  import { themeStore } from "./stores.js";
+
+  // import { bind } from "svelte/internal";
   let w;
   let website = "https://pattern.monster";
 
-  import { fly, fade, slide } from "svelte/transition";
+  // import { fly, fade, slide } from "svelte/transition";
   let changing = false;
 
   let Pickr, svg;
@@ -106,7 +109,7 @@
 
   const presetPattern = {
     id: 1,
-    colors: ["white", "black"],
+    colors: [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "black" : "white"],
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
@@ -241,7 +244,7 @@
         }
       });
       pickr.on("change", (color, instance) => {
-        selectedPattern.colors[colorId] = color.toHSLA().toString();
+        selectedPattern.colors[colorId] = color.toHSLA().toString(0);
       });
     }
   }
@@ -490,7 +493,9 @@
 <svelte:head>
   <title>{post.title} - Pattern Monster</title>
   <link rel="canonical" href="{website}/{post.slug}" />
-  <meta name="description" content="{post.slug} - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more." />
+  <meta
+    name="description"
+    content="{post.slug} - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta name="keywords" content={post.slug} />
 
   <!-- Open Graph / Facebook -->

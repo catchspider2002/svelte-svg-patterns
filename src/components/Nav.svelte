@@ -4,6 +4,7 @@
   // import { createEventDispatcher } from "svelte";
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
+  import { themeStore } from "../routes/stores.js";
 
   // const dispatch = createEventDispatcher();
 
@@ -30,6 +31,7 @@
       localStorage.setItem("defaultNewTheme", defaultNewTheme);
     }
     document.documentElement.setAttribute("data-theme", defaultNewTheme);
+    themeStore.set(defaultNewTheme);
   });
 
   function changeTheme() {
@@ -47,6 +49,7 @@
     // themeColor = themeColor === "dark" ? "light" : "dark";
     localStorage.setItem("defaultNewTheme", defaultNewTheme);
     document.documentElement.setAttribute("data-theme", defaultNewTheme);
+    themeStore.set(defaultNewTheme);
 
     // dispatch("theme", themeColor);
   }
