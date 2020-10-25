@@ -3,30 +3,6 @@
     color = "var(--secondary-color)";
 </script>
 
-<style>
-  .logoHome {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    align-items: center;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    font-size: 1.125em;
-  }
-  @media (max-width: 1280px) {
-    .logoHome {
-      padding-top: 2rem;
-    }
-  }
-  @media (max-width: 768px) {
-    .logoHome {
-      justify-self: center;
-    }
-  }
-</style>
-
 <div class="logoHome {className}" style="color: {color}">
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2em" height="2em" viewBox="0 0 128 128" data-inline="false">
     <g transform="translate(0 -3)" style="fill: {color}">

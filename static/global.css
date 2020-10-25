@@ -268,6 +268,59 @@ button:active {
   justify-content: center;
 }
 
+.justify-self-start {
+  justify-self: start;
+}
+.justify-self-end {
+  justify-self: end;
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: var(--main-bg-color);
+  height: 4em;
+  font-weight: 300;
+  padding: 1em 2em;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
+  gap: 1em;
+  align-items: center;
+}
+.rightLinks {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.rightLinks a {
+  padding: 0.25em;
+}
+
+.logo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 1em;
+}
+
+.logoHome {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 1.125em;
+}
+
 .icon {
   width: 1.5em;
   height: 1.5em;
@@ -276,6 +329,34 @@ button:active {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+}
+nav button {
+  color: var(--secondary-color);
+  background-color: transparent;
+  padding: 0.25em;
+}
+nav button:hover {
+  background-color: transparent;
+}
+
+[aria-current] {
+  position: relative;
+  display: inline-block;
+}
+
+[aria-current]::after {
+  position: absolute;
+  content: "";
+  width: calc(100% - 1em);
+  display: block;
+  bottom: -1px;
+}
+
+nav a {
+  text-decoration: none;
+  /* padding: 1em 0.5em; */
+  display: block;
+  color: var(--secondary-color);
 }
 
 @media (max-width: 1440px) {
@@ -287,6 +368,9 @@ button:active {
 @media (max-width: 1280px) {
   .container {
     max-width: 1024px;
+  }
+  .logoHome {
+    padding-top: 2rem;
   }
 }
 
@@ -302,6 +386,20 @@ button:active {
   }
   .container {
     max-width: 640px;
+  }
+  nav {
+    padding: 1em 1em;
+  }
+
+  .logo {
+    justify-self: center;
+    gap: 0;
+  }
+  .brandName {
+    display: none;
+  }
+  .logoHome {
+    justify-self: center;
   }
 }
 

@@ -298,25 +298,7 @@
     padding: 1.5rem;
     max-width: 520px;
   } */
-
-  /* .footerOuter {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 0 1fr 1fr;
-    padding-bottom: 20px;
-    align-items: center;
-  } */
-
-  /* .footer {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.5rem;
-    padding-bottom: 2rem;
-  }
-
-  footer {
-    background-color: black;
-  } */
+  
   .animatedIcon {
     width: 7rem;
     height: 7rem;
@@ -362,10 +344,6 @@
     .comingSoon {
       padding-top: 0;
     }
-    /* .footerOuter {
-      grid-auto-flow: row;
-      grid-template-columns: 1fr;
-    } */
   }
   @media (max-width: 640px) {
     .container {

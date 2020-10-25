@@ -31,6 +31,7 @@
   .iconLinks {
     grid-auto-flow: column;
     gap: 1.5em;
+    padding: 0.5em 0 1em;
   }
 
   a {
