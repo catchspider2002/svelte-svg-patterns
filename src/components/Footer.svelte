@@ -78,6 +78,10 @@
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.instagram} />
           </svg></a>
+        <a rel="prefetch" target="_blank" href="https://www.facebook.com/pattern.monster/">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d={Constants.icons.facebook} />
+          </svg></a>
       </div>
 
       <div class="footer justify-center light-text">
