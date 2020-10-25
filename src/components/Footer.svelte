@@ -1,5 +1,6 @@
 <script>
   import Logo from "../components/Logo.svelte";
+  import Constants from "../routes/_constants.js";
 </script>
 
 <style>
@@ -27,6 +28,19 @@
   p {
     color: white;
   }
+  .iconLinks {
+    grid-auto-flow: column;
+    gap: 1.5em;
+  }
+
+  a {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--secondary-color-hover);
+    text-decoration: none;
+  }
   @media (max-width: 768px) {
     .footerOuter {
       grid-auto-flow: row;
@@ -49,6 +63,20 @@
         <a href=".">
           <Logo className="mx-auto" />
         </a>
+      </div>
+      <div class="iconLinks grid justify-center">
+        <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d={Constants.icons.github} />
+          </svg></a>
+        <a rel="prefetch" target="_blank" href="https://twitter.com/Pattern_Monster">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d={Constants.icons.twitter} />
+          </svg></a>
+        <a rel="prefetch" target="_blank" href="https://www.instagram.com/patternmonster/">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d={Constants.icons.instagram} />
+          </svg></a>
       </div>
 
       <div class="footer justify-center light-text">

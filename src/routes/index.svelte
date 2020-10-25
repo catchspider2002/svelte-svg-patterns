@@ -118,7 +118,7 @@
   .landing {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    column-gap: 32px;
+    gap: 2em;
     min-height: 95vh;
     background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='ay' patternUnits='userSpaceOnUse' width='10.583' height='10.583' patternTransform='scale(4) rotate(0)'><g stroke-linecap='square' stroke-width='0.5' stroke = 'hsla(0, 0%, 0%, 0.5)' fill='none'><path d='M13.182 5.245l-7.937 7.937-7.938-7.937M13.182-.047L5.245 7.891-2.693-.047m13.23-2.646L5.245 2.6-.047-2.693m5.292 0l7.937 7.938-7.937 7.937M-.047-2.693l7.938 7.938-7.938 7.937M-2.693-.047L2.6 5.245l-5.292 5.292'/></g></pattern></defs><rect width='100%' height='100%' fill='url(%23ay)'/></svg>");
   }
@@ -154,11 +154,10 @@
     margin: auto;
     width: 360px;
     height: 260px;
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
     padding: 1rem 1.5rem;
-    column-gap: 1em;
-    row-gap: 1em;
-    background: var(--main-bg-color);
+    gap: 1em;
+    background: var(--pattern-bg);
     grid-template-columns: auto 1fr;
     border-radius: var(--border-radius);
   }
@@ -173,7 +172,7 @@
     border-bottom-width: 1px;
     padding: 4rem 0;
     width: 60%;
-    column-gap: 2em;
+    gap: 2em;
   }
   .featureLeft {
     grid-template-columns: 1fr auto;
@@ -769,7 +768,7 @@
     </div>
   </header>
   <section class="container grid mx-auto px-5 py-24 items-center text-center">
-    <h1 class="accent-text">Make vector patterns like a pro</h1>
+    <h2 class="accent-text">Make vector patterns like a pro</h2>
     <p class="subtitle ">
       A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to
       use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and

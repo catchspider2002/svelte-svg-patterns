@@ -287,6 +287,7 @@
 
   .rightColumn {
     grid-column: 3/5;
+    grid-template-columns: 1fr auto;
   }
 
   .colors {

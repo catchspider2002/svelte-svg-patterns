@@ -268,6 +268,16 @@ button:active {
   justify-content: center;
 }
 
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
 @media (max-width: 1440px) {
   body {
     font-size: 18px;

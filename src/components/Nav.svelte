@@ -69,16 +69,6 @@
     align-items: center;
   }
 
-  .icon {
-    width: 1.5em;
-    height: 1.5em;
-    stroke: currentColor;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-  }
-
   button {
     color: var(--secondary-color);
     background-color: transparent;
@@ -101,9 +91,7 @@
   .logo {
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 1rem;
-    /* padding-top: 2rem; */
-    /* padding-bottom: 1rem; */
+    gap: 1rem;
     align-items: center;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -117,6 +105,7 @@
 
     .logo {
       justify-self: center;
+      gap: 0;
     }
     .brandName {
       display: none;
@@ -193,8 +182,7 @@
     <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a>
     <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path
-          d={Constants.icons.github} />
+        <path d={Constants.icons.github} />
       </svg></a>
     <button on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
