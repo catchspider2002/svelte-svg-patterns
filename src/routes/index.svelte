@@ -90,8 +90,8 @@
   }
 
   a span {
-    color: white;
-    background-color: black;
+    color : var(--accent-text-color);
+    background-color: var(--secondary-text-color);
     align-self: center;
     padding: 4px 8px;
   }
@@ -122,8 +122,12 @@
   h1 {
     font-size: 2em;
     text-align: center;
-    padding: 1em 0.5em;
+    padding: 0.5em;
     color: var(--secondary-text-color);
+  }
+  p {
+    color: var(--secondary-text-color);
+    padding-bottom: 1.5em;
   }
 </style>
 
@@ -164,6 +168,11 @@
 
 <div class="patternsList">
   <h1>80 free customizable patterns for your projects</h1>
+  <p class="container mx-auto">
+    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
+    Perfect for website backgrounds, apparel, branding, packaging design and more.
+  </p>
+
   <!-- <div>
     <button
       on:click={() => {
