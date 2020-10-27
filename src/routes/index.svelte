@@ -90,7 +90,7 @@
   }
 
   a span {
-    color : var(--accent-text-color);
+    color: var(--accent-text-color);
     background-color: var(--secondary-text-color);
     align-self: center;
     padding: 4px 8px;
@@ -167,7 +167,7 @@
 </svelte:head>
 
 <div class="patternsList">
-  <h1>80 free customizable patterns for your projects</h1>
+  <h1>{posts.length} free customizable patterns for your projects</h1>
   <p class="container mx-auto">
     A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
     Perfect for website backgrounds, apparel, branding, packaging design and more.
