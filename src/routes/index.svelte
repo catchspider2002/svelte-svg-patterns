@@ -32,7 +32,7 @@
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
-  $: colors = [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "black" : "white"];
+  $: colors = [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(68,51,122)" : "rgb(255,200,0)"];
 
   // let Pickr;
 

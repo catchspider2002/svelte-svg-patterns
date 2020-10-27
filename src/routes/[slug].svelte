@@ -109,7 +109,7 @@
 
   const presetPattern = {
     id: 1,
-    colors: [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "black" : "white"],
+    colors: [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "rgb(68,51,122)" : "rgb(255,200,0)"],
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
@@ -393,6 +393,13 @@
     display: none;
   }
 
+  h1 {
+    font-size: 2em;
+    /* text-align: center; */
+    /* padding: 0.5em; */
+    color: var(--secondary-text-color);
+  }
+
   @media (max-width: 768px) {
     .patternContainer {
       padding: 1em;
@@ -519,7 +526,7 @@
     <div class="mobileBg" style={cssOutput} />
 
     <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
-      <div>{post.title}</div>
+      <h1>{post.title}</h1>
       <div class="inputs">
         <label class="leftColumn" for="scale">Scale</label>
         <div class="grid rightColumn">
