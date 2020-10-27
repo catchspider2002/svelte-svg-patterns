@@ -149,6 +149,7 @@
   }
 
   function randomPattern() {
+    let randomSpacing = constants.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
       // colors: randomColorSets(constants.randomNumber(2, colorCount)),
@@ -156,8 +157,8 @@
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
       spacing: [
-        maxSpacing[0] > 0 ? constants.randomNumber(0, maxSpacing[0] / 3) : 0,
-        maxSpacing[1] > 0 ? constants.randomNumber(0, maxSpacing[1] / 3) : 0
+        maxSpacing[0] > 0 ? randomSpacing : 0,
+        maxSpacing[1] > 0 ? randomSpacing : 0
       ],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)

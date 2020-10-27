@@ -87,13 +87,15 @@
     justify-content: center;
     text-decoration: none;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
   }
 
   a span {
     color: var(--accent-text-color);
     background-color: var(--secondary-text-color);
     align-self: center;
-    padding: 4px 8px;
+    border-radius: var(--border-radius);
+    padding: 0.25em 0.625em;
   }
 
   .samples {
@@ -128,6 +130,36 @@
   p {
     color: var(--secondary-text-color);
     padding-bottom: 1.5em;
+    text-align: center;
+  }
+  .tags {
+    color: black;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
+    place-content: center;
+    padding-top: 2em;
+  }
+  .tags span {
+    background-color: var(--secondary-color);
+    padding: 0.125em 0.7em;
+    font-weight: bold;
+    font-size: 0.8em;
+    border-radius: var(--border-radius);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      text-align: left;
+      padding: 0.5em 0;
+    }
+    p {
+      text-align: left;
+    }
+    .tags {
+      place-content: start;
+    }
   }
 </style>
 
@@ -167,7 +199,8 @@
 </svelte:head>
 
 <div class="patternsList">
-  <h1>{posts.length} free customizable patterns for your projects</h1>
+  <div class="tags"><span>FREE</span> <span>SVG</span><span>PATTERNS</span></div>
+  <h1>{posts.length} customizable patterns for your projects</h1>
   <p class="container mx-auto">
     A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
     Perfect for website backgrounds, apparel, branding, packaging design and more.
