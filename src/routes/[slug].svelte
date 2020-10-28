@@ -516,7 +516,7 @@
   <meta property="twitter:url" content="{website}/{post.slug}" />
   <meta property="twitter:title" content={post.title} />
   <meta property="twitter:description" content={post.slug} />
-  <meta name="twitter:image" content="{website}/TwitterBG1.png" />
+  <meta name="twitter:image" content="{website}/TwitterBG2.png" />
   <!-- <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
 

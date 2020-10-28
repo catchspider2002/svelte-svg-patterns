@@ -11,7 +11,6 @@
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
-  --alt-text: rgba(68, 51, 122, 0.8);
   --gray-300: #e2e8f0;
   --gray-400: #1a202c;
   --gray-500: #a0aec0;
@@ -26,7 +25,6 @@
   --accent-text-color: #000000;
   --secondary-text-color: #ffffff;
   --accent-text: #ecc94b;
-  --alt-text: rgba(255, 200, 0, 0.8);
 }
 
 *,
@@ -397,10 +395,7 @@ nav a {
 
   .logo {
     justify-self: center;
-    gap: 0;
-  }
-  .brandName {
-    display: none;
+    /* gap: 0; */
   }
   .logoHome {
     justify-self: center;
@@ -410,6 +405,14 @@ nav a {
 @media (max-width: 640px) {
   .container {
     width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    width: 100%;
+  }
+  .brandName {
+    display: none;
   }
 }
 

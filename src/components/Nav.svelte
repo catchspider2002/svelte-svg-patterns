@@ -87,7 +87,7 @@
           <circle r="11.93" cy="18.02" cx="20.61" />
         </g>
       </svg>
-      <span class="brandName">PATTERN MONSTER</span>
+      <div class="brandName"><span>PATTERN</span> <span>MONSTER</span></div>
     </div>
   </a>
   <!-- <div /> -->

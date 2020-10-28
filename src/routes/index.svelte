@@ -160,7 +160,7 @@
   .stats-grid {
     display: grid;
     grid-auto-flow: column;
-    opacity: 0.5;
+    opacity: 0.75;
     gap: 0.75em;
     place-content: start;
   }
@@ -216,7 +216,7 @@
   <meta
     property="og:description"
     content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta property="og:image" content="{website}/TwitterBG1.png" />
+  <meta property="og:image" content="{website}/TwitterBG2.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{website}/" />
 
@@ -227,8 +227,8 @@
     content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@pattern_monster" />
-  <meta name="twitter:image" content="{website}/TwitterBG1.png" />
-  <meta name="twitter:image:src" content="{website}/TwitterBG1.png" />
+  <meta name="twitter:image" content="{website}/TwitterBG2.png" />
+  <meta name="twitter:image:src" content="{website}/TwitterBG2.png" />
 
   <!-- <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="{website}/{post.slug}" />
