@@ -109,7 +109,7 @@
 
   const presetPattern = {
     id: 1,
-    colors: [$themeStore === "light" ? "white" : "black", $themeStore === "light" ? "rgb(68,51,122)" : "rgb(255,200,0)"],
+    colors: [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"],
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
@@ -156,10 +156,7 @@
       colors: randomColorSets(2),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(1, maxScale),
-      spacing: [
-        maxSpacing[0] > 0 ? randomSpacing : 0,
-        maxSpacing[1] > 0 ? randomSpacing : 0
-      ],
+      spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
     };
@@ -447,6 +444,7 @@
       background-color: var(--pattern-bg);
       padding: 2rem;
       margin: 1rem 0 2.5rem;
+      border-radius: var(--border-radius);
     }
     .preview {
       display: none;

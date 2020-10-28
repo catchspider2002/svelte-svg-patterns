@@ -5,11 +5,13 @@
   --card-bg: rgb(245, 245, 245);
   --input-bg: #ffffff;
   --secondary-color: #ffc800;
+  --accent-text: #805ad5;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
+  --alt-text: rgba(68, 51, 122, 0.8);
   --gray-300: #e2e8f0;
   --gray-400: #1a202c;
   --gray-500: #a0aec0;
@@ -23,6 +25,8 @@
   --input-bg: rgb(62, 62, 48);
   --accent-text-color: #000000;
   --secondary-text-color: #ffffff;
+  --accent-text: #ecc94b;
+  --alt-text: rgba(255, 200, 0, 0.8);
 }
 
 *,

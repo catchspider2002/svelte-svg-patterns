@@ -19,6 +19,7 @@
   //   };
   // }
   import Footer from "../components/Footer.svelte";
+  import Constants from "../routes/_constants.js";
   import { onMount } from "svelte";
   export let posts;
   import { themeStore } from "./stores.js";
@@ -32,7 +33,7 @@
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
-  $: colors = [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(68,51,122)" : "rgb(255,200,0)"];
+  $: colors = [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"];
 
   // let Pickr;
 
@@ -124,15 +125,19 @@
   h1 {
     font-size: 2em;
     text-align: center;
+    font-weight: 600;
     padding: 0.5em;
     color: var(--secondary-text-color);
+    margin-bottom: 0.5em;
+    margin-top: 0;
   }
   p {
     color: var(--secondary-text-color);
     padding-bottom: 1.5em;
+    padding-top: 0.5em;
     text-align: center;
   }
-  .tags {
+  /* .tags {
     color: black;
     margin: 0 auto;
     display: grid;
@@ -140,13 +145,34 @@
     gap: 1em;
     place-content: center;
     padding-top: 2em;
+  } */
+  .stats {
+    color: var(--secondary-text-color);
+    margin: 0 auto;
+    display: grid;
+    /* grid-auto-flow: column; */
+    grid-template-columns: auto auto auto;
+    column-gap: 2em;
+
+    row-gap: 0.5em;
+    place-content: center;
   }
-  .tags span {
+  .stats-grid {
+    display: grid;
+    grid-auto-flow: column;
+    opacity: 0.5;
+    gap: 0.75em;
+    place-content: start;
+  }
+  /* .tags span {
     background-color: var(--secondary-color);
     padding: 0.125em 0.7em;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.85em;
     border-radius: var(--border-radius);
+  } */
+  .highlight {
+    color: var(--accent-text);
   }
 
   @media (max-width: 768px) {
@@ -157,8 +183,21 @@
     p {
       text-align: left;
     }
-    .tags {
+    /* .tags, */
+    .stats {
       place-content: start;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .stats {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .stats {
+      grid-template-columns: auto;
     }
   }
 </style>
@@ -199,8 +238,29 @@
 </svelte:head>
 
 <div class="patternsList">
-  <div class="tags"><span>FREE</span> <span>SVG</span><span>PATTERNS</span></div>
-  <h1>{posts.length} customizable patterns for your projects</h1>
+  <!-- <div class="tags"><span>FREE</span> <span>SVG</span><span>PATTERNS</span></div> -->
+  <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
+  <div class="stats">
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.trending} />
+      </svg>
+      {posts.length}
+      patterns
+    </div>
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.download} />
+      </svg>
+      CSS, SVG, PNG
+    </div>
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.release} />
+      </svg>
+      Free
+    </div>
+  </div>
   <p class="container mx-auto">
     A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
     Perfect for website backgrounds, apparel, branding, packaging design and more.
