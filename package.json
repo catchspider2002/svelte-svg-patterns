@@ -19,7 +19,6 @@
     "prettier": "^2.1.1",
     "save-svg-as-png": "^1.4.17",
     "sirv": "^1.0.6",
-    "svelte-notifications": "^0.9.9",
     "svelte-simple-modal": "^0.6.1",
     "webshot": "^0.18.0"
   },

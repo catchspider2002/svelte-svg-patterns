@@ -14,9 +14,6 @@
   import { onMount } from "svelte";
 
   import { themeStore } from "./stores.js";
-  import { getNotificationsContext } from "svelte-notifications";
-
-  const { addNotification } = getNotificationsContext();
 
   // import { bind } from "svelte/internal";
   let w;
@@ -158,7 +155,7 @@
       // colors: randomColorSets(constants.randomNumber(2, colorCount)),
       colors: randomColorSets(2),
       stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(2, maxScale / 3),
+      scale: constants.randomNumber(1, maxScale),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
@@ -184,16 +181,13 @@
     document.getElementById("pngOutput").innerHTML = "";
   }
 
-  function copyText(text, buttonType) {
+  function copyText(text) {
     let textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    addNotification({ text: buttonType + " Copied", position: 'top-center', type: 'success',
-     removeAfter: 2000
-     })
   }
 
   function createPicker(parentDiv, colorId) {
@@ -525,6 +519,7 @@
   <meta name="twitter:image" content="{website}/TwitterBG2.png" />
   <!-- <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
+
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
@@ -626,14 +621,8 @@
       <div class="exportBar">
         <div class="exportGrid">
           <span>Copy</span>
-          
-<!-- <button
-on:click={() => addNotification({ text: 'Notification', position: 'bottom-center', type: 'success', removeAfter: 4000 })}>
-Add notification
-</button> -->
-
-          <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
-          <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+          <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+          <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
         </div>
         <div class="downloadGrid">
           <span>Download</span>
@@ -681,8 +670,8 @@ Add notification
 <div class="bottomBar">
   <div class="exportGrid">
     <span>Copy</span>
-    <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
-    <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+    <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
+    <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
   </div>
   <div class="downloadGrid">
     <span>Download</span>
