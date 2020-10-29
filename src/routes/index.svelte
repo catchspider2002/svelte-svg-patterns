@@ -151,7 +151,7 @@
     margin: 0 auto;
     display: grid;
     /* grid-auto-flow: column; */
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     column-gap: 2em;
 
     row-gap: 0.5em;
@@ -189,7 +189,7 @@
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 640px) {
     .stats {
       grid-template-columns: auto auto;
     }
@@ -253,6 +253,12 @@
         <path d={Constants.icons.download} />
       </svg>
       CSS, SVG, PNG
+    </div>
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.license} />
+      </svg>
+      MIT License
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

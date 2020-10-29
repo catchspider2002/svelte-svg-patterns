@@ -176,7 +176,7 @@ input[type="range"]::-moz-range-thumb {
 button {
   display: inline-block;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.375rem 0.75rem;
   margin: 0;
   text-decoration: none;
   background-color: var(--secondary-color);
@@ -360,6 +360,14 @@ nav a {
   display: block;
   color: var(--secondary-color);
 }
+
+/* Notifications */
+
+.position-top-center,
+.position-bottom-center {
+  z-index: 5;
+}
+/* default-position-style-bottom-center svelte-7avcjj */
 
 @media (max-width: 1440px) {
   body {
