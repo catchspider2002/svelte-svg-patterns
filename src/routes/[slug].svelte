@@ -155,7 +155,7 @@
       // colors: randomColorSets(constants.randomNumber(2, colorCount)),
       colors: randomColorSets(2),
       stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(1, maxScale),
+      scale: constants.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2)
@@ -181,7 +181,7 @@
     document.getElementById("pngOutput").innerHTML = "";
   }
 
-  function copyText(text) {
+  function copyText(text, buttonType) {
     let textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
@@ -621,8 +621,9 @@
       <div class="exportBar">
         <div class="exportGrid">
           <span>Copy</span>
-          <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
-          <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+          <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
+          <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+
         </div>
         <div class="downloadGrid">
           <span>Download</span>
@@ -670,8 +671,9 @@
 <div class="bottomBar">
   <div class="exportGrid">
     <span>Copy</span>
-    <button on:click={copyText(cssOutput)} title="Copy CSS">CSS</button>
-    <button on:click={copyText(svgFile)} title="Copy SVG">SVG</button>
+    <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
+    <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+
   </div>
   <div class="downloadGrid">
     <span>Download</span>
