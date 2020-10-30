@@ -7,8 +7,6 @@
     "build": "sapper build --legacy",
     "export": "sapper export --entry '/ features confirmed'",
     "start": "node __sapper__/build",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
@@ -19,9 +17,7 @@
     "prettier": "^2.1.1",
     "save-svg-as-png": "^1.4.17",
     "sirv": "^1.0.6",
-    "svelte-notifications": "^0.9.9",
-    "svelte-simple-modal": "^0.6.1",
-    "webshot": "^0.18.0"
+    "svelte-notifications": "^0.9.9"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -29,7 +25,6 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/runtime": "^7.11.2",
-    "@beyonk/svelte-social-auth": "^2.1.0",
     "@rollup/plugin-babel": "^5.2.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
@@ -41,24 +36,5 @@
     "sapper": "^0.28.2",
     "svelte": "^3.24.1",
     "svelte-popover": "^2.0.8"
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": true,
-    "htmlWhitespaceSensitivity": "css",
-    "insertPragma": false,
-    "jsxBracketSameLine": false,
-    "jsxSingleQuote": false,
-    "printWidth": 140,
-    "proseWrap": "preserve",
-    "quoteProps": "as-needed",
-    "requirePragma": false,
-    "semi": true,
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "none",
-    "useTabs": false,
-    "vueIndentScriptAndStyle": false,
-    "rangeStart": 0
   }
 }
