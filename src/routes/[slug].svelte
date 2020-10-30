@@ -181,13 +181,18 @@
     document.getElementById("pngOutput").innerHTML = "";
   }
 
-  function copyText(text, buttonType) {
+  function copyText(text, buttonType, id) {
     let textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
+    console.log(id);
+    document.getElementById(id).textContent = "Copied!";
+    setTimeout(function () {
+      document.getElementById(id).textContent = buttonType;
+    }, 1500);
   }
 
   function createPicker(parentDiv, colorId) {
@@ -360,6 +365,7 @@
     padding: 2em;
   }
   button {
+    min-width: 90px;
     max-width: 150px;
   }
   .buttons {
@@ -519,7 +525,6 @@
   <meta name="twitter:image" content="{website}/TwitterBG2.png" />
   <!-- <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
-
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />
@@ -621,9 +626,8 @@
       <div class="exportBar">
         <div class="exportGrid">
           <span>Copy</span>
-          <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
-          <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
-
+          <button id="cssExport" on:click={copyText(cssOutput, 'CSS', this.id)} title="Copy CSS">CSS</button>
+          <button id="svgExport" on:click={copyText(svgFile, 'SVG', this.id)} title="Copy SVG">SVG</button>
         </div>
         <div class="downloadGrid">
           <span>Download</span>
@@ -671,9 +675,8 @@
 <div class="bottomBar">
   <div class="exportGrid">
     <span>Copy</span>
-    <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
-    <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
-
+    <button id="cssBottom" on:click={copyText(cssOutput, 'CSS', this.id)} title="Copy CSS">CSS</button>
+    <button id="svgBottom" on:click={copyText(svgFile, 'SVG', this.id)} title="Copy SVG">SVG</button>
   </div>
   <div class="downloadGrid">
     <span>Download</span>

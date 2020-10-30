@@ -137,15 +137,6 @@
     padding-top: 0.5em;
     text-align: center;
   }
-  /* .tags {
-    color: black;
-    margin: 0 auto;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1em;
-    place-content: center;
-    padding-top: 2em;
-  } */
   .stats {
     color: var(--secondary-text-color);
     margin: 0 auto;
@@ -163,13 +154,6 @@
     gap: 0.75em;
     place-content: start;
   }
-  /* .tags span {
-    background-color: var(--secondary-color);
-    padding: 0.125em 0.7em;
-    font-weight: bold;
-    font-size: 0.85em;
-    border-radius: var(--border-radius);
-  } */
   .highlight {
     color: var(--accent-text);
   }
@@ -182,19 +166,27 @@
     p {
       text-align: left;
     }
-    /* .tags, */
     .stats {
       place-content: start;
+    }
+    .samples {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
   }
 
   @media (max-width: 640px) {
+    .patternsList {
+      padding: 1.5em;
+    }
     .stats {
       grid-template-columns: auto auto;
     }
   }
 
   @media (max-width: 380px) {
+    .patternsList {
+      padding: 1em;
+    }
     .stats {
       grid-template-columns: auto;
     }
@@ -237,7 +229,6 @@
 </svelte:head>
 
 <div class="patternsList">
-  <!-- <div class="tags"><span>FREE</span> <span>SVG</span><span>PATTERNS</span></div> -->
   <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
   <div class="stats">
     <div class="stats-grid">

@@ -361,13 +361,6 @@ nav a {
   color: var(--secondary-color);
 }
 
-/* Notifications */
-
-/* .position-top-center,
-.position-bottom-center {
-  z-index: 5;
-} */
-
 @media (max-width: 1440px) {
   body {
     font-size: 18px;
@@ -400,10 +393,7 @@ nav a {
     padding: 1em 1em;
   }
 
-  .logo {
-    justify-self: center;
-    /* gap: 0; */
-  }
+  .logo,
   .logoHome {
     justify-self: center;
   }
@@ -414,10 +404,7 @@ nav a {
     width: 100%;
   }
 }
-@media (max-width: 400px) {
-  .container {
-    width: 100%;
-  }
+@media (max-width: 360px) {
   .brandName {
     display: none;
   }
