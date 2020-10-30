@@ -1,5 +1,7 @@
 <script>
   import Nav from "../components/Nav.svelte";
+  import Notifications from "svelte-notifications";
+
   // import { onMount } from "svelte";
   export let segment;
 
