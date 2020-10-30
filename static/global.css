@@ -363,10 +363,10 @@ nav a {
 
 /* Notifications */
 
-.position-top-center,
+/* .position-top-center,
 .position-bottom-center {
   z-index: 5;
-}
+} */
 
 @media (max-width: 1440px) {
   body {

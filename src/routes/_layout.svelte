@@ -1,7 +1,6 @@
 <script>
   import Nav from "../components/Nav.svelte";
-  import Notifications from "svelte-notifications";
-
+  
   // import { onMount } from "svelte";
   export let segment;
 
@@ -42,9 +41,8 @@
 </style>
 
 <!-- <Nav {segment} on:theme={sayHello} /> -->
-<Notifications>
-  <Nav {segment} />
-  <main>
-    <slot />
-  </main>
-</Notifications>
+<Nav {segment} />
+
+<main>
+  <slot />
+</main>

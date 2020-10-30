@@ -14,8 +14,6 @@
   import { onMount } from "svelte";
 
   import { themeStore } from "./stores.js";
-  import { getNotificationsContext } from "svelte-notifications";
-  const { addNotification } = getNotificationsContext();
 
   // import { bind } from "svelte/internal";
   let w;
@@ -190,7 +188,6 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    addNotification({ text: buttonType + " Copied", position: "top-center", type: "success", removeAfter: 2000 });
   }
 
   function createPicker(parentDiv, colorId) {
@@ -624,8 +621,9 @@
       <div class="exportBar">
         <div class="exportGrid">
           <span>Copy</span>
-          <button on:click={copyText(cssOutput, 'CSS')} title="Copy CSS">CSS</button>
-          <button on:click={copyText(svgFile, 'SVG')} title="Copy SVG">SVG</button>
+          <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
+          <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+
         </div>
         <div class="downloadGrid">
           <span>Download</span>
@@ -673,8 +671,9 @@
 <div class="bottomBar">
   <div class="exportGrid">
     <span>Copy</span>
-    <button on:click={copyText(cssOutput, 'CSS')} title="Copy CSS">CSS</button>
-    <button on:click={copyText(svgFile, 'SVG')} title="Copy SVG">SVG</button>
+    <button on:click={copyText(cssOutput,"CSS")} title="Copy CSS">CSS</button>
+    <button on:click={copyText(svgFile,"SVG")} title="Copy SVG">SVG</button>
+
   </div>
   <div class="downloadGrid">
     <span>Download</span>
