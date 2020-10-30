@@ -42,8 +42,9 @@
 </style>
 
 <!-- <Nav {segment} on:theme={sayHello} /> -->
-<Nav {segment} />
-
-<main>
-  <slot />
-</main>
+<Notifications>
+  <Nav {segment} />
+  <main>
+    <slot />
+  </main>
+</Notifications>

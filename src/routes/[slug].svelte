@@ -190,6 +190,7 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
+    addNotification({ text: buttonType + " Copied", position: "top-center", type: "success", removeAfter: 2000 });
   }
 
   function createPicker(parentDiv, colorId) {
