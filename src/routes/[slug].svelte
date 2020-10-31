@@ -310,8 +310,8 @@
 
   .uneditable {
     border: 0 none;
-    background-color: var(--secondary-color);
-    color: black;
+    background-color: var(--accent-text);
+    color: var(--accent-text-color);
     height: 24px;
     font-size: 0.9em;
     padding: 2px 2px 0 2px;
@@ -354,6 +354,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5em;
     align-items: center;
+    justify-items: center;
   }
 
   .mobileBg {
@@ -365,8 +366,39 @@
     padding: 2em;
   }
   button {
-    min-width: 90px;
-    max-width: 150px;
+    min-width: 6em;
+    max-width: 10em;
+    background-color: var(--accent-text);
+    border: 0.125em solid var(--accent-text);
+    color: var(--accent-text-color);
+  }
+  button:hover,
+  button:focus {
+    background-color: var(--accent-hover);
+  }
+  #resetButton1,
+  #resetButton2,
+  #resetButton3 {
+    border: 0.125em solid var(--accent-text);
+    color: var(--accent-text);
+  }
+  #resetButton1 {
+    background-color: var(--pattern-bg);
+  }
+  #resetButton2 {
+    background-color: var(--pattern-bg);
+  }
+  #resetButton3 {
+    background-color: var(--card-bg);
+  }
+  #resetButton1:hover,
+  #resetButton2:hover,
+  #resetButton3:hover,
+  #resetButton1:focus,
+  #resetButton2:focus,
+  #resetButton3:focus {
+    border: 0.125em solid var(--accent-hover);
+    color: var(--accent-hover);
   }
   .buttons {
     display: grid;
@@ -617,7 +649,7 @@
         </div>
         <div class="buttons">
           <button title="Random" on:click={randomPattern}>Inspire Me</button>
-          <button title="Reset" on:click={resetPattern}>Reset</button>
+          <button id="resetButton1" title="Reset" on:click={resetPattern}>Reset</button>
         </div>
       </div>
 
@@ -667,7 +699,7 @@
 
     <div class="buttons" style="display: {hide ? 'grid' : 'none'}">
       <button title="Random" on:click={randomPattern}>Inspire Me</button>
-      <button title="Reset" on:click={resetPattern}>Reset</button>
+      <button id="resetButton2" title="Reset" on:click={resetPattern}>Reset</button>
     </div>
   </div>
 </div>
@@ -710,7 +742,7 @@
   </div>
   <div class="buttons">
     <button title="Random" on:click={randomPattern}>Inspire Me</button>
-    <button title="Reset" on:click={resetPattern}>Reset</button>
+    <button id="resetButton3" title="Reset" on:click={resetPattern}>Reset</button>
   </div>
   <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> Hide UI </label>
 </div>

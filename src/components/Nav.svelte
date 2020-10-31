@@ -14,7 +14,6 @@
   let dark = Constants.icons.dark;
   let light = Constants.icons.light;
   let theme = light;
-  // let themeColor = "dark";
 
   let defaultNewTheme;
   onMount(async () => {
@@ -23,10 +22,10 @@
     if (!defaultNewTheme) {
       defaultNewTheme = "light";
 
-      if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) defaultNewTheme = "dark";
-        else defaultNewTheme = "light";
-      }
+      // if (window.matchMedia("(prefers-color-scheme)").media !== "not all") {
+      //   if (window.matchMedia("(prefers-color-scheme: dark)").matches) defaultNewTheme = "dark";
+      //   else defaultNewTheme = "light";
+      // }
 
       localStorage.setItem("defaultNewTheme", defaultNewTheme);
     }
@@ -97,7 +96,7 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
       </svg></a>
-    <button on:click={() => changeTheme()}>
+    <button class="iconButton" on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
           <path transition:fly={{ y: 100, duration: 300 }} d={theme} />

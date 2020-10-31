@@ -6,17 +6,21 @@
   --input-bg: #ffffff;
   --secondary-color: #ffc800;
   --accent-text: #805ad5;
+  --accent-hover: #805ad5AA;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
-  --gray-300: #e2e8f0;
-  --gray-400: #1a202c;
-  --gray-500: #a0aec0;
-  --gray-700: #1a202c;
+  --gray-300: #E2E8F0;
+  --gray-400: #CBD5E0  ;
+  --gray-500: #A0AEC0;
+  --gray-600: #718096;
+  --gray-700: #4A5568;
+  --gray-800: #2D3748;
   --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
+  --gray-bg: var(--gray-400);
 }
 [data-theme="dark"] {
   --pattern-bg: rgb(24, 24, 30);
@@ -25,6 +29,8 @@
   --accent-text-color: #000000;
   --secondary-text-color: #ffffff;
   --accent-text: #ecc94b;
+  --accent-hover: #ecc94bAA;
+  --gray-bg: var(--gray-700);
 }
 
 *,
@@ -119,6 +125,7 @@ input[type="number"] {
   width: 80px;
   -moz-appearance: textfield; /* Hide arrows for input number - Firefox */
   border-radius: var(--border-radius);
+  background-color: var(--gray-bg);
 }
 
 /* Hide arrows for input number - Chrome, Safari, Edge, Opera */
@@ -138,28 +145,28 @@ input[type="range"]:focus {
   outline: none;
 }
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--secondary-color);
+  background: var(--accent-text);
   border-radius: var(--border-radius);
   width: 100%;
   height: 4px;
   cursor: pointer;
 }
 input[type="range"]::-moz-range-track {
-  background: var(--secondary-color);
+  background: var(--accent-text);
   border-radius: var(--border-radius);
   width: 100%;
   height: 4px;
   cursor: pointer;
 }
 input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: var(--secondary-color-hover);
+  background: var(--accent-hover);
 }
 input[type="range"]::-webkit-slider-thumb {
   margin-top: -10.5px;
   width: 28px;
   height: 28px;
   background: var(--pattern-bg);
-  border: 4px solid var(--secondary-color);
+  border: 4px solid var(--accent-text);
   border-radius: var(--border-radius);
   cursor: pointer;
   -webkit-appearance: none;
@@ -168,7 +175,7 @@ input[type="range"]::-moz-range-thumb {
   width: 28px;
   height: 28px;
   background: var(--pattern-bg);
-  border: 4px solid var(--secondary-color);
+  border: 4px solid var(--accent-text);
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -194,6 +201,16 @@ button {
 button:hover,
 button:focus {
   background-color: var(--secondary-color-hover);
+}
+
+.iconButton {
+  background-color: transparent;
+}
+
+.iconButton:hover,
+.iconButton:focus,
+.iconButton:active {
+  background-color: transparent;
 }
 
 button:focus {
