@@ -2,6 +2,8 @@ Create seamless patterns in SVG to use as website backgrounds, header images, st
 
 100 patterns available
 
+## Features:
+
 ✔ Customize foreground and background colors
 
 ✔ Modify stroke width for supported patterns
