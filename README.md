@@ -1,3 +1,14 @@
+# Pattern Monster - SVG Pattern Generator
+
+![GitHub repo size](https://img.shields.io/github/repo-size/catchspider2002/svelte-svg-patterns)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![GitHub last commit](https://img.shields.io/github/last-commit/catchspider2002/svelte-svg-patterns)
+![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fpattern.monster%2F)
+
+<div align="center">
+  <img src="static/pattern.monster.png" alt="pattern.monster" />
+</div>
+
 Create seamless patterns in SVG to use as website backgrounds, header images, stationery design and package design
 
 100 patterns available
