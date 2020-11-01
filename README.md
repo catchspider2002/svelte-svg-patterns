@@ -3,9 +3,13 @@ Create seamless patterns in SVG to use as website backgrounds, header images, st
 100 patterns available
 
 ✔ Customize foreground and background colors
+
 ✔ Modify stroke width for supported patterns
+
 ✔ Change the angle to generate unique images
+
 ✔ Copy CSS and SVG code directly to your clipboard for web projects
+
 ✔ Download a tileable SVG or a high resolution seamless PNG image for print projects
 
 # License
