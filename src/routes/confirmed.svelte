@@ -560,8 +560,8 @@
         opacity=".5" />
     </svg>
     <p class="pb-5">
-      You are on officially on our waitlist. We'll let you know once the beta is ready. You can skip the waitlist by sharing the below tweet
-      so more people like you can join the beta.
+      We've got your mail. You can spread the awesomeness by sharing the below tweet
+      so more people like you can get the free patterns.
     </p>
     <button
       class="accent-bg"
