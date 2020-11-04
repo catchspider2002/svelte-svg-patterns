@@ -2,9 +2,9 @@
   export function preload({ params, query }) {
     return (
       this.fetch(`index.json`)
-        .then(r => r.json())
+        .then((r) => r.json())
         // .then((r, postMode) => r.filter(pattern => pattern.mode === postMode))
-        .then(posts => {
+        .then((posts) => {
           return { posts };
         })
     );
@@ -12,16 +12,21 @@
 </script>
 
 <script>
-  // function reload() {
-  //   console.log("Reload");
-  //   return posts => {
-  //     posts.filter(pattern => pattern.mode === "fill");
-  //   };
+  // function fillPatterns() {
+  //   newPosts = posts.filter((pattern) => pattern.mode === "fill");
   // }
+  // function strokePatterns() {
+  //   newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+  // }
+  // function allPatterns() {
+  //   newPosts = posts;
+  // }
+
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
-  import { onMount } from "svelte";
+  // import { onMount } from "svelte";
   export let posts;
+  $: newPosts = posts;
   import { themeStore } from "./stores.js";
 
   // let count_value;
@@ -29,6 +34,18 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
+  $: index = "all";
+  let options = [
+    { text: "All", value: "all" },
+    { text: "Stroke", value: "stroke" },
+    { text: "Fill", value: "fill" },
+  ];
+
+  function selectChanged() {
+    if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (index === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    else newPosts = posts;
+  }
 
   let website = "https://pattern.monster";
 
@@ -157,6 +174,24 @@
   .highlight {
     color: var(--accent-text);
   }
+  .outerGrid {
+    display: grid;
+    grid-auto-flow: column;
+    /* justify-items: center; */
+    place-content: start;
+    place-items: center;
+    gap: 1em;
+    color: var(--accent-text);
+    padding-bottom: 2em;
+  }
+  .filterGrid {
+    display: grid;
+    grid-auto-flow: column;
+    /* justify-items: center; */
+    place-content: start;
+    place-items: center;
+    gap: 1em;
+  }
 
   @media (max-width: 768px) {
     h1 {
@@ -190,6 +225,83 @@
     .stats {
       grid-template-columns: auto;
     }
+  }
+
+  /* Select Styling */
+  /* class applies to select element itself, not a wrapper element */
+  .select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    border-radius: 0.5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+        
+    */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+      linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right 0.7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: 0.65em auto, 100%;
+  }
+  /* Hide arrow icon in IE browsers */
+  .select-css::-ms-expand {
+    display: none;
+  }
+  /* Hover style */
+  .select-css:hover {
+    border-color: #888;
+  }
+  /* Focus style */
+  .select-css:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px var(--secondary-color-hover);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+  }
+
+  /* Set options to normal weight */
+  .select-css option {
+    font-weight: normal;
+  }
+
+  /* Support for rtl text, explicit support for Arabic and Hebrew */
+  *[dir="rtl"] .select-css,
+  :root:lang(ar) .select-css,
+  :root:lang(iw) .select-css {
+    background-position: left 0.7em top 50%, 0 0;
+    padding: 0.6em 0.8em 0.5em 1.4em;
+  }
+
+  /* Disabled styles */
+  .select-css:disabled,
+  .select-css[aria-disabled="true"] {
+    color: graytext;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  }
+
+  .select-css:disabled:hover,
+  .select-css[aria-disabled="true"] {
+    border-color: #aaa;
   }
 </style>
 
@@ -258,23 +370,28 @@
     </div>
   </div>
   <p class="container mx-auto">
-    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
-    Perfect for website backgrounds, apparel, branding, packaging design and more.
+    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
+    website backgrounds, apparel, branding, packaging design and more.
   </p>
 
   <!-- <div>
-    <button
-      on:click={() => {
-        console.log('Clciked');
-        reload();
-      }}>All</button>
-    <button>Stroke</button>
-    <button>Fill</button>
-    <button>All</button>
-    <button>All</button>
+    <button on:click={allPatterns}>All</button>
+    <button on:click={strokePatterns}>Stroke</button>
+    <button on:click={fillPatterns}>Fill</button>
   </div> -->
+  <div class="outerGrid">
+    <div class="filterGrid">
+      Filter
+      <select class="select-css" bind:value={index} on:change={selectChanged}>
+        {#each options as option, i}
+          <option value={option.value}>{option.text}</option>
+        {/each}
+      </select>
+    </div>
+    {#if index !== 'all'}{newPosts.length} patterns{/if}
+  </div>
   <div class="samples">
-    {#each posts as post}
+    {#each newPosts as post}
       <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
         <span>{post.title}</span>
       </a>
