@@ -63,6 +63,14 @@
     });
   }
 
+  function sortLatest() {
+    newPosts = newPosts.sort(function (x, y) {
+      let a = new Date(x.creationDate),
+        b = new Date(y.creationDate);
+      return a == b ? 0 : a > b ? -1 : 1;
+    });
+  }
+
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
@@ -137,6 +145,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2em;
     align-items: center;
+    color: var(--secondary-text-color);
     /* padding: 2em 0; */
   }
 
@@ -328,13 +337,12 @@
         for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
         
     */
-    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23fff' stroke-width='1' d='M2.568 7.284L12 16.716l9.432-9.432'/></svg>"),
-      linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
+    background-image: var(--input-background);
     background-repeat: no-repeat, repeat;
     /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
     background-position: right 0.7em top 50%, 0 0;
     /* icon size, then gradient */
-    background-size: 0.85em auto, 100%;
+    background-size: 1.2em auto, 100%;
   }
   /* Hover style */
   .select-css:hover {
@@ -442,11 +450,10 @@
         {/each}
       </select>
     </div>
-    {#if index !== 'all'}{newPosts.length} patterns{/if}
     <div class="sortGrid">
       <span>Sort</span>
       <div class="sortInner">
-        <button on:click={sortAlphabetical}>Newest</button>
+        <button on:click={sortLatest}>Newest</button>
         <button on:click={sortAlphabeticalReverse}>Popular</button>
         <button on:click={sortAlphabetical}>Alphabetical</button>
       </div>
@@ -454,9 +461,12 @@
   </div>
   <div class="samples">
     {#each newPosts as post}
-      <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
-        <span>{post.title}</span>
-      </a>
+      <div>
+        <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+          <span>{post.title}</span>
+        </a>
+        <div>{post.creationDate}</div>
+      </div>
     {/each}
   </div>
 </div>

@@ -14,7 +14,8 @@ const contents = JSON.stringify(
         width: pattern.width,
         height: pattern.height,
         path: pattern.path,
-        mode: pattern.mode
+        mode: pattern.mode,
+        creationDate: pattern.creationDate
       };
     })
 );
