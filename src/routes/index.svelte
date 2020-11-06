@@ -47,6 +47,22 @@
     else newPosts = posts;
   }
 
+function sortAlphabetical() {
+  newPosts = newPosts.sort(function (x, y) {
+    let a = x.title.toUpperCase(),
+      b = y.title.toUpperCase();
+    return a == b ? 0 : a > b ? 1 : -1;
+  });
+}
+
+function sortAlphabeticalReverse() {
+  newPosts = newPosts.sort(function (x, y) {
+    let a = x.title.toUpperCase(),
+      b = y.title.toUpperCase();
+    return a == b ? 0 : a > b ? -1 : 1;
+  });
+}
+
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
@@ -176,9 +192,10 @@
   }
   .outerGrid {
     display: grid;
+    /* width: 100%; */
     grid-auto-flow: column;
     /* justify-items: center; */
-    place-content: start;
+    /* place-content: start; */
     place-items: center;
     gap: 1em;
     color: var(--accent-text);
@@ -190,7 +207,23 @@
     /* justify-items: center; */
     place-content: start;
     place-items: center;
+    justify-self: start;
     gap: 1em;
+  }
+  .sortGrid {
+    display: grid;
+    grid-auto-flow: column;
+    /* justify-items: center; */
+    place-content: end;
+    place-items: center;
+    justify-self: end;
+    gap: 1em;
+  }
+  
+  button {
+    border: 0.125em solid var(--accent-text);
+    color: var(--accent-text);
+    background-color: transparent;
   }
 
   @media (max-width: 768px) {
@@ -234,35 +267,31 @@
     font-size: 16px;
     font-family: sans-serif;
     font-weight: 700;
-    color: #444;
+    color: var(--secondary-text-color);
     line-height: 1.3;
-    padding: 0.6em 1.4em 0.5em 0.8em;
+    padding: 0.6em 2.4em 0.5em 0.8em;
     width: 100%;
     max-width: 100%; /* useful when width is set to anything other than 100% */
     box-sizing: border-box;
     margin: 0;
     border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-    border-radius: 0.5em;
+    border-radius: var(--border-radius);
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #fff;
+    background-color: var(--input-bg);
     /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
         for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
         
     */
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
-      linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23fff' stroke-width='1' d='M2.568 7.284L12 16.716l9.432-9.432'/></svg>"),
+      linear-gradient(to bottom, var(--gray-bg) 0%, var(--gray-bg) 100%);
     background-repeat: no-repeat, repeat;
     /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
     background-position: right 0.7em top 50%, 0 0;
     /* icon size, then gradient */
     background-size: 0.65em auto, 100%;
-  }
-  /* Hide arrow icon in IE browsers */
-  .select-css::-ms-expand {
-    display: none;
   }
   /* Hover style */
   .select-css:hover {
@@ -274,7 +303,7 @@
     /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
     box-shadow: 0 0 1px 3px var(--secondary-color-hover);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
-    color: #222;
+    color: var(--secondary-text-color);
     outline: none;
   }
 
@@ -289,19 +318,6 @@
   :root:lang(iw) .select-css {
     background-position: left 0.7em top 50%, 0 0;
     padding: 0.6em 0.8em 0.5em 1.4em;
-  }
-
-  /* Disabled styles */
-  .select-css:disabled,
-  .select-css[aria-disabled="true"] {
-    color: graytext;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
-      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-  }
-
-  .select-css:disabled:hover,
-  .select-css[aria-disabled="true"] {
-    border-color: #aaa;
   }
 </style>
 
@@ -374,11 +390,7 @@
     website backgrounds, apparel, branding, packaging design and more.
   </p>
 
-  <!-- <div>
-    <button on:click={allPatterns}>All</button>
-    <button on:click={strokePatterns}>Stroke</button>
-    <button on:click={fillPatterns}>Fill</button>
-  </div> -->
+  
   <div class="outerGrid">
     <div class="filterGrid">
       Filter
@@ -389,6 +401,12 @@
       </select>
     </div>
     {#if index !== 'all'}{newPosts.length} patterns{/if}
+    <div class="sortGrid">
+      Sort
+      <button on:click={sortAlphabetical}>Newest</button>
+      <button on:click={sortAlphabeticalReverse}>Popular</button>
+      <button on:click={sortAlphabetical}>Alphabetical</button>
+    </div>
   </div>
   <div class="samples">
     {#each newPosts as post}

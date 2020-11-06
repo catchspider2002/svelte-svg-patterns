@@ -298,9 +298,9 @@ nav {
   top: 0;
   z-index: 3;
   background-color: var(--main-bg-color);
-  height: 4em;
+  height: 3em;
   font-weight: 300;
-  padding: 1em 2em;
+  padding: 0.5em 2em;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
@@ -407,7 +407,7 @@ nav a {
     max-width: 640px;
   }
   nav {
-    padding: 1em 1em;
+    padding: 0.5em 1em;
   }
 
   .logo,
