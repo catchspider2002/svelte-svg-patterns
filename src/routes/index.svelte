@@ -47,21 +47,21 @@
     else newPosts = posts;
   }
 
-function sortAlphabetical() {
-  newPosts = newPosts.sort(function (x, y) {
-    let a = x.title.toUpperCase(),
-      b = y.title.toUpperCase();
-    return a == b ? 0 : a > b ? 1 : -1;
-  });
-}
+  function sortAlphabetical() {
+    newPosts = newPosts.sort(function (x, y) {
+      let a = x.title.toUpperCase(),
+        b = y.title.toUpperCase();
+      return a == b ? 0 : a > b ? 1 : -1;
+    });
+  }
 
-function sortAlphabeticalReverse() {
-  newPosts = newPosts.sort(function (x, y) {
-    let a = x.title.toUpperCase(),
-      b = y.title.toUpperCase();
-    return a == b ? 0 : a > b ? -1 : 1;
-  });
-}
+  function sortAlphabeticalReverse() {
+    newPosts = newPosts.sort(function (x, y) {
+      let a = x.title.toUpperCase(),
+        b = y.title.toUpperCase();
+      return a == b ? 0 : a > b ? -1 : 1;
+    });
+  }
 
   let website = "https://pattern.monster";
 
@@ -198,7 +198,7 @@ function sortAlphabeticalReverse() {
     /* place-content: start; */
     place-items: center;
     gap: 1em;
-    color: var(--accent-text);
+    color: var(--secondary-text-color);
     padding-bottom: 2em;
   }
   .filterGrid {
@@ -212,14 +212,29 @@ function sortAlphabeticalReverse() {
   }
   .sortGrid {
     display: grid;
+    place-items: start;
+    align-items: center;
     grid-auto-flow: column;
-    /* justify-items: center; */
-    place-content: end;
-    place-items: center;
     justify-self: end;
-    gap: 1em;
+    /* gap: 1em; */
   }
-  
+  .sortInner {
+    display: flex;
+    /* gap: 0; */
+    place-items: start;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* grid-template-columns: auto auto auto auto; */
+    /* justify-items: center; */
+    /* place-content: end;
+    place-items: center; */
+    justify-self: end;
+    /* gap: 1em; */
+  }
+  .sortInner button {
+    margin-left: 1em;
+  }
+
   button {
     border: 0.125em solid var(--accent-text);
     color: var(--accent-text);
@@ -248,6 +263,34 @@ function sortAlphabeticalReverse() {
     }
     .stats {
       grid-template-columns: auto auto;
+    }
+    .outerGrid {
+      grid-auto-flow: row;
+    }
+    .sortGrid {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 440px) {
+    .outerGrid {
+      padding-bottom: 1em;
+    }
+    .sortGrid {
+      align-items: flex-start;
+    }
+    .sortGrid span {
+      margin-top: 0.5em;
+      margin-right: 1em;
+    }
+    .sortInner {
+      place-items: start;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .sortInner button {
+      margin-left: 0;
+      margin-right: 1em;
+      margin-bottom: 1em;
     }
   }
 
@@ -286,12 +329,12 @@ function sortAlphabeticalReverse() {
         
     */
     background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23fff' stroke-width='1' d='M2.568 7.284L12 16.716l9.432-9.432'/></svg>"),
-      linear-gradient(to bottom, var(--gray-bg) 0%, var(--gray-bg) 100%);
+      linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
     background-repeat: no-repeat, repeat;
     /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
     background-position: right 0.7em top 50%, 0 0;
     /* icon size, then gradient */
-    background-size: 0.65em auto, 100%;
+    background-size: 0.85em auto, 100%;
   }
   /* Hover style */
   .select-css:hover {
@@ -390,7 +433,6 @@ function sortAlphabeticalReverse() {
     website backgrounds, apparel, branding, packaging design and more.
   </p>
 
-  
   <div class="outerGrid">
     <div class="filterGrid">
       Filter
@@ -402,10 +444,12 @@ function sortAlphabeticalReverse() {
     </div>
     {#if index !== 'all'}{newPosts.length} patterns{/if}
     <div class="sortGrid">
-      Sort
-      <button on:click={sortAlphabetical}>Newest</button>
-      <button on:click={sortAlphabeticalReverse}>Popular</button>
-      <button on:click={sortAlphabetical}>Alphabetical</button>
+      <span>Sort</span>
+      <div class="sortInner">
+        <button on:click={sortAlphabetical}>Newest</button>
+        <button on:click={sortAlphabeticalReverse}>Popular</button>
+        <button on:click={sortAlphabetical}>Alphabetical</button>
+      </div>
     </div>
   </div>
   <div class="samples">

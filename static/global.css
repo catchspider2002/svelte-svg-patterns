@@ -298,14 +298,15 @@ nav {
   top: 0;
   z-index: 3;
   background-color: var(--main-bg-color);
-  height: 3em;
+  height: 3.2em;
   font-weight: 300;
-  padding: 0.5em 2em;
+  padding: 0.6em 2em;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
   gap: 1em;
   align-items: center;
+  font-size: 0.9em;
 }
 .rightLinks {
   display: grid;
@@ -407,7 +408,7 @@ nav a {
     max-width: 640px;
   }
   nav {
-    padding: 0.5em 1em;
+    padding: 0.6em 1em;
   }
 
   .logo,
