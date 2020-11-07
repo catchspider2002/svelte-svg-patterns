@@ -2,8 +2,10 @@ import index from "./_index.js";
 
 const contents = JSON.stringify(
   index
-    // .filter(pattern => {
-    //   return pattern.mode !== "fill";
+    // .sort(function (x, y) {
+    //   let a = x.title.toUpperCase(),
+    //     b = y.title.toUpperCase();
+    //   return a == b ? 0 : a > b ? 1 : -1;
     // })
     .map(pattern => {
       return {
@@ -12,7 +14,8 @@ const contents = JSON.stringify(
         width: pattern.width,
         height: pattern.height,
         path: pattern.path,
-        mode: pattern.mode
+        mode: pattern.mode,
+        creationDate: pattern.creationDate
       };
     })
 );

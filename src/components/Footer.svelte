@@ -17,7 +17,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem;
-    padding-bottom: 2rem;
+    /* padding-bottom: 2rem; */
     color: white;
   }
 
@@ -76,11 +76,11 @@
       </script>
     </div>
     <div class="grid justify-center">
-      <div class="grid justify-center">
+      <!-- <div class="grid justify-center">
         <a href=".">
           <Logo className="mx-auto" />
         </a>
-      </div>
+      </div> -->
       <div class="iconLinks grid justify-center">
         <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

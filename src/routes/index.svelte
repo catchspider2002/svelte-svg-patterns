@@ -2,9 +2,9 @@
   export function preload({ params, query }) {
     return (
       this.fetch(`index.json`)
-        .then(r => r.json())
+        .then((r) => r.json())
         // .then((r, postMode) => r.filter(pattern => pattern.mode === postMode))
-        .then(posts => {
+        .then((posts) => {
           return { posts };
         })
     );
@@ -12,23 +12,100 @@
 </script>
 
 <script>
-  // function reload() {
-  //   console.log("Reload");
-  //   return posts => {
-  //     posts.filter(pattern => pattern.mode === "fill");
-  //   };
+  // function fillPatterns() {
+  //   newPosts = posts.filter((pattern) => pattern.mode === "fill");
   // }
+  // function strokePatterns() {
+  //   newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+  // }
+  // function allPatterns() {
+  //   newPosts = posts;
+  // }
+
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
   import { onMount } from "svelte";
   export let posts;
+  $: newPosts = posts;
   import { themeStore } from "./stores.js";
+  import dayjs from "dayjs";
+  import relativeTime from "dayjs/plugin/relativeTime";
 
   // let count_value;
   // themeStore.subscribe(value => {
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
+
+  // import cldrData from "cldr-data";
+  // import Globalize from "globalize";
+  // import RelativeTime from "relative-time";
+
+  dayjs.extend(relativeTime);
+
+  console.log(dayjs().from(dayjs("1990"))); // 2 years ago
+  console.log(dayjs().from(dayjs(), true)); // 2 years
+
+  console.log(dayjs().fromNow());
+
+  console.log(dayjs().to(dayjs()));
+
+  console.log(dayjs().toNow());
+
+  onMount(async () => {});
+
+  $: index = "all";
+  let filterOptions = [
+    { text: "All", value: "all" },
+    { text: "Stroke", value: "stroke" },
+    { text: "Fill", value: "fill" },
+  ];
+  // let sortOptions = [
+  //   { text: "Alphabetical A-Z", value: "az" },
+  //   { text: "Alphabetical Z-A", value: "za" },
+  //   { text: "Oldest first", value: "old" },
+  //   { text: "Newest first", value: "new" },
+  // ];
+
+  function filterChanged() {
+    if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (index === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    else newPosts = posts;
+  }
+
+  function sortAlphabetical() {
+    newPosts = newPosts.sort(function (x, y) {
+      let a = x.title.toUpperCase(),
+        b = y.title.toUpperCase();
+      return a == b ? 0 : a > b ? 1 : -1;
+    });
+  }
+
+  function sortAlphabeticalReverse() {
+    newPosts = newPosts.sort(function (x, y) {
+      let a = x.title.toUpperCase(),
+        b = y.title.toUpperCase();
+      return a == b ? 0 : a > b ? -1 : 1;
+    });
+  }
+
+  function sortLatest() {
+    sortAlphabetical();
+    newPosts = newPosts.sort(function (x, y) {
+      let a = new Date(x.creationDate),
+        b = new Date(y.creationDate);
+      return a == b ? 0 : a > b ? -1 : 1;
+    });
+  }
+
+  function sortOldest() {
+    sortAlphabetical();
+    newPosts = newPosts.sort(function (x, y) {
+      let a = new Date(x.creationDate),
+        b = new Date(y.creationDate);
+      return a == b ? 0 : a > b ? 1 : -1;
+    });
+  }
 
   let website = "https://pattern.monster";
 
@@ -87,7 +164,6 @@
     align-content: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
   }
 
@@ -104,7 +180,11 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2em;
     align-items: center;
+    color: var(--secondary-text-color);
     /* padding: 2em 0; */
+  }
+  .outerPattern {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   .pattern {
@@ -157,6 +237,65 @@
   .highlight {
     color: var(--accent-text);
   }
+  .outerGrid {
+    display: grid;
+    /* width: 100%; */
+    grid-auto-flow: column;
+    /* justify-items: center; */
+    /* place-content: start; */
+    place-items: center;
+    gap: 1em;
+    color: var(--secondary-text-color);
+    padding-bottom: 2em;
+  }
+  .filterGrid {
+    display: grid;
+    grid-auto-flow: column;
+    /* justify-items: center; */
+    place-content: start;
+    place-items: center;
+    justify-self: start;
+    gap: 1em;
+  }
+  .sortGrid {
+    display: grid;
+    place-items: start;
+    align-items: center;
+    grid-auto-flow: column;
+    justify-self: end;
+    /* gap: 1em; */
+  }
+  .sortInner {
+    display: flex;
+    /* gap: 0; */
+    place-items: start;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* grid-template-columns: auto auto auto auto; */
+    /* justify-items: center; */
+    /* place-content: end;
+    place-items: center; */
+    justify-self: end;
+    /* gap: 1em; */
+  }
+  .sortInner button {
+    margin-left: 1em;
+  }
+
+  button {
+    border: 0.125em solid var(--accent-text);
+    color: var(--accent-text);
+    background-color: transparent;
+  }
+
+  .postDate {
+    opacity: 0.75;
+    font-size: 0.9em;
+    padding: 0.5em;
+    text-align: right;
+    line-height: 1;
+    background-color: var(--card-bg);
+  }
 
   @media (max-width: 768px) {
     h1 {
@@ -181,6 +320,34 @@
     .stats {
       grid-template-columns: auto auto;
     }
+    .outerGrid {
+      grid-auto-flow: row;
+    }
+    .sortGrid {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 440px) {
+    .outerGrid {
+      padding-bottom: 1em;
+    }
+    .sortGrid {
+      align-items: flex-start;
+    }
+    .sortGrid span {
+      margin-top: 0.5em;
+      margin-right: 1em;
+    }
+    .sortInner {
+      place-items: start;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .sortInner button {
+      margin-left: 0;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
   }
 
   @media (max-width: 380px) {
@@ -190,6 +357,66 @@
     .stats {
       grid-template-columns: auto;
     }
+  }
+
+  /* Select Styling */
+  /* class applies to select element itself, not a wrapper element */
+  .select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+    line-height: 1.3;
+    padding: 0.6em 2.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    border-radius: var(--border-radius);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--input-bg);
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+        
+    */
+    background-image: var(--input-background);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right 0.7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: 1.2em auto, 100%;
+  }
+  /* Hover style */
+  .select-css:hover {
+    border-color: #888;
+  }
+  /* Focus style */
+  .select-css:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px var(--secondary-color-hover);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: var(--secondary-text-color);
+    outline: none;
+  }
+
+  /* Set options to normal weight */
+  .select-css option {
+    font-weight: normal;
+    padding: 10px 10px;
+  }
+
+  /* Support for rtl text, explicit support for Arabic and Hebrew */
+  *[dir="rtl"] .select-css,
+  :root:lang(ar) .select-css,
+  :root:lang(iw) .select-css {
+    background-position: left 0.7em top 50%, 0 0;
+    padding: 0.6em 0.8em 0.5em 1.4em;
   }
 </style>
 
@@ -258,26 +485,37 @@
     </div>
   </div>
   <p class="container mx-auto">
-    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
-    Perfect for website backgrounds, apparel, branding, packaging design and more.
+    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
+    website backgrounds, apparel, branding, packaging design and more.
   </p>
 
-  <!-- <div>
-    <button
-      on:click={() => {
-        console.log('Clciked');
-        reload();
-      }}>All</button>
-    <button>Stroke</button>
-    <button>Fill</button>
-    <button>All</button>
-    <button>All</button>
-  </div> -->
+  <div class="outerGrid">
+    <div class="filterGrid">
+      Filter
+      <select class="select-css" bind:value={index} on:change={filterChanged}>
+        {#each filterOptions as option, i}
+          <option value={option.value}>{option.text}</option>
+        {/each}
+      </select>
+    </div>
+    <div class="sortGrid">
+      <span>Sort</span>
+      <div class="sortInner">
+        <button on:click={sortLatest}>Latest</button>
+        <button on:click={sortOldest}>Oldest</button>
+        <button on:click={sortAlphabetical}>A-Z</button>
+        <button on:click={sortAlphabeticalReverse}>Z-A</button>
+      </div>
+    </div>
+  </div>
   <div class="samples">
-    {#each posts as post}
-      <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
-        <span>{post.title}</span>
-      </a>
+    {#each newPosts as post}
+      <div class="outerPattern">
+        <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+          <span>{post.title}</span>
+        </a>
+        <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
+      </div>
     {/each}
   </div>
 </div>

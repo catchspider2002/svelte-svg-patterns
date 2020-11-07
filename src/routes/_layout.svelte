@@ -35,7 +35,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
-    min-height: calc(100vh - 4em);
+    min-height: calc(100vh - 3.2em);
     grid-template-rows: 1fr auto;
   }
 </style>
