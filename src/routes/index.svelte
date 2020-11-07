@@ -43,14 +43,14 @@
 
   dayjs.extend(relativeTime);
 
-  console.log(dayjs().from(dayjs("1990"))); // 2 years ago
-  console.log(dayjs().from(dayjs(), true)); // 2 years
+  // console.log(dayjs().from(dayjs("1990"))); // 2 years ago
+  // console.log(dayjs().from(dayjs(), true)); // 2 years
 
-  console.log(dayjs().fromNow());
+  // console.log(dayjs().fromNow());
 
-  console.log(dayjs().to(dayjs()));
+  // console.log(dayjs().to(dayjs()));
 
-  console.log(dayjs().toNow());
+  // console.log(dayjs().toNow());
 
   onMount(async () => {});
 
