@@ -230,7 +230,8 @@
   .stats-grid {
     display: grid;
     grid-auto-flow: column;
-    opacity: 0.75;
+    /* opacity: 0.75; */
+    color: var(--gray-text);
     gap: 0.75em;
     place-content: start;
   }
@@ -289,7 +290,8 @@
   }
 
   .postDate {
-    opacity: 0.75;
+    /* opacity: 0.75; */
+    color: var(--gray-text);
     font-size: 0.9em;
     padding: 0.5em;
     text-align: right;

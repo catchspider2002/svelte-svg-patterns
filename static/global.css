@@ -6,23 +6,24 @@
   --input-bg: #ffffff;
   --secondary-color: #ffc800;
   --accent-text: #805ad5;
-  --accent-hover: #805ad5AA;
+  --accent-hover: #805ad5aa;
   --accent-text-color: #ffffff;
   --secondary-text-color: #000000;
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
-  --gray-300: #E2E8F0;
-  --gray-400: #CBD5E0  ;
-  --gray-500: #A0AEC0;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e0;
+  --gray-500: #a0aec0;
   --gray-600: #718096;
-  --gray-700: #4A5568;
-  --gray-800: #2D3748;
+  --gray-700: #4a5568;
+  --gray-800: #2d3748;
   --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
   --gray-bg: var(--gray-400);
+  --gray-text: var(--gray-600);
   --input-background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%231a202c' stroke-width='1' d='m 6,9 6,6 6,-6'/></svg>"),
-  linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
+    linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
 }
 [data-theme="dark"] {
   --pattern-bg: rgb(24, 24, 30);
@@ -31,10 +32,11 @@
   --accent-text-color: #000000;
   --secondary-text-color: #ffffff;
   --accent-text: #ecc94b;
-  --accent-hover: #ecc94bAA;
+  --accent-hover: #ecc94baa;
   --gray-bg: var(--gray-700);
+  --gray-text: var(--gray-500);
   --input-background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23f7fafc' stroke-width='1' d='m 6,9 6,6 6,-6'/></svg>"),
-  linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
+    linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
 }
 
 *,
@@ -323,7 +325,8 @@ nav {
   padding: 0.25em;
 }
 
-.logo, .logoHome {
+.logo,
+.logoHome {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1rem;
