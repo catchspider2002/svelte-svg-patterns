@@ -60,12 +60,12 @@
     { text: "Stroke", value: "stroke" },
     { text: "Fill", value: "fill" },
   ];
-  let sortOptions = [
-    { text: "Alphabetical A-Z", value: "az" },
-    { text: "Alphabetical Z-A", value: "za" },
-    { text: "Oldest first", value: "old" },
-    { text: "Newest first", value: "new" },
-  ];
+  // let sortOptions = [
+  //   { text: "Alphabetical A-Z", value: "az" },
+  //   { text: "Alphabetical Z-A", value: "za" },
+  //   { text: "Oldest first", value: "old" },
+  //   { text: "Newest first", value: "new" },
+  // ];
 
   function filterChanged() {
     if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
@@ -293,6 +293,7 @@
     font-size: 0.9em;
     padding: 0.5em;
     text-align: right;
+    line-height: 1;
     background-color: var(--card-bg);
   }
 
