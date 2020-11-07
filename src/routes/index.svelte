@@ -24,24 +24,50 @@
 
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
-  // import { onMount } from "svelte";
+  import { onMount } from "svelte";
   export let posts;
   $: newPosts = posts;
   import { themeStore } from "./stores.js";
+  import dayjs from "dayjs";
+  import relativeTime from "dayjs/plugin/relativeTime";
 
   // let count_value;
   // themeStore.subscribe(value => {
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
+
+  // import cldrData from "cldr-data";
+  // import Globalize from "globalize";
+  // import RelativeTime from "relative-time";
+
+  dayjs.extend(relativeTime);
+
+  console.log(dayjs().from(dayjs("1990"))); // 2 years ago
+  console.log(dayjs().from(dayjs(), true)); // 2 years
+
+  console.log(dayjs().fromNow());
+
+  console.log(dayjs().to(dayjs()));
+
+  console.log(dayjs().toNow());
+
+  onMount(async () => {});
+
   $: index = "all";
-  let options = [
+  let filterOptions = [
     { text: "All", value: "all" },
     { text: "Stroke", value: "stroke" },
     { text: "Fill", value: "fill" },
   ];
+  let sortOptions = [
+    { text: "Alphabetical A-Z", value: "az" },
+    { text: "Alphabetical Z-A", value: "za" },
+    { text: "Oldest first", value: "old" },
+    { text: "Newest first", value: "new" },
+  ];
 
-  function selectChanged() {
+  function filterChanged() {
     if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
     else if (index === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
     else newPosts = posts;
@@ -64,10 +90,20 @@
   }
 
   function sortLatest() {
+    sortAlphabetical();
     newPosts = newPosts.sort(function (x, y) {
       let a = new Date(x.creationDate),
         b = new Date(y.creationDate);
       return a == b ? 0 : a > b ? -1 : 1;
+    });
+  }
+
+  function sortOldest() {
+    sortAlphabetical();
+    newPosts = newPosts.sort(function (x, y) {
+      let a = new Date(x.creationDate),
+        b = new Date(y.creationDate);
+      return a == b ? 0 : a > b ? 1 : -1;
     });
   }
 
@@ -128,7 +164,6 @@
     align-content: center;
     justify-content: center;
     text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
   }
 
@@ -147,6 +182,9 @@
     align-items: center;
     color: var(--secondary-text-color);
     /* padding: 2em 0; */
+  }
+  .outerPattern {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   .pattern {
@@ -248,6 +286,14 @@
     border: 0.125em solid var(--accent-text);
     color: var(--accent-text);
     background-color: transparent;
+  }
+
+  .postDate {
+    opacity: 0.75;
+    font-size: 0.9em;
+    padding: 0.5em;
+    text-align: right;
+    background-color: var(--card-bg);
   }
 
   @media (max-width: 768px) {
@@ -361,6 +407,7 @@
   /* Set options to normal weight */
   .select-css option {
     font-weight: normal;
+    padding: 10px 10px;
   }
 
   /* Support for rtl text, explicit support for Arabic and Hebrew */
@@ -444,8 +491,8 @@
   <div class="outerGrid">
     <div class="filterGrid">
       Filter
-      <select class="select-css" bind:value={index} on:change={selectChanged}>
-        {#each options as option, i}
+      <select class="select-css" bind:value={index} on:change={filterChanged}>
+        {#each filterOptions as option, i}
           <option value={option.value}>{option.text}</option>
         {/each}
       </select>
@@ -453,19 +500,20 @@
     <div class="sortGrid">
       <span>Sort</span>
       <div class="sortInner">
-        <button on:click={sortLatest}>Newest</button>
-        <button on:click={sortAlphabeticalReverse}>Popular</button>
-        <button on:click={sortAlphabetical}>Alphabetical</button>
+        <button on:click={sortLatest}>Latest</button>
+        <button on:click={sortOldest}>Oldest</button>
+        <button on:click={sortAlphabetical}>A-Z</button>
+        <button on:click={sortAlphabeticalReverse}>Z-A</button>
       </div>
     </div>
   </div>
   <div class="samples">
     {#each newPosts as post}
-      <div>
+      <div class="outerPattern">
         <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
           <span>{post.title}</span>
         </a>
-        <div>{post.creationDate}</div>
+        <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
       </div>
     {/each}
   </div>

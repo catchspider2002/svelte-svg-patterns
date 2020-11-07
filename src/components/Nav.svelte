@@ -91,6 +91,12 @@
   </a>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
+    <a
+      target="_blank"
+      href="https://twitter.com/intent/tweet?text=If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%20Generate%20fully%20customizable%20SVG%20patterns%20for%20free.%0A%0A100%2b%20patterns%20available%20at%20https%3A%2F%2Fpattern.monster%0A%0Avia%20%40Pattern_Monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster">
+      Tweet
+    </a>
+
     <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
     <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

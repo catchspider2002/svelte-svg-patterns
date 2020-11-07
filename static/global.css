@@ -323,7 +323,7 @@ nav {
   padding: 0.25em;
 }
 
-.logo {
+.logo, .logoHome {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1rem;
@@ -334,15 +334,8 @@ nav {
 }
 
 .logoHome {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
   padding-top: 2rem;
   padding-bottom: 1rem;
-  align-items: center;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  font-size: 1.125em;
 }
 
 .icon {

@@ -4,7 +4,7 @@
 </script>
 
 <div class="logoHome {className}" style="color: {color}">
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2em" height="2em" viewBox="0 0 128 128" data-inline="false">
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
     <g transform="translate(0 -3)" style="fill: {color}">
       <path
         d="M64.01 30.39c-34.48 0-51.26 20.65-51.26 46.11 0 4.45.71 8.74 2.03 12.81 2.48 7.64 6.49 15.25 6.23 23.48-.15 4.94-2.97 7.47-6.43
