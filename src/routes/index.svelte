@@ -110,13 +110,25 @@
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
-  $: colors = [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"];
+  $: colors = [
+    $themeStore === "light" ? "white" : "rgb(42,42,48)",
+    $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
+    "red",
+    "green",
+    "purple",
+  ];
 
   // let Pickr;
 
   $: svgPattern = (width, height, path, mode) => {
-    let strokeFill = "stroke-width='1' stroke='" + colors[1] + "' fill='none'";
-    if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[1] + "'";
+    let strokeGroup = "";
+
+    for (let i = 0; i < path.split("~").length; i++) {
+      let strokeFill = "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
+      if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
+
+      strokeGroup += path.split("~")[i].replace("/>", " " + strokeFill + "/>");
+    }
 
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -130,11 +142,9 @@
       height +
       "' fill='" +
       colors[0] +
-      "'/><g " +
-      strokeFill +
-      ">" +
-      path +
-      "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+      "'/>" +
+      strokeGroup +
+      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
 
@@ -164,7 +174,6 @@
     align-content: center;
     justify-content: center;
     text-decoration: none;
-    border-radius: var(--border-radius);
   }
 
   a span {
@@ -185,6 +194,8 @@
   }
   .outerPattern {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
   }
 
   .pattern {
@@ -289,14 +300,19 @@
     background-color: transparent;
   }
 
-  .postDate {
-    /* opacity: 0.75; */
+  .details {
+    background-color: var(--svg-bg);
     color: var(--gray-text);
     font-size: 0.9em;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
     padding: 0.5em;
-    text-align: right;
     line-height: 1;
-    background-color: var(--svg-bg);
+  }
+
+  .postDate {
+    text-align: right;
   }
 
   @media (max-width: 768px) {
@@ -349,6 +365,9 @@
       margin-left: 0;
       margin-right: 1em;
       margin-bottom: 1em;
+    }
+    .sortInner button:last-child {
+      margin-right: 0;
     }
   }
 
@@ -516,7 +535,10 @@
         <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
           <span>{post.title}</span>
         </a>
-        <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
+        <div class="details">
+          <div class="numColors">{post.colors} colors</div>
+          <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
+        </div>
       </div>
     {/each}
   </div>

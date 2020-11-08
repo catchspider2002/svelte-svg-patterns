@@ -7,22 +7,23 @@ const contents = JSON.stringify(
     //     b = y.title.toUpperCase();
     //   return a == b ? 0 : a > b ? 1 : -1;
     // })
-    .map(pattern => {
+    .map((pattern) => {
       return {
         title: pattern.title,
         slug: pattern.slug,
         width: pattern.width,
         height: pattern.height,
+        colors: pattern.colors,
         path: pattern.path,
         mode: pattern.mode,
-        creationDate: pattern.creationDate
+        creationDate: pattern.creationDate,
       };
     })
 );
 
 export function get(req, res) {
   res.writeHead(200, {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   });
 
   res.end(contents);
