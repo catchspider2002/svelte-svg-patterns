@@ -296,7 +296,7 @@
     padding: 0.5em;
     text-align: right;
     line-height: 1;
-    background-color: var(--card-bg);
+    background-color: var(--svg-bg);
   }
 
   @media (max-width: 768px) {

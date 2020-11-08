@@ -39,13 +39,62 @@
     // for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
     for (let i = 1; i <= 5; i++) {
       document.getElementById("color" + i + "Div").style.display = "block";
-      if (i <= selectedPattern.colors.length) {
-        createPicker("color" + i + "Div", i - 1);
-      } else {
-        document.getElementById("color" + i + "Div").style.display = "none";
-      }
+      // if (i <= selectedPattern.colors.length) createPicker("color" + i + "Div", i - 1);
+      if (i <= post.path.split("~").length + 1) createPicker("color" + i + "Div", i - 1);
+      else document.getElementById("color" + i + "Div").style.display = "none";
     }
   }
+
+  // let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
+  //   function multiStroke(i) {
+  //     if (mode === "stroke-join") {
+  //       strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
+  //       joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+  //     } else if (mode === "stroke") {
+  //       strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
+  //     } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
+
+  //     return (
+  //       "<g transform='translate(" +
+  //       spacing[0] / 2 +
+  //       "," +
+  //       (height * i + spacing[1] * i * 0.5) +
+  //       ")' " +
+  //       joinMode +
+  //       "stroke-width='" +
+  //       stroke +
+  //       "'" +
+  //       strokeFill +
+  //       ">" +
+  //       path +
+  //       "</g>"
+  //     );
+  //   }
+
+  //   let strokeFill = "",
+  //     joinMode = "",
+  //     strokeGroup = "";
+
+  //   for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
+
+  //   let patternNew =
+  //     "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
+  //     "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
+  //     (width + spacing[0]) +
+  //     "' height='" +
+  //     // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
+  //     (height * (colors.length - 1) + spacing[1] * (colors.length - 1)) +
+  //     "' patternTransform='scale(" +
+  //     scale +
+  //     ") rotate(" +
+  //     angle +
+  //     ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
+  //     colors[0] +
+  //     "'/>" +
+  //     strokeGroup +
+  //     "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+  //   return patternNew.replace("#", "%23");
+  // };
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
@@ -59,16 +108,14 @@
       return (
         "<g transform='translate(" +
         spacing[0] / 2 +
-        "," +
-        (height * i + spacing[1] * i * 0.5) +
-        ")' " +
+        ",0)' " +
         joinMode +
         "stroke-width='" +
         stroke +
         "'" +
         strokeFill +
         ">" +
-        path +
+        path.split("~")[i] +
         "</g>"
       );
     }
@@ -77,7 +124,7 @@
       joinMode = "",
       strokeGroup = "";
 
-    for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
+    for (let i = 0; i < colorCount - 1; i++) strokeGroup += multiStroke(i);
 
     let patternNew =
       "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -85,7 +132,7 @@
       (width + spacing[0]) +
       "' height='" +
       // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-      (height * (colors.length - 1) + spacing[1] * (colors.length - 1)) +
+      (height + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -98,7 +145,7 @@
     return patternNew.replace("#", "%23");
   };
 
-  const colorCount = post.colors,
+  const colorCount = post.path.split("~").length + 1,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
     maxSpacing = post.maxSpacing,
@@ -109,12 +156,16 @@
 
   const presetPattern = {
     id: 1,
-    colors: [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"],
+    colors: [
+      $themeStore === "light" ? "white" : "rgb(42,42,48)",
+      $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
+      "rgba(244, 67, 54, 1)",
+    ],
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
     angle: 0,
-    join: 1
+    join: 1,
   };
 
   $: selectedPattern = presetPattern;
@@ -152,13 +203,13 @@
     let randomSpacing = constants.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
-      // colors: randomColorSets(constants.randomNumber(2, colorCount)),
-      colors: randomColorSets(2),
+      colors: randomColorSets(colorCount),
+      // colors: randomColorSets(2),
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2)
+      join: constants.randomNumber(1, 2),
     };
     setPickers();
   }
@@ -188,7 +239,7 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    console.log(id);
+    // console.log(id);
     document.getElementById(id).textContent = "Copied!";
     setTimeout(function () {
       document.getElementById(id).textContent = buttonType;
@@ -224,11 +275,10 @@
           "rgba(139, 195, 74, 1)",
           "rgba(205, 220, 57, 1)",
           "rgba(255, 235, 59, 1)",
-          "rgba(255, 193, 7, 1)",
-          "rgba(233, 30, 99, 1)",
-          "#44337a",
+          "rgba(236, 201, 75, 1)",
+          "rgba(128, 90, 213, 1)",
           "rgba(255, 255, 255, 1)",
-          "rgba(0, 0, 0, 1)"
+          "rgba(0, 0, 0, 1)",
         ],
         components: {
           // preview: true,
@@ -242,9 +292,9 @@
             hsva: true,
             cmyk: false,
             input: true,
-            clear: false
-          }
-        }
+            clear: false,
+          },
+        },
       });
       pickr.on("change", (color, instance) => {
         selectedPattern.colors[colorId] = color.toHSLA().toString(0);
@@ -676,7 +726,7 @@
             bind:value={outputWidth}
             min="0"
             max="9999"
-            on:input={e => {
+            on:input={(e) => {
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
           <input
@@ -687,7 +737,7 @@
             bind:value={outputHeight}
             min="0"
             max="9999"
-            on:input={e => {
+            on:input={(e) => {
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
         </div>
@@ -725,7 +775,7 @@
       bind:value={outputWidth}
       min="0"
       max="9999"
-      on:input={e => {
+      on:input={(e) => {
         if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
     <input
@@ -736,7 +786,7 @@
       bind:value={outputHeight}
       min="0"
       max="9999"
-      on:input={e => {
+      on:input={(e) => {
         if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
   </div>
