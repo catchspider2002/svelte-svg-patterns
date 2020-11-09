@@ -105,19 +105,10 @@
         strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
       } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
 
-      return (
-        "<g transform='translate(" +
-        spacing[0] / 2 +
-        ",0)' " +
-        joinMode +
-        "stroke-width='" +
-        stroke +
-        "'" +
-        strokeFill +
-        ">" +
-        path.split("~")[i] +
-        "</g>"
-      );
+      return path
+        .split("~")
+        [i].replace("/>", " transform='translate(" + spacing[0] / 2 + ",0)' " + joinMode + "stroke-width='" + stroke + "'" + strokeFill + "/>")
+        .replace("transform='translate(0,0)' ", " ");
     }
 
     let strokeFill = "",
@@ -159,7 +150,9 @@
     colors: [
       $themeStore === "light" ? "white" : "rgb(42,42,48)",
       $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
-      "rgba(244, 67, 54, 1)",
+      "rgb(244, 67, 54)",
+      "rgb(3, 169, 244)",
+      $themeStore === "light" ? "rgb(236,201,75)" : "rgb(128,90,213)",
     ],
     stroke: 1,
     scale: 2,
@@ -347,13 +340,24 @@
   }
 
   .colors {
-    display: grid;
-    grid-template-columns: auto auto auto auto 1fr;
-    gap: 1em;
+    display: flex;
+    /* grid-template-columns: auto auto auto auto 1fr; */
+    /* gap: 1em; */
     align-items: center;
     padding: 2em 0;
-    /* grid-column: 2/4; */
+    flex-wrap: wrap;
+    margin-right: -1em;
   }
+  .colors div {
+    margin-right: 1em;
+    margin-bottom: 1em;
+  }
+
+  .colorLabel {
+    align-self: flex-start;
+    margin-top: 1em;
+  }
+
   .py-05 {
     padding: 0.5em 0;
   }
@@ -362,18 +366,20 @@
     border: 0 none;
     background-color: var(--accent-text);
     color: var(--accent-text-color);
-    height: 24px;
+    /* height: 24px; */
     font-size: 0.9em;
     padding: 2px 2px 0 2px;
     text-align: center;
-    width: 36px;
-    cursor: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+    min-width: 2.5em;
+    border-radius: var(--border-radius);
+    /* width: 36px; */
+    /* cursor: none; */
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+    /* user-select: none; */
   }
 
   .bottomBar {
@@ -689,9 +695,10 @@
             step="5"
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
-          <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+          <!-- <input class="uneditable" bind:value={selectedPattern.angle} readonly /> -->
+          <span class="uneditable">{selectedPattern.angle}</span>
         </div>
-        <label class="leftColumn">Colors</label>
+        <label class="leftColumn colorLabel">Colors</label>
         <div class="rightColumn colors py-05">
           {#each { length: 5 } as _, i}
             <div id="color{i + 1}Div" />
