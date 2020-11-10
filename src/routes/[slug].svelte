@@ -46,57 +46,6 @@
     }
   }
 
-  // let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
-  //   function multiStroke(i) {
-  //     if (mode === "stroke-join") {
-  //       strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
-  //       joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
-  //     } else if (mode === "stroke") {
-  //       strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
-  //     } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
-
-  //     return (
-  //       "<g transform='translate(" +
-  //       spacing[0] / 2 +
-  //       "," +
-  //       (height * i + spacing[1] * i * 0.5) +
-  //       ")' " +
-  //       joinMode +
-  //       "stroke-width='" +
-  //       stroke +
-  //       "'" +
-  //       strokeFill +
-  //       ">" +
-  //       path +
-  //       "</g>"
-  //     );
-  //   }
-
-  //   let strokeFill = "",
-  //     joinMode = "",
-  //     strokeGroup = "";
-
-  //   for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
-
-  //   let patternNew =
-  //     "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
-  //     "<pattern id='a' patternUnits='userSpaceOnUse' width='" +
-  //     (width + spacing[0]) +
-  //     "' height='" +
-  //     // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-  //     (height * (colors.length - 1) + spacing[1] * (colors.length - 1)) +
-  //     "' patternTransform='scale(" +
-  //     scale +
-  //     ") rotate(" +
-  //     angle +
-  //     ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
-  //     colors[0] +
-  //     "'/>" +
-  //     strokeGroup +
-  //     "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
-  //   return patternNew.replace("#", "%23");
-  // };
-
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
       let defColor = colors[i + 1];
