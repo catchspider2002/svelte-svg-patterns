@@ -38,10 +38,11 @@
     while (elements.length > 0) elements[0].remove();
     // for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
     for (let i = 1; i <= 5; i++) {
-      document.getElementById("color" + i + "Div").style.display = "block";
+      document.getElementById("color" + i + "Div").style.visibility = "visible";
       // if (i <= selectedPattern.colors.length) createPicker("color" + i + "Div", i - 1);
-      if (i <= post.path.split("~").length + 1) createPicker("color" + i + "Div", i - 1);
-      else document.getElementById("color" + i + "Div").style.display = "none";
+      // if (i <= post.path.split("~").length + 1) createPicker("color" + i + "Div", i - 1);
+      if (i <= colorCount) createPicker("color" + i + "Div", i - 1);
+      else document.getElementById("color" + i + "Div").style.visibility = "hidden";
     }
   }
 
@@ -98,13 +99,17 @@
 
   let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
+      let defColor = colors[i + 1];
+      if ((vHeight === 0) & (maxColors > 2) & (colorCount !== maxColors)) defColor = colors[1];
+
       if (mode === "stroke-join") {
-        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
+        strokeFill = " stroke='" + defColor + "' fill='none'";
         joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
       } else if (mode === "stroke") {
-        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
-      } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
+        strokeFill = " stroke='" + defColor + "' fill='none'";
+      } else strokeFill = " stroke='none' fill='" + defColor + "'";
 
+      // console.log("vHeight: " + vHeight + "; colorCount: " + colorCount + "; maxColors: " + maxColors);
       return path
         .split("~")
         [i].replace("/>", " transform='translate(" + spacing[0] / 2 + ",0)' " + joinMode + "stroke-width='" + stroke + "'" + strokeFill + "/>")
@@ -115,7 +120,11 @@
       joinMode = "",
       strokeGroup = "";
 
-    for (let i = 0; i < colorCount - 1; i++) strokeGroup += multiStroke(i);
+    if ((vHeight === 0) & (maxColors > 2)) {
+      for (let i = 0; i < maxColors - 1; i++) strokeGroup += multiStroke(i);
+    } else {
+      for (let i = 0; i < colorCount - 1; i++) strokeGroup += multiStroke(i);
+    }
 
     let patternNew =
       "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -123,7 +132,7 @@
       (width + spacing[0]) +
       "' height='" +
       // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-      (height + spacing[1]) +
+      (height - vHeight * (maxColors - colorCount) + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -136,12 +145,14 @@
     return patternNew.replace("#", "%23");
   };
 
-  const colorCount = post.path.split("~").length + 1,
+  let colorCount = post.path.split("~").length + 1;
+  const maxColors = post.path.split("~").length + 1,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
     maxSpacing = post.maxSpacing,
     width = post.width,
     height = post.height,
+    vHeight = post.vHeight,
     path = post.path,
     mode = post.mode;
 
@@ -699,6 +710,26 @@
           <span class="uneditable">{selectedPattern.angle}</span>
         </div>
         <label class="leftColumn colorLabel">Colors</label>
+
+        {#if maxColors > 2}
+          <div class="grid rightColumn">
+            <input
+              id="colorNum"
+              type="range"
+              bind:value={colorCount}
+              min="2"
+              max={maxColors}
+              step="1"
+              on:input={() => {
+                changing = true;
+                setPickers();
+                resetPattern();
+              }}
+              on:change={() => (changing = false)} />
+            <span class="uneditable">{colorCount}</span>
+          </div>
+        {/if}
+
         <div class="rightColumn colors py-05">
           {#each { length: 5 } as _, i}
             <div id="color{i + 1}Div" />
