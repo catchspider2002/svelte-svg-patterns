@@ -41,15 +41,16 @@
       document.getElementById("color" + i + "Div").style.visibility = "visible";
       // if (i <= selectedPattern.colors.length) createPicker("color" + i + "Div", i - 1);
       // if (i <= post.path.split("~").length + 1) createPicker("color" + i + "Div", i - 1);
-      if (i <= colorCount) createPicker("color" + i + "Div", i - 1);
+      if (i <= selectedPattern.colorCounts) createPicker("color" + i + "Div", i - 1);
       else document.getElementById("color" + i + "Div").style.visibility = "hidden";
     }
   }
 
-  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
+  let svgPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
+    // console.log(colorCounts)
     function multiStroke(i) {
       let defColor = colors[i + 1];
-      if ((vHeight === 0) & (maxColors > 2) & (colorCount !== maxColors)) defColor = colors[1];
+      if ((vHeight === 0) & (maxColors > 2) & (colorCounts !== maxColors)) defColor = colors[1];
 
       if (mode === "stroke-join") {
         strokeFill = " stroke='" + defColor + "' fill='none'";
@@ -72,7 +73,7 @@
     if ((vHeight === 0) & (maxColors > 2)) {
       for (let i = 0; i < maxColors - 1; i++) strokeGroup += multiStroke(i);
     } else {
-      for (let i = 0; i < colorCount - 1; i++) strokeGroup += multiStroke(i);
+      for (let i = 0; i < colorCounts - 1; i++) strokeGroup += multiStroke(i);
     }
 
     let patternNew =
@@ -81,7 +82,7 @@
       (width + spacing[0]) +
       "' height='" +
       // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-      (height - vHeight * (maxColors - colorCount) + spacing[1]) +
+      (height - vHeight * (maxColors - colorCounts) + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -114,6 +115,7 @@
       "rgb(3, 169, 244)",
       $themeStore === "light" ? "rgb(236,201,75)" : "rgb(128,90,213)",
     ],
+    colorCounts: colorCount,
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
@@ -124,6 +126,7 @@
   $: selectedPattern = presetPattern;
   $: svgFile = svgPattern(
     selectedPattern.colors,
+    selectedPattern.colorCounts,
     selectedPattern.stroke,
     selectedPattern.scale,
     selectedPattern.spacing,
@@ -144,6 +147,8 @@
 
   function resetPattern() {
     selectedPattern = presetPattern;
+
+    selectedPattern.colorCounts = colorCount;
     selectedPattern.scale = 2;
     selectedPattern.stroke = 1;
     selectedPattern.spacing = [0, 0];
@@ -156,8 +161,9 @@
     let randomSpacing = constants.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
-      colors: randomColorSets(colorCount),
+      colors: randomColorSets(selectedPattern.colorCounts),
       // colors: randomColorSets(2),
+      colorCounts: selectedPattern.colorCounts,
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
@@ -665,17 +671,16 @@
             <input
               id="colorNum"
               type="range"
-              bind:value={colorCount}
+              bind:value={selectedPattern.colorCounts}
               min="2"
               max={maxColors}
               step="1"
               on:input={() => {
                 changing = true;
                 setPickers();
-                resetPattern();
               }}
               on:change={() => (changing = false)} />
-            <span class="uneditable">{colorCount}</span>
+            <span class="uneditable">{selectedPattern.colorCounts}</span>
           </div>
         {/if}
 
