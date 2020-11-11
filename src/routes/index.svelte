@@ -110,7 +110,13 @@
   let website = "https://pattern.monster";
 
   // $: colors = ["white", "black"];
-  $: colors = [
+  // $: colors = ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"]
+  // $: colors = ["rgb(68,51,122)", "rgb(255,200,0)", "#rgb(255,255,255)", "rgb(255,0,84)", "rgb(0,168,120)"];
+  // $: colors = ["rgb(85,96,82)", "rgb(255,200,0)", "  yellow", "orange", "red"];
+
+  $: colors = 
+  // ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"];
+  [
     $themeStore === "light" ? "white" : "rgb(42,42,48)",
     $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
     "red",
