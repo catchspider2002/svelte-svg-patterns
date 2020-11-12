@@ -106,15 +106,12 @@
     path = post.path,
     mode = post.mode;
 
+  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
+  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+
   const presetPattern = {
     id: 1,
-    colors: [
-      $themeStore === "light" ? "white" : "rgb(42,42,48)",
-      $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
-      "rgb(244, 67, 54)",
-      "rgb(3, 169, 244)",
-      $themeStore === "light" ? "rgb(236,201,75)" : "rgb(128,90,213)",
-    ],
+    colors: $themeStore === "light" ? lightColors : darkColors,
     colorCounts: colorCount,
     stroke: 1,
     scale: 2,
@@ -223,19 +220,20 @@
         // lockOpacity: true,
         swatches: [
           "rgba(244, 67, 54, 1)",
-          "rgba(233, 30, 99, 1)",
+          "rgba(225, 82, 131, 1)",
           "rgba(156, 39, 176, 1)",
-          "rgba(103, 58, 183, 1)",
+          "rgba(128, 90, 213, 1)", // 4
+          // "rgba(103, 58, 183, 1)",
           "rgba(63, 81, 181, 1)",
           "rgba(3, 169, 244, 1)",
-          "rgba(0, 188, 212, 1)",
+          "rgba(0, 188, 212, 1)", // 7
           "rgba(0, 150, 136, 1)",
           "rgba(76, 175, 80, 1)",
           "rgba(139, 195, 74, 1)",
-          "rgba(205, 220, 57, 1)",
+          "rgba(205, 220, 57, 1)", // 11
           "rgba(255, 235, 59, 1)",
           "rgba(236, 201, 75, 1)",
-          "rgba(128, 90, 213, 1)",
+          "rgba(246, 173, 85, 1)", // 14
           "rgba(255, 255, 255, 1)",
           "rgba(0, 0, 0, 1)",
         ],

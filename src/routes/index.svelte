@@ -109,20 +109,17 @@
 
   let website = "https://pattern.monster";
 
+  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
+  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+
   // $: colors = ["white", "black"];
   // $: colors = ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"]
   // $: colors = ["rgb(68,51,122)", "rgb(255,200,0)", "#rgb(255,255,255)", "rgb(255,0,84)", "rgb(0,168,120)"];
   // $: colors = ["rgb(85,96,82)", "rgb(255,200,0)", "  yellow", "orange", "red"];
 
-  $: colors = 
-  // ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"];
-  [
-    $themeStore === "light" ? "white" : "rgb(42,42,48)",
-    $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)",
-    "red",
-    "green",
-    "purple",
-  ];
+  $: colors =
+    // ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"];
+    $themeStore === "light" ? lightColors : darkColors;
 
   // let Pickr;
 
