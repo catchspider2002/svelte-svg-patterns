@@ -22,7 +22,8 @@
   //   newPosts = posts;
   // }
 
-  import AutoComplete from "simple-svelte-autocomplete";
+  // import AutoComplete from "simple-svelte-autocomplete";
+  import AutoComplete from "../components/SimpleAutocomplete.svelte";
 
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
@@ -121,14 +122,7 @@
   let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
   let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
 
-  // $: colors = ["white", "black"];
-  // $: colors = ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"]
-  // $: colors = ["rgb(68,51,122)", "rgb(255,200,0)", "#rgb(255,255,255)", "rgb(255,0,84)", "rgb(0,168,120)"];
-  // $: colors = ["rgb(85,96,82)", "rgb(255,200,0)", "  yellow", "orange", "red"];
-
-  $: colors =
-    // ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"];
-    $themeStore === "light" ? lightColors : darkColors;
+  $: colors = $themeStore === "light" ? lightColors : darkColors;
 
   // let Pickr;
 
@@ -525,8 +519,20 @@
           <option value={option.value}>{option.text}</option>
         {/each}
       </select> -->
-    <AutoComplete inputId="filterMode" placeholder="Mode" items={filterOptions} bind:selectedItem={mode} labelFieldName="text" onChange={filterChanged} />
-    <AutoComplete inputId="filterColor" placeholder="Colors" items={colorOptions} bind:selectedItem={colorsCount} labelFieldName="text" onChange={colorsChanged} />
+      <AutoComplete
+        inputId="filterMode"
+        placeholder="Mode"
+        items={filterOptions}
+        bind:selectedItem={mode}
+        labelFieldName="text"
+        onChange={filterChanged} />
+      <AutoComplete
+        inputId="filterColor"
+        placeholder="Colors"
+        items={colorOptions}
+        bind:selectedItem={colorsCount}
+        labelFieldName="text"
+        onChange={colorsChanged} />
     </div>
     <div class="sortGrid">
       <span>Sort</span>

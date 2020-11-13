@@ -47,10 +47,15 @@
   }
 
   let svgPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
-    // console.log(colorCounts)
     function multiStroke(i) {
       let defColor = colors[i + 1];
-      if ((vHeight === 0) & (maxColors > 2) & (colorCounts !== maxColors)) defColor = colors[1];
+      if ((vHeight === 0) & (maxColors > 2)) {
+        // if(colorCounts !== maxColors) defColor = colors[1];
+        if ((colorCounts === 3) & (maxColors === 4) & (i === 2)) defColor = colors[1];
+        else if (colorCounts === 2) defColor = colors[1];
+        // console.log("colorCounts: " + colorCounts + ", maxColors: " + maxColors + ", defColor: " + defColor);
+        // console.log("colors: " + colors);
+      }
 
       if (mode === "stroke-join") {
         strokeFill = " stroke='" + defColor + "' fill='none'";
@@ -106,7 +111,7 @@
     path = post.path,
     mode = post.mode;
 
-  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
+  let lightColors = ["rgb(42,42,48)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
   let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
 
   const presetPattern = {
