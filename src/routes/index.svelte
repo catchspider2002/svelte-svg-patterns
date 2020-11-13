@@ -22,11 +22,13 @@
   //   newPosts = posts;
   // }
 
+  import AutoComplete from "simple-svelte-autocomplete";
+
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
   import { onMount } from "svelte";
   export let posts;
-  $: newPosts = posts;
+  let newPosts = posts;
   import { themeStore } from "./stores.js";
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
@@ -37,29 +39,30 @@
   //   // console.log("store Theme: " + value);
   // });
 
-  // import cldrData from "cldr-data";
-  // import Globalize from "globalize";
-  // import RelativeTime from "relative-time";
-
   dayjs.extend(relativeTime);
-
-  // console.log(dayjs().from(dayjs("1990"))); // 2 years ago
-  // console.log(dayjs().from(dayjs(), true)); // 2 years
-
-  // console.log(dayjs().fromNow());
-
-  // console.log(dayjs().to(dayjs()));
-
-  // console.log(dayjs().toNow());
 
   onMount(async () => {});
 
-  $: index = "all";
+  let mode = { text: "All modes", value: "all" };
+  let colorsCount = { text: "All colors", value: 0 };
+
   let filterOptions = [
-    { text: "All", value: "all" },
+    { text: "All modes", value: "all" },
     { text: "Stroke", value: "stroke" },
     { text: "Fill", value: "fill" },
   ];
+
+  let colorOptions = [
+    { text: "All colors", value: 0 },
+    { text: "2 colors", value: 2 },
+    { text: "3 colors", value: 3 },
+    { text: "4 colors", value: 4 },
+    { text: "5 colors", value: 5 },
+  ];
+
+  const colors1 = [0, 2, 3, 4, 5];
+  let selectedColor;
+
   // let sortOptions = [
   //   { text: "Alphabetical A-Z", value: "az" },
   //   { text: "Alphabetical Z-A", value: "za" },
@@ -68,8 +71,14 @@
   // ];
 
   function filterChanged() {
-    if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
-    else if (index === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    if (mode.value === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (mode.value === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    else newPosts = posts;
+  }
+
+  function colorsChanged() {
+    console.log(colorsCount);
+    if (colorsCount.value > 1) newPosts = posts.filter((pattern) => pattern.colors === colorsCount.value);
     else newPosts = posts;
   }
 
@@ -384,8 +393,7 @@
   }
 
   /* Select Styling */
-  /* class applies to select element itself, not a wrapper element */
-  .select-css {
+  /* .select-css {
     display: block;
     font-size: 16px;
     font-family: sans-serif;
@@ -394,7 +402,7 @@
     line-height: 1.3;
     padding: 0.6em 2.4em 0.5em 0.8em;
     width: 100%;
-    max-width: 100%; /* useful when width is set to anything other than 100% */
+    max-width: 100%;
     box-sizing: border-box;
     margin: 0;
     border: 1px solid #aaa;
@@ -404,44 +412,35 @@
     -webkit-appearance: none;
     appearance: none;
     background-color: var(--input-bg);
-    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
-        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
-        
-    */
     background-image: var(--input-background);
     background-repeat: no-repeat, repeat;
-    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
     background-position: right 0.7em top 50%, 0 0;
-    /* icon size, then gradient */
     background-size: 1.2em auto, 100%;
   }
-  /* Hover style */
+  
   .select-css:hover {
     border-color: #888;
   }
-  /* Focus style */
+  
   .select-css:focus {
     border-color: #aaa;
-    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
     box-shadow: 0 0 1px 3px var(--secondary-color-hover);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: var(--secondary-text-color);
     outline: none;
   }
 
-  /* Set options to normal weight */
   .select-css option {
     font-weight: normal;
     padding: 10px 10px;
   }
 
-  /* Support for rtl text, explicit support for Arabic and Hebrew */
   *[dir="rtl"] .select-css,
   :root:lang(ar) .select-css,
   :root:lang(iw) .select-css {
     background-position: left 0.7em top 50%, 0 0;
     padding: 0.6em 0.8em 0.5em 1.4em;
-  }
+  } */
 </style>
 
 <svelte:head>
@@ -516,11 +515,18 @@
   <div class="outerGrid">
     <div class="filterGrid">
       Filter
-      <select class="select-css" bind:value={index} on:change={filterChanged}>
+      <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
         {#each filterOptions as option, i}
           <option value={option.value}>{option.text}</option>
         {/each}
-      </select>
+      </select> -->
+      <!-- <select class="select-css" bind:value={colorsCount} on:change={colorsChanged}>
+        {#each colorOptions as option, i}
+          <option value={option.value}>{option.text}</option>
+        {/each}
+      </select> -->
+    <AutoComplete inputId="filterMode" placeholder="Mode" items={filterOptions} bind:selectedItem={mode} labelFieldName="text" onChange={filterChanged} />
+    <AutoComplete inputId="filterColor" placeholder="Colors" items={colorOptions} bind:selectedItem={colorsCount} labelFieldName="text" onChange={colorsChanged} />
     </div>
     <div class="sortGrid">
       <span>Sort</span>

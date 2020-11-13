@@ -430,6 +430,24 @@ nav a {
   }
 }
 
+/* Autocomplete */
+.autocomplete {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-input {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-list {
+  background: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-list-item {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+
 /*! Pickr 1.7.2 MIT | https://github.com/Simonwep/pickr */
 .pickr {
   position: relative;
