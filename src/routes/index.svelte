@@ -42,7 +42,10 @@
 
   dayjs.extend(relativeTime);
 
-  onMount(async () => {});
+  onMount(async () => {
+    let searchBar = document.getElementById("search");
+    searchBar.focus();
+  });
 
   let mode = { text: "All modes", value: "all" };
   let colorsCount = { text: "All colors", value: 0 };
@@ -61,8 +64,7 @@
     { text: "5 colors", value: 5 },
   ];
 
-  const colors1 = [0, 2, 3, 4, 5];
-  let selectedColor;
+  let searchText;
 
   // let sortOptions = [
   //   { text: "Alphabetical A-Z", value: "az" },
@@ -78,8 +80,14 @@
   }
 
   function colorsChanged() {
-    console.log(colorsCount);
     if (colorsCount.value > 1) newPosts = posts.filter((pattern) => pattern.colors === colorsCount.value);
+    else newPosts = posts;
+  }
+
+  function searchChanged() {
+    // if (searchText.length > 1) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().indexOf(searchText) >= 0);
+    if (searchText.length > 0) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().includes(searchText.toLowerCase()));
+    // toLowerCase().indexOf("abcd") >= 0
     else newPosts = posts;
   }
 
@@ -274,6 +282,7 @@
     place-items: center;
     justify-self: start;
     gap: 1em;
+    order: -1;
   }
   .sortGrid {
     display: grid;
@@ -281,6 +290,7 @@
     align-items: center;
     grid-auto-flow: column;
     justify-self: end;
+    order: 1
     /* gap: 1em; */
   }
   .sortInner {
@@ -321,6 +331,38 @@
     text-align: right;
   }
 
+  .search {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0.125em solid var(--gray-text);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    color: var(--gray-text);
+    line-height: 1.25;
+  }
+
+  .search:focus {
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    box-shadow: 0 0 0 3px var(--accent-hover);
+  }
+
+  @media (max-width: 1080px) {
+    .outerGrid {
+      grid-auto-flow: row;
+    }
+    .sortGrid {
+      justify-self: start;
+    }
+    .filterGrid {
+      order: 0;
+    }
+  }
+
   @media (max-width: 768px) {
     h1 {
       text-align: left;
@@ -343,12 +385,6 @@
     }
     .stats {
       grid-template-columns: auto auto;
-    }
-    .outerGrid {
-      grid-auto-flow: row;
-    }
-    .sortGrid {
-      justify-self: start;
     }
   }
   @media (max-width: 440px) {
@@ -507,6 +543,7 @@
   </p>
 
   <div class="outerGrid">
+    <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder="Search for patterns" on:input={searchChanged} />
     <div class="filterGrid">
       Filter
       <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
@@ -552,7 +589,7 @@
         </a>
         <div class="details">
           <div class="numColors">{post.colors} colors</div>
-          <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
+          <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
         </div>
       </div>
     {/each}

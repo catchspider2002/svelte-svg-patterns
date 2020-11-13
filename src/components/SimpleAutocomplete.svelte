@@ -600,7 +600,15 @@
     font: inherit;
     width: 100%;
     height: 100%;
-    padding: 5px 11px;
+    /* padding: 5px 11px; */
+    padding: 0.6rem 0.75rem;
+    cursor: default;
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
   }
 
   .autocomplete:not(.hide-arrow) .autocomplete-input {
@@ -671,16 +679,17 @@
   /* Autocomplete */
   .autocomplete {
     background-color: var(--card-bg);
-    color: var(--secondary-text-color);
+    color: var(--gray-text);
     border: 0.125em solid var(--gray-text);
+    border-radius: var(--border-radius);
   }
   .autocomplete-input {
     background-color: var(--card-bg);
-    color: var(--secondary-text-color);
+    color: var(--gray-text);
   }
   .autocomplete-list {
     background: var(--card-bg);
-    color: var(--secondary-text-color);
+    color: var(--gray-text);
   }
   .autocomplete-list-item {
     background-color: var(--card-bg);
@@ -702,6 +711,7 @@
   {showClear ? 'show-clear' : ''} autocomplete select is-fullwidth {uniqueId}">
   <input
     type="text"
+    readonly
     class="{inputClassName ? inputClassName : ''} input autocomplete-input"
     id={inputId ? inputId : ''}
     {placeholder}
