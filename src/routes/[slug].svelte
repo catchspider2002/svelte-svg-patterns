@@ -313,7 +313,8 @@
     /* grid-template-columns: auto auto auto auto 1fr; */
     /* gap: 1em; */
     align-items: center;
-    padding: 2em 0;
+    /* padding: 2em 0; */
+    padding: 0;
     flex-wrap: wrap;
     margin-right: -1em;
   }
@@ -324,12 +325,12 @@
 
   .colorLabel {
     align-self: flex-start;
-    margin-top: 1em;
+    /* margin-top: 1em; */
   }
 
-  .py-05 {
-    padding: 0.5em 0;
-  }
+  /* .p-0 {
+    padding: 0;
+  } */
 
   .uneditable {
     border: 0 none;
@@ -687,7 +688,7 @@
           </div>
         {/if}
 
-        <div class="rightColumn colors py-05">
+        <div class="rightColumn colors">
           {#each { length: 5 } as _, i}
             <div id="color{i + 1}Div" />
           {/each}

@@ -16,6 +16,7 @@ const contents = JSON.stringify(
         colors: pattern.colors,
         path: pattern.path,
         mode: pattern.mode,
+        tags: pattern.tags,
         creationDate: pattern.creationDate,
       };
     })

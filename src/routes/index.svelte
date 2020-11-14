@@ -42,9 +42,9 @@
 
   dayjs.extend(relativeTime);
 
+  let searchBar;
   onMount(async () => {
-    let searchBar = document.getElementById("search");
-    searchBar.focus();
+    searchBar = document.getElementById("search");
   });
 
   let mode = { text: "All modes", value: "all" };
@@ -86,9 +86,14 @@
 
   function searchChanged() {
     // if (searchText.length > 1) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().indexOf(searchText) >= 0);
-    if (searchText.length > 0) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().includes(searchText.toLowerCase()));
-    // toLowerCase().indexOf("abcd") >= 0
-    else newPosts = posts;
+    // if (searchText.length > 0) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().includes(searchText.toLowerCase()));
+    if (searchText.length > 0) {
+      newPosts = posts.filter((pattern) =>
+        pattern.tags.find(function (tag) {
+          return tag.includes(searchText.toLowerCase());
+        })
+      );
+    } else newPosts = posts;
   }
 
   function sortAlphabetical() {
@@ -123,6 +128,15 @@
         b = new Date(y.creationDate);
       return a == b ? 0 : a > b ? 1 : -1;
     });
+  }
+
+  let key, keyCode;
+  function handleKeydown(event) {
+    keyCode = event.keyCode;
+    if (keyCode === 191) {
+      event.preventDefault();
+      searchBar.focus();
+    }
   }
 
   let website = "https://pattern.monster";
@@ -290,7 +304,7 @@
     align-items: center;
     grid-auto-flow: column;
     justify-self: end;
-    order: 1
+    order: 1;
     /* gap: 1em; */
   }
   .sortInner {
@@ -336,7 +350,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: 0.125em solid var(--gray-text);
+    font-size: 0.85em;
+    border: 0.0625em solid var(--gray-text);
     border-radius: var(--border-radius);
     background-color: var(--card-bg);
     width: 100%;
@@ -508,6 +523,8 @@
   <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
 
+<svelte:window on:keydown={handleKeydown} />
+
 <div class="patternsList">
   <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
   <div class="stats">
@@ -543,7 +560,14 @@
   </p>
 
   <div class="outerGrid">
-    <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder="Search for patterns" on:input={searchChanged} />
+    <input
+      id="search"
+      class="search"
+      type="text"
+      title="Search"
+      bind:value={searchText}
+      placeholder="Search for patterns (Press '/' to focus)"
+      on:input={searchChanged} />
     <div class="filterGrid">
       Filter
       <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
@@ -588,7 +612,13 @@
           <span>{post.title}</span>
         </a>
         <div class="details">
-          <div class="numColors">{post.colors} colors</div>
+          
+        {#if post.colors > 2}
+        <div class="numColors">2 - {post.colors} colors</div>
+{:else}
+        <div class="numColors">{post.colors} colors</div>
+         
+        {/if}
           <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
         </div>
       </div>

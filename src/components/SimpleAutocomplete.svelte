@@ -598,6 +598,7 @@
   }
   .autocomplete-input {
     font: inherit;
+    font-size: 0.85em;
     width: 100%;
     height: 100%;
     /* padding: 5px 11px; */
@@ -637,10 +638,11 @@
     padding: 0;
   }
   .autocomplete-list-item {
-    padding: 5px 15px;
+    padding: 0.75em 1em;
     color: #333;
     cursor: pointer;
     line-height: 1;
+    font-size: 0.85em;
   }
 
   .autocomplete-list-item:hover,
@@ -680,7 +682,7 @@
   .autocomplete {
     background-color: var(--card-bg);
     color: var(--gray-text);
-    border: 0.125em solid var(--gray-text);
+    border: 0.0625em solid var(--gray-text);
     border-radius: var(--border-radius);
   }
   .autocomplete-input {
