@@ -52,6 +52,9 @@
       if ((vHeight === 0) & (maxColors > 2)) {
         // if(colorCounts !== maxColors) defColor = colors[1];
         if ((colorCounts === 3) & (maxColors === 4) & (i === 2)) defColor = colors[1];
+        else if ((colorCounts === 4) & (maxColors === 5) & (i === 3)) defColor = colors[1];
+        else if ((colorCounts === 3) & (maxColors === 5) & (i === 3)) defColor = colors[1];
+        else if ((colorCounts === 3) & (maxColors === 5) & (i === 2)) defColor = colors[1];
         else if (colorCounts === 2) defColor = colors[1];
         // console.log("colorCounts: " + colorCounts + ", maxColors: " + maxColors + ", defColor: " + defColor);
         // console.log("colors: " + colors);

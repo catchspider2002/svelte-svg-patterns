@@ -44,7 +44,7 @@
 
   let searchBar;
   let w;
-  $: placeholderSearch = w <= 640 ? "Search for patterns" : "Search for patterns (Press '/' to focus)";
+  $: placeholderSearch = w > 640 ? "Search for patterns (Press '/' to focus)" : "Search for patterns";
   // if (w <= 640) placeholderSearch = "Search for patterns";
 
   onMount(async () => {
