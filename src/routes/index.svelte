@@ -347,20 +347,42 @@
   }
 
   .postDate {
-    text-align: right;
+    justify-self: end;
+  }
+
+  .searchBox {
+    padding: 0.5rem 0.75rem;
+    border: 0.0625em solid var(--gray-text);
+    background-color: var(--card-bg);
+    color: var(--gray-text);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .searchBox:focus-within {
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    box-shadow: 0 0 0 3px var(--accent-hover);
+  }
+
+  .searchBox .icon {
+    width: 1em;
+    height: 1em;
   }
 
   .search {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     font-size: 0.85em;
-    border: 0.0625em solid var(--gray-text);
-    border-radius: var(--border-radius);
-    background-color: var(--card-bg);
+    /* border: 0; */
+    outline: 0;
+    background-color: transparent;
     width: 100%;
-    padding: 0.6rem 0.75rem;
+    padding: 0;
     color: var(--gray-text);
     line-height: 1.25;
   }
@@ -368,7 +390,7 @@
   .search:focus {
     outline: 1px solid transparent;
     outline-offset: 1px;
-    box-shadow: 0 0 0 3px var(--accent-hover);
+    /* box-shadow: 0 0 0 3px var(--accent-hover); */
   }
 
   @media (max-width: 1080px) {
@@ -565,8 +587,12 @@
   </p>
 
   <div class="outerGrid">
-    <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
-
+    <div class="searchBox">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.search} />
+      </svg>
+      <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+    </div>
     <div class="filterGrid">
       Filter
       <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
