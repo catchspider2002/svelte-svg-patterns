@@ -286,6 +286,7 @@
     display: grid;
     /* width: 100%; */
     grid-auto-flow: column;
+    grid-template-columns: auto 1fr auto;
     /* justify-items: center; */
     /* place-content: start; */
     place-items: center;
@@ -351,7 +352,7 @@
   }
 
   .searchBox {
-    padding: 0.5rem 0.75rem;
+    padding: 0.625rem 0.75rem;
     border: 0.0625em solid var(--gray-text);
     background-color: var(--card-bg);
     color: var(--gray-text);
@@ -396,6 +397,7 @@
   @media (max-width: 1080px) {
     .outerGrid {
       grid-auto-flow: row;
+      grid-template-columns: auto;
     }
     .sortGrid {
       justify-self: start;
