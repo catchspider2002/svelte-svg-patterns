@@ -22,11 +22,14 @@
   //   newPosts = posts;
   // }
 
+  // import AutoComplete from "simple-svelte-autocomplete";
+  import AutoComplete from "../components/SimpleAutocomplete.svelte";
+
   import Footer from "../components/Footer.svelte";
   import Constants from "../routes/_constants.js";
   import { onMount } from "svelte";
   export let posts;
-  $: newPosts = posts;
+  let newPosts = posts;
   import { themeStore } from "./stores.js";
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
@@ -37,29 +40,36 @@
   //   // console.log("store Theme: " + value);
   // });
 
-  // import cldrData from "cldr-data";
-  // import Globalize from "globalize";
-  // import RelativeTime from "relative-time";
-
   dayjs.extend(relativeTime);
 
-  // console.log(dayjs().from(dayjs("1990"))); // 2 years ago
-  // console.log(dayjs().from(dayjs(), true)); // 2 years
+  let searchBar;
+  let w;
+  $: placeholderSearch = w <= 640 ? "Search for patterns" : "Search for patterns (Press '/' to focus)";
+  // if (w <= 640) placeholderSearch = "Search for patterns";
 
-  // console.log(dayjs().fromNow());
+  onMount(async () => {
+    searchBar = document.getElementById("search");
+  });
 
-  // console.log(dayjs().to(dayjs()));
+  let mode = { text: "All modes", value: "all" };
+  let colorsCount = { text: "All colors", value: 0 };
 
-  // console.log(dayjs().toNow());
-
-  onMount(async () => {});
-
-  $: index = "all";
   let filterOptions = [
-    { text: "All", value: "all" },
+    { text: "All modes", value: "all" },
     { text: "Stroke", value: "stroke" },
     { text: "Fill", value: "fill" },
   ];
+
+  let colorOptions = [
+    { text: "All colors", value: 0 },
+    { text: "2 colors", value: 2 },
+    { text: "3 colors", value: 3 },
+    { text: "4 colors", value: 4 },
+    { text: "5 colors", value: 5 },
+  ];
+
+  let searchText;
+
   // let sortOptions = [
   //   { text: "Alphabetical A-Z", value: "az" },
   //   { text: "Alphabetical Z-A", value: "za" },
@@ -68,9 +78,26 @@
   // ];
 
   function filterChanged() {
-    if (index === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
-    else if (index === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    if (mode.value === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (mode.value === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
     else newPosts = posts;
+  }
+
+  function colorsChanged() {
+    if (colorsCount.value > 1) newPosts = posts.filter((pattern) => pattern.colors === colorsCount.value);
+    else newPosts = posts;
+  }
+
+  function searchChanged() {
+    // if (searchText.length > 1) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().indexOf(searchText) >= 0);
+    // if (searchText.length > 0) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().includes(searchText.toLowerCase()));
+    if (searchText.length > 0) {
+      newPosts = posts.filter((pattern) =>
+        pattern.tags.find(function (tag) {
+          return tag.includes(searchText.toLowerCase());
+        })
+      );
+    } else newPosts = posts;
   }
 
   function sortAlphabetical() {
@@ -107,16 +134,34 @@
     });
   }
 
+  let keyCode;
+
+  function handleKeydown(event) {
+    keyCode = event.keyCode;
+    if (keyCode === 191) {
+      event.preventDefault();
+      searchBar.focus();
+    }
+  }
+
   let website = "https://pattern.monster";
 
-  // $: colors = ["white", "black"];
-  $: colors = [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"];
+  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
+  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+
+  $: colors = $themeStore === "light" ? lightColors : darkColors;
 
   // let Pickr;
 
   $: svgPattern = (width, height, path, mode) => {
-    let strokeFill = "stroke-width='1' stroke='" + colors[1] + "' fill='none'";
-    if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[1] + "'";
+    let strokeGroup = "";
+
+    for (let i = 0; i < path.split("~").length; i++) {
+      let strokeFill = "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
+      if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
+
+      strokeGroup += path.split("~")[i].replace("/>", " " + strokeFill + "/>");
+    }
 
     let patternNew =
       "<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -130,11 +175,9 @@
       height +
       "' fill='" +
       colors[0] +
-      "'/><g " +
-      strokeFill +
-      ">" +
-      path +
-      "</g></pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+      "'/>" +
+      strokeGroup +
+      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
     return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
 
@@ -164,7 +207,6 @@
     align-content: center;
     justify-content: center;
     text-decoration: none;
-    border-radius: var(--border-radius);
   }
 
   a span {
@@ -185,6 +227,8 @@
   }
   .outerPattern {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
   }
 
   .pattern {
@@ -257,6 +301,7 @@
     place-items: center;
     justify-self: start;
     gap: 1em;
+    order: -1;
   }
   .sortGrid {
     display: grid;
@@ -264,6 +309,7 @@
     align-items: center;
     grid-auto-flow: column;
     justify-self: end;
+    order: 1;
     /* gap: 1em; */
   }
   .sortInner {
@@ -289,14 +335,74 @@
     background-color: transparent;
   }
 
-  .postDate {
-    /* opacity: 0.75; */
+  .details {
+    background-color: var(--svg-bg);
     color: var(--gray-text);
     font-size: 0.9em;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
     padding: 0.5em;
-    text-align: right;
     line-height: 1;
+  }
+
+  .postDate {
+    justify-self: end;
+  }
+
+  .searchBox {
+    padding: 0.5rem 0.75rem;
+    border: 0.0625em solid var(--gray-text);
     background-color: var(--card-bg);
+    color: var(--gray-text);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .searchBox:focus-within {
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    box-shadow: 0 0 0 3px var(--accent-hover);
+  }
+
+  .searchBox .icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  .search {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 0.85em;
+    /* border: 0; */
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    color: var(--gray-text);
+    line-height: 1.25;
+  }
+
+  .search:focus {
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    /* box-shadow: 0 0 0 3px var(--accent-hover); */
+  }
+
+  @media (max-width: 1080px) {
+    .outerGrid {
+      grid-auto-flow: row;
+    }
+    .sortGrid {
+      justify-self: start;
+    }
+    .filterGrid {
+      order: 0;
+    }
   }
 
   @media (max-width: 768px) {
@@ -322,12 +428,6 @@
     .stats {
       grid-template-columns: auto auto;
     }
-    .outerGrid {
-      grid-auto-flow: row;
-    }
-    .sortGrid {
-      justify-self: start;
-    }
   }
   @media (max-width: 440px) {
     .outerGrid {
@@ -350,6 +450,9 @@
       margin-right: 1em;
       margin-bottom: 1em;
     }
+    .sortInner button:last-child {
+      margin-right: 0;
+    }
   }
 
   @media (max-width: 380px) {
@@ -362,8 +465,7 @@
   }
 
   /* Select Styling */
-  /* class applies to select element itself, not a wrapper element */
-  .select-css {
+  /* .select-css {
     display: block;
     font-size: 16px;
     font-family: sans-serif;
@@ -372,7 +474,7 @@
     line-height: 1.3;
     padding: 0.6em 2.4em 0.5em 0.8em;
     width: 100%;
-    max-width: 100%; /* useful when width is set to anything other than 100% */
+    max-width: 100%;
     box-sizing: border-box;
     margin: 0;
     border: 1px solid #aaa;
@@ -382,44 +484,35 @@
     -webkit-appearance: none;
     appearance: none;
     background-color: var(--input-bg);
-    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
-        for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
-        
-    */
     background-image: var(--input-background);
     background-repeat: no-repeat, repeat;
-    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
     background-position: right 0.7em top 50%, 0 0;
-    /* icon size, then gradient */
     background-size: 1.2em auto, 100%;
   }
-  /* Hover style */
+  
   .select-css:hover {
     border-color: #888;
   }
-  /* Focus style */
+  
   .select-css:focus {
     border-color: #aaa;
-    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
     box-shadow: 0 0 1px 3px var(--secondary-color-hover);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: var(--secondary-text-color);
     outline: none;
   }
 
-  /* Set options to normal weight */
   .select-css option {
     font-weight: normal;
     padding: 10px 10px;
   }
 
-  /* Support for rtl text, explicit support for Arabic and Hebrew */
   *[dir="rtl"] .select-css,
   :root:lang(ar) .select-css,
   :root:lang(iw) .select-css {
     background-position: left 0.7em top 50%, 0 0;
     padding: 0.6em 0.8em 0.5em 1.4em;
-  }
+  } */
 </style>
 
 <svelte:head>
@@ -457,7 +550,9 @@
   <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
 
-<div class="patternsList">
+<svelte:window on:keydown={handleKeydown} />
+
+<div bind:clientWidth={w} class="patternsList">
   <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
   <div class="stats">
     <div class="stats-grid">
@@ -492,13 +587,38 @@
   </p>
 
   <div class="outerGrid">
+    <div class="searchBox">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.search} />
+      </svg>
+      <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+    </div>
     <div class="filterGrid">
       Filter
-      <select class="select-css" bind:value={index} on:change={filterChanged}>
+      <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
         {#each filterOptions as option, i}
           <option value={option.value}>{option.text}</option>
         {/each}
-      </select>
+      </select> -->
+      <!-- <select class="select-css" bind:value={colorsCount} on:change={colorsChanged}>
+        {#each colorOptions as option, i}
+          <option value={option.value}>{option.text}</option>
+        {/each}
+      </select> -->
+      <AutoComplete
+        inputId="filterMode"
+        placeholder="Mode"
+        items={filterOptions}
+        bind:selectedItem={mode}
+        labelFieldName="text"
+        onChange={filterChanged} />
+      <AutoComplete
+        inputId="filterColor"
+        placeholder="Colors"
+        items={colorOptions}
+        bind:selectedItem={colorsCount}
+        labelFieldName="text"
+        onChange={colorsChanged} />
     </div>
     <div class="sortGrid">
       <span>Sort</span>
@@ -516,7 +636,14 @@
         <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
           <span>{post.title}</span>
         </a>
-        <div class="postDate" title="Date Added">{dayjs().to(dayjs(post.creationDate), false)}</div>
+        <div class="details">
+          {#if post.colors > 2}
+            <div class="numColors">2 - {post.colors} colors</div>
+          {:else}
+            <div class="numColors">{post.colors} colors</div>
+          {/if}
+          <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
+        </div>
       </div>
     {/each}
   </div>

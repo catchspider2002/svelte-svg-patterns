@@ -1,20 +1,38 @@
 {
-	"background_color": "#1a202c",
-	"theme_color": "#44337a",
-	"name": "Pattern Monster",
-	"short_name": "Pattern Monster",
-	"display": "minimal-ui",
-	"start_url": "/",
-	"icons": [
-		{
-			"src": "logo-192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-512.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	]
+  "background_color": "#1a202c",
+  "theme_color": "#44337a",
+  "name": "Pattern Monster",
+  "short_name": "Pattern Monster",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "categories": ["utilities"],
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Screenshot1.png",
+      "sizes": "2400x1800",
+      "type": "image/png"
+    },
+    {
+      "src": "Screenshot2.png",
+      "sizes": "2400x1800",
+      "type": "image/png"
+    },
+    {
+      "src": "Screenshot3.png",
+      "sizes": "2400x1800",
+      "type": "image/png"
+    }
+  ]
 }

@@ -20,6 +20,7 @@
   --gray-800: #2d3748;
   --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
+  --svg-bg: white;
   --gray-bg: var(--gray-400);
   --gray-text: var(--gray-600);
   --input-background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%231a202c' stroke-width='1' d='m 6,9 6,6 6,-6'/></svg>"),
@@ -33,6 +34,7 @@
   --secondary-text-color: #ffffff;
   --accent-text: #ecc94b;
   --accent-hover: #ecc94baa;
+  --svg-bg: rgb(42, 42, 48);
   --gray-bg: var(--gray-700);
   --gray-text: var(--gray-500);
   --input-background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23f7fafc' stroke-width='1' d='m 6,9 6,6 6,-6'/></svg>"),
@@ -426,6 +428,24 @@ nav a {
   .brandName {
     display: none;
   }
+}
+
+/* Autocomplete */
+.autocomplete {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-input {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-list {
+  background: var(--card-bg);
+  color: var(--secondary-text-color);
+}
+.autocomplete-list-item {
+  background-color: var(--card-bg);
+  color: var(--secondary-text-color);
 }
 
 /*! Pickr 1.7.2 MIT | https://github.com/Simonwep/pickr */

@@ -123,7 +123,7 @@
       <div class="footer justify-center light-text">
         Made with&nbsp;
         <span style="color:#e25555">❤</span>
-        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/Mrnaveencs">Naveen CS</a>
+        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
       </div>
     </div>
   </div>

@@ -38,46 +38,48 @@
     while (elements.length > 0) elements[0].remove();
     // for (let i = 1; i <= selectedPattern.colors.length; i++) createPicker("color" + i + "Div", i - 1);
     for (let i = 1; i <= 5; i++) {
-      document.getElementById("color" + i + "Div").style.display = "block";
-      if (i <= selectedPattern.colors.length) {
-        createPicker("color" + i + "Div", i - 1);
-      } else {
-        document.getElementById("color" + i + "Div").style.display = "none";
-      }
+      document.getElementById("color" + i + "Div").style.visibility = "visible";
+      // if (i <= selectedPattern.colors.length) createPicker("color" + i + "Div", i - 1);
+      // if (i <= post.path.split("~").length + 1) createPicker("color" + i + "Div", i - 1);
+      if (i <= selectedPattern.colorCounts) createPicker("color" + i + "Div", i - 1);
+      else document.getElementById("color" + i + "Div").style.visibility = "hidden";
     }
   }
 
-  let svgPattern = (colors, stroke, scale, spacing, angle, join) => {
+  let svgPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
     function multiStroke(i) {
+      let defColor = colors[i + 1];
+      if ((vHeight === 0) & (maxColors > 2)) {
+        // if(colorCounts !== maxColors) defColor = colors[1];
+        if ((colorCounts === 3) & (maxColors === 4) & (i === 2)) defColor = colors[1];
+        else if (colorCounts === 2) defColor = colors[1];
+        // console.log("colorCounts: " + colorCounts + ", maxColors: " + maxColors + ", defColor: " + defColor);
+        // console.log("colors: " + colors);
+      }
+
       if (mode === "stroke-join") {
-        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
+        strokeFill = " stroke='" + defColor + "' fill='none'";
         joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
       } else if (mode === "stroke") {
-        strokeFill = " stroke='" + colors[i + 1] + "' fill='none'";
-      } else strokeFill = " stroke='none' fill='" + colors[i + 1] + "'";
+        strokeFill = " stroke='" + defColor + "' fill='none'";
+      } else strokeFill = " stroke='none' fill='" + defColor + "'";
 
-      return (
-        "<g transform='translate(" +
-        spacing[0] / 2 +
-        "," +
-        (height * i + spacing[1] * i * 0.5) +
-        ")' " +
-        joinMode +
-        "stroke-width='" +
-        stroke +
-        "'" +
-        strokeFill +
-        ">" +
-        path +
-        "</g>"
-      );
+      // console.log("vHeight: " + vHeight + "; colorCount: " + colorCount + "; maxColors: " + maxColors);
+      return path
+        .split("~")
+        [i].replace("/>", " transform='translate(" + spacing[0] / 2 + ",0)' " + joinMode + "stroke-width='" + stroke + "'" + strokeFill + "/>")
+        .replace("transform='translate(0,0)' ", " ");
     }
 
     let strokeFill = "",
       joinMode = "",
       strokeGroup = "";
 
-    for (let i = 0; i <= colors.length - 2; i++) strokeGroup += strokeGroup + multiStroke(i);
+    if ((vHeight === 0) & (maxColors > 2)) {
+      for (let i = 0; i < maxColors - 1; i++) strokeGroup += multiStroke(i);
+    } else {
+      for (let i = 0; i < colorCounts - 1; i++) strokeGroup += multiStroke(i);
+    }
 
     let patternNew =
       "<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs>" +
@@ -85,7 +87,7 @@
       (width + spacing[0]) +
       "' height='" +
       // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
-      (height * (colors.length - 1) + spacing[1] * (colors.length - 1)) +
+      (height - vHeight * (maxColors - colorCounts) + spacing[1]) +
       "' patternTransform='scale(" +
       scale +
       ") rotate(" +
@@ -98,28 +100,35 @@
     return patternNew.replace("#", "%23");
   };
 
-  const colorCount = post.colors,
+  let colorCount = post.path.split("~").length + 1;
+  const maxColors = post.path.split("~").length + 1,
     maxStroke = post.maxStroke,
     maxScale = post.maxScale,
     maxSpacing = post.maxSpacing,
     width = post.width,
     height = post.height,
+    vHeight = post.vHeight,
     path = post.path,
     mode = post.mode;
 
+  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
+  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+
   const presetPattern = {
     id: 1,
-    colors: [$themeStore === "light" ? "white" : "rgb(42,42,48)", $themeStore === "light" ? "rgb(128,90,213)" : "rgb(236,201,75)"],
+    colors: $themeStore === "light" ? lightColors : darkColors,
+    colorCounts: colorCount,
     stroke: 1,
     scale: 2,
     spacing: [0, 0],
     angle: 0,
-    join: 1
+    join: 1,
   };
 
   $: selectedPattern = presetPattern;
   $: svgFile = svgPattern(
     selectedPattern.colors,
+    selectedPattern.colorCounts,
     selectedPattern.stroke,
     selectedPattern.scale,
     selectedPattern.spacing,
@@ -140,6 +149,8 @@
 
   function resetPattern() {
     selectedPattern = presetPattern;
+
+    selectedPattern.colorCounts = colorCount;
     selectedPattern.scale = 2;
     selectedPattern.stroke = 1;
     selectedPattern.spacing = [0, 0];
@@ -152,13 +163,14 @@
     let randomSpacing = constants.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
-      // colors: randomColorSets(constants.randomNumber(2, colorCount)),
-      colors: randomColorSets(2),
+      colors: randomColorSets(selectedPattern.colorCounts),
+      // colors: randomColorSets(2),
+      colorCounts: selectedPattern.colorCounts,
       stroke: constants.randomNumber(0.5, maxStroke),
       scale: constants.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2)
+      join: constants.randomNumber(1, 2),
     };
     setPickers();
   }
@@ -188,7 +200,7 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    console.log(id);
+    // console.log(id);
     document.getElementById(id).textContent = "Copied!";
     setTimeout(function () {
       document.getElementById(id).textContent = buttonType;
@@ -213,22 +225,22 @@
         // lockOpacity: true,
         swatches: [
           "rgba(244, 67, 54, 1)",
-          "rgba(233, 30, 99, 1)",
+          "rgba(225, 82, 131, 1)",
           "rgba(156, 39, 176, 1)",
-          "rgba(103, 58, 183, 1)",
+          "rgba(128, 90, 213, 1)", // 4
+          // "rgba(103, 58, 183, 1)",
           "rgba(63, 81, 181, 1)",
           "rgba(3, 169, 244, 1)",
-          "rgba(0, 188, 212, 1)",
+          "rgba(0, 188, 212, 1)", // 7
           "rgba(0, 150, 136, 1)",
           "rgba(76, 175, 80, 1)",
           "rgba(139, 195, 74, 1)",
-          "rgba(205, 220, 57, 1)",
+          "rgba(205, 220, 57, 1)", // 11
           "rgba(255, 235, 59, 1)",
-          "rgba(255, 193, 7, 1)",
-          "rgba(233, 30, 99, 1)",
-          "#44337a",
+          "rgba(236, 201, 75, 1)",
+          "rgba(246, 173, 85, 1)", // 14
           "rgba(255, 255, 255, 1)",
-          "rgba(0, 0, 0, 1)"
+          "rgba(0, 0, 0, 1)",
         ],
         components: {
           // preview: true,
@@ -242,9 +254,9 @@
             hsva: true,
             cmyk: false,
             input: true,
-            clear: false
-          }
-        }
+            clear: false,
+          },
+        },
       });
       pickr.on("change", (color, instance) => {
         selectedPattern.colors[colorId] = color.toHSLA().toString(0);
@@ -297,33 +309,47 @@
   }
 
   .colors {
-    display: grid;
-    grid-template-columns: auto auto auto auto 1fr;
-    gap: 1em;
+    display: flex;
+    /* grid-template-columns: auto auto auto auto 1fr; */
+    /* gap: 1em; */
     align-items: center;
-    padding: 2em 0;
-    /* grid-column: 2/4; */
+    /* padding: 2em 0; */
+    padding: 0;
+    flex-wrap: wrap;
+    margin-right: -1em;
   }
-  .py-05 {
-    padding: 0.5em 0;
+  .colors div {
+    margin-right: 1em;
+    margin-bottom: 1em;
   }
+
+  .colorLabel {
+    align-self: flex-start;
+    /* margin-top: 1em; */
+  }
+
+  /* .p-0 {
+    padding: 0;
+  } */
 
   .uneditable {
     border: 0 none;
     background-color: var(--accent-text);
     color: var(--accent-text-color);
-    height: 24px;
+    /* height: 24px; */
     font-size: 0.9em;
     padding: 2px 2px 0 2px;
     text-align: center;
-    width: 36px;
-    cursor: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+    min-width: 2.5em;
+    border-radius: var(--border-radius);
+    /* width: 36px; */
+    /* cursor: none; */
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+    /* user-select: none; */
   }
 
   .bottomBar {
@@ -639,10 +665,30 @@
             step="5"
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
-          <input class="uneditable" bind:value={selectedPattern.angle} readonly />
+          <!-- <input class="uneditable" bind:value={selectedPattern.angle} readonly /> -->
+          <span class="uneditable">{selectedPattern.angle}</span>
         </div>
-        <label class="leftColumn">Colors</label>
-        <div class="rightColumn colors py-05">
+        <label class="leftColumn colorLabel">Colors</label>
+
+        {#if maxColors > 2}
+          <div class="grid rightColumn">
+            <input
+              id="colorNum"
+              type="range"
+              bind:value={selectedPattern.colorCounts}
+              min="2"
+              max={maxColors}
+              step="1"
+              on:input={() => {
+                changing = true;
+                setPickers();
+              }}
+              on:change={() => (changing = false)} />
+            <span class="uneditable">{selectedPattern.colorCounts}</span>
+          </div>
+        {/if}
+
+        <div class="rightColumn colors">
           {#each { length: 5 } as _, i}
             <div id="color{i + 1}Div" />
           {/each}
@@ -676,7 +722,7 @@
             bind:value={outputWidth}
             min="0"
             max="9999"
-            on:input={e => {
+            on:input={(e) => {
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
           <input
@@ -687,7 +733,7 @@
             bind:value={outputHeight}
             min="0"
             max="9999"
-            on:input={e => {
+            on:input={(e) => {
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
         </div>
@@ -725,7 +771,7 @@
       bind:value={outputWidth}
       min="0"
       max="9999"
-      on:input={e => {
+      on:input={(e) => {
         if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
     <input
@@ -736,7 +782,7 @@
       bind:value={outputHeight}
       min="0"
       max="9999"
-      on:input={e => {
+      on:input={(e) => {
         if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
   </div>
