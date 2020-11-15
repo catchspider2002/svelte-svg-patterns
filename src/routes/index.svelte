@@ -43,6 +43,10 @@
   dayjs.extend(relativeTime);
 
   let searchBar;
+  let w;
+  $: placeholderSearch = w <= 640 ? "Search for patterns" : "Search for patterns (Press '/' to focus)";
+  // if (w <= 640) placeholderSearch = "Search for patterns";
+
   onMount(async () => {
     searchBar = document.getElementById("search");
   });
@@ -130,7 +134,8 @@
     });
   }
 
-  let key, keyCode;
+  let keyCode;
+
   function handleKeydown(event) {
     keyCode = event.keyCode;
     if (keyCode === 191) {
@@ -525,7 +530,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="patternsList">
+<div bind:clientWidth={w} class="patternsList">
   <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
   <div class="stats">
     <div class="stats-grid">
@@ -560,14 +565,8 @@
   </p>
 
   <div class="outerGrid">
-    <input
-      id="search"
-      class="search"
-      type="text"
-      title="Search"
-      bind:value={searchText}
-      placeholder="Search for patterns (Press '/' to focus)"
-      on:input={searchChanged} />
+    <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+
     <div class="filterGrid">
       Filter
       <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
@@ -612,13 +611,11 @@
           <span>{post.title}</span>
         </a>
         <div class="details">
-          
-        {#if post.colors > 2}
-        <div class="numColors">2 - {post.colors} colors</div>
-{:else}
-        <div class="numColors">{post.colors} colors</div>
-         
-        {/if}
+          {#if post.colors > 2}
+            <div class="numColors">2 - {post.colors} colors</div>
+          {:else}
+            <div class="numColors">{post.colors} colors</div>
+          {/if}
           <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
         </div>
       </div>
