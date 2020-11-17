@@ -98,11 +98,11 @@
     </a>
 
     <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
-    <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
+    <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
       </svg></a>
-    <button class="iconButton" on:click={() => changeTheme()}>
+    <button class="iconButton" aria-label="Change Theme" title="Change Theme" on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
           <path transition:fly={{ y: 100, duration: 300 }} d={theme} />
