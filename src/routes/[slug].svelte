@@ -569,7 +569,7 @@
   <meta
     name="description"
     content="{post.slug} - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="keywords" content={post.slug} />
+  <meta name="keywords" content={post.tags} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
