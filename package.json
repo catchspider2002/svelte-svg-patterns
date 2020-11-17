@@ -10,32 +10,31 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@simonwep/pickr": "^1.7.2",
+    "@simonwep/pickr": "^1.7.4",
     "airtable": "^0.10.1",
     "compression": "^1.7.4",
     "convert-svg-to-png": "^0.5.0",
-    "dayjs": "^1.9.5",
+    "dayjs": "^1.9.6",
     "polka": "next",
-    "prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "save-svg-as-png": "^1.4.17",
-    "sirv": "^1.0.6"
+    "sirv": "^1.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
+    "@babel/core": "^7.12.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/runtime": "^7.11.2",
-    "@rollup/plugin-babel": "^5.2.0",
-    "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-replace": "^2.3.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.5",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
     "npm-run-all": "^4.1.5",
-    "rollup": "^2.26.8",
-    "rollup-plugin-svelte": "^6.0.0",
-    "rollup-plugin-terser": "^7.0.1",
-    "sapper": "^0.28.2",
-    "simple-svelte-autocomplete": "^1.2.4",
-    "svelte": "^3.24.1"
+    "rollup": "^2.33.2",
+    "rollup-plugin-svelte": "^6.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "sapper": "^0.28.10",
+    "svelte": "^3.29.7"
   }
 }
