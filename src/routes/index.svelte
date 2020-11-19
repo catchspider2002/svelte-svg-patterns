@@ -352,7 +352,8 @@
   }
 
   .searchBox {
-    padding: 0.625rem 0.75rem;
+    /* padding: 0.625rem 0.75rem; */
+    padding: 0.6rem 0.75rem;
     border: 0.0625em solid var(--gray-text);
     background-color: var(--card-bg);
     color: var(--gray-text);
@@ -385,7 +386,8 @@
     width: 100%;
     padding: 0;
     color: var(--gray-text);
-    line-height: 1.25;
+    /* line-height: 1.25; */
+    line-height: normal;
   }
 
   .search:focus {
@@ -394,7 +396,7 @@
     /* box-shadow: 0 0 0 3px var(--accent-hover); */
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1024px) {
     .outerGrid {
       grid-auto-flow: row;
       grid-template-columns: auto;
@@ -457,7 +459,7 @@
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 408px) {
     .patternsList {
       padding: 1em;
     }
@@ -593,7 +595,7 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.search} />
       </svg>
-      <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+      <input id="search" class="search" type="text" aria-label="Search for patterns" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
     </div>
     <div class="filterGrid">
       Filter
@@ -613,6 +615,7 @@
         items={filterOptions}
         bind:selectedItem={mode}
         labelFieldName="text"
+        ariaLabel="Filter by Mode"
         onChange={filterChanged} />
       <AutoComplete
         inputId="filterColor"
@@ -620,6 +623,7 @@
         items={colorOptions}
         bind:selectedItem={colorsCount}
         labelFieldName="text"
+        ariaLabel="Filter by Colors"
         onChange={colorsChanged} />
     </div>
     <div class="sortGrid">

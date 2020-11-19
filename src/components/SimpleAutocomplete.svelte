@@ -6,6 +6,7 @@
   export let labelFieldName = undefined;
   export let keywordsFieldName = labelFieldName;
   export let valueFieldName = undefined;
+  export let ariaLabel;
 
   export let labelFunction = function (item) {
     if (item === undefined || item === null) {
@@ -559,11 +560,11 @@
 
 <style>
   .autocomplete {
-    min-width: 100px;
+    min-width: 90px;
     display: inline-block;
-    max-width: 150px;
+    max-width: 130px;
     position: relative;
-    vertical-align: top;
+    /* vertical-align: top; */
     height: 2.25em;
   }
 
@@ -642,7 +643,8 @@
     padding: 0.75em 1em;
     color: #333;
     cursor: pointer;
-    line-height: 1;
+    /* line-height: 1; */
+    line-height: normal;
     font-size: 0.85em;
   }
 
@@ -654,7 +656,8 @@
   .autocomplete-list-item-no-results {
     padding: 5px 15px;
     color: #999;
-    line-height: 1;
+    /* line-height: 1; */
+    line-height: normal;
   }
 
   .autocomplete-list.hidden {
@@ -722,6 +725,7 @@
     {disabled}
     {title}
     bind:this={input}
+    aria-label={ariaLabel}
     bind:value={text}
     on:input={onInput}
     on:focus={onFocus}
