@@ -145,6 +145,11 @@
   }
 
   let website = "https://pattern.monster";
+  let title = "Pattern Monster - SVG Pattern Generator";
+  let url = website;
+  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let desc = "Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let image = website + "/TwitterBG2.png";
 
   let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
   let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
@@ -352,7 +357,8 @@
   }
 
   .searchBox {
-    padding: 0.625rem 0.75rem;
+    /* padding: 0.625rem 0.75rem; */
+    padding: 0.6rem 0.75rem;
     border: 0.0625em solid var(--gray-text);
     background-color: var(--card-bg);
     color: var(--gray-text);
@@ -385,7 +391,8 @@
     width: 100%;
     padding: 0;
     color: var(--gray-text);
-    line-height: 1.25;
+    /* line-height: 1.25; */
+    line-height: normal;
   }
 
   .search:focus {
@@ -394,7 +401,7 @@
     /* box-shadow: 0 0 0 3px var(--accent-hover); */
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1024px) {
     .outerGrid {
       grid-auto-flow: row;
       grid-template-columns: auto;
@@ -457,7 +464,7 @@
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 408px) {
     .patternsList {
       padding: 1em;
     }
@@ -518,38 +525,24 @@
 </style>
 
 <svelte:head>
-  <title>Pattern Monster - SVG Pattern Generator</title>
-  <link rel="canonical" href="{website}/" />
-  <meta
-    name="description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="Pattern.Monster" />
-  <meta property="og:title" content="Pattern Monster" />
-  <meta
-    property="og:description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta property="og:image" content="{website}/TwitterBG2.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{website}/" />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
 
   <!-- Twitter -->
-  <meta name="twitter:title" content="Pattern Monster" />
-  <meta
-    name="twitter:description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@pattern_monster" />
-  <meta name="twitter:image" content="{website}/TwitterBG2.png" />
-  <meta name="twitter:image:src" content="{website}/TwitterBG2.png" />
-
-  <!-- <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="{website}/{post.slug}" />
-  <meta property="twitter:title" content={post.title} />
-  <meta property="twitter:description" content={post.slug} />
-  <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
@@ -593,7 +586,7 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.search} />
       </svg>
-      <input id="search" class="search" type="text" title="Search" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+      <input id="search" class="search" type="text" aria-label="Search for patterns" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
     </div>
     <div class="filterGrid">
       Filter
@@ -613,6 +606,7 @@
         items={filterOptions}
         bind:selectedItem={mode}
         labelFieldName="text"
+        ariaLabel="Filter by Mode"
         onChange={filterChanged} />
       <AutoComplete
         inputId="filterColor"
@@ -620,6 +614,7 @@
         items={colorOptions}
         bind:selectedItem={colorsCount}
         labelFieldName="text"
+        ariaLabel="Filter by Colors"
         onChange={colorsChanged} />
     </div>
     <div class="sortGrid">

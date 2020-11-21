@@ -82,25 +82,25 @@
         </a>
       </div> -->
       <div class="iconLinks grid justify-center">
-        <a rel="prefetch" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
+        <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.github} />
           </svg></a>
-        <a rel="prefetch" target="_blank" href="https://twitter.com/Pattern_Monster">
+        <a rel="noopener noreferrer" title="Twitter" target="_blank" href="https://twitter.com/Pattern_Monster">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.twitter} />
           </svg></a>
-        <a rel="prefetch" target="_blank" href="https://www.instagram.com/patternmonster/">
+        <a rel="noopener noreferrer" title="Instagram" target="_blank" href="https://www.instagram.com/patternmonster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.instagram} />
           </svg></a>
-        <a rel="prefetch" target="_blank" href="https://www.facebook.com/pattern.monster/">
+        <a rel="noopener noreferrer" title="Facebook" target="_blank" href="https://www.facebook.com/pattern.monster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.facebook} />
           </svg></a>
       </div>
 
-      <a class="secondary-bg dark-text cta" href="https://www.buymeacoffee.com/naveencs">
+      <a rel="noopener noreferrer" title="Buy Me a Coffee" class="secondary-bg dark-text cta" href="https://www.buymeacoffee.com/naveencs">
         <svg height="2em" viewBox="0 0 4169 913" fill="none" xmlns="http://www.w3.org/2000/svg"><path
             d="M564.724 212.38l-.626-.368-1.45-.443a3.45 3.45 0 002.076.811zM573.852 277.606l-.7.196.7-.196zM564.992 212.279a1.225 1.225 0 01-.261-.062 1.011 1.011 0 000 .174.514.514 0 00.261-.112z"
             fill="#0D0C22" />
@@ -122,8 +122,8 @@
       </a>
       <div class="footer justify-center light-text">
         Made with&nbsp;
-        <span style="color:#e25555">❤</span>
-        &nbsp;by&nbsp;<a class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
+        <span style="color:#ff9a9a">❤</span>
+        &nbsp;by&nbsp;<a rel="noopener noreferrer" class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
       </div>
     </div>
   </div>
