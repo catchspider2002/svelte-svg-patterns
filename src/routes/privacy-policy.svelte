@@ -5,7 +5,7 @@
   let title = "Pattern Monster - SVG Pattern Generator";
   let url = website;
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 </script>
 

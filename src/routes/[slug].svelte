@@ -23,7 +23,7 @@
   let keywords = post.tags + ", svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +
-    " - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+    " - Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
   // import { fly, fade, slide } from "svelte/transition";
