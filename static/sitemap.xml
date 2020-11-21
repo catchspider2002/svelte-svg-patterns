@@ -506,6 +506,26 @@
 		<priority>0.8</priority>
 	</url>
 	<url>
+		<loc>https://pattern.monster/chinese-6</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://pattern.monster/chinese-7</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://pattern.monster/chinese-8</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://pattern.monster/chinese-9</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
 		<loc>https://pattern.monster/new-1</loc>
 		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
 		<priority>0.8</priority>
@@ -600,4 +620,15 @@
 		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
 		<priority>0.8</priority>
 	</url>
+	<url>
+		<loc>https://pattern.monster/stars-1</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://pattern.monster/stars-2</loc>
+		<lastmod>2020-11-17T09:06:25+01:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+
 </urlset>

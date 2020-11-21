@@ -610,8 +610,8 @@
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
-    pointer-events: none; */
+    user-select: none; */
+    /* pointer-events: none; */
   }
 
   .autocomplete:not(.hide-arrow) .autocomplete-input {

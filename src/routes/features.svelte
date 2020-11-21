@@ -404,11 +404,6 @@
   <meta name="twitter:image" content="{website}/TwitterBG2.png" />
   <meta name="twitter:image:src" content="{website}/TwitterBG2.png" />
 
-  <!-- <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="{website}/{post.slug}" />
-  <meta property="twitter:title" content={post.title} />
-  <meta property="twitter:description" content={post.slug} />
-  <meta property="twitter:image" content="{website}/social/{post.slug}.png" /> -->
 </svelte:head>
 
 <!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
