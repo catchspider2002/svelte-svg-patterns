@@ -18,11 +18,12 @@
   // import { bind } from "svelte/internal";
   let w;
   let website = "https://pattern.monster";
-  let title = post.title + "- Pattern Monster";
+  let title = post.title + " - Pattern Monster";
   let url = website + "/" + post.slug;
+  let keywords = post.tags + ", svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +
-    "- Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+    " - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
   // import { fly, fade, slide } from "svelte/transition";
@@ -571,11 +572,9 @@
 
 <svelte:head>
   <title>{title}</title>
-  <link rel="canonical" href="{url}" />
-  <meta
-    name="description"
-    content={desc} />
-  <meta name="keywords" content={post.tags} />
+  <link rel="canonical" href={url} />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:url" content={url} />
@@ -584,12 +583,12 @@
   <meta property="og:image" content={image} />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={url} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={desc} />
   <meta name="twitter:image" content={image} />
-  <meta name="twitter:image:alt" content={title}>
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">

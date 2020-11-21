@@ -145,6 +145,11 @@
   }
 
   let website = "https://pattern.monster";
+  let title = "Pattern Monster - SVG Pattern Generator";
+  let url = website;
+  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let desc = "Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let image = website + "/TwitterBG2.png";
 
   let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
   let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
@@ -520,32 +525,24 @@
 </style>
 
 <svelte:head>
-  <title>Pattern Monster - SVG Pattern Generator</title>
-  <link rel="canonical" href={website} />
-  <meta
-    name="description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Pattern Monster" />
-  <meta
-    property="og:description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta property="og:image" content="{website}/TwitterBG2.png" />
-  <meta property="og:url" content={website} />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
 
   <!-- Twitter -->
-  <meta name="twitter:title" content="Pattern Monster" />
-  <meta
-    name="twitter:description"
-    content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="{website}/TwitterBG2.png" />
-  <meta name="twitter:image:src" content="{website}/TwitterBG2.png" />
-  <meta name="twitter:image:alt" content="Pattern Monster">
-
-
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
