@@ -630,7 +630,7 @@
   <div class="samples">
     {#each newPosts as post}
       <div class="outerPattern">
-        <a rel="prefetch" href={post.slug} class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+        <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
           <span>{post.title}</span>
         </a>
         <div class="details">

@@ -6,6 +6,11 @@
   $: angle = "30";
   $: scale = 4;
   let website = "https://pattern.monster";
+  let title = "Features - Pattern Monster";
+  let url = website + "/features/";
+  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let image = website + "/TwitterBG2.png";
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
@@ -383,27 +388,24 @@
 </style>
 
 <svelte:head>
-  <title>Pattern Monster - SVG Pattern Generator</title>
-  <link rel="canonical" href="{website}/" />
-  <meta name="description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="keywords" content="svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker" />
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="Pattern.Monster" />
-  <meta property="og:title" content="Pattern Monster" />
-  <meta property="og:description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta property="og:image" content="{website}/TwitterBG2.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{website}/" />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
 
   <!-- Twitter -->
-  <meta name="twitter:title" content="Pattern Monster" />
-  <meta name="twitter:description" content="Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@pattern_monster" />
-  <meta name="twitter:image" content="{website}/TwitterBG2.png" />
-  <meta name="twitter:image:src" content="{website}/TwitterBG2.png" />
-
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
 <!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>

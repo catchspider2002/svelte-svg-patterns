@@ -19,7 +19,7 @@
   let w;
   let website = "https://pattern.monster";
   let title = post.title + " - Pattern Monster";
-  let url = website + "/" + post.slug;
+  let url = website + "/" + post.slug + "/";
   let keywords = post.tags + ", svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +

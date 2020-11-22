@@ -2,18 +2,14 @@
   import Footer from "../components/Footer.svelte";
 
   let website = "https://pattern.monster";
-  let title = "Pattern Monster - SVG Pattern Generator";
-  let url = website;
+  let title = "Privacy Policy - Pattern Monster";
+  let url = website + "/privacy-policy/";
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 </script>
 
 <style>
-  .page {
-    display: grid;
-  }
-
   h1 {
     font-size: 2em;
     text-align: center;

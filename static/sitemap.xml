@@ -6,632 +6,632 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/features</loc>
+        <loc>https://pattern.monster/features/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/privacy-policy</loc>
+        <loc>https://pattern.monster/privacy-policy/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/waves-1</loc>
+        <loc>https://pattern.monster/waves-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/waves-2</loc>
+        <loc>https://pattern.monster/cross-section/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/waves-3</loc>
+        <loc>https://pattern.monster/brick-wall-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/waves-4</loc>
+        <loc>https://pattern.monster/herringbone-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chevron-1</loc>
+        <loc>https://pattern.monster/herringbone-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chevron-2</loc>
+        <loc>https://pattern.monster/herringbone-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chevron-3</loc>
+        <loc>https://pattern.monster/herringbone-8/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/straight-lines</loc>
+        <loc>https://pattern.monster/flower-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/cross-section</loc>
+        <loc>https://pattern.monster/flower-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/brick-wall-1</loc>
+        <loc>https://pattern.monster/flower-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/brick-wall-2</loc>
+        <loc>https://pattern.monster/plus-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-1</loc>
+        <loc>https://pattern.monster/plus-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-2</loc>
+        <loc>https://pattern.monster/circles-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-3</loc>
+        <loc>https://pattern.monster/circles-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-4</loc>
+        <loc>https://pattern.monster/circles-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-5</loc>
+        <loc>https://pattern.monster/diamonds-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-6</loc>
+        <loc>https://pattern.monster/diamonds-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-7</loc>
+        <loc>https://pattern.monster/diamonds-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/herringbone-8</loc>
+        <loc>https://pattern.monster/hexagon-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-1</loc>
+        <loc>https://pattern.monster/hexagon-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-2</loc>
+        <loc>https://pattern.monster/hexagon-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-3</loc>
+        <loc>https://pattern.monster/hexagon-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-4</loc>
+        <loc>https://pattern.monster/hexagon-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-5</loc>
+        <loc>https://pattern.monster/overlapping-hexagons/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-6</loc>
+        <loc>https://pattern.monster/squares-and-squares/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/flower-7</loc>
+        <loc>https://pattern.monster/squares-and-diamonds/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/plus-1</loc>
+        <loc>https://pattern.monster/squares-and-circles/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/plus-2</loc>
+        <loc>https://pattern.monster/squares-and-plus/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/plus-3</loc>
+        <loc>https://pattern.monster/triangles-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/plus-4</loc>
+        <loc>https://pattern.monster/inverted-triangles/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-1</loc>
+        <loc>https://pattern.monster/japanese-pattern-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-2</loc>
+        <loc>https://pattern.monster/japanese-pattern-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-3</loc>
+        <loc>https://pattern.monster/japanese-pattern-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-4</loc>
+        <loc>https://pattern.monster/japanese-pattern-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-5</loc>
+        <loc>https://pattern.monster/japanese-pattern-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-6</loc>
+        <loc>https://pattern.monster/eyes-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/circles-7</loc>
+        <loc>https://pattern.monster/eyes-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/concentric-circles-1</loc>
+        <loc>https://pattern.monster/eyes-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/concentric-circles-2</loc>
+        <loc>https://pattern.monster/eyes-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/concentric-circles-3</loc>
+        <loc>https://pattern.monster/jigsaw/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/adjointed-circles</loc>
+        <loc>https://pattern.monster/railroad/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/adjointed-diamonds</loc>
+        <loc>https://pattern.monster/octagons-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/diamonds-1</loc>
+        <loc>https://pattern.monster/scales-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/diamonds-2</loc>
+        <loc>https://pattern.monster/scales-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/diamonds-3</loc>
+        <loc>https://pattern.monster/scales-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/hexagon-1</loc>
+        <loc>https://pattern.monster/scales-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/hexagon-2</loc>
+        <loc>https://pattern.monster/leaves-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/hexagon-3</loc>
+        <loc>https://pattern.monster/pipes/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/hexagon-4</loc>
+        <loc>https://pattern.monster/zebra/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/hexagon-5</loc>
+        <loc>https://pattern.monster/memphis/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/overlapping-hexagons</loc>
+        <loc>https://pattern.monster/greek-key/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/squares-and-squares</loc>
+        <loc>https://pattern.monster/new-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/squares-and-diamonds</loc>
+        <loc>https://pattern.monster/new-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/squares-and-circles</loc>
+        <loc>https://pattern.monster/new-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/squares-and-plus</loc>
+        <loc>https://pattern.monster/new-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-1</loc>
+        <loc>https://pattern.monster/new-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-2</loc>
+        <loc>https://pattern.monster/new-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-3</loc>
+        <loc>https://pattern.monster/new-10/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-4</loc>
+        <loc>https://pattern.monster/new-11/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-5</loc>
+        <loc>https://pattern.monster/new-12/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/triangles-6</loc>
+        <loc>https://pattern.monster/japanese-pattern-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/inverted-triangles</loc>
+        <loc>https://pattern.monster/new-13/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/checkerboard</loc>
+        <loc>https://pattern.monster/new-14/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-1</loc>
+        <loc>https://pattern.monster/new-15/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-2</loc>
+        <loc>https://pattern.monster/new-16/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-3</loc>
+        <loc>https://pattern.monster/new-17/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-4</loc>
+        <loc>https://pattern.monster/waves-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-5</loc>
+        <loc>https://pattern.monster/waves-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/japanese-pattern-6</loc>
+        <loc>https://pattern.monster/waves-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/eyes-1</loc>
+        <loc>https://pattern.monster/chevron-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/eyes-2</loc>
+        <loc>https://pattern.monster/chevron-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/eyes-3</loc>
+        <loc>https://pattern.monster/chevron-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/eyes-4</loc>
+        <loc>https://pattern.monster/straight-lines/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/jigsaw</loc>
+        <loc>https://pattern.monster/herringbone-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/railroad</loc>
+        <loc>https://pattern.monster/herringbone-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/octagons-1</loc>
+        <loc>https://pattern.monster/herringbone-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/octagons-2</loc>
+        <loc>https://pattern.monster/herringbone-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/lines-1</loc>
+        <loc>https://pattern.monster/flower-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/lines-2</loc>
+        <loc>https://pattern.monster/flower-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/scales-1</loc>
+        <loc>https://pattern.monster/flower-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/scales-2</loc>
+        <loc>https://pattern.monster/plus-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/scales-3</loc>
+        <loc>https://pattern.monster/plus-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/scales-4</loc>
+        <loc>https://pattern.monster/circles-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-1</loc>
+        <loc>https://pattern.monster/circles-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-2</loc>
+        <loc>https://pattern.monster/circles-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-3</loc>
+        <loc>https://pattern.monster/circles-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-4</loc>
+        <loc>https://pattern.monster/concentric-circles-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-5</loc>
+        <loc>https://pattern.monster/concentric-circles-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-6</loc>
+        <loc>https://pattern.monster/concentric-circles-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/leaves-7</loc>
+        <loc>https://pattern.monster/adjointed-circles/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/pipes</loc>
+        <loc>https://pattern.monster/adjointed-diamonds/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/zebra</loc>
+        <loc>https://pattern.monster/triangles-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/memphis</loc>
+        <loc>https://pattern.monster/triangles-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/greek-key</loc>
+        <loc>https://pattern.monster/triangles-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-1</loc>
+        <loc>https://pattern.monster/triangles-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-2</loc>
+        <loc>https://pattern.monster/triangles-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-3</loc>
+        <loc>https://pattern.monster/octagons-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-4</loc>
+        <loc>https://pattern.monster/lines-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-5</loc>
+        <loc>https://pattern.monster/lines-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-6</loc>
+        <loc>https://pattern.monster/leaves-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-7</loc>
+        <loc>https://pattern.monster/leaves-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-8</loc>
+        <loc>https://pattern.monster/leaves-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/chinese-9</loc>
+        <loc>https://pattern.monster/new-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-1</loc>
+        <loc>https://pattern.monster/new-8/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-2</loc>
+        <loc>https://pattern.monster/new-9/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-3</loc>
+        <loc>https://pattern.monster/brick-wall-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-4</loc>
+        <loc>https://pattern.monster/leaves-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-5</loc>
+        <loc>https://pattern.monster/leaves-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-6</loc>
+        <loc>https://pattern.monster/chinese-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-7</loc>
+        <loc>https://pattern.monster/chinese-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-8</loc>
+        <loc>https://pattern.monster/chinese-3/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-9</loc>
+        <loc>https://pattern.monster/checkerboard/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-10</loc>
+        <loc>https://pattern.monster/flower-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-11</loc>
+        <loc>https://pattern.monster/leaves-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-12</loc>
+        <loc>https://pattern.monster/chinese-4/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-13</loc>
+        <loc>https://pattern.monster/chinese-5/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-14</loc>
+        <loc>https://pattern.monster/chinese-6/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-15</loc>
+        <loc>https://pattern.monster/chinese-7/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-16</loc>
+        <loc>https://pattern.monster/chinese-8/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/new-17</loc>
+        <loc>https://pattern.monster/chinese-9/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/double-bubble-1</loc>
+        <loc>https://pattern.monster/double-bubble-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/double-bubble-2</loc>
+        <loc>https://pattern.monster/double-bubble-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/stars-1</loc>
+        <loc>https://pattern.monster/stars-1/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pattern.monster/stars-2</loc>
+        <loc>https://pattern.monster/stars-2/</loc>
         <lastmod>2020-11-21T01:01:01+01:00</lastmod>
         <priority>0.8</priority>
     </url>
