@@ -19,7 +19,7 @@
     ["#000000", "#6ec1eb", "#fca311", "#e5e5e5", "#ffffff"],
     ["#f4f1de", "#e07a5f", "#3d405b", "#81b29a", "#f2cc8f"],
     // ["#247ba0", "#70c1b3", "#b2dbbf", "#f3ffbd", "#ff1654"],
-    ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"]
+    ["#606c38", "#283618", "#fefae0", "#dda15e", "#bc6c25"],
   ];
   let size = 220;
   $: colorPalette = palettes[1];
@@ -110,6 +110,10 @@
   .cta {
     padding: 0.5em 1em;
     color: var(--accent-color);
+  }
+
+  .cta2 {
+    color: var(--gray-300);
   }
 
   .cta:hover,
@@ -303,7 +307,7 @@
     padding: 1.5rem;
     max-width: 520px;
   } */
-  
+
   .animatedIcon {
     width: 7rem;
     height: 7rem;
@@ -419,8 +423,8 @@
       <p class="comingSoon">OPEN SOURCE</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle">
-        A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality.
-        Perfect for website backgrounds, apparel, branding, packaging design and more.
+        A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
+        website backgrounds, apparel, branding, packaging design and more.
       </p>
       <!-- <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button> -->
       <a class="secondary-bg dark-text cta" href="/">Explore patterns</a>
@@ -571,9 +575,7 @@
   </div>
 </section>
 <div class="overlapCard accent-bg text-center">
-  <div class="container mx-auto">
-    Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.
-  </div>
+  <div class="container mx-auto">Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.</div>
 </div>
 <div class="triangleOuter">
   <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -727,8 +729,8 @@
 <!-- For designers and developers -->
 <div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
-    Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of
-    styles, from the cool, quirky and edgy, to the more luxurious designs.
+    Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of styles, from
+    the cool, quirky and edgy, to the more luxurious designs.
   </div>
 </div>
 <div class="triangleOuter">
@@ -745,18 +747,18 @@
   <section class="container grid mx-auto px-5 py-24 items-center text-center">
     <h2 class="accent-text">Make vector patterns like a pro</h2>
     <p class="subtitle ">
-      A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to
-      use tool to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and
-      apparel, posters, flyers, web design projects, or your social media posts, Instagram stories and blogs.
+      A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to use tool
+      to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and apparel, posters, flyers,
+      web design projects, or your social media posts, Instagram stories and blogs.
     </p>
-    <div class="flex justify-center"><button class="accent-bg" onclick="location.href='#subscribe'" type="button">Know more</button></div>
+    <div class="flex justify-center"><button class="accent-bg cta2" onclick="location.href='#subscribe'" type="button">Know more</button></div>
   </section>
 </div>
 
 <div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
-    Create beautiful print assets from a wealth of versatile and useful patterns without any design skills. Ideal for branding projects,
-    fabrics, packaging, fashion apparel, posters, wrapping paper, posters or calendars.
+    Create beautiful print assets from a wealth of versatile and useful patterns without any design skills. Ideal for branding projects, fabrics,
+    packaging, fashion apparel, posters, wrapping paper, posters or calendars.
   </div>
 </div>
 <div class="triangleOuter">
