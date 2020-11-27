@@ -597,7 +597,7 @@
     <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
       <h1>{post.title}</h1>
       <div class="inputs">
-        <label class="leftColumn" for="scale">Scale</label>
+        <label class="leftColumn" for="scale">Zoom</label>
         <div class="grid rightColumn">
           <input
             id="scale"

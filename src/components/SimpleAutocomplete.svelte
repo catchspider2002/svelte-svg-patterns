@@ -586,7 +586,7 @@
     transform-origin: center;
     width: 0.625em;
     border-color: #3273dc;
-    right: 1.125em;
+    right: 0.75em;
     z-index: 4;
   }
 
