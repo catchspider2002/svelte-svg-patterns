@@ -19,11 +19,11 @@
   let w;
   let website = "https://pattern.monster";
   let title = post.title + " - Pattern Monster";
-  let url = website + "/" + post.slug;
+  let url = website + "/" + post.slug + "/";
   let keywords = post.tags + ", random, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +
-    " - Pattern generator to create repeatable SVG patterns.  Perfect for website backgrounds, apparel, branding, packaging design and more.";
+    " - Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
   // import { fly, fade, slide } from "svelte/transition";

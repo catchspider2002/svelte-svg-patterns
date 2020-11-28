@@ -12,7 +12,7 @@
 
 Create seamless patterns in SVG to use as website backgrounds, header images, stationery design and package design
 
-112 patterns available
+124 patterns available
 
 ## Features:
 
@@ -25,6 +25,12 @@ Create seamless patterns in SVG to use as website backgrounds, header images, st
 ✔ Copy CSS and SVG code directly to your clipboard for web projects
 
 ✔ Download a tileable SVG or a high resolution seamless PNG image for print projects
+
+✔ Filter patterns by stroke / fill or by number of colors
+
+✔ Search for patterns
+
+✔ Sort patterns alphabetically or by date updated 
 
 # License
 
