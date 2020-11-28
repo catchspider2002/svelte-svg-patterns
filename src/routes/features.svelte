@@ -9,7 +9,7 @@
   let title = "Features - Pattern Monster";
   let url = website + "/features/";
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc = "Features for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
   const palettes = [
@@ -332,7 +332,7 @@
       max-width: 768px;
     }
     .leftOuter {
-      min-height: 80vh;
+      min-height: 70vh;
     }
     .landing {
       grid-template-columns: 1fr;
@@ -418,8 +418,6 @@
 <section class="landing grid light-text accent-bg">
   <div class="leftOuter grid items-center">
     <div class="left">
-      <Logo />
-
       <p class="comingSoon">OPEN SOURCE</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle">

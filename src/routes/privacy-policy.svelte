@@ -5,7 +5,7 @@
   let title = "Privacy Policy - Pattern Monster";
   let url = website + "/privacy-policy/";
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc = "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 </script>
 
