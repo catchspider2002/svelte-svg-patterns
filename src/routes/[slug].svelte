@@ -35,9 +35,6 @@
   let defaultWidth = "1080",
     defaultHeight = "1080";
 
-	// beforeUpdate(() => {
-  // });
-
   onMount(async () => {
     const module = await import("@simonwep/pickr");
     Pickr = module.default;
