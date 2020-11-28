@@ -20,7 +20,7 @@
   let website = "https://pattern.monster";
   let title = post.title + " - Pattern Monster";
   let url = website + "/" + post.slug + "/";
-  let keywords = post.tags + ", svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let keywords = post.tags + ", random, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +
     " - Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
@@ -31,6 +31,9 @@
 
   let Pickr, svg;
   $: hide = false;
+  
+  let defaultWidth = "1080",
+    defaultHeight = "1080";
 
   onMount(async () => {
     const module = await import("@simonwep/pickr");
@@ -38,7 +41,26 @@
     const module1 = await import("save-svg-as-png");
     svg = module1.default;
     setPickers();
+
+    defaultHeight = localStorage.getItem("defaultHeight");
+
+    if (!defaultHeight) {
+      defaultHeight = "1080";
+
+      localStorage.setItem("defaultHeight", defaultHeight);
+    }
+    defaultWidth = localStorage.getItem("defaultWidth");
+
+    if (!defaultWidth) {
+      defaultWidth = "1080";
+
+      localStorage.setItem("defaultWidth", defaultWidth);
+    }
   });
+
+  function heightChanged(){
+    console.log("heightChanged")
+  }
 
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
@@ -110,6 +132,60 @@
     return patternNew.replace("#", "%23");
   };
 
+  let downloadPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
+    function multiStroke(i) {
+      let defColor = colors[i + 1];
+      if ((vHeight === 0) & (maxColors > 2)) {
+        // if(colorCounts !== maxColors) defColor = colors[1];
+        if ((colorCounts === 3) & (maxColors === 4) & (i === 2)) defColor = colors[1];
+        else if ((colorCounts === 4) & (maxColors === 5) & (i === 3)) defColor = colors[1];
+        else if ((colorCounts === 3) & (maxColors === 5) & (i === 3)) defColor = colors[1];
+        else if ((colorCounts === 3) & (maxColors === 5) & (i === 2)) defColor = colors[1];
+        else if (colorCounts === 2) defColor = colors[1];
+        // console.log("colorCounts: " + colorCounts + ", maxColors: " + maxColors + ", defColor: " + defColor);
+        // console.log("colors: " + colors);
+      }
+
+      if (mode === "stroke-join") {
+        strokeFill = " stroke='" + defColor + "' fill='none'";
+        joinMode = join == 2 ? "stroke-linejoin='round' stroke-linecap='round' " : "stroke-linecap='square' ";
+      } else if (mode === "stroke") {
+        strokeFill = " stroke='" + defColor + "' fill='none'";
+      } else strokeFill = " stroke='none' fill='" + defColor + "'";
+
+      // console.log("vHeight: " + vHeight + "; colorCount: " + colorCount + "; maxColors: " + maxColors);
+      return path
+        .split("~")
+        [i].replace("/>", " transform='translate(" + spacing[0] / 2 + ",0)' " + joinMode + "stroke-width='" + stroke + "'" + strokeFill + "/>")
+        .replace("transform='translate(0,0)' ", " ");
+    }
+
+    let strokeFill = "",
+      joinMode = "",
+      strokeGroup = "";
+
+    if ((vHeight === 0) & (maxColors > 2)) {
+      for (let i = 0; i < maxColors - 1; i++) strokeGroup += multiStroke(i);
+    } else {
+      for (let i = 0; i < colorCounts - 1; i++) strokeGroup += multiStroke(i);
+    }
+
+    let patternNew =
+      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+      (width + spacing[0]) +
+      "' height='" +
+      // (height * (colors.length - 1) + spacing[1] * ((colors.length - 1) * 0.5)) +
+      (height - vHeight * (maxColors - colorCounts) + spacing[1]) +
+      "' transform='scale(" +
+      scale +
+      ")'><rect x='0' y='0' width='100%' height='100%' fill='" +
+      colors[0] +
+      "'/>" +
+      strokeGroup +
+      "</svg>";
+    return patternNew.replace("#", "%23");
+  };
+
   let colorCount = post.path.split("~").length + 1;
   const maxColors = post.path.split("~").length + 1,
     maxStroke = post.maxStroke,
@@ -145,9 +221,18 @@
     selectedPattern.angle,
     selectedPattern.join
   );
+  $: svgDownload = downloadPattern(
+    selectedPattern.colors,
+    selectedPattern.colorCounts,
+    selectedPattern.stroke,
+    selectedPattern.scale,
+    selectedPattern.spacing,
+    selectedPattern.angle,
+    selectedPattern.join
+  );
 
-  let outputWidth = 1080,
-    outputHeight = 1080;
+  // let outputWidth = 1080,
+  //   outputHeight = 1080;
 
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
@@ -188,7 +273,7 @@
   function downloadSVG() {
     let a = document.createElement("a");
     document.body.appendChild(a);
-    a.setAttribute("href", "data:image/svg+xml," + svgFile);
+    a.setAttribute("href", "data:image/svg+xml," + svgDownload);
     a.setAttribute("download", "pattern.svg");
     a.click();
     a.remove();
@@ -197,7 +282,7 @@
   function downloadPNG() {
     document.getElementById("pngOutput").innerHTML = svgFile
       .replace("%23", "#")
-      .replace("width='100%' height='100%'", "width='" + outputWidth + "px' height='" + outputHeight + "px'");
+      .replace("width='100%' height='100%'", "width='" + defaultWidth + "px' height='" + defaultHeight + "px'");
 
     svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
     document.getElementById("pngOutput").innerHTML = "";
@@ -597,7 +682,7 @@
     <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
       <h1>{post.title}</h1>
       <div class="inputs">
-        <label class="leftColumn" for="scale">Scale</label>
+        <label class="leftColumn" for="scale">Zoom</label>
         <div class="grid rightColumn">
           <input
             id="scale"
@@ -726,9 +811,12 @@
             type="number"
             title="Width"
             placeholder="Width"
-            bind:value={outputWidth}
+            bind:value={defaultWidth}
             min="0"
             max="9999"
+            on:change={(e) => {
+              localStorage.setItem('defaultWidth', e.target.value);
+            }}
             on:input={(e) => {
               if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
@@ -737,11 +825,14 @@
             type="number"
             title="Height"
             placeholder="Height"
-            bind:value={outputHeight}
+            bind:value={defaultHeight}
             min="0"
             max="9999"
+            on:change={(e) => {
+              localStorage.setItem('defaultHeight', e.target.value);
+            }}
             on:input={(e) => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4)
             }} />
         </div>
       </div>
@@ -775,9 +866,12 @@
       type="number"
       title="Width"
       placeholder="Width"
-      bind:value={outputWidth}
+      bind:value={defaultWidth}
       min="0"
       max="9999"
+      on:change={(e) => {
+        localStorage.setItem('defaultWidth', e.target.value);
+      }}
       on:input={(e) => {
         if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
@@ -786,11 +880,14 @@
       type="number"
       title="Height"
       placeholder="Height"
-      bind:value={outputHeight}
+      bind:value={defaultHeight}
       min="0"
       max="9999"
+      on:change={(e) => {
+        localStorage.setItem('defaultHeight', e.target.value);
+      }}
       on:input={(e) => {
-        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4)
       }} />
   </div>
   <div class="buttons">
