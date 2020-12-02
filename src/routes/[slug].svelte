@@ -11,6 +11,9 @@
 <script>
   export let post;
   import constants from "./_constants.js";
+  import en from "./_en.js";
+  let strings = en.strings;
+
   import { onMount } from "svelte";
 
   import { themeStore } from "./stores.js";
@@ -682,7 +685,7 @@
     <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
       <h1>{post.title}</h1>
       <div class="inputs">
-        <label class="leftColumn" for="scale">Zoom</label>
+        <label class="leftColumn" for="scale">{strings.zoom}</label>
         <div class="grid rightColumn">
           <input
             id="scale"
@@ -695,7 +698,7 @@
           <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
         </div>
         {#if mode === 'stroke-join' || mode === 'stroke'}
-          <label class="leftColumn" for="stroke">Stroke</label>
+          <label class="leftColumn" for="stroke">{strings.stroke}</label>
           <div class="grid rightColumn">
             <input
               id="stroke"
@@ -710,14 +713,14 @@
           </div>
         {/if}
         {#if mode === 'stroke-join'}
-          <label class="leftColumn">Join</label>
+          <label class="leftColumn">{strings.join}</label>
           <div class="rightColumn strokeJoin">
             <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
             <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
           </div>
         {/if}
         {#if maxSpacing[0] > 0}
-          <label class="leftColumn" for="hspacing">Horizontal Spacing</label>
+          <label class="leftColumn" for="hspacing">{strings.join}</label>
           <div class="grid rightColumn">
             <input
               id="hspacing"

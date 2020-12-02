@@ -12,26 +12,20 @@
 </script>
 
 <script>
-  // function fillPatterns() {
-  //   newPosts = posts.filter((pattern) => pattern.mode === "fill");
-  // }
-  // function strokePatterns() {
-  //   newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
-  // }
-  // function allPatterns() {
-  //   newPosts = posts;
-  // }
-
   // import AutoComplete from "simple-svelte-autocomplete";
   import AutoComplete from "../components/SimpleAutocomplete.svelte";
 
   import Footer from "../components/Footer.svelte";
-  import Constants from "../routes/_constants.js";
+  import Constants from "./_constants.js";
+  import en from "./_en.js";
+  let strings = en.strings;
+
   import { onMount } from "svelte";
   export let posts;
   let newPosts = posts;
   import { themeStore } from "./stores.js";
   import dayjs from "dayjs";
+  // import ja from "dayjs/locale/ja";
   import relativeTime from "dayjs/plugin/relativeTime";
 
   // let count_value;
@@ -39,33 +33,36 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
+  import "dayjs/locale/ja";
+  dayjs.locale("ja");
 
+  // dayjs().locale("ja").format();
   dayjs.extend(relativeTime);
 
   let searchBar;
   let w;
-  $: placeholderSearch = w > 640 ? "Search for patterns (Press '/' to focus)" : "Search for patterns";
+  $: placeholderSearch = w > 640 ? strings.searchPattern + " (" + strings.pressFocus + ")" : strings.searchPattern;
   // if (w <= 640) placeholderSearch = "Search for patterns";
 
   onMount(async () => {
     searchBar = document.getElementById("search");
   });
 
-  let mode = { text: "All modes", value: "all" };
-  let colorsCount = { text: "All colors", value: 0 };
+  let mode = { text: strings.allModes, value: "all" };
+  let colorsCount = { text: strings.allColors, value: 0 };
 
   let filterOptions = [
-    { text: "All modes", value: "all" },
-    { text: "Stroke", value: "stroke" },
-    { text: "Fill", value: "fill" },
+    { text: strings.allModes, value: "all" },
+    { text: strings.stroke, value: "stroke" },
+    { text: strings.fill, value: "fill" },
   ];
 
   let colorOptions = [
-    { text: "All colors", value: 0 },
-    { text: "2 colors", value: 2 },
-    { text: "3 colors", value: 3 },
-    { text: "4 colors", value: 4 },
-    { text: "5 colors", value: 5 },
+    { text: strings.allColors, value: 0 },
+    { text: "2 " + strings.colors, value: 2 },
+    { text: "3 " + strings.colors, value: 3 },
+    { text: "4 " + strings.colors, value: 4 },
+    { text: "5 " + strings.colors, value: 5 },
   ];
 
   let searchText;
@@ -145,10 +142,10 @@
   }
 
   let website = "https://pattern.monster";
-  let title = "Pattern Monster - SVG Pattern Generator";
+  let title = "Pattern Monster - " + strings.title;
   let url = website;
-  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let keywords = strings.keywords
+  let desc = strings.description
   let image = website + "/TwitterBG2.png";
 
   let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
@@ -555,7 +552,7 @@
         <path d={Constants.icons.trending} />
       </svg>
       {posts.length}
-      patterns
+      {strings.patterns}
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -567,61 +564,55 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.license} />
       </svg>
-      MIT License
+      {strings.license}
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.release} />
       </svg>
-      Free
+      {strings.free}
     </div>
   </div>
-  <p class="container mx-auto">
-    A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
-    website backgrounds, apparel, branding, packaging design and more.
-  </p>
+  <p class="container mx-auto">{strings.description}</p>
 
   <div class="outerGrid">
     <div class="searchBox">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.search} />
       </svg>
-      <input id="search" class="search" type="text" aria-label="Search for patterns" bind:value={searchText} placeholder={placeholderSearch} on:input={searchChanged} />
+      <input
+        id="search"
+        class="search"
+        type="text"
+        aria-label={strings.searchPattern}
+        bind:value={searchText}
+        placeholder={placeholderSearch}
+        on:input={searchChanged} />
     </div>
     <div class="filterGrid">
-      Filter
-      <!-- <select class="select-css" bind:value={mode} on:change={filterChanged}>
-        {#each filterOptions as option, i}
-          <option value={option.value}>{option.text}</option>
-        {/each}
-      </select> -->
-      <!-- <select class="select-css" bind:value={colorsCount} on:change={colorsChanged}>
-        {#each colorOptions as option, i}
-          <option value={option.value}>{option.text}</option>
-        {/each}
-      </select> -->
+      {strings.filter}
       <AutoComplete
         inputId="filterMode"
-        placeholder="Mode"
+        placeholder={strings.filterMode}
         items={filterOptions}
         bind:selectedItem={mode}
         labelFieldName="text"
-        ariaLabel="Filter by Mode"
+        ariaLabel={strings.filterMode}
         onChange={filterChanged} />
       <AutoComplete
         inputId="filterColor"
-        placeholder="Colors"
+        placeholder={strings.filterColors}
         items={colorOptions}
         bind:selectedItem={colorsCount}
         labelFieldName="text"
-        ariaLabel="Filter by Colors"
+        ariaLabel={strings.filterColors}
         onChange={colorsChanged} />
     </div>
     <div class="sortGrid">
-      <span>Sort</span>
+      <span>{strings.sort}</span>
       <div class="sortInner">
-        <button on:click={sortLatest}>Latest</button>
-        <button on:click={sortOldest}>Oldest</button>
+        <button on:click={sortLatest}>{strings.latest}</button>
+        <button on:click={sortOldest}>{strings.oldest}</button>
         <button on:click={sortAlphabetical}>A-Z</button>
         <button on:click={sortAlphabeticalReverse}>Z-A</button>
       </div>
@@ -635,9 +626,9 @@
         </a>
         <div class="details">
           {#if post.colors > 2}
-            <div class="numColors">2 - {post.colors} colors</div>
+            <div class="numColors">2 - {post.colors} {strings.colors}</div>
           {:else}
-            <div class="numColors">{post.colors} colors</div>
+            <div class="numColors">{post.colors} {strings.colors}</div>
           {/if}
           <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
         </div>

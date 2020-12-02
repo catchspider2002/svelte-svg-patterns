@@ -67,7 +67,7 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 <div class="outer">
-  <div class="container">
+  <div class="container mx-auto">
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
