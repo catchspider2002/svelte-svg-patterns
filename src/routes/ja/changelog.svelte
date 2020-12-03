@@ -1,6 +1,5 @@
 <script>
-  import Footer from "../components/Footer.svelte";
-  import Nav from "../components/Nav.svelte";
+  import Footer from "../../components/Footer.svelte";
 
   let website = "https://pattern.monster";
   let title = "Changelog - Pattern Monster";

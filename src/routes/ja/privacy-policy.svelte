@@ -1,7 +1,7 @@
 <script>
-  import Footer from "../components/Footer.svelte";
-  import Nav from "../components/Nav.svelte";
-  import en from "../routes/_en.js";
+  import Footer from "../../components/Footer.svelte";
+  import Nav from "../../components/Nav.svelte";
+  import en from "./_ja.js";
   let strings = en.strings;
 
   let website = "https://pattern.monster";

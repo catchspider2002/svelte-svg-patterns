@@ -9,15 +9,14 @@
 </script>
 
 <script>
-  import Nav from "../components/Nav.svelte";
   export let post;
-  import constants from "./_constants.js";
-  import lang from "./_en.js";
+  import constants from "../_constants.js";
+  import lang from "./_ja.js";
   let strings = lang.strings;
 
   import { onMount } from "svelte";
 
-  import { themeStore } from "./stores.js";
+  import { themeStore } from "../stores.js";
 
   // import { bind } from "svelte/internal";
   let w;

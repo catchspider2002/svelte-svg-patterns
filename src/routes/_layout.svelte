@@ -1,8 +1,8 @@
 <script>
-  import Nav from "../components/Nav.svelte";
+  // import Nav from "../components/Nav.svelte";
   
   // import { onMount } from "svelte";
-  export let segment;
+  // export let segment;
 
   // const sayHello = e => {
   //   let defaultNewTheme = e.detail;
@@ -41,7 +41,7 @@
 </style>
 
 <!-- <Nav {segment} on:theme={sayHello} /> -->
-<Nav {segment} />
+<!-- <Nav {segment} /> -->
 
 <main>
   <slot />

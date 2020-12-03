@@ -1,6 +1,6 @@
 <script>
-  import Logo from "../components/Logo.svelte";
-  import Nav from "../components/Nav.svelte";
+  import Logo from "../../components/Logo.svelte";
+  import Footer from "../../components/Footer.svelte";
 </script>
 
 <style>
@@ -561,8 +561,7 @@
         opacity=".5" />
     </svg>
     <p class="pb-5">
-      We've got your mail. You can spread the awesomeness by sharing the below tweet
-      so more people like you can get the free patterns.
+      We've got your mail. You can spread the awesomeness by sharing the below tweet so more people like you can get the free patterns.
     </p>
     <button
       class="accent-bg"
@@ -578,3 +577,4 @@
     </a> -->
   </section>
 </div>
+<Footer strings={{ lang: 'en', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />

@@ -1,7 +1,6 @@
 <script>
-  import Logo from "../components/Logo.svelte";
-  import Footer from "../components/Footer.svelte";
-  import Nav from "../components/Nav.svelte";
+  import Logo from "../../components/Logo.svelte";
+  import Footer from "../../components/Footer.svelte";
 
   $: stroke = 3;
   $: angle = "30";

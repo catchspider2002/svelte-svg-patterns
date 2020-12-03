@@ -13,18 +13,18 @@
 
 <script>
   // import AutoComplete from "simple-svelte-autocomplete";
-  import AutoComplete from "../components/SimpleAutocomplete.svelte";
-  import Nav from "../components/Nav.svelte";
+  import AutoComplete from "../../components/SimpleAutocomplete.svelte";
+  import Nav from "../../components/Nav.svelte";
 
-  import Footer from "../components/Footer.svelte";
-  import Constants from "./_constants.js";
-  import en from "./_en.js";
-  let strings = en.strings;
+  import Footer from "../../components/Footer.svelte";
+  import Constants from "../_constants.js";
+  import lang from "./_ja.js";
+  let strings = lang.strings;
 
   import { onMount } from "svelte";
   export let posts;
   let newPosts = posts;
-  import { themeStore } from "./stores.js";
+  import { themeStore } from "../stores.js";
   import dayjs from "dayjs";
   // import ja from "dayjs/locale/ja";
   import relativeTime from "dayjs/plugin/relativeTime";
@@ -34,8 +34,8 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
-  // import "dayjs/locale/ja";
-  // dayjs.locale("ja");
+  import "dayjs/locale/ja";
+  dayjs.locale("ja");
 
   // dayjs().locale("ja").format();
   dayjs.extend(relativeTime);
@@ -640,4 +640,4 @@
 </div>
 
 
-<Footer strings={{ lang:'en', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
+<Footer strings={{ lang:'ja', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
