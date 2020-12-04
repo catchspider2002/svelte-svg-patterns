@@ -1,6 +1,6 @@
 <script>
   import Constants from "../routes/_constants.js";
-  import en from "../routes/_en.js";
+  import en from "../locales/en.js";
   export let strings = en.strings;
 
   let lang = strings.lang;
@@ -85,8 +85,8 @@
     <div class="grid justify-center">
       <div class="iconLinks grid justify-center">
         <a href={urlLang + 'changelog/'}>{strings.changelog}</a>
-        <a href={urlLang + 'changelog/'}>{strings.features}</a>
-        <a href={urlLang + 'changelog/'}>{strings.privacy}</a>
+        <a href={urlLang + 'features/'}>{strings.features}</a>
+        <a href={urlLang + 'privacy-policy/'}>{strings.privacy}</a>
       </div>
       <div class="iconLinks grid justify-center">
         <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">

@@ -1,5 +1,8 @@
 <script>
+  import Nav from "../../components/Nav.svelte";
   import Footer from "../../components/Footer.svelte";
+  import lang from "../../locales/ja.js";
+  let strings = lang.strings;
 
   let website = "https://pattern.monster";
   let title = "Changelog - Pattern Monster";
@@ -66,34 +69,39 @@
   <meta name="twitter:image:src" content={image} />
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
-<div class="outer">
-  <div class="container mx-auto">
-    <h1>CHANGELOG</h1>
-    <div>
-      <ul id="logs">
-        <li class="versionHeader">November 28, 2020</li>
-        <li>Added 12 new patterns</li>
-        <li>Updated old patterns with multiple colors</li>
-        <li>Fixed the downloaded SVG to be usable on Figma</li>
-        <li>Remember the last entered values of height and width</li>
-        <li class="versionHeader">November 21, 2020</li>
-        <li>Added 12 new patterns</li>
-        <li>Fixed accessibility issues</li>
-        <li class="versionHeader">November 14, 2020</li>
-        <li>Added 6 new patterns</li>
-        <li>Added multiple colors for patterns up to 5 colors which can be chosen in the pattern page</li>
-        <li>Number of colors a pattern supports is shown under the pattern in the home page</li>
-        <li>Added a filter to display the patterns by the number of supported colors</li>
-        <li>Reduced the size of generated css and svg by removing the g tag</li>
-        <li>Added a search bar to search patterns in the home page</li>
-        <li class="versionHeader">November 7, 2020</li>
-        <li>6 new patterns</li>
-        <li>Added a filter to restrict stroke and fill patterns</li>
-        <li>Added sort buttons to order alphabetically and by posted date</li>
-        <li>Added tweet button for quick sharing</li>
-        <li>Added posted date below the patterns</li>
-      </ul>
+
+<Nav strings={{ tweet: strings.tweet, changeTheme: strings.changeTheme }} />
+<main>
+  <div class="outer">
+    <div class="container mx-auto">
+      <h1>CHANGELOG</h1>
+      <div>
+        <ul id="logs">
+          <li class="versionHeader">November 28, 2020</li>
+          <li>Added 12 new patterns</li>
+          <li>Updated old patterns with multiple colors</li>
+          <li>Fixed the downloaded SVG to be usable on Figma</li>
+          <li>Remember the last entered values of height and width</li>
+          <li class="versionHeader">November 21, 2020</li>
+          <li>Added 12 new patterns</li>
+          <li>Fixed accessibility issues</li>
+          <li class="versionHeader">November 14, 2020</li>
+          <li>Added 6 new patterns</li>
+          <li>Added multiple colors for patterns up to 5 colors which can be chosen in the pattern page</li>
+          <li>Number of colors a pattern supports is shown under the pattern in the home page</li>
+          <li>Added a filter to display the patterns by the number of supported colors</li>
+          <li>Reduced the size of generated css and svg by removing the g tag</li>
+          <li>Added a search bar to search patterns in the home page</li>
+          <li class="versionHeader">November 7, 2020</li>
+          <li>6 new patterns</li>
+          <li>Added a filter to restrict stroke and fill patterns</li>
+          <li>Added sort buttons to order alphabetically and by posted date</li>
+          <li>Added tweet button for quick sharing</li>
+          <li>Added posted date below the patterns</li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-<Footer />
+
+  <Footer strings={{ lang: 'ja', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
+</main>

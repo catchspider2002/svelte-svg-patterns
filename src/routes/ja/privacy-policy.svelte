@@ -1,14 +1,15 @@
 <script>
-  import Footer from "../../components/Footer.svelte";
   import Nav from "../../components/Nav.svelte";
-  import en from "./_ja.js";
-  let strings = en.strings;
+  import Footer from "../../components/Footer.svelte";
+  import lang from "../../locales/ja.js";
+  let strings = lang.strings;
 
   let website = "https://pattern.monster";
   let title = "Privacy Policy - Pattern Monster";
   let url = website + "/privacy-policy/";
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc =
+    "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 </script>
 
@@ -55,10 +56,12 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
-<Nav/>
-<div>
-  <h1 class="upper">{strings.privacy}</h1>
-  <p>{strings.privacyFull}</p>
-</div>
+<Nav strings={{ tweet: strings.tweet, changeTheme: strings.changeTheme }} />
+<main>
+  <div>
+    <h1 class="upper">{strings.privacy}</h1>
+    <p>{strings.privacyFull}</p>
+  </div>
 
-<Footer strings={{ lang:'en', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
+  <Footer strings={{ lang: 'ja', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
+</main>

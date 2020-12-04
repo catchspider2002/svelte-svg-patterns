@@ -5,7 +5,7 @@
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
   import { themeStore } from "../routes/stores.js";
-  import en from "../routes/_en.js";
+  import en from "../locales/en.js";
   export let strings = en.strings;
 
   // const dispatch = createEventDispatcher();

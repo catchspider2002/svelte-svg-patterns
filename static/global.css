@@ -208,6 +208,16 @@ button {
   -moz-appearance: none;
 }
 
+main {
+  position: relative;
+  background-color: var(--main-bg-color);
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: grid;
+  min-height: calc(100vh - 3.2em);
+  grid-template-rows: 1fr auto;
+}
+
 button:hover,
 button:focus {
   background-color: var(--secondary-color-hover);

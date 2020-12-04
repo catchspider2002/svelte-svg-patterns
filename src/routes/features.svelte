@@ -1,8 +1,10 @@
 <script>
-  import Logo from "../components/Logo.svelte";
-  import Footer from "../components/Footer.svelte";
   import Nav from "../components/Nav.svelte";
+  import Footer from "../components/Footer.svelte";
+  import lang from "../locales/en.js";
+  let strings = lang.strings;
 
+  import Logo from "../components/Logo.svelte";
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
@@ -10,7 +12,8 @@
   let title = "Features - Pattern Monster";
   let url = website + "/features/";
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Features for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc =
+    "Features for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
   const palettes = [
@@ -413,224 +416,226 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
-<!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
+<Nav strings={{ tweet: strings.tweet, changeTheme: strings.changeTheme }} />
+<main>
+  <!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
  <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
-<section class="landing grid light-text accent-bg">
-  <div class="leftOuter grid items-center">
-    <div class="left">
-      <p class="comingSoon">OPEN SOURCE</p>
-      <h1>Create amazing SVG patterns in seconds</h1>
-      <p class="subtitle">
-        A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
-        website backgrounds, apparel, branding, packaging design and more.
-      </p>
-      <!-- <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button> -->
-      <a class="secondary-bg dark-text cta" href="/">Explore patterns</a>
-      <!-- <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
+  <section class="landing grid light-text accent-bg">
+    <div class="leftOuter grid items-center">
+      <div class="left">
+        <p class="comingSoon">OPEN SOURCE</p>
+        <h1>Create amazing SVG patterns in seconds</h1>
+        <p class="subtitle">
+          A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect
+          for website backgrounds, apparel, branding, packaging design and more.
+        </p>
+        <!-- <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button> -->
+        <a class="secondary-bg dark-text cta" href="/">Explore patterns</a>
+        <!-- <div class="subscribe grid"><script async data-uid="ba0253339a" src="https://crafty-artist-9316.ck.page/ba0253339a/index.js">
         </script></div> -->
+      </div>
     </div>
-  </div>
-  <div class="bottomSide grid">
-    <div class="svgContainer">
-      <div class="accent-text">
-        <svg width="100%" height="100%" viewbox="0 0 1000 3600" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="a"
-              patternUnits="userSpaceOnUse"
-              width="20"
-              height={(colorPalette.length - 1) * 20}
-              patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              {#each colorPalette as colorList, i}
-                <path
-                  transform="translate(0,{20 * i})"
-                  stroke-linecap="square"
-                  stroke-width={stroke}
-                  stroke={colorPalette[i + 1]}
-                  fill="none"
-                  d="M -2.3354725e-8,9.8330078 H 20 Z" />
-              {/each}
-            </pattern>
-            <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
-                <path d="M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z" />
-              </g>
-            </pattern>
-            <pattern
-              id="c"
-              patternUnits="userSpaceOnUse"
-              width="20"
-              height={(colorPalette.length - 1) * 30}
-              patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              {#each colorPalette as colorList, i}
-                <path
-                  transform="translate(0,{30 * i})"
-                  stroke-linecap="square"
-                  stroke-width={stroke}
-                  stroke={colorPalette[i + 1]}
-                  fill="none"
-                  d="M-20 17.735a7.693 7.693 0 013.902-4.696A7.693 7.693 0 01-10 12.735c1.775.676 3.222 1.982 4.762 3.094.77.556 1.577 1.071
+    <div class="bottomSide grid">
+      <div class="svgContainer">
+        <div class="accent-text">
+          <svg width="100%" height="100%" viewbox="0 0 1000 3600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="a"
+                patternUnits="userSpaceOnUse"
+                width="20"
+                height={(colorPalette.length - 1) * 20}
+                patternTransform="scale({scale}) rotate({angle})">
+                <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+                {#each colorPalette as colorList, i}
+                  <path
+                    transform="translate(0,{20 * i})"
+                    stroke-linecap="square"
+                    stroke-width={stroke}
+                    stroke={colorPalette[i + 1]}
+                    fill="none"
+                    d="M -2.3354725e-8,9.8330078 H 20 Z" />
+                {/each}
+              </pattern>
+              <pattern id="b" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="scale({scale}) rotate({angle})">
+                <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+                <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
+                  <path d="M-6 5h20v10H-6zM-16 15H4v10h-20zM4 15h20v10H4zM-16-5H4V5h-20zM4-5h20V5H4zM14 5h20v10H14z" />
+                </g>
+              </pattern>
+              <pattern
+                id="c"
+                patternUnits="userSpaceOnUse"
+                width="20"
+                height={(colorPalette.length - 1) * 30}
+                patternTransform="scale({scale}) rotate({angle})">
+                <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+                {#each colorPalette as colorList, i}
+                  <path
+                    transform="translate(0,{30 * i})"
+                    stroke-linecap="square"
+                    stroke-width={stroke}
+                    stroke={colorPalette[i + 1]}
+                    fill="none"
+                    d="M-20 17.735a7.693 7.693 0 013.902-4.696A7.693 7.693 0 01-10 12.735c1.775.676 3.222 1.982 4.762 3.094.77.556 1.577 1.071
                   2.456 1.431.88.36 1.836.562 2.782.475.944-.087 1.844-.458 2.659-.944.814-.486 1.553-1.087 2.296-1.677.742-.59 1.496-1.174
                   2.332-1.622.836-.448 1.765-.757 2.713-.757.948 0 1.877.309 2.713.757.836.448 1.59 1.032 2.332 1.622.743.59 1.482 1.19
                   2.296 1.677.815.486 1.715.857 2.659.944.946.087 1.903-.115 2.782-.475s1.686-.875 2.456-1.43c1.54-1.113 2.987-2.419
                   4.762-3.095a7.693 7.693 0 016.098.304A7.693 7.693 0 0140 17.735" />
-              {/each}
-            </pattern>
-            <!-- <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale({scale}) rotate({angle})">
+                {/each}
+              </pattern>
+              <!-- <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale({scale}) rotate({angle})">
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
               <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
                 <path d="M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z" />
               </g>
             </pattern> -->
-            <pattern
-              id="e"
-              patternUnits="userSpaceOnUse"
-              width="30"
-              height={(colorPalette.length - 1) * 30}
-              patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              {#each colorPalette as colorList, i}
-                <path
-                  transform="translate(0,{30 * i})"
-                  stroke-linecap="square"
-                  stroke-width={stroke}
-                  stroke={colorPalette[i + 1]}
-                  fill="none"
-                  d="M3.25 10h13.5M10 3.25v13.5" />
-              {/each}
-            </pattern>
-            <pattern
-              id="f"
-              patternUnits="userSpaceOnUse"
-              width="20"
-              height={(colorPalette.length - 1) * 20}
-              patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              {#each colorPalette as colorList, i}
-                <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
-                  <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
-                </g>
-              {/each}
-            </pattern>
-          </defs>
-          <filter id="dropshadow" height="130%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="7" />
-            <!-- stdDeviation is how much to blur -->
-            <feOffset dx="3" dy="3" result="offsetblur" />
-            <!-- how much to offset -->
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="1.5" />
-              <!-- slope is the opacity of the shadow -->
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode />
-              <!-- this contains the offset blurred image -->
-              <feMergeNode in="SourceGraphic" />
-              <!-- this contains the element that the filter is applied to -->
-            </feMerge>
-          </filter>
-          <g>
-            <rect x="780" width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
-            <rect x="580" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
-            <!-- <rect x="580" width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" /> -->
-            <rect x="380" width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
-            <rect x="180" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
-            <rect x="-20" width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
-          </g>
-        </svg>
+              <pattern
+                id="e"
+                patternUnits="userSpaceOnUse"
+                width="30"
+                height={(colorPalette.length - 1) * 30}
+                patternTransform="scale({scale}) rotate({angle})">
+                <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+                {#each colorPalette as colorList, i}
+                  <path
+                    transform="translate(0,{30 * i})"
+                    stroke-linecap="square"
+                    stroke-width={stroke}
+                    stroke={colorPalette[i + 1]}
+                    fill="none"
+                    d="M3.25 10h13.5M10 3.25v13.5" />
+                {/each}
+              </pattern>
+              <pattern
+                id="f"
+                patternUnits="userSpaceOnUse"
+                width="20"
+                height={(colorPalette.length - 1) * 20}
+                patternTransform="scale({scale}) rotate({angle})">
+                <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
+                {#each colorPalette as colorList, i}
+                  <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
+                    <path d="M 12.5,10 A 2.5,2.5 0 0 1 10,12.5 2.5,2.5 0 0 1 7.5,10 2.5,2.5 0 0 1 10,7.5 2.5,2.5 0 0 1 12.5,10 Z" />
+                  </g>
+                {/each}
+              </pattern>
+            </defs>
+            <filter id="dropshadow" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="7" />
+              <!-- stdDeviation is how much to blur -->
+              <feOffset dx="3" dy="3" result="offsetblur" />
+              <!-- how much to offset -->
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="1.5" />
+                <!-- slope is the opacity of the shadow -->
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode />
+                <!-- this contains the offset blurred image -->
+                <feMergeNode in="SourceGraphic" />
+                <!-- this contains the element that the filter is applied to -->
+              </feMerge>
+            </filter>
+            <g>
+              <rect x="780" width={size} height="100%" fill="url(#c)" style="filter:url(#dropshadow)" />
+              <rect x="580" width={size} height="100%" fill="url(#e)" style="filter:url(#dropshadow)" />
+              <!-- <rect x="580" width={size} height="100%" fill="url(#d)" style="filter:url(#dropshadow)" /> -->
+              <rect x="380" width={size} height="100%" fill="url(#b)" style="filter:url(#dropshadow)" />
+              <rect x="180" width={size} height="100%" fill="url(#f)" style="filter:url(#dropshadow)" />
+              <rect x="-20" width={size} height="100%" fill="url(#a)" style="filter:url(#dropshadow)" />
+            </g>
+          </svg>
+        </div>
       </div>
-    </div>
-    <div class="toolbox grid items-center">
-      <label for="scale">Scale</label>
-      <input id="scale" type="range" bind:value={scale} min="0.5" max="9.5" step="0.5" />
-      <label for="stroke">Stroke</label>
-      <input id="stroke" type="range" bind:value={stroke} min="0.5" max="9.5" step="0.5" />
-      <label for="angle">Angle</label>
-      <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-      <label for="angle">Colors</label>
-      <div class="radio-toolbar grid">
-        {#each palettes as palette, i}
-          <input
-            type="radio"
-            id="palette{i}"
-            name="palette"
-            checked={i === 1 ? true : false}
-            value={i}
-            on:change={() => {
-              colorPalette = palette;
-            }} />
-          <label
-            style="background:linear-gradient(90deg, {palette[0]} 0%, {palette[0]} 20%, {palette[1]} 20%, {palette[1]} 40%, {palette[2]}
+      <div class="toolbox grid items-center">
+        <label for="scale">Scale</label>
+        <input id="scale" type="range" bind:value={scale} min="0.5" max="9.5" step="0.5" />
+        <label for="stroke">Stroke</label>
+        <input id="stroke" type="range" bind:value={stroke} min="0.5" max="9.5" step="0.5" />
+        <label for="angle">Angle</label>
+        <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
+        <label for="angle">Colors</label>
+        <div class="radio-toolbar grid">
+          {#each palettes as palette, i}
+            <input
+              type="radio"
+              id="palette{i}"
+              name="palette"
+              checked={i === 1 ? true : false}
+              value={i}
+              on:change={() => {
+                colorPalette = palette;
+              }} />
+            <label
+              style="background:linear-gradient(90deg, {palette[0]} 0%, {palette[0]} 20%, {palette[1]} 20%, {palette[1]} 40%, {palette[2]}
             40%, {palette[2]} 60%, {palette[3]} 60%, {palette[3]} 80%, {palette[4]} 80%, {palette[4]} 100%);"
-            class="disable-select"
-            for="palette{i}" />
-        {/each}
+              class="disable-select"
+              for="palette{i}" />
+          {/each}
+        </div>
       </div>
     </div>
+  </section>
+  <div class="overlapCard accent-bg text-center">
+    <div class="container mx-auto">Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.</div>
   </div>
-</section>
-<div class="overlapCard accent-bg text-center">
-  <div class="container mx-auto">Handy tool for developers and designers. Unleash your creativity to produce visually stunning patterns.</div>
-</div>
-<div class="triangleOuter">
-  <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="0 0 100 0 50 10" />
-  </svg>
-</div>
-<section class="features secondary-bg dark-text">
-  <div class="container p-5 mx-auto">
-    <div class="featureRight grid items-center mx-auto">
-      <div class="animatedIcon">
-        <div class="cf">
-          {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
-          {@html svgIcon('', 'color2', 45, 'top')}
+  <div class="triangleOuter">
+    <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0 0 100 0 50 10" />
+    </svg>
+  </div>
+  <section class="features secondary-bg dark-text">
+    <div class="container p-5 mx-auto">
+      <div class="featureRight grid items-center mx-auto">
+        <div class="animatedIcon">
+          <div class="cf">
+            {@html svgIcon('', 'color1', 45, 'bottom', palettes[4])}
+            {@html svgIcon('', 'color2', 45, 'top')}
+          </div>
+        </div>
+        <div class="featureHeading">
+          <h2>Tweak Colors</h2>
+          <p class="featureDescription">Customize foreground and background colors easily</p>
         </div>
       </div>
-      <div class="featureHeading">
-        <h2>Tweak Colors</h2>
-        <p class="featureDescription">Customize foreground and background colors easily</p>
-      </div>
-    </div>
-    <div class="featureLeft grid items-center lg:w-3/5 mx-auto">
-      <div class="featureHeading">
-        <h2>Modify Stroke</h2>
-        <p class="featureDescription">Adjust the stroke width on supported patterns</p>
-      </div>
-      <div class="animatedIcon">
-        {@html svgIcon1('thickMorph', 'a2')}
-      </div>
-    </div>
-    <div class="featureRight grid items-center mx-auto">
-      <div class="animatedIcon">
-        <div class="cf">
-          {@html svgIcon('', 'angle1', 0, 'bottom')}
-          {@html svgIcon('', 'angle2', -45, 'top')}
+      <div class="featureLeft grid items-center lg:w-3/5 mx-auto">
+        <div class="featureHeading">
+          <h2>Modify Stroke</h2>
+          <p class="featureDescription">Adjust the stroke width on supported patterns</p>
+        </div>
+        <div class="animatedIcon">
+          {@html svgIcon1('thickMorph', 'a2')}
         </div>
       </div>
-      <div class="featureHeading">
-        <h2>Alter Angle</h2>
-        <p class="featureDescription">Change the angle to generate unique images</p>
+      <div class="featureRight grid items-center mx-auto">
+        <div class="animatedIcon">
+          <div class="cf">
+            {@html svgIcon('', 'angle1', 0, 'bottom')}
+            {@html svgIcon('', 'angle2', -45, 'top')}
+          </div>
+        </div>
+        <div class="featureHeading">
+          <h2>Alter Angle</h2>
+          <p class="featureDescription">Change the angle to generate unique images</p>
+        </div>
       </div>
-    </div>
-    <div class="featureLeft grid items-center lg:w-3/5 mx-auto">
-      <div class="featureHeading">
-        <h2>Copy Code</h2>
-        <p class="featureDescription">Copy CSS and SVG code directly to your clipboard for web projects</p>
-      </div>
-      <div class="animatedIcon">
-        <div class="cf">
-          <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M2.48 6.292q.521 0 .884-.2.115-.067.115-.174 0-.075-.06-.133-.058-.058-.142-.058-.044 0-.087.019-.332.149-.617.149-.43
+      <div class="featureLeft grid items-center lg:w-3/5 mx-auto">
+        <div class="featureHeading">
+          <h2>Copy Code</h2>
+          <p class="featureDescription">Copy CSS and SVG code directly to your clipboard for web projects</p>
+        </div>
+        <div class="animatedIcon">
+          <div class="cf">
+            <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
+              <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+              <path
+                style="line-height:125%"
+                aria-label="CSS"
+                stroke-width=".202"
+                fill="#ffc800"
+                d="M2.48 6.292q.521 0 .884-.2.115-.067.115-.174 0-.075-.06-.133-.058-.058-.142-.058-.044 0-.087.019-.332.149-.617.149-.43
               0-.66-.232-.228-.232-.228-.66 0-.45.227-.673.228-.223.648-.223.081 0
               .156.009.074.008.14.025.067.016.108.03.043.012.101.034l.077.027q.043.014.079.014.093 0 .161-.062.068-.061.068-.14
               0-.113-.142-.178-.381-.158-.777-.158-.314 0-.586.093-.269.09-.465.257-.197.166-.309.412-.112.247-.112.545 0
@@ -646,15 +651,15 @@
               0-.076-.065-.124-.149-.106-.428-.174-.28-.07-.576-.07-.507 0-.828.191-.319.192-.319.519 0
               .253.156.402.157.147.511.248l.683.189q.193.051.284.125.09.073.09.203 0 .158-.169.238-.168.08-.439.08-.424
               0-.811-.191-.035-.017-.073-.017-.089 0-.163.082-.073.08-.073.164 0 .064.048.093.4.257 1.074.257z" />
-          </svg>
-          <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
+            </svg>
+            <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
+              <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+              <path
+                style="line-height:125%"
+                aria-label="CSS"
+                stroke-width=".202"
+                fill="#ffc800"
+                d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
               0-.15-.053-.262-.054-.115-.168-.199-.112-.084-.255-.142-.14-.058-.347-.113l-.303-.074-.302-.073q-.155-.043-.232-.11-.074-.068-.074-.176
               0-.084.05-.144.05-.06.138-.092.09-.033.193-.047.105-.015.234-.015.387 0 .72.157.054.024.1.024.086 0 .148-.061.062-.064.062-.14
               0-.076-.064-.124-.149-.106-.428-.174-.28-.07-.576-.07-.507 0-.828.191-.319.192-.319.519 0
@@ -668,21 +673,21 @@
               0-.207.051-.368.052-.16.162-.28.11-.122.292-.186.182-.065.428-.065.292 0 .723.11.03.014.07.014.091 0 .15-.06.057-.062.057-.139
               0-.048-.033-.092-.033-.047-.097-.074-.381-.15-.892-.15-.38 0-.677.1-.298.101-.485.28-.186.177-.281.409-.096.23-.096.503 0
               .416.189.709.188.292.526.438.337.144.797.144z" />
-          </svg>
+            </svg>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="featureRight grid items-center mx-auto">
-      <div class="animatedIcon">
-        <div class="cf">
-          <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M1.039 6.249q.122 0 .209-.07.089-.07.089-.185v-.728h.577q1.133 0 1.133-.746
+      <div class="featureRight grid items-center mx-auto">
+        <div class="animatedIcon">
+          <div class="cf">
+            <svg class="bottom" width="100%" height="100%" viewBox="0 0 10 10">
+              <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+              <path
+                style="line-height:125%"
+                aria-label="CSS"
+                stroke-width=".202"
+                fill="#ffc800"
+                d="M1.039 6.249q.122 0 .209-.07.089-.07.089-.185v-.728h.577q1.133 0 1.133-.746
               0-.204-.077-.35-.076-.147-.225-.23-.147-.086-.342-.124-.193-.04-.45-.04h-.89q-.153 0-.238.086-.084.086-.084.216v1.916q0
               .115.089.185.089.07.209.07zm.298-1.339v-.758h.553q.144 0 .24.013.097.014.176.052.08.037.118.113.037.075.037.19 0
               .118-.037.195-.038.077-.118.12-.079.04-.18.058-.1.017-.25.017zM3.73 6.247q.108 0 .188-.06Q4 6.127 4 6.031V4.515l1.352
@@ -693,15 +698,15 @@
               0-.207.052-.368.052-.16.162-.28.11-.122.291-.186.183-.065.429-.065.292 0 .722.11.032.014.07.014.092 0
               .15-.06.058-.062.058-.139 0-.048-.033-.092-.033-.047-.098-.074-.38-.15-.892-.15-.379
               0-.677.1-.298.101-.484.28-.186.177-.282.409-.095.23-.095.503 0 .416.188.709.189.292.526.438.338.144.797.144z" />
-          </svg>
-          <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
-            <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
-            <path
-              style="line-height:125%"
-              aria-label="CSS"
-              stroke-width=".202"
-              fill="#ffc800"
-              d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
+            </svg>
+            <svg class="top" width="100%" height="100%" viewBox="0 0 10 10">
+              <path overflow="visible" fill="#44337a" fill-rule="evenodd" paint-order="markers stroke fill" d="M0 0h10v10H0z" />
+              <path
+                style="line-height:125%"
+                aria-label="CSS"
+                stroke-width=".202"
+                fill="#ffc800"
+                d="M2 6.292q.542 0 .863-.2.322-.203.322-.548
               0-.15-.053-.262-.054-.115-.168-.199-.112-.084-.255-.142-.14-.058-.347-.113l-.303-.074-.302-.073q-.155-.043-.232-.11-.074-.068-.074-.176
               0-.084.05-.144.05-.06.138-.092.09-.033.193-.047.105-.015.234-.015.387 0 .72.157.054.024.1.024.086 0 .148-.061.062-.064.062-.14
               0-.076-.064-.124-.149-.106-.428-.174-.28-.07-.576-.07-.507 0-.828.191-.319.192-.319.519 0
@@ -715,66 +720,66 @@
               0-.207.051-.368.052-.16.162-.28.11-.122.292-.186.182-.065.428-.065.292 0 .723.11.03.014.07.014.091 0 .15-.06.057-.062.057-.139
               0-.048-.033-.092-.033-.047-.097-.074-.381-.15-.892-.15-.38 0-.677.1-.298.101-.485.28-.186.177-.281.409-.096.23-.096.503 0
               .416.189.709.188.292.526.438.337.144.797.144z" />
-          </svg>
+            </svg>
+          </div>
+        </div>
+        <div class="featureHeading">
+          <h2>Download Options</h2>
+          <p class="featureDescription">Download a tileable SVG or a high resolution seamless PNG image for print</p>
         </div>
       </div>
-      <div class="featureHeading">
-        <h2>Download Options</h2>
-        <p class="featureDescription">Download a tileable SVG or a high resolution seamless PNG image for print</p>
-      </div>
     </div>
-  </div>
-</section>
-<!-- For designers and developers -->
-<div class="overlapCard accent-bg text-center">
-  <div class="container mx-auto">
-    Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of styles, from
-    the cool, quirky and edgy, to the more luxurious designs.
-  </div>
-</div>
-<div class="triangleOuter">
-  <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="0 0 100 0 50 10" />
-  </svg>
-</div>
-<div class="webMockup dark-text">
-  <header>
-    <div class="container navbar mx-auto grid p-5 items-center">
-      <Logo className="accent-text" color="var(--accent-color)" />
-    </div>
-  </header>
-  <section class="container grid mx-auto px-5 py-24 items-center text-center">
-    <h2 class="accent-text">Make vector patterns like a pro</h2>
-    <p class="subtitle ">
-      A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to use tool
-      to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and apparel, posters, flyers,
-      web design projects, or your social media posts, Instagram stories and blogs.
-    </p>
-    <div class="flex justify-center"><button class="accent-bg cta2" onclick="location.href='#subscribe'" type="button">Know more</button></div>
   </section>
-</div>
-
-<div class="overlapCard accent-bg text-center">
-  <div class="container mx-auto">
-    Create beautiful print assets from a wealth of versatile and useful patterns without any design skills. Ideal for branding projects, fabrics,
-    packaging, fashion apparel, posters, wrapping paper, posters or calendars.
+  <!-- For designers and developers -->
+  <div class="overlapCard accent-bg text-center">
+    <div class="container mx-auto">
+      Copy the pattern to set the website background with great results. Choose from a variety of patterns and shapes which cover a host of styles,
+      from the cool, quirky and edgy, to the more luxurious designs.
+    </div>
   </div>
-</div>
-<div class="triangleOuter">
-  <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="0 0 100 0 50 10" />
-  </svg>
-</div>
-<section class="digitalMockup secondary-bg items-center">
-  <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
-  <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
-  <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
-  <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
-  <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
-  <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
-</section>
+  <div class="triangleOuter">
+    <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0 0 100 0 50 10" />
+    </svg>
+  </div>
+  <div class="webMockup dark-text">
+    <header>
+      <div class="container navbar mx-auto grid p-5 items-center">
+        <Logo className="accent-text" color="var(--accent-color)" />
+      </div>
+    </header>
+    <section class="container grid mx-auto px-5 py-24 items-center text-center">
+      <h2 class="accent-text">Make vector patterns like a pro</h2>
+      <p class="subtitle ">
+        A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to use tool
+        to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and apparel, posters,
+        flyers, web design projects, or your social media posts, Instagram stories and blogs.
+      </p>
+      <div class="flex justify-center"><button class="accent-bg cta2" onclick="location.href='#subscribe'" type="button">Know more</button></div>
+    </section>
+  </div>
 
-<!-- <footer class="accent-bg light-text">
+  <div class="overlapCard accent-bg text-center">
+    <div class="container mx-auto">
+      Create beautiful print assets from a wealth of versatile and useful patterns without any design skills. Ideal for branding projects, fabrics,
+      packaging, fashion apparel, posters, wrapping paper, posters or calendars.
+    </div>
+  </div>
+  <div class="triangleOuter">
+    <svg class="triangle" viewbox="0 0 100 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0 0 100 0 50 10" />
+    </svg>
+  </div>
+  <section class="digitalMockup secondary-bg items-center">
+    <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
+    <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
+    <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
+    <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
+    <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
+    <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
+  </section>
+
+  <!-- <footer class="accent-bg light-text">
   <svg viewBox="0 0 1440 240" xmlns="http://www.w3.org/2000/svg">
     <path
       fill="#ffc800"
@@ -800,4 +805,6 @@
     </div>
   </div>
 </footer> -->
-<Footer />
+
+  <Footer strings={{ lang: 'en', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
+</main>
