@@ -5,8 +5,6 @@
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
   import { themeStore } from "../routes/stores.js";
-  import en from "../locales/en.js";
-  export let strings = en.strings;
 
   // const dispatch = createEventDispatcher();
 
@@ -95,7 +93,7 @@
   <div class="rightLinks justify-self-end">
     <a
       rel="noopener noreferrer"
-      title={strings.tweet}
+      title="Share your tweet"
       target="_blank"
       href="https://twitter.com/intent/tweet?text=If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%20Generate%20fully%20customizable%20SVG%20patterns%20for%20free.%0A%0A100%2b%20patterns%20available%20at%20https%3A%2F%2Fpattern.monster%0A%0Avia%20%40Pattern_Monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster">
       Tweet
@@ -106,7 +104,7 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
       </svg></a>
-    <button class="iconButton" aria-label={strings.changeTheme} title={strings.changeTheme} on:click={() => changeTheme()}>
+    <button class="iconButton" aria-label="Change Theme" title="Change Theme" on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
           <path transition:fly={{ y: 100, duration: 300 }} d={theme} />

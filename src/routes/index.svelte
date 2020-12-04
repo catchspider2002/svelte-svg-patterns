@@ -15,12 +15,10 @@
   // import AutoComplete from "simple-svelte-autocomplete";
   import AutoComplete from "../components/SimpleAutocomplete.svelte";
 
-  import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
-  import lang from "../locales/en.js";
-  let strings = lang.strings;
-
   import Constants from "./_constants.js";
+  import en from "./_en.js";
+  let strings = en.strings;
 
   import { onMount } from "svelte";
   export let posts;
@@ -35,8 +33,8 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
-  // import "dayjs/locale/ja";
-  // dayjs.locale("ja");
+  import "dayjs/locale/ja";
+  dayjs.locale("ja");
 
   // dayjs().locale("ja").format();
   dayjs.extend(relativeTime);
@@ -146,8 +144,8 @@
   let website = "https://pattern.monster";
   let title = "Pattern Monster - " + strings.title;
   let url = website;
-  let keywords = strings.keywords;
-  let desc = strings.description;
+  let keywords = strings.keywords
+  let desc = strings.description
   let image = website + "/TwitterBG2.png";
 
   let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
@@ -546,100 +544,97 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<Nav strings={{ tweet: strings.tweet, changeTheme: strings.changeTheme }} />
-<main>
-  <div bind:clientWidth={w} class="patternsList">
-    <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
-    <div class="stats">
-      <div class="stats-grid">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d={Constants.icons.trending} />
-        </svg>
-        {posts.length}
-        {strings.patterns}
-      </div>
-      <div class="stats-grid">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d={Constants.icons.download} />
-        </svg>
-        CSS, SVG, PNG
-      </div>
-      <div class="stats-grid">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d={Constants.icons.license} />
-        </svg>
-        {strings.license}
-      </div>
-      <div class="stats-grid">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d={Constants.icons.release} />
-        </svg>
-        {strings.free}
-      </div>
+<div bind:clientWidth={w} class="patternsList">
+  <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
+  <div class="stats">
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.trending} />
+      </svg>
+      {posts.length}
+      {strings.patterns}
     </div>
-    <p class="container mx-auto">{strings.description}</p>
-
-    <div class="outerGrid">
-      <div class="searchBox">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d={Constants.icons.search} />
-        </svg>
-        <input
-          id="search"
-          class="search"
-          type="text"
-          aria-label={strings.searchPattern}
-          bind:value={searchText}
-          placeholder={placeholderSearch}
-          on:input={searchChanged} />
-      </div>
-      <div class="filterGrid">
-        {strings.filter}
-        <AutoComplete
-          inputId="filterMode"
-          placeholder={strings.filterMode}
-          items={filterOptions}
-          bind:selectedItem={mode}
-          labelFieldName="text"
-          ariaLabel={strings.filterMode}
-          onChange={filterChanged} />
-        <AutoComplete
-          inputId="filterColor"
-          placeholder={strings.filterColors}
-          items={colorOptions}
-          bind:selectedItem={colorsCount}
-          labelFieldName="text"
-          ariaLabel={strings.filterColors}
-          onChange={colorsChanged} />
-      </div>
-      <div class="sortGrid">
-        <span>{strings.sort}</span>
-        <div class="sortInner">
-          <button on:click={sortLatest}>{strings.latest}</button>
-          <button on:click={sortOldest}>{strings.oldest}</button>
-          <button on:click={sortAlphabetical}>A-Z</button>
-          <button on:click={sortAlphabeticalReverse}>Z-A</button>
-        </div>
-      </div>
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.download} />
+      </svg>
+      CSS, SVG, PNG
     </div>
-    <div class="samples">
-      {#each newPosts as post}
-        <div class="outerPattern">
-          <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
-            <span>{post.title}</span>
-          </a>
-          <div class="details">
-            {#if post.colors > 2}
-              <div class="numColors">2 - {post.colors} {strings.colors}</div>
-            {:else}
-              <div class="numColors">{post.colors} {strings.colors}</div>
-            {/if}
-            <div class="postDate" title={strings.updateDate}>{dayjs().to(dayjs(post.creationDate), false)}</div>
-          </div>
-        </div>
-      {/each}
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.license} />
+      </svg>
+      {strings.license}
+    </div>
+    <div class="stats-grid">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.release} />
+      </svg>
+      {strings.free}
     </div>
   </div>
+  <p class="container mx-auto">{strings.description}</p>
 
-  <Footer strings={{ lang: 'en', signUp: strings.signUp, changelog: strings.changelog, features: strings.features, privacy: strings.privacy }} />
-</main>
+  <div class="outerGrid">
+    <div class="searchBox">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Constants.icons.search} />
+      </svg>
+      <input
+        id="search"
+        class="search"
+        type="text"
+        aria-label={strings.searchPattern}
+        bind:value={searchText}
+        placeholder={placeholderSearch}
+        on:input={searchChanged} />
+    </div>
+    <div class="filterGrid">
+      {strings.filter}
+      <AutoComplete
+        inputId="filterMode"
+        placeholder={strings.filterMode}
+        items={filterOptions}
+        bind:selectedItem={mode}
+        labelFieldName="text"
+        ariaLabel={strings.filterMode}
+        onChange={filterChanged} />
+      <AutoComplete
+        inputId="filterColor"
+        placeholder={strings.filterColors}
+        items={colorOptions}
+        bind:selectedItem={colorsCount}
+        labelFieldName="text"
+        ariaLabel={strings.filterColors}
+        onChange={colorsChanged} />
+    </div>
+    <div class="sortGrid">
+      <span>{strings.sort}</span>
+      <div class="sortInner">
+        <button on:click={sortLatest}>{strings.latest}</button>
+        <button on:click={sortOldest}>{strings.oldest}</button>
+        <button on:click={sortAlphabetical}>A-Z</button>
+        <button on:click={sortAlphabeticalReverse}>Z-A</button>
+      </div>
+    </div>
+  </div>
+  <div class="samples">
+    {#each newPosts as post}
+      <div class="outerPattern">
+        <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+          <span>{post.title}</span>
+        </a>
+        <div class="details">
+          {#if post.colors > 2}
+            <div class="numColors">2 - {post.colors} {strings.colors}</div>
+          {:else}
+            <div class="numColors">{post.colors} {strings.colors}</div>
+          {/if}
+          <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
+        </div>
+      </div>
+    {/each}
+  </div>
+</div>
+
+<Footer />

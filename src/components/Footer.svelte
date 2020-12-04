@@ -1,11 +1,6 @@
 <script>
+  // import Logo from "../components/Logo.svelte";
   import Constants from "../routes/_constants.js";
-  import en from "../locales/en.js";
-  export let strings = en.strings;
-
-  let lang = strings.lang;
-  let urlLang = "";
-  if (lang !== "en") urlLang = lang + "/";
 </script>
 
 <style>
@@ -78,15 +73,15 @@
   <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
-      <p class="text-center pb-5">{strings.signUp}</p>
+      <p class="text-center pb-5">Sign up for project updates and get free patterns delivered monthly to your inbox</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
       </script>
     </div>
     <div class="grid justify-center">
       <div class="iconLinks grid justify-center">
-        <a href={urlLang + 'changelog/'}>{strings.changelog}</a>
-        <a href={urlLang + 'features/'}>{strings.features}</a>
-        <a href={urlLang + 'privacy-policy/'}>{strings.privacy}</a>
+        <a href="changelog/"> Changelog</a>
+        <a href="features/"> Features</a>
+        <a href="privacy-policy/"> Privacy Policy</a>
       </div>
       <div class="iconLinks grid justify-center">
         <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
