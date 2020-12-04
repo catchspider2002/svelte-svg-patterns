@@ -11,8 +11,8 @@
 <script>
   export let post;
   import constants from "./_constants.js";
-  import en from "./_en.js";
-  let strings = en.strings;
+  import lang from "./_lang.js";
+  let strings = lang.strings;
 
   import { onMount } from "svelte";
 

@@ -17,8 +17,8 @@
 
   import Footer from "../components/Footer.svelte";
   import Constants from "./_constants.js";
-  import en from "./_en.js";
-  let strings = en.strings;
+  import lang from "./_lang.js";
+  let strings = lang.strings;
 
   import { onMount } from "svelte";
   export let posts;
@@ -33,8 +33,8 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
-  import "dayjs/locale/ja";
-  dayjs.locale("ja");
+  // import "dayjs/locale/ja";
+  // dayjs.locale("ja");
 
   // dayjs().locale("ja").format();
   dayjs.extend(relativeTime);
