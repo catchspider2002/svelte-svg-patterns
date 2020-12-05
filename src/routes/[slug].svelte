@@ -34,7 +34,7 @@
 
   let Pickr, svg;
   $: hide = false;
-  
+
   let defaultWidth = "1080",
     defaultHeight = "1080";
 
@@ -61,8 +61,8 @@
     }
   });
 
-  function heightChanged(){
-    console.log("heightChanged")
+  function heightChanged() {
+    console.log("heightChanged");
   }
 
   function setPickers() {
@@ -240,8 +240,18 @@
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function randomColorSets(length) {
-    let colorArray = [];
-    for (var i = 0; i < length; i++) colorArray.push(constants.randomColor(1));
+    // let colorArray = constants.colorPalettes
+    // console.log(constants.colorPalettes.length);
+    // let colorArray = [];
+    // for (var i = 0; i < length; i++) colorArray.push(constants.randomColor(1));
+    let colorArray = constants.colorPalettes[constants.randomNumber(0, constants.colorPalettes.length - 1)];
+
+    for (let i = colorArray.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = colorArray[i];
+      colorArray[i] = colorArray[j];
+      colorArray[j] = temp;
+    }
     return colorArray;
   }
 
@@ -835,7 +845,7 @@
               localStorage.setItem('defaultHeight', e.target.value);
             }}
             on:input={(e) => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4)
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
             }} />
         </div>
       </div>
@@ -890,7 +900,7 @@
         localStorage.setItem('defaultHeight', e.target.value);
       }}
       on:input={(e) => {
-        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4)
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
       }} />
   </div>
   <div class="buttons">

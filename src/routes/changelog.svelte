@@ -75,6 +75,7 @@
         <li>Added 8 new patterns</li>
         <li>Added Translate button to translate into multiple languages</li>
         <li>Added Cloudflare analytics which is privacy friendly</li>
+        <li>Random patterns are generated from preloaded color palettes</li>
         <li class="versionHeader">November 28, 2020</li>
         <li>Added 12 new patterns</li>
         <li>Updated old patterns with multiple colors</li>
