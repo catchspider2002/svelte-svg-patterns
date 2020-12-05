@@ -71,6 +71,10 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">December 5, 2020</li>
+        <li>Added 8 new patterns</li>
+        <li>Added Translate button to translate into multiple languages</li>
+        <li>Added Cloudflare analytics which is privacy friendly</li>
         <li class="versionHeader">November 28, 2020</li>
         <li>Added 12 new patterns</li>
         <li>Updated old patterns with multiple colors</li>
@@ -87,7 +91,7 @@
         <li>Reduced the size of generated css and svg by removing the g tag</li>
         <li>Added a search bar to search patterns in the home page</li>
         <li class="versionHeader">November 7, 2020</li>
-        <li>6 new patterns</li>
+        <li>Added 6 new patterns</li>
         <li>Added a filter to restrict stroke and fill patterns</li>
         <li>Added sort buttons to order alphabetically and by posted date</li>
         <li>Added tweet button for quick sharing</li>
