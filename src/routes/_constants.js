@@ -2,7 +2,7 @@ const randomNumber = (min, max) => Math.round(Math.random() * (max - min) + min)
 
 const randomAngle = () => Math.floor(Math.random() * 37) * 5;
 
-const randomColor = opacity =>
+const randomColor = (opacity) =>
   "hsla(" +
   Math.round(randomNumber(0, 360), 2) +
   "," +
@@ -23,13 +23,13 @@ const icons = {
     "M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z",
   instagram:
     "M16.5 7.5v.001M15 12a3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3 3 3 0 013 3zM8 4h8c2.216 0 4 1.784 4 4v8c0 2.216-1.784 4-4 4H8c-2.216 0-4-1.784-4-4V8c0-2.216 1.784-4 4-4z",
-    facebook: "M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3",
-    trending: "M14 7h7v7M3 17l6-6 4 4 8-8",
-    license: "M9 11h4M9 7h4m2 14H6a3 3 0 01-3-3v-1h10v2a2 2 0 004 0V5a2 2 0 112 2h-2m2-4H8a3 3 0 00-3 3v11",
-    release: "M11 9a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2zm0-6l9 9a1.5 1.5 0 010 2l-6 6a1.5 1.5 0 01-2 0l-9-9V7a4 4 0 014-4h4",
-    download: "M9 14l3 3 3-3m-3-3v6m5 4H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2zM14 3v4a1 1 0 001 1h4",
-    search: "M10 3a7 7 0 00-7 7 7 7 0 007 7 7 7 0 007-7 7 7 0 00-7-7zm5 12l6 6-6-6z",
-    cancel: "M6 6l12 12m0-12L6 18"
+  facebook: "M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3",
+  trending: "M14 7h7v7M3 17l6-6 4 4 8-8",
+  license: "M9 11h4M9 7h4m2 14H6a3 3 0 01-3-3v-1h10v2a2 2 0 004 0V5a2 2 0 112 2h-2m2-4H8a3 3 0 00-3 3v11",
+  release: "M11 9a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2zm0-6l9 9a1.5 1.5 0 010 2l-6 6a1.5 1.5 0 01-2 0l-9-9V7a4 4 0 014-4h4",
+  download: "M9 14l3 3 3-3m-3-3v6m5 4H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2zM14 3v4a1 1 0 001 1h4",
+  search: "M10 3a7 7 0 00-7 7 7 7 0 007 7 7 7 0 007-7 7 7 0 00-7-7zm5 12l6 6-6-6z",
+  cancel: "M6 6l12 12m0-12L6 18",
 };
 
 export default { randomNumber, randomAngle, randomColor, icons };

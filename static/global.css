@@ -282,7 +282,6 @@ button:active {
   text-align: center;
 }
 .container {
-  margin: 0 auto;
   max-width: 1280px;
 }
 .flex {
@@ -304,6 +303,11 @@ button:active {
 .justify-self-end {
   justify-self: end;
 }
+
+.brandName {
+  line-height: 1;
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -323,7 +327,7 @@ nav {
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  gap: 0.25em;
+  gap: 1em;
 }
 
 .rightLinks a {
