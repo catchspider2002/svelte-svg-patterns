@@ -469,56 +469,6 @@
       grid-template-columns: auto;
     }
   }
-
-  /* Select Styling */
-  /* .select-css {
-    display: block;
-    font-size: 16px;
-    font-family: sans-serif;
-    font-weight: 700;
-    color: var(--secondary-text-color);
-    line-height: 1.3;
-    padding: 0.6em 2.4em 0.5em 0.8em;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-    border-radius: var(--border-radius);
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--input-bg);
-    background-image: var(--input-background);
-    background-repeat: no-repeat, repeat;
-    background-position: right 0.7em top 50%, 0 0;
-    background-size: 1.2em auto, 100%;
-  }
-  
-  .select-css:hover {
-    border-color: #888;
-  }
-  
-  .select-css:focus {
-    border-color: #aaa;
-    box-shadow: 0 0 1px 3px var(--secondary-color-hover);
-    box-shadow: 0 0 0 3px -moz-mac-focusring;
-    color: var(--secondary-text-color);
-    outline: none;
-  }
-
-  .select-css option {
-    font-weight: normal;
-    padding: 10px 10px;
-  }
-
-  *[dir="rtl"] .select-css,
-  :root:lang(ar) .select-css,
-  :root:lang(iw) .select-css {
-    background-position: left 0.7em top 50%, 0 0;
-    padding: 0.6em 0.8em 0.5em 1.4em;
-  } */
 </style>
 
 <svelte:head>

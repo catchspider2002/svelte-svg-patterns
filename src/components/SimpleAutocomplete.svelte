@@ -685,16 +685,19 @@
   /* Autocomplete */
   .autocomplete {
     background-color: var(--card-bg);
+    /* color: var(--secondary-text-color); */
     color: var(--gray-text);
     border: 0.0625em solid var(--gray-text);
     border-radius: var(--border-radius);
   }
   .autocomplete-input {
     background-color: var(--card-bg);
+    /* color: var(--secondary-text-color); */
     color: var(--gray-text);
   }
   .autocomplete-list {
     background: var(--card-bg);
+    /* color: var(--secondary-text-color); */
     color: var(--gray-text);
   }
   .autocomplete-list-item {
