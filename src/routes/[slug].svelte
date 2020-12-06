@@ -61,10 +61,6 @@
     }
   });
 
-  function heightChanged() {
-    console.log("heightChanged");
-  }
-
   function setPickers() {
     const elements = document.getElementsByClassName("pcr-app");
     while (elements.length > 0) elements[0].remove();
@@ -78,7 +74,7 @@
     }
   }
 
-  let svgPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
+  let svgPattern = (colors, colorCounts, stroke, scale, spacing, angle, join, moveLeft, moveTop) => {
     function multiStroke(i) {
       let defColor = colors[i + 1];
       if ((vHeight === 0) & (maxColors > 2)) {
@@ -131,11 +127,15 @@
       colors[0] +
       "'/>" +
       strokeGroup +
-      "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
+      "</pattern></defs><rect width='200%' height='200%' transform='translate(" +
+      moveLeft * -1 +
+      "," +
+      moveTop * -1 +
+      ")' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
   };
 
-  let downloadPattern = (colors, colorCounts, stroke, scale, spacing, angle, join) => {
+  let downloadPattern = (colors, colorCounts, stroke, scale, spacing, angle, join, moveLeft, moveTop) => {
     function multiStroke(i) {
       let defColor = colors[i + 1];
       if ((vHeight === 0) & (maxColors > 2)) {
@@ -200,8 +200,20 @@
     path = post.path,
     mode = post.mode;
 
-  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
-  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+  let lightColors = [
+    "hsla(0,0%,100%,1)",
+    "hsla(258.5,59.4%,59.4%,1)",
+    "hsla(339.6,82.2%,51.6%,1)",
+    "hsla(198.7,97.6%,48.4%,1)",
+    "hsla(47,80.9%,61%,1)",
+  ];
+  let darkColors = [
+    "hsla(240,6.7%,17.6%,1)",
+    "hsla(47,80.9%,61%,1)",
+    "hsla(4.1,89.6%,58.4%,1)",
+    "hsla(186.8,100%,41.6%,1)",
+    "hsla(258.5,59.4%,59.4%,1)",
+  ];
 
   const presetPattern = {
     id: 1,
@@ -212,6 +224,8 @@
     spacing: [0, 0],
     angle: 0,
     join: 1,
+    moveLeft: 0,
+    moveTop: 0,
   };
 
   $: selectedPattern = presetPattern;
@@ -222,7 +236,9 @@
     selectedPattern.scale,
     selectedPattern.spacing,
     selectedPattern.angle,
-    selectedPattern.join
+    selectedPattern.join,
+    selectedPattern.moveLeft,
+    selectedPattern.moveTop
   );
   $: svgDownload = downloadPattern(
     selectedPattern.colors,
@@ -231,7 +247,9 @@
     selectedPattern.scale,
     selectedPattern.spacing,
     selectedPattern.angle,
-    selectedPattern.join
+    selectedPattern.join,
+    selectedPattern.moveLeft,
+    selectedPattern.moveTop
   );
 
   // let outputWidth = 1080,
@@ -297,7 +315,15 @@
       .replace("%23", "#")
       .replace("width='100%' height='100%'", "width='" + defaultWidth + "px' height='" + defaultHeight + "px'");
 
-    svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
+    let fileName = "pattern_" + post.slug + "_" + selectedPattern.stroke + "_" + selectedPattern.scale + "_";
+    fileName += selectedPattern.spacing.toString().replace(",", "-") + "_" + selectedPattern.angle + "_" + selectedPattern.join + "_";
+
+    for (let i = 0; i < selectedPattern.colorCounts; i++) {
+      fileName += "_" + constants.HSLAToHexA(selectedPattern.colors[i]);
+    }
+    // console.log(fileName);
+    // svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
+    svg.saveSvgAsPng(document.getElementById("patternId"), fileName + ".png");
     document.getElementById("pngOutput").innerHTML = "";
   }
 
@@ -308,7 +334,6 @@
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
-    // console.log(id);
     document.getElementById(id).textContent = "Copied!";
     setTimeout(function () {
       document.getElementById(id).textContent = buttonType;
@@ -332,23 +357,22 @@
         default: selectedPattern.colors[colorId],
         // lockOpacity: true,
         swatches: [
-          "rgba(244, 67, 54, 1)",
-          "rgba(225, 82, 131, 1)",
-          "rgba(156, 39, 176, 1)",
-          "rgba(128, 90, 213, 1)", // 4
-          // "rgba(103, 58, 183, 1)",
-          "rgba(63, 81, 181, 1)",
-          "rgba(3, 169, 244, 1)",
-          "rgba(0, 188, 212, 1)", // 7
-          "rgba(0, 150, 136, 1)",
-          "rgba(76, 175, 80, 1)",
-          "rgba(139, 195, 74, 1)",
-          "rgba(205, 220, 57, 1)", // 11
-          "rgba(255, 235, 59, 1)",
-          "rgba(236, 201, 75, 1)",
-          "rgba(246, 173, 85, 1)", // 14
-          "rgba(255, 255, 255, 1)",
-          "rgba(0, 0, 0, 1)",
+          "hsla(4.1,89.6%,58.4%,1)",
+          "hsla(339.4,70.4%,60.2%,1)",
+          "hsla(291.2,63.7%,42.2%,1)",
+          "hsla(258.5,59.4%,59.4%,1)", // 4
+          "hsla(230.8,48.4%,47.8%,1)",
+          "hsla(198.7,97.6%,48.4%,1)",
+          "hsla(186.8,100%,41.6%,1)", // 7
+          "hsla(174.4,100%,29.4%,1)",
+          "hsla(122.4,39.4%,49.2%,1)",
+          "hsla(87.8,50.2%,52.7%,1)",
+          "hsla(65.5,70%,54.3%,1)", // 11
+          "hsla(53.9,100%,61.6%,1)",
+          "hsla(47,80.9%,61%,1)",
+          "hsla(32.8,89.9%,64.9%,1)", // 14
+          "hsla(0,0%,100%,1)",
+          "hsla(0,0%,0%,1)",
         ],
         components: {
           // preview: true,
@@ -706,6 +730,30 @@
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
+        </div>
+        <label class="leftColumn" for="scale">Move Left</label>
+        <div class="grid rightColumn">
+          <input
+            id="moveLeft"
+            type="range"
+            bind:value={selectedPattern.moveLeft}
+            min="1"
+            max="100"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)} />
+          <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
+        </div>
+        <label class="leftColumn" for="scale">Move Top</label>
+        <div class="grid rightColumn">
+          <input
+            id="moveTop"
+            type="range"
+            bind:value={selectedPattern.moveTop}
+            min="1"
+            max="100"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)} />
+          <input class="uneditable hidden" bind:value={selectedPattern.moveTop} readonly />
         </div>
         {#if mode === 'stroke-join' || mode === 'stroke'}
           <label class="leftColumn" for="stroke">{strings.stroke}</label>

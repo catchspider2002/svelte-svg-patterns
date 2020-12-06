@@ -52,8 +52,77 @@ const hexToHSL = (H) => {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return "hsl(" + h + "," + s + "%," + l + "%)";
+  return "hsla(" + h + "," + s + "%," + l + "%,1)";
 };
+
+function HSLAToHexA(hsla) {
+  let sep = hsla.indexOf(",") > -1 ? "," : " ";
+  hsla = hsla.substr(5).split(")")[0].split(sep);
+
+  // Strip the slash
+  if (hsla.indexOf("/") > -1) hsla.splice(3, 1);
+
+  let h = hsla[0],
+    s = hsla[1].substr(0, hsla[1].length - 1) / 100,
+    l = hsla[2].substr(0, hsla[2].length - 1) / 100,
+    a = hsla[3];
+
+  if (h.indexOf("deg") > -1) h = h.substr(0, h.length - 3);
+  else if (h.indexOf("rad") > -1) h = Math.round(h.substr(0, h.length - 3) * (180 / Math.PI));
+  else if (h.indexOf("turn") > -1) h = Math.round(h.substr(0, h.length - 4) * 360);
+  if (h >= 360) h %= 360;
+
+  // s /= 100;
+  // l /= 100;
+
+  let c = (1 - Math.abs(2 * l - 1)) * s,
+    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+    m = l - c / 2,
+    r = 0,
+    g = 0,
+    b = 0;
+
+  if (0 <= h && h < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (60 <= h && h < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (120 <= h && h < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (180 <= h && h < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (240 <= h && h < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else if (300 <= h && h < 360) {
+    r = c;
+    g = 0;
+    b = x;
+  }
+  
+  // Having obtained RGB, convert channels to hex
+  r = Math.round((r + m) * 255).toString(16);
+  g = Math.round((g + m) * 255).toString(16);
+  b = Math.round((b + m) * 255).toString(16);
+
+  a = Math.round(a * 255).toString(16);
+
+  if (r.length == 1) r = "0" + r;
+  if (g.length == 1) g = "0" + g;
+  if (b.length == 1) b = "0" + b;
+  if (a.length == 1) a = "0" + a;
+
+  if (a === "ff") return r + g + b;
+  else return r + g + b + a;
+}
 
 const colorPalettes = [
   [hexToHSL("#264653"), hexToHSL("#2A9D8F"), hexToHSL("#E9C46A"), hexToHSL("#F4A261"), hexToHSL("#E76F51")],
@@ -206,4 +275,4 @@ const icons = {
   cancel: "M6 6l12 12m0-12L6 18",
 };
 
-export default { randomNumber, randomAngle, randomColor, icons, hexToHSL, colorPalettes };
+export default { randomNumber, randomAngle, randomColor, icons, hexToHSL, HSLAToHexA, colorPalettes };
