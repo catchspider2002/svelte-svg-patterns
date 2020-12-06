@@ -127,10 +127,10 @@
       colors[0] +
       "'/>" +
       strokeGroup +
-      "</pattern></defs><rect width='200%' height='200%' transform='translate(" +
-      moveLeft * -1 +
+      "</pattern></defs><rect width='800%' height='800%' transform='translate(" +
+      scale * moveLeft +
       "," +
-      moveTop * -1 +
+      scale * moveTop +
       ")' fill='url(#a)'/></svg>";
     return patternNew.replace("#", "%23");
   };
@@ -297,6 +297,8 @@
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
       angle: constants.randomAngle(),
       join: constants.randomNumber(1, 2),
+      moveLeft: 0,
+      moveTop: 0,
     };
     setPickers();
   }
@@ -731,26 +733,27 @@
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
         </div>
-        <label class="leftColumn" for="scale">Move Left</label>
+        <label class="leftColumn" for="scale">Horizontal Movement</label>
         <div class="grid rightColumn">
           <input
             id="moveLeft"
             type="range"
             bind:value={selectedPattern.moveLeft}
-            min="1"
-            max="100"
+            min={Math.round(width * -2)}
+            max="0"
+            step="1"
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
         </div>
-        <label class="leftColumn" for="scale">Move Top</label>
+        <label class="leftColumn" for="scale">Vertical Movement</label>
         <div class="grid rightColumn">
           <input
             id="moveTop"
             type="range"
             bind:value={selectedPattern.moveTop}
-            min="1"
-            max="100"
+            min={height * -2}
+            max="0"
             on:input={() => (changing = true)}
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.moveTop} readonly />
