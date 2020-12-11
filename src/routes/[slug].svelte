@@ -781,7 +781,7 @@
           </div>
         {/if}
         {#if maxSpacing[0] > 0}
-          <label class="leftColumn" for="hspacing">{strings.join}</label>
+          <label class="leftColumn" for="hspacing">{strings.hSpacing}</label>
           <div class="grid rightColumn">
             <input
               id="hspacing"
@@ -796,7 +796,7 @@
           </div>
         {/if}
         {#if maxSpacing[1] > 0}
-          <label class="leftColumn" for="vspacing">Vertical Spacing</label>
+          <label class="leftColumn" for="vspacing">{strings.vSpacing}</label>
           <div class="grid rightColumn">
             <input
               id="vspacing"
