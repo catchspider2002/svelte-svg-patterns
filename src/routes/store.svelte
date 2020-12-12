@@ -67,7 +67,7 @@
   <div class="samples">
     {#each newPosts as post}
       <div class="outerPattern">
-        <a rel="prefetch" href="{post.slug}/" class="pattern">
+        <a rel="prefetch" href="https://www.redbubble.com/shop/ap/64961293" class="pattern">
           <span>{post.title}</span>
         </a>
         <div class="details">
