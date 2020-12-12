@@ -733,7 +733,7 @@
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
         </div>
-        <label class="leftColumn" for="scale">Horizontal Movement</label>
+        <label class="leftColumn" for="scale">Horizontal Position</label>
         <div class="grid rightColumn">
           <input
             id="moveLeft"
@@ -746,7 +746,7 @@
             on:change={() => (changing = false)} />
           <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
         </div>
-        <label class="leftColumn" for="scale">Vertical Movement</label>
+        <label class="leftColumn" for="scale">Vertical Position</label>
         <div class="grid rightColumn">
           <input
             id="moveTop"
