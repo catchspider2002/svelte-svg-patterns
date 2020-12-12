@@ -144,12 +144,24 @@
   let website = "https://pattern.monster";
   let title = "Pattern Monster - " + strings.title;
   let url = website;
-  let keywords = strings.keywords
-  let desc = strings.description
+  let keywords = strings.keywords;
+  let desc = strings.description;
   let image = website + "/TwitterBG2.png";
 
-  let lightColors = ["rgb(255,255,255)", "rgb(128, 90, 213)", "rgb(233, 30, 99)", "rgb(3, 169, 244)", "rgb(236, 201, 75)"];
-  let darkColors = ["rgb(42,42,48)", "rgb(236, 201, 75)", "rgb(244, 67, 54)", "rgb(0, 188, 212)", "rgb(128, 90, 213)"];
+  let lightColors = [
+    "hsla(0,0%,100%,1)",
+    "hsla(258.5,59.4%,59.4%,1)",
+    "hsla(339.6,82.2%,51.6%,1)",
+    "hsla(198.7,97.6%,48.4%,1)",
+    "hsla(47,80.9%,61%,1)",
+  ];
+  let darkColors = [
+    "hsla(240,6.7%,17.6%,1)",
+    "hsla(47,80.9%,61%,1)",
+    "hsla(4.1,89.6%,58.4%,1)",
+    "hsla(186.8,100%,41.6%,1)",
+    "hsla(258.5,59.4%,59.4%,1)",
+  ];
 
   $: colors = $themeStore === "light" ? lightColors : darkColors;
 

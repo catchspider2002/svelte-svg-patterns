@@ -12,7 +12,7 @@
 
 Create seamless patterns in SVG to use as website backgrounds, header images, stationery design and package design
 
-144 patterns available
+154 patterns available
 
 ## Features:
 
