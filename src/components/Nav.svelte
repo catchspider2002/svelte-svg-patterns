@@ -55,9 +55,18 @@
 </script>
 
 <nav>
-  <a aria-current={segment === undefined ? 'page' : undefined} href="." class="justify-self-start">
+  <a
+    aria-current={segment === undefined ? 'page' : undefined}
+    href="."
+    class="justify-self-start">
     <div class="logo" style="color: var(--secondary-color)">
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        width="1.5em"
+        height="1.5em"
+        viewBox="0 0 128 128"
+        data-inline="false">
         <g transform="translate(0 -3)" style="fill: var(--secondary-color)">
           <path
             d="M64.01 30.39c-34.48 0-51.26 20.65-51.26 46.11 0 4.45.71 8.74 2.03 12.81 2.48 7.64 6.49 15.25 6.23 23.48-.15 4.94-2.97 7.47-6.43
@@ -91,6 +100,7 @@
   </a>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
+    <a title="Store" href="store"> Store </a>
     <a
       rel="noopener noreferrer"
       title="Translate"
@@ -107,11 +117,19 @@
     </a>
 
     <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
-    <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
+    <a
+      rel="noopener noreferrer"
+      title="GitHub"
+      target="_blank"
+      href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
       </svg></a>
-    <button class="iconButton" aria-label="Change Theme" title="Change Theme" on:click={() => changeTheme()}>
+    <button
+      class="iconButton"
+      aria-label="Change Theme"
+      title="Change Theme"
+      on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
           <path transition:fly={{ y: 100, duration: 300 }} d={theme} />

@@ -323,7 +323,7 @@
     for (let i = 0; i < selectedPattern.colorCounts; i++) {
       fileName += "_" + constants.HSLAToHexA(selectedPattern.colors[i]);
     }
-    // console.log(fileName);
+    // console.log(selectedPattern.scale + "~~~~~" + fileName);
     // svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
     svg.saveSvgAsPng(document.getElementById("patternId"), fileName + ".png");
     document.getElementById("pngOutput").innerHTML = "";
