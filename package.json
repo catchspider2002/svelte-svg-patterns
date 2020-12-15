@@ -18,7 +18,8 @@
     "polka": "next",
     "prettier": "^2.2.0",
     "save-svg-as-png": "^1.4.17",
-    "sirv": "^1.0.7"
+    "sirv": "^1.0.7",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.7",

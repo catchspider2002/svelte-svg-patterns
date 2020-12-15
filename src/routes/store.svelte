@@ -53,7 +53,6 @@
   <meta property="og:image" content={image} />
 
   <!-- Twitter -->
-  <!-- Twitter -->
   <meta name="twitter:url" content={url} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={desc} />
