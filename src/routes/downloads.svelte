@@ -26,9 +26,10 @@
     margin-bottom: 0.5em;
     margin-top: 0;
   }
-  h2{
-    font-weight: 400;
-    line-height: 0;
+  h2 {
+    font-weight: 600;
+    font-size: 1em;
+    text-transform: uppercase;
   }
   .outer {
     background-color: var(--pattern-bg);
@@ -37,20 +38,27 @@
   }
   .downloadGrid {
     display: grid;
-    gap: 4em;
+    gap: 5em;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-bottom: 3em;
   }
   .elementGrid {
+    background-color: var(--svg-bg);
     display: grid;
-    gap: 1.5em;
+    gap: 0.75em;
     justify-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    padding-bottom: 2em;
   }
 
-@media (max-width: 2400px) {
-  .downloadGrid {
-    grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 2400px) {
+    .downloadGrid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
-}
 
   @media (max-width: 1280px) {
     .downloadGrid {
@@ -93,11 +101,11 @@
   <div class="downloadGrid">
     {#each newPosts as post}
       <div class="elementGrid">
-        <h2>{post.title} patterns</h2>
         <img
           src={'downloads/' + post.slug + '.png'}
           alt={post.title}
           title={post.title} />
+        <h2>{post.title} patterns</h2>
         <a
           class="gumroad-button"
           href={'https://gum.co/' + post.slug + '?wanted=true'}
