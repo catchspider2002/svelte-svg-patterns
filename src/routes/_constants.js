@@ -1,6 +1,7 @@
 const randomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
 
-const randomAngle = () => Math.floor(Math.random() * 6) * 5;
+// const randomAngle = () => Math.floor(Math.random() * 6) * 5;
+const randomAngle = () => Math.floor(Math.random() * 37) * 5;
 
 const randomColor = (opacity) =>
   "hsla(" +
