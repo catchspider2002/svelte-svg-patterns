@@ -6,6 +6,10 @@ yarn-error.log
 /__sapper__/
 Samples.md
 createScreenshot.js
+createPattern.js
 airtable.js
 /static/archive
+/static/social
 /static/screenshots
+redbubble
+SVGtoPNG.js

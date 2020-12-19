@@ -433,6 +433,15 @@ nav a {
   .container {
     width: 100%;
   }
+  .tweetNav{
+    display: none;
+  }
+}
+
+@media (max-width: 408px) {
+  .translateNav{
+    display: none;
+  }
 }
 @media (max-width: 360px) {
   .brandName {

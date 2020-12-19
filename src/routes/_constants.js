@@ -1,6 +1,7 @@
 const randomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
 
-const randomAngle = () => Math.floor(Math.random() * 6) * 5;
+// const randomAngle = () => Math.floor(Math.random() * 6) * 5;
+const randomAngle = () => Math.floor(Math.random() * 37) * 5;
 
 const randomColor = (opacity) =>
   "hsla(" +
@@ -107,7 +108,7 @@ function HSLAToHexA(hsla) {
     g = 0;
     b = x;
   }
-  
+
   // Having obtained RGB, convert channels to hex
   r = Math.round((r + m) * 255).toString(16);
   g = Math.round((g + m) * 255).toString(16);
