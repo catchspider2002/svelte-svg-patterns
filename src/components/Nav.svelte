@@ -100,15 +100,15 @@
   </a>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
-    <a title="Store" href="store"> Store </a>
-    <a
+    <a title="Downloads" href="downloads">Downloads</a>
+    <a class="translateNav"
       rel="noopener noreferrer"
       title="Translate"
       target="_blank"
       href="https://crwd.in/pattern-monster">
       Translate
     </a>
-    <a
+    <a class="tweetNav" 
       rel="noopener noreferrer"
       title="Share your tweet"
       target="_blank"

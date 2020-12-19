@@ -4,7 +4,8 @@
   let website = "https://pattern.monster";
   let title = "Changelog - Pattern Monster";
   let url = website + "/changelog/";
-  let keywords = "changelog, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let keywords =
+    "changelog, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     "Changelog for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
@@ -71,6 +72,17 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">December 12, 2020</li>
+        <li>Added 12 new patterns for Christmas</li>
+        <li>
+          Added 2 controls to adjust the position of the pattern horizontally
+          and vertically
+        </li>
+        <li>Replaced rgb with hsl across the app</li>
+        <li>
+          Downloaded file will now have the name of the pattern, parameters used
+          and colors in hex
+        </li>
         <li class="versionHeader">December 5, 2020</li>
         <li>Added 8 new patterns</li>
         <li>Added Translate button to translate into multiple languages</li>
@@ -86,9 +98,18 @@
         <li>Fixed accessibility issues</li>
         <li class="versionHeader">November 14, 2020</li>
         <li>Added 6 new patterns</li>
-        <li>Added multiple colors for patterns up to 5 colors which can be chosen in the pattern page</li>
-        <li>Number of colors a pattern supports is shown under the pattern in the home page</li>
-        <li>Added a filter to display the patterns by the number of supported colors</li>
+        <li>
+          Added multiple colors for patterns up to 5 colors which can be chosen
+          in the pattern page
+        </li>
+        <li>
+          Number of colors a pattern supports is shown under the pattern in the
+          home page
+        </li>
+        <li>
+          Added a filter to display the patterns by the number of supported
+          colors
+        </li>
         <li>Reduced the size of generated css and svg by removing the g tag</li>
         <li>Added a search bar to search patterns in the home page</li>
         <li class="versionHeader">November 7, 2020</li>
