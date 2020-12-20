@@ -72,6 +72,10 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">December 19, 2020</li>
+        <li>
+          Added Downloads page to show the free patterns available for download
+        </li>
         <li class="versionHeader">December 12, 2020</li>
         <li>Added 12 new patterns for Christmas</li>
         <li>
