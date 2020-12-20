@@ -10,11 +10,7 @@
     "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
-  let newPosts = [
-    { slug: "christmas-joy", title: "Christmas Joy" },
-    { slug: "retro-christmas", title: "Retro Christmas" },
-    { slug: "winter-sky", title: "Winter Sky" },
-  ];
+  let newPosts = ["Christmas Joy", "Retro Christmas", "Winter Sky"];
 </script>
 
 <style>
@@ -31,11 +27,12 @@
     font-weight: 600;
     font-size: 1em;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .outer {
     background-color: var(--pattern-bg);
-    padding: 2em;
     color: var(--secondary-text-color);
+    padding: 2em;
   }
   .downloadGrid {
     display: grid;
@@ -103,13 +100,15 @@
     {#each newPosts as post}
       <div class="elementGrid">
         <img
-          src={'downloads/' + post.slug + '.png'}
-          alt={post.title}
-          title={post.title} />
-        <h2>{post.title} patterns</h2>
+          src={'downloads/' + post.toLowerCase().replace(' ', '-') + '.png'}
+          alt={post}
+          title={post} />
+        <h2>{post} patterns</h2>
         <a
           class="gumroad-button"
-          href={'https://gum.co/' + post.slug + '?wanted=true'}
+          href={'https://gum.co/' + post
+              .toLowerCase()
+              .replace(' ', '-') + '?wanted=true'}
           target="_blank"
           data-gumroad-single-product="true">Download</a>
       </div>
