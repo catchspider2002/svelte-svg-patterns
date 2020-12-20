@@ -92,14 +92,18 @@
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.twitter} />
           </svg></a>
-        <a rel="noopener noreferrer" title="Instagram" target="_blank" href="https://www.instagram.com/patternmonster/">
+        <a rel="noopener noreferrer" title="Instagram" target="_blank" href="https://www.instagram.com/pattern.monster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d={Constants.icons.instagram} />
           </svg></a>
-        <a rel="noopener noreferrer" title="Facebook" target="_blank" href="https://www.facebook.com/pattern.monster/">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.facebook} />
-          </svg></a>
+          <a rel="noopener noreferrer" title="Facebook" target="_blank" href="https://www.facebook.com/pattern.monster/">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d={Constants.icons.facebook} />
+            </svg></a>
+            <a rel="noopener noreferrer" title="Pinterest" target="_blank" href="https://www.pinterest.com/patternmonster/">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d={Constants.icons.pinterest} />
+              </svg></a>
       </div>
 
       <a rel="noopener noreferrer" title="Buy Me a Coffee" class="secondary-bg dark-text cta" href="https://www.buymeacoffee.com/naveencs">

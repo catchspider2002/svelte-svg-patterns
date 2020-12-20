@@ -11,8 +11,9 @@
   let image = website + "/TwitterBG2.png";
 
   let newPosts = [
-    { slug: "christmas-joy", title: "Christmas Joy", colors: 2 },
-    { slug: "retro-christmas", title: "Retro Christmas", colors: 2 },
+    { slug: "christmas-joy", title: "Christmas Joy" },
+    { slug: "retro-christmas", title: "Retro Christmas" },
+    { slug: "winter-sky", title: "Winter Sky" },
   ];
 </script>
 

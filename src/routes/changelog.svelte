@@ -45,6 +45,17 @@
     color: var(--gray-text);
     font-weight: 600;
   }
+  
+  a {
+    color: var(--accent-text);
+    border-bottom: 2px solid var(--accent-text);
+    padding-bottom: 0.25em;
+  }
+  
+  a:hover {
+    color: var(--accent-hover);
+    border-bottom: 2px solid var(--accent-hover);
+  }
 </style>
 
 <svelte:head>
@@ -74,7 +85,9 @@
       <ul id="logs">
         <li class="versionHeader">December 19, 2020</li>
         <li>
-          Added Downloads page to show the free patterns available for download
+          Added
+          <a title="Downloads" href="downloads">Downloads</a>
+          page to show the free patterns available for download
         </li>
         <li class="versionHeader">December 12, 2020</li>
         <li>Added 12 new patterns for Christmas</li>
@@ -89,7 +102,7 @@
         </li>
         <li class="versionHeader">December 5, 2020</li>
         <li>Added 8 new patterns</li>
-        <li>Added Translate button to translate into multiple languages</li>
+        <li>Added Translate link to translate into multiple languages</li>
         <li>Added Cloudflare analytics which is privacy friendly</li>
         <li>Random patterns are generated from preloaded color palettes</li>
         <li class="versionHeader">November 28, 2020</li>
