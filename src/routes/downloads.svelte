@@ -10,7 +10,7 @@
     "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
-  let newPosts = ["Christmas Joy", "Retro Christmas", "Winter Sky"];
+  let newPosts = ["Christmas Joy", "Retro Christmas", "Winter Sky", "Winter Forest", "Winter Rains", "Holiday Cheers"];
 </script>
 
 <style>
