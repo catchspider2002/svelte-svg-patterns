@@ -45,15 +45,15 @@
     color: var(--gray-text);
     font-weight: 600;
   }
-  
+
   a {
     color: var(--accent-text);
     border-bottom: 2px solid var(--accent-text);
     padding-bottom: 0.25em;
   }
-  
+
   a:hover {
-    color: var(--accent-hover);
+    color: var(--accent-text);
     border-bottom: 2px solid var(--accent-hover);
   }
 </style>
@@ -83,6 +83,9 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">December 26, 2020</li>
+        <li>Added 10 new patterns</li>
+        <li>Added 6 pattern set to Downloads</li>
         <li class="versionHeader">December 19, 2020</li>
         <li>
           Added
