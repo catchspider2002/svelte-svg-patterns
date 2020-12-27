@@ -49,11 +49,11 @@
   a {
     color: var(--accent-text);
     border-bottom: 2px solid var(--accent-text);
-    padding-bottom: 0.25em;
+    padding-bottom: 0.125em;
   }
 
   a:hover {
-    color: var(--accent-text);
+    color: var(--accent-hover);
     border-bottom: 2px solid var(--accent-hover);
   }
 </style>
@@ -85,7 +85,7 @@
       <ul id="logs">
         <li class="versionHeader">December 26, 2020</li>
         <li>Added 10 new patterns</li>
-        <li>Added 6 pattern set to Downloads</li>
+        <li>Added 6 pattern set to <a title="Downloads" href="downloads">Downloads</a></li>
         <li class="versionHeader">December 19, 2020</li>
         <li>
           Added
