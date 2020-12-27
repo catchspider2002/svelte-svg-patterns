@@ -31,6 +31,7 @@
     }
     document.documentElement.setAttribute("data-theme", defaultNewTheme);
     themeStore.set(defaultNewTheme);
+    userAction();
   });
 
   function changeTheme() {
@@ -52,7 +53,38 @@
 
     // dispatch("theme", themeColor);
   }
+  let starsCount = 44;
+
+  const userAction = async () => {
+    const response = await fetch(
+      "https://api.github.com/search/repositories?q=svelte-svg-patterns"
+    );
+    const myJson = await response.json(); //extract JSON from the http response
+    starsCount = myJson.items[0].stargazers_count;
+    // console.log(starsCount);
+  };
 </script>
+
+<style>
+  .gitHubIcon {
+    position: relative;
+    padding-right: 0.8em;
+  }
+
+  .starsCount {
+    /* color: red; */
+    position: absolute;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1;
+    top: -0.3em;
+    right: -0em;
+    color: var(--main-bg-color);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 0.25em 0.25em 0.1em;
+  }
+</style>
 
 <nav>
   <a
@@ -101,14 +133,16 @@
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
     <a title="Downloads" href="downloads">Downloads</a>
-    <a class="translateNav"
+    <a
+      class="translateNav"
       rel="noopener noreferrer"
       title="Translate"
       target="_blank"
       href="https://crwd.in/pattern-monster">
       Translate
     </a>
-    <a class="tweetNav" 
+    <a
+      class="tweetNav"
       rel="noopener noreferrer"
       title="Share your tweet"
       target="_blank"
@@ -118,13 +152,16 @@
 
     <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
     <a
+      class="gitHubIcon"
       rel="noopener noreferrer"
       title="GitHub"
       target="_blank"
       href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
-      </svg></a>
+      </svg>
+      <span class="starsCount">{starsCount}</span>
+    </a>
     <button
       class="iconButton"
       aria-label="Change Theme"
