@@ -15,11 +15,17 @@
     "Retro Christmas",
     "Winter Sky",
     "Winter Forest",
-    "Holiday Cheers",
     "Winter Rains",
+    "Holiday Cheers",
     "Rosy Flamingo",
     "Speckled Eggs",
     "Scooping Ice Cream",
+    "Icy Gradient",
+    "Velvet Petals",
+    "Emerald Garden",
+    "Mango Mojito",
+    "Rosy Dew",
+    "Zesty Lime",
   ];
 </script>
 
@@ -110,7 +116,9 @@
     {#each newPosts as post}
       <div class="elementGrid">
         <img
-          src={'downloads/' + post.toLowerCase().replace(' ', '-') + '_Twitter.png'}
+          src={'downloads/' + post
+              .toLowerCase()
+              .replace(/ /g, '-') + '_Twitter.png'}
           alt={post}
           title={post} />
         <h2>{post} patterns</h2>
@@ -118,7 +126,7 @@
           class="gumroad-button"
           href={'https://gum.co/' + post
               .toLowerCase()
-              .replace(' ', '-') + '?wanted=true'}
+              .replace(/ /g, '-') + '?wanted=true'}
           target="_blank"
           data-gumroad-single-product="true">Download</a>
       </div>
