@@ -1,18 +1,5 @@
-<script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(
-      `https://purple-feather-162d.catchspider2002.workers.dev/`
-    )
-      .then((r) => r.json())
-      .then((x) => x.hello.split(","))
-      .then((newPosts) => {
-        return { newPosts };
-      });
-  }
-</script>
-
+<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=">{}</script>-->
 <script>
-  import { onMount } from "svelte";
   import Footer from "../components/Footer.svelte";
 
   let website = "https://pattern.monster";
@@ -24,51 +11,34 @@
     "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 
-  export let newPosts = [];
-  //   "Christmas Joy",
-  //   "Retro Christmas",
-  //   "Winter Sky",
-  //   "Winter Forest",
-  //   "Winter Rains",
-  //   "Holiday Cheers",
-  //   "Rosy Flamingo",
-  //   "Speckled Eggs",
-  //   "Scooping Ice Cream",
-  //   "Icy Gradient",
-  //   "Velvet Petals",
-  //   "Emerald Garden",
-  //   "Mango Mojito",
-  //   "Rosy Dew",
-  //   "Zesty Lime",
-  // ];
+  export let newPosts = [
+    "Christmas Joy",
+    "Retro Christmas",
+    "Winter Sky",
+    "Winter Forest",
+    "Winter Rains",
+    "Holiday Cheers",
+    "Rosy Flamingo",
+    "Speckled Eggs",
+    "Scooping Ice Cream",
+    "Icy Gradient",
+    "Velvet Petals",
+    "Emerald Garden",
+    "Mango Mojito",
+    "Rosy Dew",
+    "Zesty Lime",
+    "Ocean Floor",
+    "Electric Summer",
+    "Asian Inspiration",
+    "Floating Ice",
+    "Blushing Pink",
+    "Crisp Citrus",
+  ];
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
   const diffDays = Math.round(
     Math.abs((new Date() - new Date(2020, 11, 19)) / oneDay)
   );
-
-  // let today = new Date();
-  // var cmas = new Date(2020, 12, 19);
-  // var one_day = 1000 * 60 * 60 * 24;
-  // console.log(Math.ceil((today.getTime() - cmas.getTime()) / one_day));
-
-  // onMount(async () => {
-  //   userAction();
-  // });
-
-  // const userAction = async () => {
-  //   const response = await fetch(
-  //     "https://purple-feather-162d.catchspider2002.workers.dev/"
-  //   );
-  //   const myJson = await response.json();
-  //   // console.log(myJson);
-  //   // var obj = JSON.parse(myJson);
-  //   // console.log(myJson.hello);
-  //   var res = myJson.hello.split(",");
-  //   // starsCount = myJson.items[0].stargazers_count;
-  //   // console.log(res);
-  //   newPosts = res;
-  // };
 </script>
 
 <style>

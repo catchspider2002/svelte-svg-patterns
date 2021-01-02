@@ -53,7 +53,7 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 45;
+  let starsCount = 47;
 
   const userAction = async () => {
     const response = await fetch(
