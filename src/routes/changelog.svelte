@@ -83,6 +83,9 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">January 2, 2021</li>
+        <li>Added 14 new patterns</li>
+        <li>Added 6 pattern set to <a title="Downloads" href="downloads">Downloads</a></li>
         <li class="versionHeader">December 26, 2020</li>
         <li>Added 10 new patterns</li>
         <li>Added 6 pattern set to <a title="Downloads" href="downloads">Downloads</a></li>
