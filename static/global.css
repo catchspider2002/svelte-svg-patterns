@@ -438,7 +438,7 @@ nav a {
   }
 }
 
-@media (max-width: 408px) {
+@media (max-width: 416px) {
   .translateNav{
     display: none;
   }
