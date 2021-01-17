@@ -22,7 +22,7 @@
 
   export let ptrns;
   // console.log(ptrns.length)
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount, afterUpdate, tick } from "svelte";
   export let posts =  [
     {title: 'Waves - 1', slug: 'waves-1', mode: 'stroke', colors: 5, maxStroke: 6.5, maxScale: 16, maxSpacing: [0, 10], width: 120, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 32.685C-33.346 32.358-16.786 24.918 0 25c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 52.685C-33.346 52.358-16.786 44.918 0 45c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 72.685C-33.346 72.358-16.786 64.918 0 65c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>", creationDate: '13 Nov 2020'},
     {title: 'Waves - 2', slug: 'waves-2', mode: 'stroke', colors: 5, maxStroke: 5.5, maxScale: 16, maxSpacing: [0, 10], width: 80, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 24.568C-13.178 24.932-6.452 27.376 0 30c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 44.568C-13.178 44.932-6.452 47.376 0 50c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 64.568C-13.178 64.932-6.452 67.376 0 70c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>", creationDate: '13 Nov 2020'},
@@ -45,7 +45,8 @@
     {title: 'Herringbone - 5', slug: 'herringbone-5', mode: 'fill', colors: 3, maxStroke: 2, maxScale: 16, maxSpacing: [0, 0], width: 80, height: 40, vHeight: 0, tags: ['herringbone','lines'], path: "<path d='M20 0L0 10v10l20-10 20 10V10zm20 20v10l20-10 20 10V20L60 10z'/>~<path d='M40 0v10L60 0l20 10V0L60-10zM20 20L0 30v10l20-10 20 10V30zm20 20v10l20-10 20 10V40L60 30z'/>", creationDate: '13 Nov 2020'},
     {title: 'Herringbone - 6', slug: 'herringbone-6', mode: 'fill', colors: 3, maxStroke: 2, maxScale: 16, maxSpacing: [0, 0], width: 40, height: 40, vHeight: 0, tags: ['herringbone','lines'], path: "<path d='M10 0L0 10v10l10-10 10 10V10zm10 20v10l10-10 10 10V20L30 10z'/>~<path d='M10-20L0-10V0l10-10L20 0v-10L10-20zM20 0v10L30 0l10 10V0L30-10 20 0zM10 20L0 30v10l10-10 10 10V30L10 20zm10 20v10l10-10 10 10V40L30 30 20 40z'/>", creationDate: '13 Nov 2020'},
   ];
-  let newPosts = posts;
+
+  let newPosts;// = posts;
   import { themeStore } from "./stores.js";
   import dayjs from "dayjs";
   // import ja from "dayjs/locale/ja";
@@ -70,20 +71,23 @@
       : strings.searchPattern;
 
   onMount(async () => {
+    console.log("onMount")
     searchBar = document.getElementById("search");
     getPosts();
+    // await tick();
+    // newPosts = posts;
   });
 
-  afterUpdate(() => {
-    // console.log("After update");
-    newPosts = posts;
-  });
+  // afterUpdate(() => {
+  //   console.log("afterUpdate")
+  // });
 
   function getPosts() {
     return fetch(`index.json`)
       .then((r) => r.json())
       .then((testposts) => {
         posts = testposts;
+    newPosts = posts;
       });
   }
 
@@ -114,26 +118,28 @@
   // ];
 
   function filterChanged() {
+    console.log("filterChanged: " + mode.value)
+    console.log(posts.length)
     if (mode.value === "fill")
       newPosts = posts.filter((pattern) => pattern.mode === "fill");
     else if (mode.value === "stroke")
       newPosts = posts.filter(
         (pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join"
       );
-    else newPosts = posts;
+    else newPosts = ptrns;
   }
 
   function colorsChanged() {
+    console.log("colorsChanged")
     if (colorsCount.value > 1)
       newPosts = posts.filter(
         (pattern) => pattern.colors === colorsCount.value
       );
-    else newPosts = posts;
+    else newPosts = ptrns;
   }
 
   function searchChanged() {
-    // if (searchText.length > 1) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().indexOf(searchText) >= 0);
-    // if (searchText.length > 0) newPosts = posts.filter((pattern) => pattern.title.toLowerCase().includes(searchText.toLowerCase()));
+    console.log("searchChanged")
     if (searchText.length > 0) {
       newPosts = posts.filter((pattern) =>
         pattern.tags.find(function (tag) {
