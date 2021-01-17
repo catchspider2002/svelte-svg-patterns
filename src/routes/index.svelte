@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
   export function preload({ params, query }) {
     return (
       this.fetch(`index.json`)
@@ -9,7 +9,7 @@
         })
     );
   }
-</script>
+</script> -->
 
 <script>
   // import AutoComplete from "simple-svelte-autocomplete";
@@ -20,7 +20,9 @@
   import lang from "./_lang.js";
   let strings = lang.strings;
 
-  export let ptrns;
+  // export let ptrns;
+  let patternsCount = 180
+  let count = 0;
   // console.log(ptrns.length)
   import { onMount, afterUpdate, tick } from "svelte";
   export let posts =  [
@@ -71,16 +73,45 @@
       : strings.searchPattern;
 
   onMount(async () => {
-    console.log("onMount")
+    // console.log("onMount")
     searchBar = document.getElementById("search");
-    getPosts();
     // await tick();
     // newPosts = posts;
   });
 
-  // afterUpdate(() => {
-  //   console.log("afterUpdate")
-  // });
+  afterUpdate(() => {
+    // console.log("afterUpdate")
+    if (count===0){
+      getPosts();
+      // updateCount()
+    }
+    count++
+  });
+
+  // function updateCount() {
+  //   const counter = document.getElementById('patternsCount');
+  //   const speed = 0.5; // The lower the slower
+
+  //       const target = counter.getAttribute('data-target');
+  //       const count = counter.innerText;
+
+  //       // Lower inc to slow and higher to slow
+  //       const inc = target / speed;
+
+  //       console.log(target);
+  //       console.log(inc);
+  //       console.log(count);
+
+  //       // Check if target is reached
+  //       if (count < target) {
+  //           // Add inc to count and output in counter
+  //           counter.innerText = parseInt(count) + parseInt( inc);
+  //           // Call function every ms
+  //           setTimeout(updateCount, 1);
+  //       } else {
+  //           counter.innerText = target;
+  //       }
+  //   };
 
   function getPosts() {
     return fetch(`index.json`)
@@ -118,28 +149,28 @@
   // ];
 
   function filterChanged() {
-    console.log("filterChanged: " + mode.value)
-    console.log(posts.length)
+    // console.log("filterChanged: " + mode.value)
+    // console.log(posts.length)
     if (mode.value === "fill")
       newPosts = posts.filter((pattern) => pattern.mode === "fill");
     else if (mode.value === "stroke")
       newPosts = posts.filter(
         (pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join"
       );
-    else newPosts = ptrns;
+    else newPosts = posts;
   }
 
   function colorsChanged() {
-    console.log("colorsChanged")
+    // console.log("colorsChanged")
     if (colorsCount.value > 1)
       newPosts = posts.filter(
         (pattern) => pattern.colors === colorsCount.value
       );
-    else newPosts = ptrns;
+    else newPosts = posts;
   }
 
   function searchChanged() {
-    console.log("searchChanged")
+    // console.log("searchChanged")
     if (searchText.length > 0) {
       newPosts = posts.filter((pattern) =>
         pattern.tags.find(function (tag) {
@@ -617,8 +648,10 @@
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.trending} />
       </svg>
-      {ptrns.length}
+      <!-- {patternsCount} -->
+      {patternsCount}
       {strings.patterns}
+      <!-- <span id="patternsCount" data-target="{patternsCount}">0</span>{strings.patterns} -->
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
