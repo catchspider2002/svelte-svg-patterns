@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
   export function preload({ params, query }) {
     return (
       this.fetch(`index.json`)
@@ -9,20 +9,28 @@
         })
     );
   }
-</script>
+</script> -->
 
 <script>
+
+        
   // import AutoComplete from "simple-svelte-autocomplete";
   import AutoComplete from "../components/SimpleAutocomplete.svelte";
+  // import InfiniteLoading from "svelte-infinite-loading";
 
   import Footer from "../components/Footer.svelte";
   import Constants from "./_constants.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
-  import { onMount } from "svelte";
-  export let posts;
-  let newPosts = posts;
+  import { onMount, beforeUpdate, afterUpdate } from "svelte";
+  export let posts =  [
+  {title: 'Waves - 1', slug: 'waves-1', mode: 'stroke', colors: 5, maxStroke: 6.5, maxScale: 16, maxSpacing: [0, 10], width: 120, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 32.685C-33.346 32.358-16.786 24.918 0 25c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 52.685C-33.346 52.358-16.786 44.918 0 45c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 72.685C-33.346 72.358-16.786 64.918 0 65c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>", creationDate: '13 Nov 2020'},
+  {title: 'Waves - 2', slug: 'waves-2', mode: 'stroke', colors: 5, maxStroke: 5.5, maxScale: 16, maxSpacing: [0, 10], width: 80, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 24.568C-13.178 24.932-6.452 27.376 0 30c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 44.568C-13.178 44.932-6.452 47.376 0 50c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 64.568C-13.178 64.932-6.452 67.376 0 70c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>", creationDate: '13 Nov 2020'},
+  {title: 'Waves - 3', slug: 'waves-3', mode: 'stroke', colors: 5, maxStroke: 5.5, maxScale: 16, maxSpacing: [0, 10], width: 40, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-4.798 13.573C-3.149 12.533-1.446 11.306 0 10c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176'/>~<path d='M-4.798 33.573C-3.149 32.533-1.446 31.306 0 30c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176'/>~<path d='M-4.798 53.573C-3.149 52.533-1.446 51.306 0 50c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176'/>~<path d='M-4.798 73.573C-3.149 72.533-1.446 71.306 0 70c2.812-2.758 6.18-4.974 10-5 4.183.336 7.193 2.456 10 5 2.86 2.687 6.216 4.952 10 5 4.185-.315 7.35-2.48 10-5 1.452-1.386 3.107-3.085 4.793-4.176'/>", creationDate: '13 Nov 2020'},
+  {title: 'Waves - 4', slug: 'waves-4', mode: 'stroke', colors: 2, maxStroke: 4, maxScale: 10, maxSpacing: [0, 0], width: 70, height: 8, vHeight: 0, tags: ['waves','curves'], path: "<path d='M-.02 22c8.373 0 11.938-4.695 16.32-9.662C20.785 7.258 25.728 2 35 2c9.272 0 14.215 5.258 18.7 10.338C58.082 17.305 61.647 22 70.02 22M-.02 14.002C8.353 14 11.918 9.306 16.3 4.339 20.785-.742 25.728-6 35-6 44.272-6 49.215-.742 53.7 4.339c4.382 4.967 7.947 9.661 16.32 9.664M70 6.004c-8.373-.001-11.918-4.698-16.3-9.665C49.215-8.742 44.272-14 35-14c-9.272 0-14.215 5.258-18.7 10.339C11.918 1.306 8.353 6-.02 6.002'/>", creationDate: '01 Nov 2020'}
+];
+  let newPosts= posts;
   import { themeStore } from "./stores.js";
   import dayjs from "dayjs";
   // import ja from "dayjs/locale/ja";
@@ -41,12 +49,39 @@
 
   let searchBar;
   let w;
-  $: placeholderSearch = w > 640 ? strings.searchPattern + " (" + strings.pressFocus + ")" : strings.searchPattern;
+  $: placeholderSearch =
+    w > 640
+      ? strings.searchPattern + " (" + strings.pressFocus + ")"
+      : strings.searchPattern;
   // if (w <= 640) placeholderSearch = "Search for patterns";
 
   onMount(async () => {
+    // console.log("On mount");
     searchBar = document.getElementById("search");
+     getPosts()
+    // console.log("After mount");
   });
+
+afterUpdate(() => {
+  console.log("After update");
+  
+      console.log(posts)
+    newPosts = posts;
+});
+
+  function getPosts() {
+    return (
+      fetch(`index.json`)
+        .then((r) => r.json())
+        // .then((r, postMode) => r.filter(pattern => pattern.mode === postMode))
+        .then((testposts) => {
+          posts = testposts
+          // console.log(posts)
+          // return { posts };
+          
+        })
+    );
+  }
 
   let mode = { text: strings.allModes, value: "all" };
   let colorsCount = { text: strings.allColors, value: 0 };
@@ -75,13 +110,20 @@
   // ];
 
   function filterChanged() {
-    if (mode.value === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
-    else if (mode.value === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
+    if (mode.value === "fill")
+      newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (mode.value === "stroke")
+      newPosts = posts.filter(
+        (pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join"
+      );
     else newPosts = posts;
   }
 
   function colorsChanged() {
-    if (colorsCount.value > 1) newPosts = posts.filter((pattern) => pattern.colors === colorsCount.value);
+    if (colorsCount.value > 1)
+      newPosts = posts.filter(
+        (pattern) => pattern.colors === colorsCount.value
+      );
     else newPosts = posts;
   }
 
@@ -171,8 +213,10 @@
     let strokeGroup = "";
 
     for (let i = 0; i < path.split("~").length; i++) {
-      let strokeFill = "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
-      if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
+      let strokeFill =
+        "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
+      if (mode === "fill")
+        strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
 
       strokeGroup += path.split("~")[i].replace("/>", " " + strokeFill + "/>");
     }
@@ -192,7 +236,11 @@
       "'/>" +
       strokeGroup +
       "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
-    return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
+    return (
+      'background-image: url("data:image/svg+xml,' +
+      patternNew.replace("#", "%23") +
+      '")'
+    );
   };
 
   // let defaultColors
@@ -206,6 +254,47 @@
   //   }
   //   // document.documentElement.setAttribute("dat/a-theme", defaultColors);
   // });
+
+  // const api = "https://hn.algolia.com/api/v1/search_by_date?tags=story";
+
+  // let page = 1;
+  // // let list = [];
+  // let newsType = "story";
+  // let infiniteId = 1;
+
+  // function infiniteHandler({ detail: { loaded, complete } }) {
+  // 	fetch(`${api}&page=${page}&tags=${newsType}`)
+  // 			.then(response => response.json())
+  // 			.then(data => {
+  // 				if (data.hits.length) {
+  // 					page += 1;
+  // 					list = [...list, ...data.hits];
+  // 					loaded();
+  // 				} else {
+  // 					complete();
+  // 				}
+  // 			});
+  // }
+
+  // function infiniteHandler({ detail: { loaded, complete } }) {
+  //   fetch(`index.json`)
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       if (data.length) {
+  //         page += 1;
+  //         newPosts = [...newPosts, ...data];
+  //         loaded();
+  //       } else {
+  //         complete();
+  //       }
+  //     });
+  // }
+
+  // function changeType() {
+  //   page = 1;
+  //   list = [];
+  //   infiniteId += 50;
+  // }
 </script>
 
 <style>
@@ -240,7 +329,8 @@
     /* padding: 2em 0; */
   }
   .outerPattern {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
     overflow: hidden;
   }
@@ -507,7 +597,11 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div bind:clientWidth={w} class="patternsList">
-  <h1>Customizable <span class="highlight">SVG patterns</span> for your projects</h1>
+  <h1>
+    Customizable
+    <span class="highlight">SVG patterns</span>
+    for your projects
+  </h1>
   <div class="stats">
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -583,7 +677,11 @@
   <div class="samples">
     {#each newPosts as post}
       <div class="outerPattern">
-        <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+        <a
+          rel="prefetch"
+          href="{post.slug}/"
+          class="pattern"
+          style={svgPattern(post.width, post.height, post.path, post.mode)}>
           <span>{post.title}</span>
         </a>
         <div class="details">
@@ -592,11 +690,14 @@
           {:else}
             <div class="numColors">{post.colors} {strings.colors}</div>
           {/if}
-          <div class="postDate" title="Date Updated">{dayjs().to(dayjs(post.creationDate), false)}</div>
+          <div class="postDate" title="Date Updated">
+            {dayjs().to(dayjs(post.creationDate), false)}
+          </div>
         </div>
       </div>
     {/each}
   </div>
+
 </div>
 
 <Footer />
