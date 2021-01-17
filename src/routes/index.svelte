@@ -1,4 +1,4 @@
-<!-- <script context="module">
+<script context="module">
   export function preload({ params, query }) {
     return (
       this.fetch(`index.json`)
@@ -9,7 +9,7 @@
         })
     );
   }
-</script> -->
+</script>
 
 <script>
   // import AutoComplete from "simple-svelte-autocomplete";
@@ -21,7 +21,7 @@
   let strings = lang.strings;
 
   // export let ptrns;
-  let patternsCount = 180
+  let patternsCount = ptrns.length
   let count = 0;
   // console.log(ptrns.length)
   import { onMount, afterUpdate, tick } from "svelte";
@@ -118,7 +118,7 @@
       .then((r) => r.json())
       .then((testposts) => {
         posts = testposts;
-    newPosts = posts;
+        newPosts = posts;
       });
   }
 
