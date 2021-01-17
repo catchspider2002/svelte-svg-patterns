@@ -20,7 +20,7 @@
   import lang from "./_lang.js";
   let strings = lang.strings;
 
-  // export let ptrns;
+  export let ptrns;
   let patternsCount = ptrns.length
   let count = 0;
   // console.log(ptrns.length)
