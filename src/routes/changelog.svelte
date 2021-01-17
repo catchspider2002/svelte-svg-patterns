@@ -83,6 +83,10 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">January 17, 2021</li>
+        <li>Improved the performance of the home page when navigating back from the pattern page</li>
+        <li>Added 2 new patterns</li>
+        <li>Added new pattern set to <a title="Downloads" href="downloads">Downloads</a></li>
         <li class="versionHeader">January 2, 2021</li>
         <li>Added GitHub stars to the navbar icon</li>
         <li>Added 14 new patterns</li>

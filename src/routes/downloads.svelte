@@ -131,8 +131,7 @@
   <meta name="twitter:image" content={image} />
   <meta name="twitter:image:src" content={image} />
   <meta name="twitter:image:alt" content={title} />
-  <script src="https://gumroad.com/js/gumroad.js">
-  </script>
+  <script defer src="https://gumroad.com/js/gumroad.js"></script>
 </svelte:head>
 <div class="outer">
   <h1>DOWNLOADS</h1>
