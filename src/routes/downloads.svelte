@@ -1,4 +1,4 @@
-<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
+<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
 <script>
   import Footer from "../components/Footer.svelte";
 
@@ -46,6 +46,12 @@
     "Volcano Floor",
     "Arctic Camouflage",
     "Barren Rock",
+    "Pacific Sunset",
+    "Vintage Wrapper",
+    "Tropic Popsicles",
+    "Natural Environment",
+    "Vibrant Vibes",
+    "Exotic Orchid",
   ];
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
@@ -131,7 +137,8 @@
   <meta name="twitter:image" content={image} />
   <meta name="twitter:image:src" content={image} />
   <meta name="twitter:image:alt" content={title} />
-  <script defer src="https://gumroad.com/js/gumroad.js"></script>
+  <script defer src="https://gumroad.com/js/gumroad.js">
+  </script>
 </svelte:head>
 <div class="outer">
   <h1>DOWNLOADS</h1>
