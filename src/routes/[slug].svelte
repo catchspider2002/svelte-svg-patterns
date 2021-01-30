@@ -810,7 +810,7 @@
             <input class="uneditable hidden" bind:value={selectedPattern.spacing[1]} readonly />
           </div>
         {/if}
-        <label class="leftColumn" for="angle">Angle</label>
+        <label class="leftColumn" for="angle">{strings.angle}</label>
         <div class="grid rightColumn">
           <input
             id="angle"
@@ -850,8 +850,8 @@
           {/each}
         </div>
         <div class="buttons">
-          <button title="Random" on:click={randomPattern}>Inspire Me</button>
-          <button id="resetButton1" title="Reset" on:click={resetPattern}>Reset</button>
+          <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+          <button id="resetButton1" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
         </div>
       </div>
 
@@ -859,22 +859,22 @@
 
       <div class="exportBar">
         <div class="exportGrid">
-          <span>Copy</span>
-          <button id="cssExport" on:click={copyText(cssOutput, 'CSS', this.id)} title="Copy CSS">CSS</button>
-          <button id="svgExport" on:click={copyText(svgFile, 'SVG', this.id)} title="Copy SVG">SVG</button>
+          <span>{strings.copy}</span>
+          <button id="cssExport" on:click={copyText(cssOutput, 'CSS', this.id)} title={strings.copyCSS}>CSS</button>
+          <button id="svgExport" on:click={copyText(svgFile, 'SVG', this.id)} title={strings.copySVG}>SVG</button>
         </div>
         <div class="downloadGrid">
-          <span>Download</span>
-          <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-          <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+          <span>{strings.download}</span>
+          <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
+          <button on:click={downloadPNG} title={strings.downloadPNG}>PNG</button>
         </div>
         <div class="dimensionGrid">
-          <span>Dimensions</span>
+          <span>{strings.dimensions}</span>
           <input
             id="width"
             type="number"
-            title="Width"
-            placeholder="Width"
+            title={strings.width}
+            placeholder={strings.width}
             bind:value={defaultWidth}
             min="0"
             max="9999"
@@ -887,8 +887,8 @@
           <input
             id="height"
             type="number"
-            title="Height"
-            placeholder="Height"
+            title={strings.height}
+            placeholder={strings.height}
             bind:value={defaultHeight}
             min="0"
             max="9999"
@@ -906,30 +906,30 @@
     <div id="pngOutput" />
 
     <div class="buttons" style="display: {hide ? 'grid' : 'none'}">
-      <button title="Random" on:click={randomPattern}>Inspire Me</button>
-      <button id="resetButton2" title="Reset" on:click={resetPattern}>Reset</button>
+      <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+      <button id="resetButton2" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
     </div>
   </div>
 </div>
 
 <div class="bottomBar">
   <div class="exportGrid">
-    <span>Copy</span>
-    <button id="cssBottom" on:click={copyText(cssOutput, 'CSS', this.id)} title="Copy CSS">CSS</button>
-    <button id="svgBottom" on:click={copyText(svgFile, 'SVG', this.id)} title="Copy SVG">SVG</button>
+    <span>{strings.copy}</span>
+    <button id="cssBottom" on:click={copyText(cssOutput, 'CSS', this.id)} title={strings.copyCSS}>CSS</button>
+    <button id="svgBottom" on:click={copyText(svgFile, 'SVG', this.id)} title={strings.copySVG}>SVG</button>
   </div>
   <div class="downloadGrid">
-    <span>Download</span>
-    <button on:click={downloadSVG} title="Download as SVG file">SVG</button>
-    <button on:click={downloadPNG} title="Download as PNG file">PNG</button>
+    <span>{strings.download}</span>
+    <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
+    <button on:click={downloadPNG} title={strings.downloadSVG}>PNG</button>
   </div>
   <div class="dimensionGrid">
-    <span>Dimensions</span>
+    <span>{strings.dimensions}</span>
     <input
       id="width"
       type="number"
-      title="Width"
-      placeholder="Width"
+      title={strings.width}
+      placeholder={strings.width}
       bind:value={defaultWidth}
       min="0"
       max="9999"
@@ -942,8 +942,8 @@
     <input
       id="height"
       type="number"
-      title="Height"
-      placeholder="Height"
+      title={strings.height}
+      placeholder={strings.height}
       bind:value={defaultHeight}
       min="0"
       max="9999"
@@ -955,8 +955,8 @@
       }} />
   </div>
   <div class="buttons">
-    <button title="Random" on:click={randomPattern}>Inspire Me</button>
-    <button id="resetButton3" title="Reset" on:click={resetPattern}>Reset</button>
+    <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+    <button id="resetButton3" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
   </div>
-  <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> Hide UI </label>
+  <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> {strings.hide} </label>
 </div>

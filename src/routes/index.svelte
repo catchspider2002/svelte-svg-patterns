@@ -49,9 +49,9 @@
   ];
 
   let newPosts;// = posts;
-  import { themeStore } from "./stores.js";
+  import { themeStore, langStore } from "./stores.js";
   import dayjs from "dayjs";
-  // import ja from "dayjs/locale/ja";
+  // import de from "dayjs/locale/de";
   import relativeTime from "dayjs/plugin/relativeTime";
 
   // let count_value;
@@ -59,12 +59,19 @@
   //   count_value = value;
   //   // console.log("store Theme: " + value);
   // });
-  // import "dayjs/locale/ja";
-  // dayjs.locale("ja");
 
-  // dayjs().locale("ja").format();
+  import "dayjs/locale/de";
+
+  if($langStore === 'de'){
+    dayjs.locale("de");
+    dayjs.extend(relativeTime);
+  }
+  else
   dayjs.extend(relativeTime);
 
+
+  // dayjs().locale("de").format();
+  
   let searchBar;
   let w;
   $: placeholderSearch =

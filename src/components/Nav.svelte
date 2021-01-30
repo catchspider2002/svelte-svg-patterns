@@ -5,6 +5,9 @@
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
   import { themeStore } from "../routes/stores.js";
+  import LangSelect from "./LangSelect.svelte"
+  import lang from "../routes/_lang.js";
+  let strings = lang.strings;
 
   // const dispatch = createEventDispatcher();
 
@@ -53,7 +56,7 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 65;
+  let starsCount = 66;
 
   const userAction = async () => {
     const response = await fetch(
@@ -133,18 +136,19 @@
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
     <a title="Downloads" href="downloads">Downloads</a>
-    <a
+    <!-- <a
       class="translateNav"
       rel="noopener noreferrer"
       title="Translate"
       target="_blank"
       href="https://crwd.in/pattern-monster">
       Translate
-    </a>
+    </a> -->
+    <LangSelect/>
     <a
       class="tweetNav"
       rel="noopener noreferrer"
-      title="Share your tweet"
+      title={strings.tweet}
       target="_blank"
       href="https://twitter.com/intent/tweet?text=If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%20Generate%20fully%20customizable%20SVG%20patterns%20for%20free.%0A%0A175%2b%20patterns%20available%20at%20https%3A%2F%2Fpattern.monster%0A%0Avia%20%40Pattern_Monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster">
       Tweet
@@ -164,8 +168,8 @@
     </a>
     <button
       class="iconButton"
-      aria-label="Change Theme"
-      title="Change Theme"
+      aria-label={strings.changeTheme}
+      title={strings.changeTheme}
       on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
