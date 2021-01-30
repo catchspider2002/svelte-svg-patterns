@@ -1,39 +1,22 @@
 <script>
   import Footer from "../components/Footer.svelte";
+  import { webStore } from "./stores.js";
 
-  let website = "https://pattern.monster";
+  let website = $webStore || "https://pattern.monster";
   let title = "Privacy Policy - Pattern Monster";
-  let url = website + "/privacy-policy/";
+  let page = "/privacy-policy/";
+  let url = website + page;
   let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc = "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc =
+    "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";
 </script>
-
-<style>
-  h1 {
-    font-size: 2em;
-    text-align: center;
-    font-weight: 600;
-    padding: 0.5em;
-    color: var(--secondary-text-color);
-    margin-bottom: 0.5em;
-    margin-top: 0;
-  }
-  p {
-    color: var(--secondary-text-color);
-    padding-bottom: 1.5em;
-    padding-top: 0.5em;
-    text-align: center;
-  }
-  div {
-    background-color: var(--pattern-bg);
-    padding: 2em;
-  }
-</style>
 
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
+  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
+  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
@@ -57,3 +40,25 @@
 </div>
 
 <Footer />
+
+<style>
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 600;
+    padding: 0.5em;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+  }
+  p {
+    color: var(--secondary-text-color);
+    padding-bottom: 1.5em;
+    padding-top: 0.5em;
+    text-align: center;
+  }
+  div {
+    background-color: var(--pattern-bg);
+    padding: 2em;
+  }
+</style>

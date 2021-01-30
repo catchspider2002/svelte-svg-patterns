@@ -135,7 +135,7 @@
   </a>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
-    <a title="Downloads" href="downloads">Downloads</a>
+    <a class="downloadsButton" title="Downloads" href="downloads">Downloads</a>
     <!-- <a
       class="translateNav"
       rel="noopener noreferrer"

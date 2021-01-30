@@ -1,9 +1,11 @@
 <script>
   import Footer from "../components/Footer.svelte";
-
-  let website = "https://pattern.monster";
+  import { webStore } from "./stores.js";
+  
+  let website = $webStore || "https://pattern.monster";
   let title = "Changelog - Pattern Monster";
-  let url = website + "/changelog/";
+  let page = "/changelog/";
+  let url = website + page;
   let keywords =
     "changelog, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
@@ -61,6 +63,8 @@
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
+  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
+  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
@@ -83,6 +87,9 @@
     <h1>CHANGELOG</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">January 30, 2021</li>
+        <li>Added German translation for the site available <a href="https://de.pattern.monster">here</a></li>
+        <li>Added a dropdown button to choose the language in the navbar</li>
         <li class="versionHeader">January 17, 2021</li>
         <li>Improved the performance of the home page when navigating back from the pattern page</li>
         <li>Added 2 new patterns</li>

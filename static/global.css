@@ -444,14 +444,15 @@ nav a {
   .tweetNav {
     display: none;
   }
-}
-
-@media (max-width: 416px) {
-  .translateNav {
+  .downloadsButton,
+  .gitHubIcon {
     display: none;
   }
 }
-@media (max-width: 360px) {
+
+/* @media (max-width: 416px) {
+} */
+@media (max-width: 450px) {
   .brandName {
     display: none;
   }

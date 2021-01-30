@@ -49,7 +49,7 @@
   ];
 
   let newPosts;// = posts;
-  import { themeStore, langStore } from "./stores.js";
+  import { themeStore, langStore, webStore } from "./stores.js";
   import dayjs from "dayjs";
   // import de from "dayjs/locale/de";
   import relativeTime from "dayjs/plugin/relativeTime";
@@ -231,7 +231,7 @@
     }
   }
 
-  let website = "https://pattern.monster";
+  let website = $webStore || "https://pattern.monster";
   let title = "Pattern Monster - " + strings.title;
   let url = website;
   let keywords = strings.keywords;
@@ -624,6 +624,8 @@
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
+  <link rel="alternate" href="https://pattern.monster" hreflang="en" />
+  <link rel="alternate" href="https://de.pattern.monster"  hreflang="de" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 

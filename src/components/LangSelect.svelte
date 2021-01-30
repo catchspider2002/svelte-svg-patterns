@@ -1,5 +1,7 @@
 <script>
   import { langStore } from "../routes/stores.js";
+  import lang from "../routes/_lang.js";
+  let strings = lang.strings;
   let toClose = false;
 
   let language = $langStore || "en";
@@ -38,7 +40,7 @@
 <svelte:window on:click={closeWindow} />
 
 <div class="menu">
-  <button class="menuButton" on:click={toggle}>
+  <button class="menuButton" title="Translate" on:click={toggle}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="2em"
@@ -49,7 +51,6 @@
       fill="none"
       stroke-linecap="round"
       stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M5 7h7m-2 -2v2a5 8 0 0 1 -5 8m1 -4a7 4 0 0 0 6.7 4" />
       <path d="M11 19l4 -9l4 9m-.9 -2h-6.2" />
     </svg>
@@ -64,7 +65,6 @@
       fill="none"
       stroke-linecap="round"
       stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <polyline points="6 9 12 15 18 9" />
     </svg>
   </button>
@@ -76,7 +76,7 @@
         <a href={lang.link}><li class="px-4 py-3">{lang.name}</li></a>
       {/if}
     {/each}
-    <a href="https://crwd.in/pattern-monster"><li class="px-4 py-3 translateLink">Translate</li></a>
+    <a href="https://crwd.in/pattern-monster" target="_blank"><li class="px-4 py-3 translateLink">Translate</li></a>
   </ul>
 </div>
 

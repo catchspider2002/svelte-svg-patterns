@@ -16,13 +16,15 @@
 
   import { onMount } from "svelte";
 
-  import { themeStore } from "./stores.js";
+  import { themeStore, webStore } from "./stores.js";
 
   // import { bind } from "svelte/internal";
   let w;
-  let website = "https://pattern.monster";
+
+  let website = $webStore || "https://pattern.monster";
   let title = post.title + " - Pattern Monster";
-  let url = website + "/" + post.slug + "/";
+  let page = "/" + post.slug + "/";
+  let url = website + page;
   let keywords = post.tags + ", random, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     post.title +
@@ -399,6 +401,287 @@
   }
 </script>
 
+<svelte:head>
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
+  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
+
+  <!-- Twitter -->
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
+</svelte:head>
+<div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
+  <div class="patternContainer justify-center items-center">
+    <div class="mobileBg" style={cssOutput} />
+
+    <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
+      <h1>{post.title}</h1>
+      <div class="inputs">
+        <label class="leftColumn" for="scale">{strings.zoom}</label>
+        <div class="grid rightColumn">
+          <input
+            id="scale"
+            type="range"
+            bind:value={selectedPattern.scale}
+            min="1"
+            max={maxScale}
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)}
+          />
+          <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
+        </div>
+        <label class="leftColumn" for="scale">Horizontal Position</label>
+        <div class="grid rightColumn">
+          <input
+            id="moveLeft"
+            type="range"
+            bind:value={selectedPattern.moveLeft}
+            min={Math.round(width * -2)}
+            max="0"
+            step="1"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)}
+          />
+          <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
+        </div>
+        <label class="leftColumn" for="scale">Vertical Position</label>
+        <div class="grid rightColumn">
+          <input
+            id="moveTop"
+            type="range"
+            bind:value={selectedPattern.moveTop}
+            min={height * -2}
+            max="0"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)}
+          />
+          <input class="uneditable hidden" bind:value={selectedPattern.moveTop} readonly />
+        </div>
+        {#if mode === "stroke-join" || mode === "stroke"}
+          <label class="leftColumn" for="stroke">{strings.stroke}</label>
+          <div class="grid rightColumn">
+            <input
+              id="stroke"
+              type="range"
+              bind:value={selectedPattern.stroke}
+              min="0.5"
+              max={maxStroke}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)}
+            />
+            <input class="uneditable hidden" bind:value={selectedPattern.stroke} readonly />
+          </div>
+        {/if}
+        {#if mode === "stroke-join"}
+          <label class="leftColumn">{strings.join}</label>
+          <div class="rightColumn strokeJoin">
+            <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
+            <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
+          </div>
+        {/if}
+        {#if maxSpacing[0] > 0}
+          <label class="leftColumn" for="hspacing">{strings.hSpacing}</label>
+          <div class="grid rightColumn">
+            <input
+              id="hspacing"
+              type="range"
+              bind:value={selectedPattern.spacing[0]}
+              min="0"
+              max={maxSpacing[0]}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)}
+            />
+            <input class="uneditable hidden" bind:value={selectedPattern.spacing[0]} readonly />
+          </div>
+        {/if}
+        {#if maxSpacing[1] > 0}
+          <label class="leftColumn" for="vspacing">{strings.vSpacing}</label>
+          <div class="grid rightColumn">
+            <input
+              id="vspacing"
+              type="range"
+              bind:value={selectedPattern.spacing[1]}
+              min="0"
+              max={maxSpacing[1]}
+              step="0.5"
+              on:input={() => (changing = true)}
+              on:change={() => (changing = false)}
+            />
+            <input class="uneditable hidden" bind:value={selectedPattern.spacing[1]} readonly />
+          </div>
+        {/if}
+        <label class="leftColumn" for="angle">{strings.angle}</label>
+        <div class="grid rightColumn">
+          <input
+            id="angle"
+            type="range"
+            bind:value={selectedPattern.angle}
+            min="0"
+            max="180"
+            step="5"
+            on:input={() => (changing = true)}
+            on:change={() => (changing = false)}
+          />
+          <!-- <input class="uneditable" bind:value={selectedPattern.angle} readonly /> -->
+          <span class="uneditable">{selectedPattern.angle}</span>
+        </div>
+        <label class="leftColumn colorLabel">Colors</label>
+
+        {#if maxColors > 2}
+          <div class="grid rightColumn">
+            <input
+              id="colorNum"
+              type="range"
+              bind:value={selectedPattern.colorCounts}
+              min="2"
+              max={maxColors}
+              step="1"
+              on:input={() => {
+                changing = true;
+                setPickers();
+              }}
+              on:change={() => (changing = false)}
+            />
+            <span class="uneditable">{selectedPattern.colorCounts}</span>
+          </div>
+        {/if}
+
+        <div class="rightColumn colors">
+          {#each { length: 5 } as _, i}
+            <div id="color{i + 1}Div" />
+          {/each}
+        </div>
+        <div class="buttons">
+          <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+          <button id="resetButton1" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="exportBar">
+        <div class="exportGrid">
+          <span>{strings.copy}</span>
+          <button id="cssExport" on:click={copyText(cssOutput, "CSS", this.id)} title={strings.copyCSS}>CSS</button>
+          <button id="svgExport" on:click={copyText(svgFile, "SVG", this.id)} title={strings.copySVG}>SVG</button>
+        </div>
+        <div class="downloadGrid">
+          <span>{strings.download}</span>
+          <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
+          <button on:click={downloadPNG} title={strings.downloadPNG}>PNG</button>
+        </div>
+        <div class="dimensionGrid">
+          <span>{strings.dimensions}</span>
+          <input
+            id="width"
+            type="number"
+            title={strings.width}
+            placeholder={strings.width}
+            bind:value={defaultWidth}
+            min="0"
+            max="9999"
+            on:change={(e) => {
+              localStorage.setItem("defaultWidth", e.target.value);
+            }}
+            on:input={(e) => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }}
+          />
+          <input
+            id="height"
+            type="number"
+            title={strings.height}
+            placeholder={strings.height}
+            bind:value={defaultHeight}
+            min="0"
+            max="9999"
+            on:change={(e) => {
+              localStorage.setItem("defaultHeight", e.target.value);
+            }}
+            on:input={(e) => {
+              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preview" style={cssOutput}>
+    <div id="pngOutput" />
+
+    <div class="buttons" style="display: {hide ? 'grid' : 'none'}">
+      <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+      <button id="resetButton2" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
+    </div>
+  </div>
+</div>
+
+<div class="bottomBar">
+  <div class="exportGrid">
+    <span>{strings.copy}</span>
+    <button id="cssBottom" on:click={copyText(cssOutput, "CSS", this.id)} title={strings.copyCSS}>CSS</button>
+    <button id="svgBottom" on:click={copyText(svgFile, "SVG", this.id)} title={strings.copySVG}>SVG</button>
+  </div>
+  <div class="downloadGrid">
+    <span>{strings.download}</span>
+    <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
+    <button on:click={downloadPNG} title={strings.downloadSVG}>PNG</button>
+  </div>
+  <div class="dimensionGrid">
+    <span>{strings.dimensions}</span>
+    <input
+      id="width"
+      type="number"
+      title={strings.width}
+      placeholder={strings.width}
+      bind:value={defaultWidth}
+      min="0"
+      max="9999"
+      on:change={(e) => {
+        localStorage.setItem("defaultWidth", e.target.value);
+      }}
+      on:input={(e) => {
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+      }}
+    />
+    <input
+      id="height"
+      type="number"
+      title={strings.height}
+      placeholder={strings.height}
+      bind:value={defaultHeight}
+      min="0"
+      max="9999"
+      on:change={(e) => {
+        localStorage.setItem("defaultHeight", e.target.value);
+      }}
+      on:input={(e) => {
+        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
+      }}
+    />
+  </div>
+  <div class="buttons">
+    <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
+    <button id="resetButton3" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
+  </div>
+  <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> {strings.hide} </label>
+</div>
+
 <style>
   .page {
     display: grid;
@@ -693,270 +976,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <title>{title}</title>
-  <link rel="canonical" href={url} />
-  <meta name="description" content={desc} />
-  <meta name="keywords" content={keywords} />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:url" content={url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={desc} />
-  <meta property="og:image" content={image} />
-
-  <!-- Twitter -->
-  <meta name="twitter:url" content={url} />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={desc} />
-  <meta name="twitter:image" content={image} />
-  <meta name="twitter:image:src" content={image} />
-  <meta name="twitter:image:alt" content={title} />
-</svelte:head>
-<div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
-  <div class="patternContainer justify-center items-center">
-    <div class="mobileBg" style={cssOutput} />
-
-    <div class="controls" style="display: {hide ? 'none' : 'block'}; opacity: {(w <= 768) & changing ? '0.75' : '1'}">
-      <h1>{post.title}</h1>
-      <div class="inputs">
-        <label class="leftColumn" for="scale">{strings.zoom}</label>
-        <div class="grid rightColumn">
-          <input
-            id="scale"
-            type="range"
-            bind:value={selectedPattern.scale}
-            min="1"
-            max={maxScale}
-            on:input={() => (changing = true)}
-            on:change={() => (changing = false)} />
-          <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
-        </div>
-        <label class="leftColumn" for="scale">Horizontal Position</label>
-        <div class="grid rightColumn">
-          <input
-            id="moveLeft"
-            type="range"
-            bind:value={selectedPattern.moveLeft}
-            min={Math.round(width * -2)}
-            max="0"
-            step="1"
-            on:input={() => (changing = true)}
-            on:change={() => (changing = false)} />
-          <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
-        </div>
-        <label class="leftColumn" for="scale">Vertical Position</label>
-        <div class="grid rightColumn">
-          <input
-            id="moveTop"
-            type="range"
-            bind:value={selectedPattern.moveTop}
-            min={height * -2}
-            max="0"
-            on:input={() => (changing = true)}
-            on:change={() => (changing = false)} />
-          <input class="uneditable hidden" bind:value={selectedPattern.moveTop} readonly />
-        </div>
-        {#if mode === 'stroke-join' || mode === 'stroke'}
-          <label class="leftColumn" for="stroke">{strings.stroke}</label>
-          <div class="grid rightColumn">
-            <input
-              id="stroke"
-              type="range"
-              bind:value={selectedPattern.stroke}
-              min="0.5"
-              max={maxStroke}
-              step="0.5"
-              on:input={() => (changing = true)}
-              on:change={() => (changing = false)} />
-            <input class="uneditable hidden" bind:value={selectedPattern.stroke} readonly />
-          </div>
-        {/if}
-        {#if mode === 'stroke-join'}
-          <label class="leftColumn">{strings.join}</label>
-          <div class="rightColumn strokeJoin">
-            <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
-            <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
-          </div>
-        {/if}
-        {#if maxSpacing[0] > 0}
-          <label class="leftColumn" for="hspacing">{strings.hSpacing}</label>
-          <div class="grid rightColumn">
-            <input
-              id="hspacing"
-              type="range"
-              bind:value={selectedPattern.spacing[0]}
-              min="0"
-              max={maxSpacing[0]}
-              step="0.5"
-              on:input={() => (changing = true)}
-              on:change={() => (changing = false)} />
-            <input class="uneditable hidden" bind:value={selectedPattern.spacing[0]} readonly />
-          </div>
-        {/if}
-        {#if maxSpacing[1] > 0}
-          <label class="leftColumn" for="vspacing">{strings.vSpacing}</label>
-          <div class="grid rightColumn">
-            <input
-              id="vspacing"
-              type="range"
-              bind:value={selectedPattern.spacing[1]}
-              min="0"
-              max={maxSpacing[1]}
-              step="0.5"
-              on:input={() => (changing = true)}
-              on:change={() => (changing = false)} />
-            <input class="uneditable hidden" bind:value={selectedPattern.spacing[1]} readonly />
-          </div>
-        {/if}
-        <label class="leftColumn" for="angle">{strings.angle}</label>
-        <div class="grid rightColumn">
-          <input
-            id="angle"
-            type="range"
-            bind:value={selectedPattern.angle}
-            min="0"
-            max="180"
-            step="5"
-            on:input={() => (changing = true)}
-            on:change={() => (changing = false)} />
-          <!-- <input class="uneditable" bind:value={selectedPattern.angle} readonly /> -->
-          <span class="uneditable">{selectedPattern.angle}</span>
-        </div>
-        <label class="leftColumn colorLabel">Colors</label>
-
-        {#if maxColors > 2}
-          <div class="grid rightColumn">
-            <input
-              id="colorNum"
-              type="range"
-              bind:value={selectedPattern.colorCounts}
-              min="2"
-              max={maxColors}
-              step="1"
-              on:input={() => {
-                changing = true;
-                setPickers();
-              }}
-              on:change={() => (changing = false)} />
-            <span class="uneditable">{selectedPattern.colorCounts}</span>
-          </div>
-        {/if}
-
-        <div class="rightColumn colors">
-          {#each { length: 5 } as _, i}
-            <div id="color{i + 1}Div" />
-          {/each}
-        </div>
-        <div class="buttons">
-          <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
-          <button id="resetButton1" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
-        </div>
-      </div>
-
-      <hr />
-
-      <div class="exportBar">
-        <div class="exportGrid">
-          <span>{strings.copy}</span>
-          <button id="cssExport" on:click={copyText(cssOutput, 'CSS', this.id)} title={strings.copyCSS}>CSS</button>
-          <button id="svgExport" on:click={copyText(svgFile, 'SVG', this.id)} title={strings.copySVG}>SVG</button>
-        </div>
-        <div class="downloadGrid">
-          <span>{strings.download}</span>
-          <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
-          <button on:click={downloadPNG} title={strings.downloadPNG}>PNG</button>
-        </div>
-        <div class="dimensionGrid">
-          <span>{strings.dimensions}</span>
-          <input
-            id="width"
-            type="number"
-            title={strings.width}
-            placeholder={strings.width}
-            bind:value={defaultWidth}
-            min="0"
-            max="9999"
-            on:change={(e) => {
-              localStorage.setItem('defaultWidth', e.target.value);
-            }}
-            on:input={(e) => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-          <input
-            id="height"
-            type="number"
-            title={strings.height}
-            placeholder={strings.height}
-            bind:value={defaultHeight}
-            min="0"
-            max="9999"
-            on:change={(e) => {
-              localStorage.setItem('defaultHeight', e.target.value);
-            }}
-            on:input={(e) => {
-              if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-            }} />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="preview" style={cssOutput}>
-    <div id="pngOutput" />
-
-    <div class="buttons" style="display: {hide ? 'grid' : 'none'}">
-      <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
-      <button id="resetButton2" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
-    </div>
-  </div>
-</div>
-
-<div class="bottomBar">
-  <div class="exportGrid">
-    <span>{strings.copy}</span>
-    <button id="cssBottom" on:click={copyText(cssOutput, 'CSS', this.id)} title={strings.copyCSS}>CSS</button>
-    <button id="svgBottom" on:click={copyText(svgFile, 'SVG', this.id)} title={strings.copySVG}>SVG</button>
-  </div>
-  <div class="downloadGrid">
-    <span>{strings.download}</span>
-    <button on:click={downloadSVG} title={strings.downloadSVG}>SVG</button>
-    <button on:click={downloadPNG} title={strings.downloadSVG}>PNG</button>
-  </div>
-  <div class="dimensionGrid">
-    <span>{strings.dimensions}</span>
-    <input
-      id="width"
-      type="number"
-      title={strings.width}
-      placeholder={strings.width}
-      bind:value={defaultWidth}
-      min="0"
-      max="9999"
-      on:change={(e) => {
-        localStorage.setItem('defaultWidth', e.target.value);
-      }}
-      on:input={(e) => {
-        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-      }} />
-    <input
-      id="height"
-      type="number"
-      title={strings.height}
-      placeholder={strings.height}
-      bind:value={defaultHeight}
-      min="0"
-      max="9999"
-      on:change={(e) => {
-        localStorage.setItem('defaultHeight', e.target.value);
-      }}
-      on:input={(e) => {
-        if (e.target.value.length > 4) e.target.value = e.target.value.slice(0, 4);
-      }} />
-  </div>
-  <div class="buttons">
-    <button title={strings.random} on:click={randomPattern}>{strings.inspire}</button>
-    <button id="resetButton3" title={strings.reset} on:click={resetPattern}>{strings.reset}</button>
-  </div>
-  <label class="hideCheckbox"> <input type="checkbox" bind:checked={hide} /> {strings.hide} </label>
-</div>

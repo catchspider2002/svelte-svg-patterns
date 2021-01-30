@@ -1,10 +1,12 @@
 <!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
 <script>
   import Footer from "../components/Footer.svelte";
-
-  let website = "https://pattern.monster";
+  import { webStore } from "./stores.js";
+  
+  let website = $webStore || "https://pattern.monster";
   let title = "Downloads - Pattern Monster";
-  let url = website + "/downloads/";
+  let page = "/downloads/";
+  let url = website + page;
   let keywords = "download, free downloads, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
   let desc =
     "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
@@ -65,6 +67,8 @@
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
+  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
+  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
