@@ -457,6 +457,12 @@ nav a {
   nav {
     padding: 0.3em 0.5em;
   }
+
+  nav > a,
+  .rightLinks a,
+  .iconButton {
+    padding: 0.3em 0.8em;
+  }
 }
 
 @media (max-width: 360px) {
