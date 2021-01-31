@@ -184,8 +184,8 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 input[type="range"]::-moz-range-thumb {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   background: var(--pattern-bg);
   border: 4px solid var(--accent-text);
   border-radius: var(--border-radius);
@@ -295,6 +295,9 @@ button:active {
 }
 .justify-self-end {
   justify-self: end;
+}
+.capitalize {
+  text-transform: capitalize;
 }
 
 .brandName {
@@ -450,9 +453,13 @@ nav a {
   }
 }
 
-/* @media (max-width: 416px) {
-} */
 @media (max-width: 450px) {
+  nav {
+    padding: 0.3em 0.5em;
+  }
+}
+
+@media (max-width: 360px) {
   .brandName {
     display: none;
   }

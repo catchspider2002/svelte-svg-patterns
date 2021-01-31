@@ -106,9 +106,10 @@
     /*   border-bottom: 1px solid #b5b5b5; */
     /* padding: 0.5em 0.75em; */
     /* 	background: linear-gradient(#fff, #EFEFEF); */
-    position: relative;
+    /* position: relative; */
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: auto auto auto;
     align-items: center;
     gap: 0.5em;
     font-weight: 500;

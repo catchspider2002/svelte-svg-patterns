@@ -540,7 +540,7 @@
           <!-- <input class="uneditable" bind:value={selectedPattern.angle} readonly /> -->
           <span class="uneditable">{selectedPattern.angle}</span>
         </div>
-        <label class="leftColumn colorLabel">Colors</label>
+        <label class="leftColumn colorLabel capitalize">{strings.colors}</label>
 
         {#if maxColors > 2}
           <div class="grid rightColumn">
@@ -755,7 +755,7 @@
     color: var(--accent-text-color);
     /* height: 24px; */
     font-size: 0.9em;
-    padding: 2px 2px 0 2px;
+    padding: 5px 2px 0 2px;
     text-align: center;
     min-width: 2.5em;
     border-radius: var(--border-radius);
