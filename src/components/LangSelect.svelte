@@ -54,7 +54,7 @@
       <path d="M5 7h7m-2 -2v2a5 8 0 0 1 -5 8m1 -4a7 4 0 0 0 6.7 4" />
       <path d="M11 19l4 -9l4 9m-.9 -2h-6.2" />
     </svg>
-    {languageName}
+    <span>{languageName}</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.5em"
@@ -107,13 +107,16 @@
     /* padding: 0.5em 0.75em; */
     /* 	background: linear-gradient(#fff, #EFEFEF); */
     /* position: relative; */
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    /* grid-auto-flow: column;
+    grid-template-columns: auto auto auto; */
     align-items: center;
-    gap: 0.5em;
+    /* gap: 0.5em; */
     font-weight: 500;
     border-radius: var(--border-radius);
+  }
+  .menuButton > span {
+padding: 0 0.5em;
   }
   .menuButton:hover {
     background: var(--gray-800);
