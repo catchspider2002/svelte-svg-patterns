@@ -1,8 +1,8 @@
-<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
+<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
 <script>
   import Footer from "../components/Footer.svelte";
   import { webStore } from "./stores.js";
-  
+
   let website = $webStore || "https://pattern.monster";
   let title = "Downloads - Pattern Monster";
   let page = "/downloads/";
@@ -58,6 +58,13 @@
     "Succulent Garden",
     "Summer Getaway",
     "Royal Bouquet",
+    "Caffe Latte",
+    "Aqua Splash",
+    "Petal Party",
+    "Night Sky",
+    "Crystal River",
+    "Dusty Grass",
+    "Deep Relief",
   ];
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
@@ -116,7 +123,6 @@
           class="pattern">
           <span>{post.title}</span>
         </a> -->
-
 <style>
   h1 {
     font-size: 2em;
