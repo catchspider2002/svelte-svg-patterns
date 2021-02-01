@@ -1,6 +1,8 @@
 <script>
   import Footer from "../components/Footer.svelte";
   import { webStore } from "./stores.js";
+  import lang from "./_lang.js";
+  let strings = lang.strings;
   
   let website = $webStore || "https://pattern.monster";
   let title = "Changelog - Pattern Monster";
@@ -22,6 +24,7 @@
     color: var(--secondary-text-color);
     margin-bottom: 0.5em;
     margin-top: 0;
+    text-transform: uppercase;
   }
   .outer {
     background-color: var(--pattern-bg);
@@ -84,7 +87,7 @@
 </svelte:head>
 <div class="outer">
   <div class="container mx-auto">
-    <h1>CHANGELOG</h1>
+    <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
         <li class="versionHeader">January 30, 2021</li>

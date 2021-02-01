@@ -2,13 +2,14 @@ const strings = {
   searchPattern: "Search for patterns",
   pressFocus: "Press '/' to focus",
   title: "SVG Pattern Generator",
-  heading: "Customizable SVG patterns for your projects",
+  heading: "Customizable <span>SVG patterns</span> for your projects",
   keywords: "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker",
   patterns: "patterns",
   license: "MIT License",
   free: "Free",
-  description:
-    "A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for website backgrounds, apparel, branding, packaging design and more.",
+  description: "A simple online pattern generator to create repeatable SVG patterns.",
+  description2: "Speed up your website without compromising on image quality.",
+  description3: "Perfect for website backgrounds, apparel, branding, packaging design and more.",
   filter: "Filter",
   sort: "Sort",
   filterMode: "Filter by Mode",
@@ -25,6 +26,7 @@ const strings = {
   changeTheme: "Change Theme",
   changelog: "Changelog",
   features: "Features",
+  downloads: "Downloads",
   privacy: "Privacy Policy",
   privacyFull: "This app does not collect or store any user data",
   signUp: "Sign up for project updates and get free patterns delivered monthly to your inbox",
@@ -98,6 +100,6 @@ const strings = {
   stars: "Stars",
   semicircles: "Semicircles",
   songket: "Songket Pattern",
-};
+    };
 
 export default { strings };

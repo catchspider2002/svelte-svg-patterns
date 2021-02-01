@@ -96,6 +96,9 @@ h1 {
   margin-top: 0.5rem;
   line-height: 1em;
 }
+h1 > span{
+  color: var(--accent-text);
+}
 
 h2,
 h3,

@@ -2,12 +2,14 @@
 <script>
   import Footer from "../components/Footer.svelte";
   import { webStore } from "./stores.js";
+  import lang from "./_lang.js";
+  let strings = lang.strings;
 
   let website = $webStore || "https://pattern.monster";
   let title = "Downloads - Pattern Monster";
   let page = "/downloads/";
   let url = website + page;
-  let keywords = "download, free downloads, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
+  let keywords = "download, free downloads, " + strings.keywords;
   let desc =
     "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
   let image = website + "/TwitterBG2.png";

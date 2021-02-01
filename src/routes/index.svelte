@@ -431,9 +431,7 @@
     gap: 0.75em;
     place-content: start;
   }
-  .highlight {
-    color: var(--accent-text);
-  }
+  
   .outerGrid {
     display: grid;
     /* width: 100%; */
@@ -647,11 +645,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div bind:clientWidth={w} class="patternsList">
-  <h1>
-    Customizable
-    <span class="highlight">SVG patterns</span>
-    for your projects
-  </h1>
+  <h1>{@html strings.heading}</h1>
   <div class="stats">
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -681,7 +675,7 @@
       {strings.free}
     </div>
   </div>
-  <p class="container mx-auto">{strings.description}</p>
+  <p class="container mx-auto">{strings.description} {strings.description2} {strings.description3}</p>
 
   <div class="outerGrid">
     <div class="searchBox">
