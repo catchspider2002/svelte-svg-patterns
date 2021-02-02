@@ -2,17 +2,18 @@
   import Logo from "../components/Logo.svelte";
   import Footer from "../components/Footer.svelte";
   import { langStore, webStore } from "./stores.js";
+  import lang from "./_lang.js";
+  let strings = lang.strings;
 
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
   let website = $webStore || "https://pattern.monster";
-  let title = "Features - Pattern Monster";
+  let title = strings.features + " - Pattern Monster";
   let page = "/features/";
   let url = website + page;
-  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc =
-    "Features for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let keywords = strings.features + ", " + strings.keywords;
+  let desc = "Features for Pattern Monster." + " " + strings.description + " " + strings.description3;
   let image = website + "/TwitterBG2.png";
 
   const palettes = [

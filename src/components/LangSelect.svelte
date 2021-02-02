@@ -40,7 +40,7 @@
 <svelte:window on:click={closeWindow} />
 
 <div class="menu">
-  <button class="menuButton" title="Translate" on:click={toggle}>
+  <button class="menuButton" title={strings.translate} on:click={toggle}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="2em"
@@ -76,7 +76,7 @@
         <a href={lang.link}><li class="px-4 py-3">{lang.name}</li></a>
       {/if}
     {/each}
-    <a href="https://crwd.in/pattern-monster" target="_blank"><li class="px-4 py-3 translateLink">Translate</li></a>
+    <a href="https://crwd.in/pattern-monster" target="_blank"><li class="px-4 py-3 translateLink">{strings.translate}</li></a>
   </ul>
 </div>
 
@@ -116,7 +116,7 @@
     border-radius: var(--border-radius);
   }
   .menuButton > span {
-padding: 0 0.5em;
+    padding: 0 0.5em;
   }
   .menuButton:hover {
     background: var(--gray-800);

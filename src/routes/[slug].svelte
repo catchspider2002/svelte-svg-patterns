@@ -25,10 +25,8 @@
   let title = post.title + " - Pattern Monster";
   let page = "/" + post.slug + "/";
   let url = website + page;
-  let keywords = post.tags + ", random, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc =
-    post.title +
-    " - Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let keywords = post.tags + ", random, " + strings.keywords;
+  let desc = post.title + " - " + strings.description + " " + strings.description3;
   let image = website + "/TwitterBG2.png";
 
   // import { fly, fade, slide } from "svelte/transition";
@@ -489,8 +487,8 @@
         {#if mode === "stroke-join"}
           <label class="leftColumn">{strings.join}</label>
           <div class="rightColumn strokeJoin">
-            <label> <input type="radio" bind:group={selectedPattern.join} value={1} /> Square </label>
-            <label> <input type="radio" bind:group={selectedPattern.join} value={2} /> Rounded </label>
+            <label> <input type="radio" bind:group={selectedPattern.join} value={1} />{strings.square}</label>
+            <label> <input type="radio" bind:group={selectedPattern.join} value={2} />{strings.rounded}</label>
           </div>
         {/if}
         {#if maxSpacing[0] > 0}

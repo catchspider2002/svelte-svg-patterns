@@ -1,14 +1,15 @@
 <script>
   import Footer from "../components/Footer.svelte";
   import { webStore } from "./stores.js";
+  import lang from "./_lang.js";
+  let strings = lang.strings;
 
   let website = $webStore || "https://pattern.monster";
-  let title = "Privacy Policy - Pattern Monster";
+  let title = strings.privacy + " - Pattern Monster";
   let page = "/privacy-policy/";
   let url = website + page;
-  let keywords = "svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc =
-    "Privacy Policy for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let keywords = strings.privacy + ", " + strings.keywords;
+  let desc = "Privacy Policy for Pattern Monster." + " " + strings.description + " " + strings.description3;
   let image = website + "/TwitterBG2.png";
 </script>
 
@@ -35,8 +36,8 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 <div>
-  <h1>PRIVACY POLICY</h1>
-  <p>This app does not collect or store any user data</p>
+  <h1>{strings.privacy}</h1>
+  <p>{strings.privacyFull}</p>
 </div>
 
 <Footer />
@@ -50,6 +51,7 @@
     color: var(--secondary-text-color);
     margin-bottom: 0.5em;
     margin-top: 0;
+    text-transform: uppercase;
   }
   p {
     color: var(--secondary-text-color);

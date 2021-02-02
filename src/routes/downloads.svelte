@@ -1,4 +1,4 @@
-<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
+<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
 <script>
   import Footer from "../components/Footer.svelte";
   import { webStore } from "./stores.js";
@@ -6,12 +6,11 @@
   let strings = lang.strings;
 
   let website = $webStore || "https://pattern.monster";
-  let title = "Downloads - Pattern Monster";
+  let title = strings.downloads + " - Pattern Monster";
   let page = "/downloads/";
   let url = website + page;
   let keywords = "download, free downloads, " + strings.keywords;
-  let desc =
-    "Downloads for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let desc = "Downloads for Pattern Monster." + " " + strings.description + " " + strings.description3;
   let image = website + "/TwitterBG2.png";
 
   export let newPosts = [
@@ -97,7 +96,7 @@
   </script></svelte:head
 >
 <div class="outer">
-  <h1>DOWNLOADS</h1>
+  <h1>{strings.downloads}</h1>
 
   <div class="downloadGrid">
     {#each newPosts as post, i}
@@ -109,7 +108,7 @@
             class="gumroad-button"
             href={"https://gum.co/" + post.toLowerCase().replace(/ /g, "-") + "?wanted=true"}
             target="_blank"
-            data-gumroad-single-product="true">Download</a
+            data-gumroad-single-product="true">{strings.download}</a
           >
         </div>
       {/if}
@@ -134,6 +133,7 @@
     color: var(--secondary-text-color);
     margin-bottom: 0.5em;
     margin-top: 0;
+    text-transform: uppercase;
   }
   h2 {
     font-weight: 600;

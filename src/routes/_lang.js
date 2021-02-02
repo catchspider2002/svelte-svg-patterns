@@ -27,6 +27,7 @@ const strings = {
   changelog: "Changelog",
   features: "Features",
   downloads: "Downloads",
+  translate: "Translate",
   privacy: "Privacy Policy",
   privacyFull: "This app does not collect or store any user data",
   signUp: "Sign up for project updates and get free patterns delivered monthly to your inbox",
@@ -35,6 +36,8 @@ const strings = {
   zoom: "Zoom",
   hSpacing: "Horizontal Spacing",
   vSpacing: "Vertical Spacing",
+  hPosition: "Horizontal Position",
+  vPosition: "Vertical Position",
   angle: "Angle",
   inspire: "Inspire Me",
   random: "Random Pattern",
@@ -100,6 +103,6 @@ const strings = {
   stars: "Stars",
   semicircles: "Semicircles",
   songket: "Songket Pattern",
-    };
+};
 
 export default { strings };

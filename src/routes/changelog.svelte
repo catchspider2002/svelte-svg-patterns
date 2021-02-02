@@ -3,65 +3,15 @@
   import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
-  
+
   let website = $webStore || "https://pattern.monster";
-  let title = "Changelog - Pattern Monster";
+  let title = strings.changelog + " - Pattern Monster";
   let page = "/changelog/";
   let url = website + page;
-  let keywords =
-    "changelog, svg patterns, patterns, svg backgrounds, vector wallpaper, pattern generator, pattern maker";
-  let desc =
-    "Changelog for Pattern Monster. Pattern generator to create repeatable SVG patterns. Perfect for website backgrounds, apparel, branding, packaging design and more.";
+  let keywords = strings.changelog + ", " + strings.keywords;
+  let desc = "Changelog for Pattern Monster." + " " + strings.description + " " + strings.description3;
   let image = website + "/TwitterBG2.png";
 </script>
-
-<style>
-  h1 {
-    font-size: 2em;
-    text-align: center;
-    font-weight: 600;
-    padding: 0.5em;
-    color: var(--secondary-text-color);
-    margin-bottom: 0.5em;
-    margin-top: 0;
-    text-transform: uppercase;
-  }
-  .outer {
-    background-color: var(--pattern-bg);
-    color: var(--secondary-text-color);
-    padding: 2em;
-  }
-  li {
-    list-style-type: none;
-    margin-bottom: 0.5rem;
-    background-image: var(--list-background);
-    background-repeat: no-repeat;
-  }
-
-  #logs > li:not(.versionHeader) {
-    text-indent: 0rem;
-    padding-left: 2.25rem;
-    line-height: 1.8;
-  }
-
-  .versionHeader {
-    margin: 3rem -1rem 1rem -2rem;
-    background-image: none;
-    color: var(--gray-text);
-    font-weight: 600;
-  }
-
-  a {
-    color: var(--accent-text);
-    border-bottom: 2px solid var(--accent-text);
-    padding-bottom: 0.125em;
-  }
-
-  a:hover {
-    color: var(--accent-hover);
-    border-bottom: 2px solid var(--accent-hover);
-  }
-</style>
 
 <svelte:head>
   <title>{title}</title>
@@ -112,15 +62,9 @@
         </li>
         <li class="versionHeader">December 12, 2020</li>
         <li>Added 12 new patterns for Christmas</li>
-        <li>
-          Added 2 controls to adjust the position of the pattern horizontally
-          and vertically
-        </li>
+        <li>Added 2 controls to adjust the position of the pattern horizontally and vertically</li>
         <li>Replaced rgb with hsl across the app</li>
-        <li>
-          Downloaded file will now have the name of the pattern, parameters used
-          and colors in hex
-        </li>
+        <li>Downloaded file will now have the name of the pattern, parameters used and colors in hex</li>
         <li class="versionHeader">December 5, 2020</li>
         <li>Added 8 new patterns</li>
         <li>Added Translate link to translate into multiple languages</li>
@@ -136,18 +80,9 @@
         <li>Fixed accessibility issues</li>
         <li class="versionHeader">November 14, 2020</li>
         <li>Added 6 new patterns</li>
-        <li>
-          Added multiple colors for patterns up to 5 colors which can be chosen
-          in the pattern page
-        </li>
-        <li>
-          Number of colors a pattern supports is shown under the pattern in the
-          home page
-        </li>
-        <li>
-          Added a filter to display the patterns by the number of supported
-          colors
-        </li>
+        <li>Added multiple colors for patterns up to 5 colors which can be chosen in the pattern page</li>
+        <li>Number of colors a pattern supports is shown under the pattern in the home page</li>
+        <li>Added a filter to display the patterns by the number of supported colors</li>
         <li>Reduced the size of generated css and svg by removing the g tag</li>
         <li>Added a search bar to search patterns in the home page</li>
         <li class="versionHeader">November 7, 2020</li>
@@ -161,3 +96,51 @@
   </div>
 </div>
 <Footer />
+
+<style>
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 600;
+    padding: 0.5em;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+  .outer {
+    background-color: var(--pattern-bg);
+    color: var(--secondary-text-color);
+    padding: 2em;
+  }
+  li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    background-image: var(--list-background);
+    background-repeat: no-repeat;
+  }
+
+  #logs > li:not(.versionHeader) {
+    text-indent: 0rem;
+    padding-left: 2.25rem;
+    line-height: 1.8;
+  }
+
+  .versionHeader {
+    margin: 3rem -1rem 1rem -2rem;
+    background-image: none;
+    color: var(--gray-text);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--accent-text);
+    border-bottom: 2px solid var(--accent-text);
+    padding-bottom: 0.125em;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+    border-bottom: 2px solid var(--accent-hover);
+  }
+</style>
