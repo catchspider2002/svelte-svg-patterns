@@ -5,7 +5,7 @@
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
   import { themeStore } from "../routes/stores.js";
-  import LangSelect from "./LangSelect.svelte"
+  import LangSelect from "./LangSelect.svelte";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
 
@@ -56,52 +56,20 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 67;
+  let starsCount = 68;
 
   const userAction = async () => {
-    const response = await fetch(
-      "https://api.github.com/search/repositories?q=svelte-svg-patterns"
-    );
+    const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
     const myJson = await response.json(); //extract JSON from the http response
     starsCount = myJson.items[0].stargazers_count;
     // console.log(starsCount);
   };
 </script>
 
-<style>
-  .gitHubIcon {
-    position: relative;
-    padding-right: 0.8em;
-  }
-
-  .starsCount {
-    /* color: red; */
-    position: absolute;
-    font-size: 0.75em;
-    font-weight: 600;
-    line-height: 1;
-    top: -0.3em;
-    right: -0em;
-    color: var(--main-bg-color);
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    padding: 0.25em 0.25em 0.1em;
-  }
-</style>
-
 <nav>
-  <a
-    aria-current={segment === undefined ? 'page' : undefined}
-    href="."
-    class="justify-self-start">
+  <a aria-current={segment === undefined ? "page" : undefined} href="." class="justify-self-start">
     <div class="logo" style="color: var(--secondary-color)">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        width="1.5em"
-        height="1.5em"
-        viewBox="0 0 128 128"
-        data-inline="false">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
         <g transform="translate(0 -3)" style="fill: var(--secondary-color)">
           <path
             d="M64.01 30.39c-34.48 0-51.26 20.65-51.26 46.11 0 4.45.71 8.74 2.03 12.81 2.48 7.64 6.49 15.25 6.23 23.48-.15 4.94-2.97 7.47-6.43
@@ -117,16 +85,19 @@
                 0 01.072 0 8.75 6.789 0 018.75 6.79A8.75 6.789 0 0184 80.827a8.75 6.789 0 01-8.75-6.789 8.75 6.789 0 018.678-6.789zM71.88
                 92.57c1.31.05 2.599 1.13 2.969 2.38 1.19 3.97-4.71 6.17-7.54 6.9-4.06
                 1.04-8.94.39-12.08-2.58-.8-.75-1.55-1.9-1.61-3.03-.05-.86.27-1.71.86-2.33 1.24-1.3 2.99-1.29 4.39-.3 1.54 1.1 2.6 2.45 4.61 2.64
-                1.66.15 3.33-.52 4.67-1.46 1.16-.81 2.16-2.28 3.73-2.22z" />
+                1.66.15 3.33-.52 4.67-1.46 1.16-.81 2.16-2.28 3.73-2.22z"
+          />
           <path
             d="M102.26 27.7s-1.19-1.83-3.65-2.22c-3.06-.48-6.08.07-7.05 4.51-.96 4.42-1.45 10.11 3.49 14.08l-7.6 2.13-6.51-7.89s2.52.96
                 2.86-.91c.42-2.29.42-4.36.97-7.87.58-3.67 1.73-7.51 5.25-9.54 1.92-1.11 4.98-1.74 5.99-2.55.78-.63.99-2.65 1.33-4.84l5.42 4.16 1.7
-                7.4z" />
+                7.4z"
+          />
           <circle r="11.93" cy="18.02" cx="107.39" />
           <path
             d="M25.74 27.7s1.19-1.83 3.65-2.22c3.06-.48 6.08.07 7.05 4.51.96 4.42 1.46 10.11-3.49 14.08l7.6 2.13
                 6.51-7.89s-2.52.96-2.86-.91c-.42-2.29-.42-4.36-.97-7.87-.59-3.67-1.73-7.51-5.25-9.54-1.92-1.11-4.98-1.74-5.99-2.55-.78-.63-.99-2.65-1.33-4.84l-5.42
-                4.16-1.7 7.4z" />
+                4.16-1.7 7.4z"
+          />
           <circle r="11.93" cy="18.02" cx="20.61" />
         </g>
       </svg>
@@ -144,33 +115,25 @@
       href="https://crwd.in/pattern-monster">
       Translate
     </a> -->
-    <LangSelect/>
+    <LangSelect />
     <a
       class="tweetNav"
       rel="noopener noreferrer"
       title={strings.tweet}
       target="_blank"
-      href="https://twitter.com/intent/tweet?text=If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%20Generate%20fully%20customizable%20SVG%20patterns%20for%20free.%0A%0A175%2b%20patterns%20available%20at%20https%3A%2F%2Fpattern.monster%0A%0Avia%20%40Pattern_Monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster">
+      href="https://twitter.com/intent/tweet?text=If%20you%20love%20creating%20SVG%20patterns%20and%20backgrounds%2C%20you%20should%20check%20this%20out.%20Generate%20fully%20customizable%20SVG%20patterns%20for%20free.%0A%0A175%2b%20patterns%20available%20at%20https%3A%2F%2Fpattern.monster%0A%0Avia%20%40Pattern_Monster%0A%0A%23svgpatterns%20%23patterns%20%23svgbackgrounds%20%23PatternMonster"
+    >
       Tweet
     </a>
 
     <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
-    <a
-      class="gitHubIcon"
-      rel="noopener noreferrer"
-      title="GitHub"
-      target="_blank"
-      href="https://github.com/catchspider2002/svelte-svg-patterns">
+    <a class="gitHubIcon" rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
       </svg>
       <span class="starsCount">{starsCount}</span>
     </a>
-    <button
-      class="iconButton"
-      aria-label={strings.changeTheme}
-      title={strings.changeTheme}
-      on:click={() => changeTheme()}>
+    <button class="iconButton" aria-label={strings.changeTheme} title={strings.changeTheme} on:click={() => changeTheme()}>
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         {#if theme === light}
           <path transition:fly={{ y: 100, duration: 300 }} d={theme} />
@@ -194,3 +157,24 @@
       <a rel="prefetch" aria-current={segment === 'blog' ? 'page' : undefined} href="blog">blog</a>
     </li> -->
 </nav>
+
+<style>
+  .gitHubIcon {
+    position: relative;
+    padding-right: 0.8em;
+  }
+
+  .starsCount {
+    /* color: red; */
+    position: absolute;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1;
+    top: -0.3em;
+    right: -0em;
+    color: var(--main-bg-color);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 0.25em 0.25em 0.1em;
+  }
+</style>
