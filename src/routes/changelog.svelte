@@ -40,10 +40,12 @@
     <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">March 31, 2021</li>
+        <li>Added Polish translation by gnu-ewm for the site which can be accessed <a href="https://pl.pattern.monster">here</a></li>
         <li class="versionHeader">March 12, 2021</li>
         <li>Added 6 new patterns</li>
         <li class="versionHeader">January 30, 2021</li>
-        <li>Added German translation for the site available <a href="https://de.pattern.monster">here</a></li>
+        <li>Added German translation for the site which can be accessed <a href="https://de.pattern.monster">here</a></li>
         <li>Added a dropdown button to choose the language in the navbar</li>
         <li class="versionHeader">January 17, 2021</li>
         <li>Improved the performance of the home page when navigating back from the pattern page</li>

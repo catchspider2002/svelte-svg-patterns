@@ -8,6 +8,7 @@
   let languageList = [
     { id: "en", name: "English", link: "https://pattern.monster" },
     { id: "de", name: "Deutsch", link: "https://de.pattern.monster" },
+    { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
   ];
 
   const languageName = languageList.find(({ id }) => id === language).name;
