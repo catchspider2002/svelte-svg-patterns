@@ -102,6 +102,7 @@
   <link rel="canonical" href={url} />
   <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
   <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
+  <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 

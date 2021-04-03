@@ -623,7 +623,8 @@
   <title>{title}</title>
   <link rel="canonical" href={url} />
   <link rel="alternate" href="https://pattern.monster" hreflang="en" />
-  <link rel="alternate" href="https://de.pattern.monster"  hreflang="de" />
+  <link rel="alternate" href="https://de.pattern.monster" hreflang="de" />
+  <link rel="alternate" href="https://pl.pattern.monster" hreflang="pl" />
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
