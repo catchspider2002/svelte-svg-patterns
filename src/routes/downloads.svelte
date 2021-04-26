@@ -1,17 +1,20 @@
-<!--<script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGZ1bmN0aW9uIHByZWxvYWQoeyBwYXJhbXMsIHF1ZXJ5IH0pIHsKICAgIHJldHVybiB0aGlzLmZldGNoKAogICAgICBgaHR0cHM6Ly9wdXJwbGUtZmVhdGhlci0xNjJkLmNhdGNoc3BpZGVyMjAwMi53b3JrZXJzLmRldi9gCiAgICApCiAgICAgIC50aGVuKChyKSA9PiByLmpzb24oKSkKICAgICAgLnRoZW4oKHgpID0+IHguaGVsbG8uc3BsaXQoIiwiKSkKICAgICAgLnRoZW4oKG5ld1Bvc3RzKSA9PiB7CiAgICAgICAgcmV0dXJuIHsgbmV3UG9zdHMgfTsKICAgICAgfSk7CiAgfQo=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=" ✂prettier:content✂="e30=">{}</script>-->
 <script>
   import Footer from "../components/Footer.svelte";
-  import { webStore } from "./stores.js";
+  // import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
-  let website = $webStore || "https://pattern.monster";
-  let title = strings.downloads + " - Pattern Monster";
-  let page = "/downloads/";
-  let url = website + page;
-  let keywords = "download, free downloads, " + strings.keywords;
-  let desc = "Downloads for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  let image = website + "/TwitterBG2.png";
+  import Constants from "./_constants.js";
+  let page = "downloads";
+  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+
+  // let website = $webStore || "https://pattern.monster";
+  // let title = strings.downloads + " - Pattern Monster";
+  // let page = "/downloads/";
+  // let url = website + page;
+  // let keywords = "download, free downloads, " + strings.keywords;
+  // let desc = "Downloads for Pattern Monster." + " " + strings.description + " " + strings.description3;
+  // let image = website + "/TwitterBG2.png";
 
   export let newPosts = [
     "Christmas Joy",
@@ -110,9 +113,11 @@
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
-  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
-  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
-  <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
+  {#if versions}
+    {#each versions as version}
+      <link rel="alternate" href={version.website} hreflang={version.lang} />
+    {/each}
+  {/if}
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
@@ -128,9 +133,9 @@
   <meta name="twitter:description" content={desc} />
   <meta name="twitter:image" content={image} />
   <meta name="twitter:image:src" content={image} />
-  <meta name="twitter:image:alt" content={title} /><script defer src="https://gumroad.com/js/gumroad.js">
-  </script></svelte:head
->
+  <meta name="twitter:image:alt" content={title} />
+  <script defer src="https://gumroad.com/js/gumroad.js"></script>
+</svelte:head>
 <div class="outer">
   <h1>{strings.downloads}</h1>
 

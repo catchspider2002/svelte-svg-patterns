@@ -1,20 +1,26 @@
 <script>
   import Logo from "../components/Logo.svelte";
   import Footer from "../components/Footer.svelte";
-  import { langStore, webStore } from "./stores.js";
+  // import { langStore, webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
   $: stroke = 3;
   $: angle = "30";
   $: scale = 4;
-  let website = $webStore || "https://pattern.monster";
-  let title = strings.features + " - Pattern Monster";
-  let page = "/features/";
-  let url = website + page;
-  let keywords = strings.features + ", " + strings.keywords;
-  let desc = "Features for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  let image = website + "/TwitterBG2.png";
+
+  
+  import Constants from "./_constants.js";
+  let page = "features";
+  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+
+  // let website = $webStore || "https://pattern.monster";
+  // let title = strings.features + " - Pattern Monster";
+  // let page = "/features/";
+  // let url = website + page;
+  // let keywords = strings.features + ", " + strings.keywords;
+  // let desc = "Features for Pattern Monster." + " " + strings.description + " " + strings.description3;
+  // let image = website + "/TwitterBG2.png";
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],
@@ -98,27 +104,29 @@
 </script>
 
 <svelte:head>
-  <title>{title}</title>
-  <link rel="canonical" href={url} />
-  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
-  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
-  <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
-  <meta name="description" content={desc} />
-  <meta name="keywords" content={keywords} />
+	<title>{title}</title>
+	<link rel="canonical" href={url} />
+  {#if versions}
+    {#each versions as version}
+      <link rel="alternate" href={version.website} hreflang={version.lang} />
+    {/each}
+  {/if}
+	<meta name="description" content={desc} />
+	<meta name="keywords" content={keywords} />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:url" content={url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={desc} />
-  <meta property="og:image" content={image} />
+	<!-- Open Graph / Facebook -->
+	<meta property="og:url" content={url} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={desc} />
+	<meta property="og:image" content={image} />
 
-  <!-- Twitter -->
-  <meta name="twitter:url" content={url} />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={desc} />
-  <meta name="twitter:image" content={image} />
-  <meta name="twitter:image:src" content={image} />
-  <meta name="twitter:image:alt" content={title} />
+	<!-- Twitter -->
+	<meta name="twitter:url" content={url} />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={desc} />
+	<meta name="twitter:image" content={image} />
+	<meta name="twitter:image:src" content={image} />
+	<meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
 <!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>

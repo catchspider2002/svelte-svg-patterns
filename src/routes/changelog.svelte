@@ -1,24 +1,29 @@
 <script>
   import Footer from "../components/Footer.svelte";
-  import { webStore } from "./stores.js";
+  // import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
-  let website = $webStore || "https://pattern.monster";
-  let title = strings.changelog + " - Pattern Monster";
-  let page = "/changelog/";
-  let url = website + page;
-  let keywords = strings.changelog + ", " + strings.keywords;
-  let desc = "Changelog for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  let image = website + "/TwitterBG2.png";
+  import Constants from "./_constants.js";
+  let page = "changelog";
+  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+  // let website = $webStore || "https://pattern.monster";
+  // let title = strings.changelog + " - Pattern Monster";
+  // let page = "/changelog/";
+  // let url = website + page;
+  // let keywords = strings.changelog + ", " + strings.keywords;
+  // let desc = "Changelog for Pattern Monster." + " " + strings.description + " " + strings.description3;
+  // let image = website + "/TwitterBG2.png";
 </script>
 
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
-  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
-  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
-  <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
+  {#if versions}
+    {#each versions as version}
+      <link rel="alternate" href={version.website} hreflang={version.lang} />
+    {/each}
+  {/if}
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
@@ -36,11 +41,14 @@
   <meta name="twitter:image:src" content={image} />
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
+
 <div class="outer">
   <div class="container mx-auto">
     <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">April 26, 2021</li>
+        <li>Added Turkish translation by Serkan Iskender for the site which can be accessed <a href="https://tr.pattern.monster">here</a></li>
         <li class="versionHeader">March 31, 2021</li>
         <li>Added Polish translation by gnu-ewm for the site which can be accessed <a href="https://pl.pattern.monster">here</a></li>
         <li class="versionHeader">March 12, 2021</li>

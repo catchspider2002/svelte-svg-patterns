@@ -16,18 +16,26 @@
 
   import { onMount } from "svelte";
 
-  import { themeStore, webStore } from "./stores.js";
+  import { themeStore } from "./stores.js";
 
   // import { bind } from "svelte/internal";
   let w;
 
-  let website = $webStore || "https://pattern.monster";
-  let title = post.title + " - Pattern Monster";
-  let page = "/" + post.slug + "/";
-  let url = website + page;
-  let keywords = post.tags + ", random, " + strings.keywords;
-  let desc = post.title + " - " + strings.description + " " + strings.description3;
-  let image = website + "/TwitterBG2.png";
+  import Constants from "./_constants.js";
+  let page = post.slug;
+  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+
+  // let website = $webStore || "https://pattern.monster";
+  // let title = post.title + " - Pattern Monster";
+  // let page = "/" + post.slug + "/";
+  // let url = website + page;
+  // let keywords = post.tags + ", random, " + strings.keywords;
+  // let desc = post.title + " - " + strings.description + " " + strings.description3;
+  // let image = website + "/TwitterBG2.png";
+
+  title = post.title + " - Pattern Monster | " + strings.title;
+  keywords = post.tags + ", random, " + strings.keywords;
+  desc = post.title + " - " + strings.description + " " + strings.description3;
 
   // import { fly, fade, slide } from "svelte/transition";
   let changing = false;
@@ -399,12 +407,36 @@
   }
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />
   <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
   <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
   <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
+  
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
+
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
+</svelte:head> -->
+
+<svelte:head>
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  {#if versions}
+    {#each versions as version}
+      <link rel="alternate" href={version.website} hreflang={version.lang} />
+    {/each}
+  {/if}
   <meta name="description" content={desc} />
   <meta name="keywords" content={keywords} />
 
@@ -422,6 +454,7 @@
   <meta name="twitter:image:src" content={image} />
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
+
 <div bind:clientWidth={w} class="page" style="grid-template-columns: {hide ? '0 1fr' : w <= 768 ? '1fr' : '1fr 1fr'}">
   <div class="patternContainer justify-center items-center">
     <div class="mobileBg" style={cssOutput} />

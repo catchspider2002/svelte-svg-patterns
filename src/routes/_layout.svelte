@@ -1,8 +1,18 @@
+<script context="module">
+  export async function preload({ page, session }) {
+    const res = await this.fetch(`https://api.github.com/search/repositories?q=svelte-svg-patterns`);
+    const github = await res.json();
+    return { github };
+  }
+</script>
+
 <script>
   import Nav from "../components/Nav.svelte";
-  
+
   // import { onMount } from "svelte";
   export let segment;
+  export let github;
+  let starsCount = github.items[0].stargazers_count;
 
   // const sayHello = e => {
   //   let defaultNewTheme = e.detail;
@@ -28,6 +38,13 @@
   // });
 </script>
 
+<!-- <Nav {segment} on:theme={sayHello} /> -->
+<Nav {segment} {starsCount} />
+
+<main>
+  <slot />
+</main>
+
 <style>
   main {
     position: relative;
@@ -39,10 +56,3 @@
     grid-template-rows: 1fr auto;
   }
 </style>
-
-<!-- <Nav {segment} on:theme={sayHello} /> -->
-<Nav {segment} />
-
-<main>
-  <slot />
-</main>
