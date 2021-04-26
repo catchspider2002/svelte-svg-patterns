@@ -67,12 +67,13 @@
 </script>
 
 <nav>
-  <a aria-current={segment === undefined ? "page" : undefined} href="." class="justify-self-start">
-    <div class="logo" style="color: var(--secondary-color)">
-      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
-        <g transform="translate(0 -3)" style="fill: var(--secondary-color)">
-          <path
-            d="M64.01 30.39c-34.48 0-51.26 20.65-51.26 46.11 0 4.45.71 8.74 2.03 12.81 2.48 7.64 6.49 15.25 6.23 23.48-.15 4.94-2.97 7.47-6.43
+  <div class="logoOuter">
+    <a aria-current={segment === undefined ? "page" : undefined} href="." class="justify-self-start">
+      <div class="logo" style="color: var(--secondary-color)">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
+          <g transform="translate(0 -3)" style="fill: var(--secondary-color)">
+            <path
+              d="M64.01 30.39c-34.48 0-51.26 20.65-51.26 46.11 0 4.45.71 8.74 2.03 12.81 2.48 7.64 6.49 15.25 6.23 23.48-.15 4.94-2.97 7.47-6.43
                 10.44-1.07.92-1.27 2.42.08 3.19 3.1 1.78 8.32-.19 11.33-1.4 2.69-1.08 5.21-2.93 7.31-5.08 1.08-1.1 2.08-2.27 3.07-3.44.82-.96
                 2.18-3.42 3.74-2.72 3.4 1.53-.58 7.86-2.3 9.38-.7.62-1.65 1.18-1.97 2.12-.36 1.03.37 1.93 1.3 2.3 2.6 1.04 8.28-.72 10.88-2.46
                 1.86-1.25 3.41-2.85 4.71-4.68.81-1.14 2.21-4.74 4.02-4.31 3.32.8 1.92 6.03 2.14 8.3.11 1.16.78 2.32 1.94 2.77 2.52.99 4.74-.79
@@ -86,24 +87,26 @@
                 92.57c1.31.05 2.599 1.13 2.969 2.38 1.19 3.97-4.71 6.17-7.54 6.9-4.06
                 1.04-8.94.39-12.08-2.58-.8-.75-1.55-1.9-1.61-3.03-.05-.86.27-1.71.86-2.33 1.24-1.3 2.99-1.29 4.39-.3 1.54 1.1 2.6 2.45 4.61 2.64
                 1.66.15 3.33-.52 4.67-1.46 1.16-.81 2.16-2.28 3.73-2.22z"
-          />
-          <path
-            d="M102.26 27.7s-1.19-1.83-3.65-2.22c-3.06-.48-6.08.07-7.05 4.51-.96 4.42-1.45 10.11 3.49 14.08l-7.6 2.13-6.51-7.89s2.52.96
+            />
+            <path
+              d="M102.26 27.7s-1.19-1.83-3.65-2.22c-3.06-.48-6.08.07-7.05 4.51-.96 4.42-1.45 10.11 3.49 14.08l-7.6 2.13-6.51-7.89s2.52.96
                 2.86-.91c.42-2.29.42-4.36.97-7.87.58-3.67 1.73-7.51 5.25-9.54 1.92-1.11 4.98-1.74 5.99-2.55.78-.63.99-2.65 1.33-4.84l5.42 4.16 1.7
                 7.4z"
-          />
-          <circle r="11.93" cy="18.02" cx="107.39" />
-          <path
-            d="M25.74 27.7s1.19-1.83 3.65-2.22c3.06-.48 6.08.07 7.05 4.51.96 4.42 1.46 10.11-3.49 14.08l7.6 2.13
+            />
+            <circle r="11.93" cy="18.02" cx="107.39" />
+            <path
+              d="M25.74 27.7s1.19-1.83 3.65-2.22c3.06-.48 6.08.07 7.05 4.51.96 4.42 1.46 10.11-3.49 14.08l7.6 2.13
                 6.51-7.89s-2.52.96-2.86-.91c-.42-2.29-.42-4.36-.97-7.87-.59-3.67-1.73-7.51-5.25-9.54-1.92-1.11-4.98-1.74-5.99-2.55-.78-.63-.99-2.65-1.33-4.84l-5.42
                 4.16-1.7 7.4z"
-          />
-          <circle r="11.93" cy="18.02" cx="20.61" />
-        </g>
-      </svg>
-      <div class="brandName">PATTERN MONSTER</div>
-    </div>
-  </a>
+            />
+            <circle r="11.93" cy="18.02" cx="20.61" />
+          </g>
+        </svg>
+        <div class="brandName">PATTERN MONSTER</div>
+      </div>
+    </a>
+    <div class="logPopup" />
+  </div>
   <!-- <div /> -->
   <div class="rightLinks justify-self-end">
     <a class="downloadsButton" title="Downloads" href="downloads">Downloads</a>
@@ -159,6 +162,13 @@
 </nav>
 
 <style>
+  .logoOuter {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1em;
+  }
   .gitHubIcon {
     position: relative;
     padding-right: 0.8em;

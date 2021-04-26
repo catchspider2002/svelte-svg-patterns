@@ -38,6 +38,20 @@
   // });
 </script>
 
+<svelte:head>
+  <script async src="https://cdn.headwayapp.co/widget.js"></script>
+  <script>
+    var config = {
+      account: "7N3Q9J",
+      selector: ".logPopup",
+    };
+    // var HW_config = {
+    //   account: "7N3Q9J",
+    //   selector: ".logPopup",
+    // };
+    Headway.init(config);
+  </script>
+</svelte:head>
 <!-- <Nav {segment} on:theme={sayHello} /> -->
 <Nav {segment} {starsCount} />
 
