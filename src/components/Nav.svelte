@@ -1,5 +1,5 @@
 <script>
-  export let segment, starsCount;
+  export let segment;
   import { fly } from "svelte/transition";
   // import { createEventDispatcher } from "svelte";
   import { onMount } from "svelte";
@@ -34,7 +34,7 @@
     }
     document.documentElement.setAttribute("data-theme", defaultNewTheme);
     themeStore.set(defaultNewTheme);
-    // userAction();
+    userAction();
   });
 
   function changeTheme() {
@@ -56,14 +56,14 @@
 
     // dispatch("theme", themeColor);
   }
-  // let starsCount = 84;
+   let starsCount = 105;
 
-  // const userAction = async () => {
-  //   const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
-  //   const myJson = await response.json(); //extract JSON from the http response
-  //   starsCount = myJson.items[0].stargazers_count;
-  //   // console.log(starsCount);
-  // };
+  const userAction = async () => {
+    const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
+    const myJson = await response.json(); //extract JSON from the http response
+    starsCount = myJson.items[0].stargazers_count;
+    // console.log(starsCount);
+  };
 </script>
 
 <nav>
