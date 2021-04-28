@@ -96,7 +96,7 @@ h1 {
   margin-top: 0.5rem;
   line-height: 1em;
 }
-h1 > span{
+h1 > span {
   color: var(--accent-text);
 }
 
@@ -403,6 +403,33 @@ nav a {
   /* padding: 1em 0.5em; */
   display: block;
   color: var(--secondary-color);
+}
+
+.logoOuter {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: start;
+  gap: 1em;
+}
+
+.gitHubIcon {
+  position: relative;
+  padding-right: 0.8em;
+}
+
+.starsCount {
+  /* color: red; */
+  position: absolute;
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1;
+  top: -0.3em;
+  right: -0em;
+  color: var(--main-bg-color);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  padding: 0.25em 0.25em 0.1em;
 }
 
 @media (max-width: 1440px) {

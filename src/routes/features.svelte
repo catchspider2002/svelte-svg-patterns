@@ -9,10 +9,11 @@
   $: angle = "30";
   $: scale = 4;
 
-  
   import Constants from "./_constants.js";
   let page = "features";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+
+  let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
 
   // let website = $webStore || "https://pattern.monster";
   // let title = strings.features + " - Pattern Monster";
@@ -104,34 +105,31 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<link rel="canonical" href={url} />
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
   {#if versions}
     {#each versions as version}
       <link rel="alternate" href={version.website} hreflang={version.lang} />
     {/each}
   {/if}
-	<meta name="description" content={desc} />
-	<meta name="keywords" content={keywords} />
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
 
-	<!-- Open Graph / Facebook -->
-	<meta property="og:url" content={url} />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={desc} />
-	<meta property="og:image" content={image} />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
 
-	<!-- Twitter -->
-	<meta name="twitter:url" content={url} />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={desc} />
-	<meta name="twitter:image" content={image} />
-	<meta name="twitter:image:src" content={image} />
-	<meta name="twitter:image:alt" content={title} />
+  <!-- Twitter -->
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
-<!--  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
- <link href="https://svelte-svg-patterns.netlify.app/global.css" rel="stylesheet" /> -->
 <section class="landing grid light-text accent-bg">
   <div class="leftOuter grid items-center">
     <div class="left">
@@ -157,7 +155,8 @@
               patternUnits="userSpaceOnUse"
               width="20"
               height={(colorPalette.length - 1) * 20}
-              patternTransform="scale({scale}) rotate({angle})">
+              patternTransform="scale({scale}) rotate({angle})"
+            >
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
               {#each colorPalette as colorList, i}
                 <path
@@ -181,7 +180,8 @@
               patternUnits="userSpaceOnUse"
               width="20"
               height={(colorPalette.length - 1) * 30}
-              patternTransform="scale({scale}) rotate({angle})">
+              patternTransform="scale({scale}) rotate({angle})"
+            >
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
               {#each colorPalette as colorList, i}
                 <path
@@ -209,7 +209,8 @@
               patternUnits="userSpaceOnUse"
               width="30"
               height={(colorPalette.length - 1) * 30}
-              patternTransform="scale({scale}) rotate({angle})">
+              patternTransform="scale({scale}) rotate({angle})"
+            >
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
               {#each colorPalette as colorList, i}
                 <path
@@ -227,7 +228,8 @@
               patternUnits="userSpaceOnUse"
               width="20"
               height={(colorPalette.length - 1) * 20}
-              patternTransform="scale({scale}) rotate({angle})">
+              patternTransform="scale({scale}) rotate({angle})"
+            >
               <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
               {#each colorPalette as colorList, i}
                 <g transform="translate(0,{20 * i})" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[i + 1]} fill="none">
@@ -491,12 +493,12 @@
   </svg>
 </div>
 <section class="digitalMockup secondary-bg items-center">
-  <img loading="lazy" alt="Mockup of Book" src="book-cover-mock-up.png" />
-  <img loading="lazy" alt="Mockup of Pillows" src="flying-pillows-mockup-set.png" />
-  <img loading="lazy" alt="Mockup of Phone Case" src="phone-case-photoshop-mockup.png" />
-  <img loading="lazy" alt="Mockup of Tote Bag" src="tote-bag-mockup-3d-rendering-design.png" />
-  <img loading="lazy" alt="Mockup of Business Card" src="bussiness-card-mockup.png" />
-  <img loading="lazy" alt="Mockup of Coffee Cup" src="coffee-cup-mockup.png" />
+  <img loading="lazy" alt="Mockup of Book" src={imagePrefix + "book-cover-mock-up.png"} />
+  <img loading="lazy" alt="Mockup of Pillows" src={imagePrefix + "flying-pillows-mockup-set.png"} />
+  <img loading="lazy" alt="Mockup of Phone Case" src={imagePrefix + "phone-case-photoshop-mockup.png"} />
+  <img loading="lazy" alt="Mockup of Tote Bag" src={imagePrefix + "tote-bag-mockup-3d-rendering-design.png"} />
+  <img loading="lazy" alt="Mockup of Business Card" src={imagePrefix + "bussiness-card-mockup.png"} />
+  <img loading="lazy" alt="Mockup of Coffee Cup" src={imagePrefix + "coffee-cup-mockup.png"} />
 </section>
 
 <!-- <footer class="accent-bg light-text">

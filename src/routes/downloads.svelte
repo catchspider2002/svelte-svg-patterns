@@ -108,6 +108,8 @@
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
   const diffDays = Math.round(Math.abs((new Date() - new Date(2020, 11, 19)) / oneDay));
+
+  let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
 </script>
 
 <svelte:head>
@@ -143,7 +145,7 @@
     {#each newPosts as post, i}
       {#if i < diffDays}
         <div class="elementGrid">
-          <img src={"downloads/" + post.toLowerCase().replace(/ /g, "-") + "_Twitter.png"} alt={post} title={post} />
+          <img loading="lazy" src={imagePrefix + "downloads/" + post.toLowerCase().replace(/ /g, "-") + "_Twitter.png"} alt={post} title={post} />
           <h2>{post} patterns</h2>
           <a
             class="gumroad-button"

@@ -475,7 +475,7 @@
           />
           <input class="uneditable hidden" bind:value={selectedPattern.scale} readonly />
         </div>
-        <label class="leftColumn" for="scale">Horizontal Position</label>
+        <label class="leftColumn" for="scale">{strings.hPosition}</label>
         <div class="grid rightColumn">
           <input
             id="moveLeft"
@@ -489,7 +489,7 @@
           />
           <input class="uneditable hidden" bind:value={selectedPattern.moveLeft} readonly />
         </div>
-        <label class="leftColumn" for="scale">Vertical Position</label>
+        <label class="leftColumn" for="scale">{strings.vPosition}</label>
         <div class="grid rightColumn">
           <input
             id="moveTop"
