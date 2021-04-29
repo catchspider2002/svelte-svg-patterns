@@ -38,8 +38,6 @@
   });
 
   function changeTheme() {
-    // console.log("changeTheme");
-    // console.log("defaultNewTheme: " + defaultNewTheme);
     if (defaultNewTheme === "dark") {
       theme = light;
       defaultNewTheme = "light";
@@ -62,7 +60,6 @@
     const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
     const myJson = await response.json(); //extract JSON from the http response
     starsCount = myJson.items[0].stargazers_count;
-    // console.log(starsCount);
   };
 </script>
 
@@ -120,7 +117,6 @@
       Tweet
     </a>
 
-    <!-- <a rel="prefetch" aria-current={segment === 'patterns' ? 'page' : undefined} href="patterns">Patterns</a> -->
     <a class="gitHubIcon" rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={Constants.icons.github} />
@@ -139,6 +135,7 @@
   </div>
 </nav>
 
+<!-- Already added to the global.css file. Remove in the next update -->
 <style>
   .logoOuter {
     display: grid;
@@ -153,7 +150,6 @@
   }
 
   .starsCount {
-    /* color: red; */
     position: absolute;
     font-size: 0.75em;
     font-weight: 600;

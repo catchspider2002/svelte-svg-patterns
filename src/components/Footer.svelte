@@ -4,7 +4,6 @@
   let strings = lang.strings;
 </script>
 
-<!-- <footer class="accent-bg light-text"> -->
 <footer>
   <div class="footerOuter container mx-auto justify-center">
     <a name="subscribe" />

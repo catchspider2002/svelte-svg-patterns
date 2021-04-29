@@ -234,13 +234,6 @@
   let page = "index";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
 
-  // let website = $webStore || "https://pattern.monster";
-  // let title = "Pattern Monster - " + strings.title;
-  // let url = website;
-  // let keywords = strings.keywords;
-  // let desc = strings.description;
-  // let image = website + "/TwitterBG2.png";
-
   let lightColors = [
     "hsla(0,0%,100%,1)",
     "hsla(258.5,59.4%,59.4%,1)",
@@ -431,7 +424,7 @@
     grid-auto-flow: column;
     /* opacity: 0.75; */
     color: var(--gray-text);
-    gap: 0.75em;
+    gap: 0.5em;
     place-content: start;
   }
   

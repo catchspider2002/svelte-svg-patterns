@@ -1,20 +1,11 @@
 <script>
   import Footer from "../components/Footer.svelte";
-  // import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
   import Constants from "./_constants.js";
   let page = "downloads";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
-
-  // let website = $webStore || "https://pattern.monster";
-  // let title = strings.downloads + " - Pattern Monster";
-  // let page = "/downloads/";
-  // let url = website + page;
-  // let keywords = "download, free downloads, " + strings.keywords;
-  // let desc = "Downloads for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  // let image = website + "/TwitterBG2.png";
 
   export let newPosts = [
     "Christmas Joy",

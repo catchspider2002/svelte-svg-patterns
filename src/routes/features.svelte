@@ -1,7 +1,6 @@
 <script>
   import Logo from "../components/Logo.svelte";
   import Footer from "../components/Footer.svelte";
-  // import { langStore, webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
@@ -14,14 +13,6 @@
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
 
   let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
-
-  // let website = $webStore || "https://pattern.monster";
-  // let title = strings.features + " - Pattern Monster";
-  // let page = "/features/";
-  // let url = website + page;
-  // let keywords = strings.features + ", " + strings.keywords;
-  // let desc = "Features for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  // let image = website + "/TwitterBG2.png";
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],

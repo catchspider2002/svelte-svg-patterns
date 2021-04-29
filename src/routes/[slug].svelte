@@ -10,7 +10,7 @@
 
 <script>
   export let post;
-  import constants from "./_constants.js";
+  // import constants from "./_constants.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
@@ -24,14 +24,6 @@
   import Constants from "./_constants.js";
   let page = post.slug;
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
-
-  // let website = $webStore || "https://pattern.monster";
-  // let title = post.title + " - Pattern Monster";
-  // let page = "/" + post.slug + "/";
-  // let url = website + page;
-  // let keywords = post.tags + ", random, " + strings.keywords;
-  // let desc = post.title + " - " + strings.description + " " + strings.description3;
-  // let image = website + "/TwitterBG2.png";
 
   title = post.title + " - Pattern Monster | " + strings.title;
   keywords = post.tags + ", random, " + strings.keywords;
@@ -266,11 +258,11 @@
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function randomColorSets(length) {
-    // let colorArray = constants.colorPalettes
-    // console.log(constants.colorPalettes.length);
+    // let colorArray = Constants.colorPalettes
+    // console.log(Constants.colorPalettes.length);
     // let colorArray = [];
-    // for (var i = 0; i < length; i++) colorArray.push(constants.randomColor(1));
-    let colorArray = constants.colorPalettes[constants.randomNumber(0, constants.colorPalettes.length - 1)];
+    // for (var i = 0; i < length; i++) colorArray.push(Constants.randomColor(1));
+    let colorArray = Constants.colorPalettes[Constants.randomNumber(0, Constants.colorPalettes.length - 1)];
 
     for (let i = colorArray.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -294,17 +286,17 @@
   }
 
   function randomPattern() {
-    let randomSpacing = constants.randomNumber(0, maxSpacing[0] / 3);
+    let randomSpacing = Constants.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
       colors: randomColorSets(selectedPattern.colorCounts),
       // colors: randomColorSets(2),
       colorCounts: selectedPattern.colorCounts,
-      stroke: constants.randomNumber(0.5, maxStroke),
-      scale: constants.randomNumber(2, maxScale / 3),
+      stroke: Constants.randomNumber(0.5, maxStroke),
+      scale: Constants.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
-      angle: constants.randomAngle(),
-      join: constants.randomNumber(1, 2),
+      angle: Constants.randomAngle(),
+      join: Constants.randomNumber(1, 2),
       moveLeft: 0,
       moveTop: 0,
     };
@@ -329,7 +321,7 @@
     fileName += selectedPattern.spacing.toString().replace(",", "-") + "_" + selectedPattern.angle + "_" + selectedPattern.join + "_";
 
     for (let i = 0; i < selectedPattern.colorCounts; i++) {
-      fileName += "_" + constants.HSLAToHexA(selectedPattern.colors[i]);
+      fileName += "_" + Constants.HSLAToHexA(selectedPattern.colors[i]);
     }
     // console.log(selectedPattern.scale + "~~~~~" + fileName);
     // svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");

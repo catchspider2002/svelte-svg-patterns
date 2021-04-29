@@ -1,20 +1,11 @@
 <script>
   import Footer from "../components/Footer.svelte";
-  // import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
   import Constants from "./_constants.js";
   let page = "privacy-policy";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
-
-  // let website = $webStore || "https://pattern.monster";
-  // let title = strings.privacy + " - Pattern Monster";
-  // let page = "/privacy-policy/";
-  // let url = website + page;
-  // let keywords = strings.privacy + ", " + strings.keywords;
-  // let desc = "Privacy Policy for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  // let image = website + "/TwitterBG2.png";
 </script>
 
 <svelte:head>

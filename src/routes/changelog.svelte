@@ -1,19 +1,11 @@
 <script>
   import Footer from "../components/Footer.svelte";
-  // import { webStore } from "./stores.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
   import Constants from "./_constants.js";
   let page = "changelog";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
-  // let website = $webStore || "https://pattern.monster";
-  // let title = strings.changelog + " - Pattern Monster";
-  // let page = "/changelog/";
-  // let url = website + page;
-  // let keywords = strings.changelog + ", " + strings.keywords;
-  // let desc = "Changelog for Pattern Monster." + " " + strings.description + " " + strings.description3;
-  // let image = website + "/TwitterBG2.png";
 </script>
 
 <svelte:head>
@@ -47,6 +39,8 @@
     <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">April 30, 2021</li>
+        <li>Added 8 new patterns</li>
         <li class="versionHeader">April 26, 2021</li>
         <li>Added Turkish translation by Serkan Iskender for the site which can be accessed <a href="https://tr.pattern.monster">here</a></li>
         <li class="versionHeader">March 31, 2021</li>

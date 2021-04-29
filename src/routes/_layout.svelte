@@ -1,4 +1,3 @@
-<!-- <script context="module" ✂prettier:content✂="CiAgZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHByZWxvYWQoeyBwYWdlLCBzZXNzaW9uIH0pIHsKICAgIGNvbnN0IHJlcyA9IGF3YWl0IHRoaXMuZmV0Y2goYGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vc2VhcmNoL3JlcG9zaXRvcmllcz9xPXN2ZWx0ZS1zdmctcGF0dGVybnNgKTsKICAgIGNvbnN0IGdpdGh1YiA9IGF3YWl0IHJlcy5qc29uKCk7CiAgICByZXR1cm4geyBnaXRodWIgfTsKICB9Cg==">{}</script> -->
 <script>
   import Nav from "../components/Nav.svelte";
 
