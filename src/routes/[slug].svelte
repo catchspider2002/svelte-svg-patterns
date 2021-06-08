@@ -399,28 +399,6 @@
   }
 </script>
 
-<!-- <svelte:head>
-  <title>{title}</title>
-  <link rel="canonical" href={url} />
-  <link rel="alternate" href={"https://pattern.monster" + page} hreflang="en" />
-  <link rel="alternate" href={"https://de.pattern.monster" + page} hreflang="de" />
-  <link rel="alternate" href={"https://pl.pattern.monster" + page} hreflang="pl" />
-  <meta name="description" content={desc} />
-  <meta name="keywords" content={keywords} />
-  
-  <meta property="og:url" content={url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={desc} />
-  <meta property="og:image" content={image} />
-
-  <meta name="twitter:url" content={url} />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={desc} />
-  <meta name="twitter:image" content={image} />
-  <meta name="twitter:image:src" content={image} />
-  <meta name="twitter:image:alt" content={title} />
-</svelte:head> -->
-
 <svelte:head>
   <title>{title}</title>
   <link rel="canonical" href={url} />

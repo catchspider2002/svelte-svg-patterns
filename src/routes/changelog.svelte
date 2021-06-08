@@ -39,6 +39,8 @@
     <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">June 8, 2021</li>
+        <li>Added 6 new patterns</li>
         <li class="versionHeader">May 1, 2021</li>
         <li>Added a form for API users to signup for beta access</li>
         <li class="versionHeader">April 30, 2021</li>
