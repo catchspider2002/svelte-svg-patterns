@@ -39,6 +39,8 @@
     <h1>{strings.changelog}</h1>
     <div>
       <ul id="logs">
+        <li class="versionHeader">July 19, 2021</li>
+        <li>Added Spanish translation by malonso for the site which can be accessed <a href="https://es.pattern.monster">here</a></li>
         <li class="versionHeader">June 8, 2021</li>
         <li>Added 6 new patterns</li>
         <li class="versionHeader">May 1, 2021</li>

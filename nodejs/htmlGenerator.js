@@ -11,6 +11,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
     { lang: "de", name: "Deutsch", col: 2, site: "https://de.pattern.monster", path: "../../de.pattern.monster/" },
     { lang: "pl", name: "Polski", col: 3, site: "https://pl.pattern.monster", path: "../../pl.pattern.monster/" },
     { lang: "tr", name: "Türkçe", col: 4, site: "https://tr.pattern.monster", path: "../../tr.pattern.monster/" },
+    { lang: "es", name: "Español", col: 5, site: "https://es.pattern.monster", path: "../../es.pattern.monster/" },
     // { lang: "uk", name: "Українська", col: 5, path: "../../uk.pattern.monster/" },
     // { lang: "af", name: "Afrikaans", col: 6, path: "../../af.pattern.monster/" },
   ];
