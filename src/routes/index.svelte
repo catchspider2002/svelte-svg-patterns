@@ -370,6 +370,7 @@
     gap: 2em;
     align-items: center;
     color: var(--secondary-text-color);
+    margin-top:1em
     /* padding: 2em 0; */
   }
   .outerPattern {
@@ -430,16 +431,23 @@
   
   .outerGrid {
     display: grid;
-    /* width: 100%; */
     grid-auto-flow: column;
     grid-template-columns: auto 1fr auto;
-    /* justify-items: center; */
-    /* place-content: start; */
     place-items: center;
     gap: 1em;
     color: var(--secondary-text-color);
-    padding-bottom: 2em;
+    padding: 1em 0;
+    background-color: var(--pattern-bg);
   }
+  @media (min-width: 640px) {
+  .outerGrid {
+    position: sticky;
+    top: 2.86em;
+    z-index: 5;
+    margin: 0 -2em;
+    padding: 1em 2em;
+  }
+}
   .filterGrid {
     display: grid;
     grid-auto-flow: column;
@@ -622,7 +630,7 @@
     display: grid;
     grid-auto-flow: row;
     /* justify-items: center; */
-    margin: -1em auto 3em;
+    margin: -1em auto 2em;
     width: 716px;
     /* width: auto; */
     }
