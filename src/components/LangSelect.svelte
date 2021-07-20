@@ -9,6 +9,7 @@
     { id: "en", name: "English", link: "https://pattern.monster" },
     { id: "de", name: "Deutsch", link: "https://de.pattern.monster" },
     { id: "es", name: "Español", link: "https://es.pattern.monster" },
+    { id: "it", name: "Italiano", link: "https://it.pattern.monster" },
     { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
     { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
   ];

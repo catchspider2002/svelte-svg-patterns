@@ -100,7 +100,7 @@
 
   const diffDays = Math.round(Math.abs((new Date() - new Date(2020, 11, 19)) / oneDay));
 
-  let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
+  let imagePrefix = "https://giguom.com/pattern.monster/images/";
 </script>
 
 <svelte:head>

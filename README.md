@@ -6,7 +6,7 @@
 ![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fpattern.monster%2F)
 
 <div align="center">
-  <img src="static/pattern.monster.png" alt="pattern.monster" />
+  <img src="https://giguom.com/pattern.monster/images/pattern.monster.png" alt="pattern.monster" />
 </div>
 <br /><br />
   

@@ -12,7 +12,7 @@
   let page = "features";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
 
-  let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
+  let imagePrefix = "https://giguom.com/pattern.monster/images/";
 
   const palettes = [
     ["#44337a", "#ffc800", "#FFFFFF", "#FF0054", "#00A878"],

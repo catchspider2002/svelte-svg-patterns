@@ -63,11 +63,15 @@ const strings = {
       lang: "es",
       website: "https://es.pattern.monster",
     },
+    {
+      lang: "it",
+      website: "https://it.pattern.monster",
+    },
   ],
 };
 
 const pageDetails = (page) => {
-  let imagePrefix = "https://giguom.pages.dev/pattern.monster/images/";
+  let imagePrefix = "https://giguom.com/pattern.monster/images/";
   let pageValues =
     strings.pages.filter((currentPage) => currentPage.page === page)[0] || strings.pages.filter((currentPage) => currentPage.page === "index")[0];
 
