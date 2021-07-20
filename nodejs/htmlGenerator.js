@@ -12,7 +12,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
     { lang: "pl", name: "Polski", col: 3, site: "https://pl.pattern.monster", path: "../../pl.pattern.monster/" },
     { lang: "tr", name: "Türkçe", col: 4, site: "https://tr.pattern.monster", path: "../../tr.pattern.monster/" },
     { lang: "es", name: "Español", col: 5, site: "https://es.pattern.monster", path: "../../es.pattern.monster/" },
-    { lang: "it", name: "Italiano", col: 6, site: "https://es.pattern.monster", path: "../../it.pattern.monster/" },
+    { lang: "it", name: "Italiano", col: 6, site: "https://it.pattern.monster", path: "../../it.pattern.monster/" },
+    { lang: "ro", name: "Română", col: 7, site: "https://ro.pattern.monster", path: "../../ro.pattern.monster/" },
+    { lang: "fr", name: "Français", col: 8, site: "https://fr.pattern.monster", path: "../../fr.pattern.monster/" },
     // { lang: "uk", name: "Українська", col: 7, path: "../../uk.pattern.monster/" },
     // { lang: "af", name: "Afrikaans", col: 8, path: "../../af.pattern.monster/" },
   ];
