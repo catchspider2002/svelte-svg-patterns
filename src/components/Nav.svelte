@@ -1,24 +1,28 @@
 <script>
   export let segment;
-  import { fly } from "svelte/transition";
+  import { fly, scale, fade } from "svelte/transition";
   // import { createEventDispatcher } from "svelte";
   import { onMount } from "svelte";
   import Constants from "../routes/_constants.js";
+  import Values from "../routes/_values.js";
   import { themeStore } from "../routes/stores.js";
   import LangSelect from "./LangSelect.svelte";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
+  let visible = true;
+  let bellCount = "0";
 
   // const dispatch = createEventDispatcher();
 
   // const triggerEvent = () => {
   //   dispatch("hello", "Rock");
   // };
-  let dark = Constants.icons.dark;
-  let light = Constants.icons.light;
+  let dark = Values.icons.dark;
+  let light = Values.icons.light;
   let theme = light;
+  let toClose = false;
 
-  let defaultNewTheme;
+  let defaultNewTheme, latestUpdate;
   onMount(async () => {
     defaultNewTheme = localStorage.getItem("defaultNewTheme");
 
@@ -35,6 +39,23 @@
     document.documentElement.setAttribute("data-theme", defaultNewTheme);
     themeStore.set(defaultNewTheme);
     userAction();
+
+    latestUpdate = localStorage.getItem("latestUpdate");
+
+    if (!latestUpdate) {
+      // console.log("No latest update");
+      latestUpdate = Values.changeLog[0].date;
+      bellCount = "3";
+    } else {
+      const index = Values.changeLog.findIndex((element) => {
+        if (element.date === latestUpdate) return true;
+      });
+      // console.log(index);
+      bellCount = index > 3 ? "3+" : index.toString();
+    }
+
+    // console.log(latestUpdate);
+    // localStorage.setItem("latestUpdate", "June 8, 2021");
   });
 
   function changeTheme() {
@@ -54,14 +75,41 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 157;
+  let starsCount = 159;
 
   const userAction = async () => {
     const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
-    const myJson = await response.json(); //extract JSON from the http response
+    const myJson = await response.json();
     starsCount = myJson.items[0].stargazers_count;
   };
+
+  function showNotifications(e) {
+    visible = false;
+    localStorage.setItem("latestUpdate", Values.changeLog[0].date);
+    e.stopPropagation();
+    let menu = this.nextSibling;
+
+    while (menu && menu.nodeType != 1) {
+      menu = menu.nextSibling;
+    }
+    if (!menu) return;
+    if (menu.style.display !== "grid") {
+      menu.style.display = "grid";
+      if (toClose) toClose.style.display = "none";
+      toClose = menu;
+    } else closeAll();
+  }
+  function closeAll() {
+    toClose.style.display = "none";
+    toClose = false;
+  }
+
+  function closeWindow(event) {
+    if (toClose) closeAll.call(event.target);
+  }
 </script>
+
+<svelte:window on:click={closeWindow} />
 
 <nav>
   <div class="logoOuter">
@@ -103,8 +151,43 @@
       </div>
     </a>
     <div class="logPopup" />
+
+    <button class="bellIcon menuButton" title={strings.changelog} on:click={showNotifications}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+        <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+        <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+      </svg>
+      {#if visible && parseInt(bellCount) > 0}
+        <span transition:scale={{ duration: 2000 }} id="bellCount" class="bellCount">{bellCount}</span>
+      {/if}
+    </button>
+    <div class="notifications">
+      <h3>{strings.changelog}</h3>
+      <ul>
+        {#each Values.changeLog.slice(0, 3) as log}
+          <li class="versionHeader">{log.date}</li>
+          {#each log.updates as logData}
+            <li>{@html logData}</li>
+          {/each}
+        {/each}
+      </ul>
+      <div class="viewLink">
+        <a href="changelog"
+          >View More
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+            <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
+            <line x1="10" y1="14" x2="20" y2="4" />
+            <polyline points="15 4 20 4 20 9" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
+
   <div class="rightLinks justify-self-end">
+    <a rel="noopener noreferrer" title={strings.buyCoffee} class="bmc" target="_blank" href="https://www.buymeacoffee.com/naveencs">
+      {@html Constants.bmcHeader}
+    </a>
     <a class="downloadsButton" title="Downloads" href="downloads">{strings.downloads}</a>
     <LangSelect />
     <a
@@ -119,7 +202,7 @@
 
     <a class="gitHubIcon" rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.github} />
+        <path d={Values.icons.github} />
       </svg>
       <span class="starsCount">{starsCount}</span>
     </a>
@@ -134,3 +217,86 @@
     </button>
   </div>
 </nav>
+
+<style>
+  .notifications {
+    z-index: 20;
+    display: none;
+    width: min(calc(100vw - 31.2px), 360px);
+    top: 4.2em;
+    position: fixed;
+    font-size: 0.8em;
+    border: 1px solid var(--accent-text);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+    color: var(--secondary-text-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  .notifications h3 {
+    background-color: var(--accent-text);
+    color: var(--accent-text-color);
+    padding: 0.7em 1em;
+    margin: 0;
+  }
+  .viewLink {
+    margin: 0;
+    background-color: var(--card-bg);
+    padding-top: 0.5em;
+  }
+  .viewLink a {
+    text-decoration: none;
+    display: grid;
+    grid-auto-flow: column;
+    place-content: start;
+    border-top: 1px solid var(--gray-text);
+    padding: 1.25em 1em;
+    gap: 0.5em;
+    font-size: 1.1em;
+  }
+  .notifications ul {
+    padding: var(--notification-list-padding);
+    overflow: auto;
+    max-height: 80vh;
+    margin: 0;
+    background-color: var(--card-bg);
+  }
+  li:is(.versionHeader) {
+    list-style: none;
+    margin: var(--notification-header-margin);
+    font-weight: 600;
+    border-top: 1px solid var(--gray-text);
+    padding: var(--notification-header-padding);
+    font-size: 1.1em;
+  }
+  li:not(.versionHeader) {
+    padding-bottom: 0.5em;
+    color: var(--gray-text);
+  }
+  li:first-child {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 1em;
+  }
+
+  :global(.notifications a) {
+    display: inline;
+    color: var(--accent-text);
+    text-underline-offset: 0.15em;
+    text-decoration: underline;
+    text-decoration-thickness: 0.15em;
+  }
+
+  :global(.notifications a:hover) {
+    color: var(--accent-hover);
+  }
+
+  button.bellIcon:focus,
+  button.bellIcon:hover,
+  button.bellIcon:active {
+    background-color: transparent;
+  }
+</style>

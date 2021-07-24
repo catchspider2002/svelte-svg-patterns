@@ -138,12 +138,16 @@
         <div class="elementGrid">
           <img loading="lazy" src={imagePrefix + "downloads/" + post.toLowerCase().replace(/ /g, "-") + "_Twitter.png"} alt={post} title={post} />
           <h2>{post} patterns</h2>
-          <a
+          <a class="button-gumroad" href={"https://gum.co/" + post.toLowerCase().replace(/ /g, "-") + "?wanted=true"} target="_blank">
+            <span class="logo" />
+            <span>{strings.download}</span></a
+          >
+          <!-- <a
             class="gumroad-button"
             href={"https://gum.co/" + post.toLowerCase().replace(/ /g, "-") + "?wanted=true"}
             target="_blank"
             data-gumroad-single-product="true">{strings.download}</a
-          >
+          > -->
         </div>
       {/if}
     {/each}
@@ -195,6 +199,35 @@
     border-radius: var(--border-radius);
     overflow: hidden;
     padding-bottom: 2em;
+  }
+  .button-gumroad {
+    background-color: white;
+    background-image: url(https://app.gumroad.com/button/button_bar.jpg);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 40%) 0 0 2px;
+    color: #999;
+    display: flex;
+    font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 50px;
+    padding: 0 7.5px;
+    text-decoration: none;
+    align-items: baseline;
+  }
+  .button-gumroad span {
+    padding: 0 7.5px;
+  }
+  .logo {
+    background-image: url(https://app.gumroad.com/button/button_logo.png);
+    background-size: cover;
+    height: 17px;
+    width: 16px;
+    display: inline-block;
+    /* margin-bottom: -3px; */
+    margin: 0 7.5px;
   }
 
   @media (max-width: 2400px) {

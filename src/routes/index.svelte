@@ -17,6 +17,7 @@
 
   import Footer from "../components/Footer.svelte";
   import Constants from "./_constants.js";
+  import Values from "./_values.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
@@ -480,20 +481,18 @@
     grid-auto-flow: column;
     justify-self: end;
     order: 1;
+    gap: 1em
   }
   .sortInner {
     display: flex;
     place-items: start;
     align-items: center;
     flex-wrap: nowrap;
-    /* grid-template-columns: auto auto auto auto; */
-    /* justify-items: center; */
-    /* place-content: end;
-    place-items: center; */
-    justify-self: end;
+    justify-self: end;    
+    margin: 0 -0.5em;
   }
   .sortInner button {
-    margin-left: 1em;
+    margin: 0 0.5em;
   }
 
   button {
@@ -697,7 +696,7 @@
   <div class="stats">
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.trending} />
+        <path d={Values.icons.trending} />
       </svg>
       <!-- {patternsCount} -->
       {patternsCount}
@@ -706,19 +705,19 @@
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.download} />
+        <path d={Values.icons.download} />
       </svg>
       CSS, SVG, PNG
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.license} />
+        <path d={Values.icons.license} />
       </svg>
       {strings.license}
     </div>
     <div class="stats-grid">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.release} />
+        <path d={Values.icons.release} />
       </svg>
       {strings.free}
     </div>
@@ -733,7 +732,7 @@
   <div class="outerGrid">
     <div class="searchBox">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Constants.icons.search} />
+        <path d={Values.icons.search} />
       </svg>
       <input
         id="search"

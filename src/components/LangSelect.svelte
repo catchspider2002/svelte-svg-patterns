@@ -14,6 +14,7 @@
     { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
     { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
     { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
+    { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
   ];
 
   const languageName = languageList.find(({ id }) => id === language).name;
@@ -56,7 +57,8 @@
       stroke="currentColor"
       fill="none"
       stroke-linecap="round"
-      stroke-linejoin="round">
+      stroke-linejoin="round"
+    >
       <path d="M5 7h7m-2 -2v2a5 8 0 0 1 -5 8m1 -4a7 4 0 0 0 6.7 4" />
       <path d="M11 19l4 -9l4 9m-.9 -2h-6.2" />
     </svg>
@@ -70,7 +72,8 @@
       stroke="currentColor"
       fill="none"
       stroke-linecap="round"
-      stroke-linejoin="round">
+      stroke-linejoin="round"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   </button>
@@ -107,6 +110,15 @@
     border-top: 2px solid var(--secondary-color);
   }
 
+  /* .menu:focus,
+  .menu:active {
+    outline: 1px solid #fff; */
+    /* outline-offset: -4px; */
+  /* } */
+  /* .menu:hover {
+    border-radius: var(--border-radius);
+    background-color: var(--gray-800);
+  } */
   .menuButton {
     /* border: 1px solid #dedede; */
     /*   border-bottom: 1px solid #b5b5b5; */
@@ -125,16 +137,18 @@
     padding: 0 0.5em;
   }
   .menuButton:hover {
-    background: var(--gray-800);
+    border-radius: var(--border-radius);
+    background-color: var(--gray-800);
   }
   .menuButton:active,
   .menuButton:focus {
-    outline: none;
-    background: var(--main-bg-color);
+     /* outline: none; */
+    background-color: var(--gray-800);
+    outline: 1px solid #fff;
   }
 
   .menuItems {
-    z-index: 1000;
+    z-index: 20;
     display: none;
     min-width: 160px;
     margin-top: 3em;

@@ -1,5 +1,6 @@
 <script>
   import Constants from "../routes/_constants.js";
+  import Values from "../routes/_values.js";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
   import { onMount, onDestroy } from "svelte";
@@ -20,12 +21,10 @@
       show = true;
 
       let element = document.querySelector('[aria-label="Your email address"]');
-      element.setAttribute("placeholder", strings.email);
+      if (element) element.setAttribute("placeholder", strings.email);
 
       let sendButton = document.querySelector(".subscribe-bottom span");
-      sendButton.innerHTML = strings.sendPatterns
-
-
+      if (sendButton) sendButton.innerHTML = strings.sendPatterns;
     }, 400);
   });
   onDestroy(() => clearTimeout(timeoutId));
@@ -48,33 +47,33 @@
       <div class="iconLinks grid justify-center">
         <a rel="noopener noreferrer" title="GitHub" target="_blank" href="https://github.com/catchspider2002/svelte-svg-patterns">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.github} />
+            <path d={Values.icons.github} />
           </svg></a
         >
         <a rel="noopener noreferrer" title="Twitter" target="_blank" href="https://twitter.com/Pattern_Monster">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.twitter} />
+            <path d={Values.icons.twitter} />
           </svg></a
         >
         <a rel="noopener noreferrer" title="Instagram" target="_blank" href="https://www.instagram.com/pattern.monster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.instagram} />
+            <path d={Values.icons.instagram} />
           </svg></a
         >
         <a rel="noopener noreferrer" title="Facebook" target="_blank" href="https://www.facebook.com/pattern.monster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.facebook} />
+            <path d={Values.icons.facebook} />
           </svg></a
         >
         <a rel="noopener noreferrer" title="Pinterest" target="_blank" href="https://www.pinterest.com/patternmonster/">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d={Constants.icons.pinterest} />
+            <path d={Values.icons.pinterest} />
           </svg></a
         >
       </div>
 
       <a rel="noopener noreferrer" title={strings.buyCoffee} class="cta" target="_blank" href="https://www.buymeacoffee.com/naveencs"
-        >{@html Constants.icons.bmc}</a
+        >{@html Constants.bmcFooter}</a
       >
       <div class="footer justify-center light-text">
         Made with&nbsp;
@@ -101,7 +100,6 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem;
-    /* padding-bottom: 2rem; */
     color: white;
   }
 
@@ -111,19 +109,13 @@
   }
 
   .cta {
-    /* padding: 1em; */
+    display: none;
     margin: 0.5em 0.5em 1em;
-    /* color: var(--accent-color); */
-    /* justify-items: center; */
-    /* align-items: center; */
     justify-self: center;
-    /* background-color: #44337a;
-    border-radius: var(--border-radius); */
   }
 
   .cta:hover,
   .cta:focus {
-    /* color: var(--accent-color-hover); */
     opacity: 0.85;
   }
   p {
@@ -147,6 +139,11 @@
     .footerOuter {
       grid-auto-flow: row;
       grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 1024px) {
+    .cta {
+      display: block;
     }
   }
 </style>

@@ -34,7 +34,7 @@
   // });
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
   <script async src="https://cdn.headwayapp.co/widget.js"></script>
   <script>
     var config = {
@@ -47,7 +47,7 @@
     // };
     Headway.init(config);
   </script>
-</svelte:head>
+</svelte:head> -->
 <!-- <Nav {segment} on:theme={sayHello} /> -->
 <Nav {segment} />
 

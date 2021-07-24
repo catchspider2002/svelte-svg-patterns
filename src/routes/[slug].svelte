@@ -22,6 +22,7 @@
   let w;
 
   import Constants from "./_constants.js";
+  import Values from "./_values.js";
   let page = post.slug;
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
 
@@ -252,17 +253,10 @@
     selectedPattern.moveTop
   );
 
-  // let outputWidth = 1080,
-  //   outputHeight = 1080;
-
   $: cssOutput = 'background-image: url("data:image/svg+xml,' + svgFile + '")';
 
   function randomColorSets(length) {
-    // let colorArray = Constants.colorPalettes
-    // console.log(Constants.colorPalettes.length);
-    // let colorArray = [];
-    // for (var i = 0; i < length; i++) colorArray.push(Constants.randomColor(1));
-    let colorArray = Constants.colorPalettes[Constants.randomNumber(0, Constants.colorPalettes.length - 1)];
+    let colorArray = Values.colorPalettes[Values.randomNumber(0, Values.colorPalettes.length - 1)];
 
     for (let i = colorArray.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -286,17 +280,17 @@
   }
 
   function randomPattern() {
-    let randomSpacing = Constants.randomNumber(0, maxSpacing[0] / 3);
+    let randomSpacing = Values.randomNumber(0, maxSpacing[0] / 3);
     selectedPattern = {
       id: 5,
       colors: randomColorSets(selectedPattern.colorCounts),
       // colors: randomColorSets(2),
       colorCounts: selectedPattern.colorCounts,
-      stroke: Constants.randomNumber(0.5, maxStroke),
-      scale: Constants.randomNumber(2, maxScale / 3),
+      stroke: Values.randomNumber(0.5, maxStroke),
+      scale: Values.randomNumber(2, maxScale / 3),
       spacing: [maxSpacing[0] > 0 ? randomSpacing : 0, maxSpacing[1] > 0 ? randomSpacing : 0],
-      angle: Constants.randomAngle(),
-      join: Constants.randomNumber(1, 2),
+      angle: Values.randomAngle(),
+      join: Values.randomNumber(1, 2),
       moveLeft: 0,
       moveTop: 0,
     };
@@ -321,7 +315,7 @@
     fileName += selectedPattern.spacing.toString().replace(",", "-") + "_" + selectedPattern.angle + "_" + selectedPattern.join + "_";
 
     for (let i = 0; i < selectedPattern.colorCounts; i++) {
-      fileName += "_" + Constants.HSLAToHexA(selectedPattern.colors[i]);
+      fileName += "_" + Values.HSLAToHexA(selectedPattern.colors[i]);
     }
     // console.log(selectedPattern.scale + "~~~~~" + fileName);
     // svg.saveSvgAsPng(document.getElementById("patternId"), "pattern.png");
@@ -790,6 +784,14 @@
     display: grid;
     grid-template-columns: auto auto;
     gap: 1em;
+  }
+
+  .strokeJoin > label {
+    display: grid;
+    grid-auto-flow: column;
+    place-content: start;
+    gap: 0.35em;
+    align-items: baseline;
   }
 
   .exportGrid,

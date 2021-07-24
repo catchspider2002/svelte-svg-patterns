@@ -15,6 +15,8 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
     { lang: "it", name: "Italiano", col: 6, site: "https://it.pattern.monster", path: "../../it.pattern.monster/" },
     { lang: "ro", name: "Română", col: 7, site: "https://ro.pattern.monster", path: "../../ro.pattern.monster/" },
     { lang: "fr", name: "Français", col: 8, site: "https://fr.pattern.monster", path: "../../fr.pattern.monster/" },
+    { lang: "ar", name: "العربية", col: 9, site: "https://ar.pattern.monster", path: "../../ar.pattern.monster/" },
+    
     // { lang: "uk", name: "Українська", col: 7, path: "../../uk.pattern.monster/" },
     // { lang: "af", name: "Afrikaans", col: 8, path: "../../af.pattern.monster/" },
   ];
@@ -123,6 +125,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       let routesFiles = [
         "_error.svelte",
         "_layout.svelte",
+        "_values.js",
         "[slug].json.js",
         "[slug].svelte",
         "changelog.svelte",

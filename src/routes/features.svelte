@@ -127,8 +127,7 @@
       <p class="comingSoon">OPEN SOURCE</p>
       <h1>Create amazing SVG patterns in seconds</h1>
       <p class="subtitle">
-        A simple online pattern generator to create repeatable SVG patterns. Speed up your website without compromising on image quality. Perfect for
-        website backgrounds, apparel, branding, packaging design and more.
+        {strings.description} {strings.description2} {strings.description3}
       </p>
       <!-- <button class="secondary-bg dark-text" onclick="location.href='patterns'" type="button">Explore patterns</button> -->
       <a class="secondary-bg dark-text cta" href="/">Explore patterns</a>
@@ -189,12 +188,6 @@
                 />
               {/each}
             </pattern>
-            <!-- <pattern id="d" patternUnits="userSpaceOnUse" width="20" height="28" patternTransform="scale({scale}) rotate({angle})">
-              <rect x="0" y="0" width="100%" height="100%" fill={colorPalette[0]} />
-              <g transform="translate(0,0)" stroke-linecap="square" stroke-width={stroke} stroke={colorPalette[1]} fill="none">
-                <path d="M5 12H-5L0 2zM-5 16H5L0 26zM5 26h10l-5-10zM5 2h10l-5 10zM25 12H15l5-10zM15 16h10l-5 10z" />
-              </g>
-            </pattern> -->
             <pattern
               id="e"
               patternUnits="userSpaceOnUse"
@@ -257,13 +250,13 @@
       </div>
     </div>
     <div class="toolbox grid items-center">
-      <label for="scale">Scale</label>
+      <label for="scale">{strings.zoom}</label>
       <input id="scale" type="range" bind:value={scale} min="0.5" max="9.5" step="0.5" />
-      <label for="stroke">Stroke</label>
+      <label for="stroke">{strings.stroke}</label>
       <input id="stroke" type="range" bind:value={stroke} min="0.5" max="9.5" step="0.5" />
-      <label for="angle">Angle</label>
+      <label for="angle">{strings.angle}</label>
       <input id="angle" type="range" bind:value={angle} min="0" max="180" step="5" />
-      <label for="angle">Colors</label>
+      <label for="angle">{strings.colors}</label>
       <div class="radio-toolbar grid">
         {#each palettes as palette, i}
           <input
@@ -596,6 +589,9 @@
     background: var(--pattern-bg);
     grid-template-columns: auto 1fr;
     border-radius: var(--border-radius);
+  }
+  .toolbox label{
+    text-transform: capitalize;
   }
   .features {
     padding-top: 70px;
