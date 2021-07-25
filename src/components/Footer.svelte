@@ -30,7 +30,7 @@
   onDestroy(() => clearTimeout(timeoutId));
 </script>
 
-<footer class="flex">
+<footer>
   <div class="footerOuter grid container mx-auto justify-center items-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
@@ -75,7 +75,7 @@
       <a rel="noopener noreferrer" title={strings.buyCoffee} class="cta" target="_blank" href="https://www.buymeacoffee.com/naveencs"
         >{@html Constants.bmcFooter}</a
       >
-      <div class="footer justify-center light-text">
+      <div class="footer flex justify-center light-text">
         Made with&nbsp;
         <span style="color:#ff9a9a">❤</span>
         &nbsp;by&nbsp;<a rel="noopener noreferrer" class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
@@ -97,7 +97,6 @@
   }
 
   .footer {
-    /* display: flex; */
     flex-wrap: wrap;
     padding: 0.5rem;
     color: white;
