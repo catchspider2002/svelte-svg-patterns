@@ -512,17 +512,18 @@ nav a {
   margin: 0;
   background-color: var(--card-bg);
 }
-.notifications li:is(.versionHeader) {
+.notifications li {
+  padding-bottom: 0.5em;
+  color: var(--gray-text);
+}
+.notifications li.versionHeader {
   list-style: none;
   margin: var(--notification-header-margin);
   font-weight: 600;
   border-top: 1px solid var(--gray-text);
   padding: var(--notification-header-padding);
   font-size: 1.1em;
-}
-.notifications li:not(.versionHeader) {
-  padding-bottom: 0.5em;
-  color: var(--gray-text);
+  color: var(--secondary-text-color);
 }
 .notifications li:first-child {
   margin-top: 0;

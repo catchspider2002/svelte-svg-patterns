@@ -141,7 +141,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
         copyFile("../src/routes/" + filename, language.path + "src/routes/" + filename);
       });
 
-      copyFile("../static/global-072521.css", language.path + "static/global-072521.css");
+      copyFile("../static/global-072421.css", language.path + "static/global-072421.css");
 
       function copyFile(source, dest) {
         if (language.lang !== "en") {
