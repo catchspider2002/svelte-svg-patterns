@@ -20,6 +20,7 @@
   --gray-800: #2d3748;
   --gray-900: #1a202c;
   --font: "Nunito", sans-serif;
+  /* --defaultFont: -apple-system,BlinkMacSystemFont,SFUI,HelveticaNeue,Helvetica,Arial,sans-serif; */
   --svg-bg: white;
   --gray-bg: var(--gray-400);
   --gray-text: var(--gray-600);
@@ -264,6 +265,10 @@ button:active {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 .p-0 {
   padding: 0;
 }
@@ -295,6 +300,9 @@ button:active {
 }
 .grid {
   display: grid;
+}
+.grid-flow-col {
+  grid-auto-flow: column;
 }
 .items-center {
   align-items: center;
@@ -334,9 +342,9 @@ nav {
 }
 
 .rightLinks {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
+  /* display: grid; */
+  /* grid-auto-flow: column; */
+  /* align-items: center; */
   gap: 0.5em;
 }
 
@@ -416,11 +424,11 @@ nav a {
 }
 
 .logoOuter {
-  display: grid;
+  /* display: grid; */
   grid-auto-flow: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: start;
-  gap: 0.5em;
+  gap: 0.75em;
   padding: 0 0.8em;
 }
 
@@ -455,12 +463,13 @@ nav a {
 }
 
 .notifications {
+  /* font-family: var(--defaultFont); */
   z-index: 20;
   display: none;
-  width: min(calc(100vw - 31.2px), 360px);
+  width: min(80vw, 360px);
   top: 4.2em;
   position: fixed;
-  font-size: 0.8em;
+  font-size: 0.85em;
   border: 1px solid var(--accent-text);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
@@ -608,5 +617,3 @@ button.bellIcon:active {
     display: none;
   }
 }
-
-

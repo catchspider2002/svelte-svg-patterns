@@ -47,7 +47,7 @@
 <svelte:window on:click={closeWindow} />
 
 <div class="menu">
-  <button class="menuButton" title={strings.translate} on:click={toggle}>
+  <button class="menuButton flex items-center" title={strings.translate} on:click={toggle}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="2em"
@@ -120,16 +120,6 @@
     background-color: var(--gray-800);
   } */
   .menuButton {
-    /* border: 1px solid #dedede; */
-    /*   border-bottom: 1px solid #b5b5b5; */
-    /* padding: 0.5em 0.75em; */
-    /* 	background: linear-gradient(#fff, #EFEFEF); */
-    /* position: relative; */
-    display: flex;
-    /* grid-auto-flow: column;
-    grid-template-columns: auto auto auto; */
-    align-items: center;
-    /* gap: 0.5em; */
     font-weight: 500;
     border-radius: var(--border-radius);
   }

@@ -1,56 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-    %sapper.base%
-    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
-    <link rel="sitemap" type="application/xml" href="https://pattern.monster/sitemap.xml" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="apple-touch-icon" href="logo-512.png" />
-    <link rel="stylesheet" href="global-072421.css" />
-    <link rel="preload" href="pickr.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
-
-    <meta name="author" content="Naveen CS" />
-    <meta name="theme-color" content="#44337a" />
-    <meta name="google" content="notranslate" />
-    <meta name="robots" content="index,follow" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#44337a" />
-    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="/icons/mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="/icons/mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
-    <meta property="og:site_name" content="Pattern.Monster" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:site" content="@pattern_monster" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Sapper generates a <style> tag containing critical CSS
-	     for the current page. CSS for the rest of the app is
-	     lazily loaded when it precaches secondary pages -->
-    %sapper.styles%
-
-    <!-- This contains the contents of the <svelte:head> component, if
-	     the current page has one -->
-    %sapper.head%
-  </head>
-  <body>
-    <!-- The application will be rendered inside this element,
-	     because `src/client.js` references it -->
-    <div id="sapper">%sapper.html%</div>
-
-    <!-- Sapper creates a <script> tag containing `src/client.js`
-	     and anything else it needs to hydrate the app and
-	     initialise the router -->
-    %sapper.scripts%
-    <!-- Cloudflare Web Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "477d2f960abf4a47b775638d604c616a"}'></script>
-    <!-- End Cloudflare Web Analytics -->
-  </body>
-</html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      
+          %sapper.base%
+          <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+          <link rel="sitemap" type="application/xml" href="https://pattern.monster/sitemap.xml" />
+          <link rel="icon" type="image/png" href="favicon.png" />
+          <link rel="apple-touch-icon" href="logo-512.png" />
+          <link rel="stylesheet" href="global-1627246252.min.css" />
+          <link rel="preload" href="pickr-1627246252.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+          <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+      
+          <meta name="author" content="Naveen CS" />
+          <meta name="theme-color" content="#44337a" />
+          <meta name="google" content="notranslate" />
+          <meta name="robots" content="index,follow" />
+          <meta name="format-detection" content="telephone=no" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="msapplication-TileColor" content="#44337a" />
+          <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png" />
+          <meta name="msapplication-square70x70logo" content="/icons/mstile-70x70.png" />
+          <meta name="msapplication-square150x150logo" content="/icons/mstile-150x150.png" />
+          <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
+          <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
+          <meta property="og:site_name" content="Pattern.Monster" />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:site" content="@pattern_monster" />
+          <meta name="twitter:card" content="summary_large_image" />
+      
+          %sapper.styles%
+      
+          <!-- This contains the contents of the <svelte:head> component, if
+             the current page has one -->
+          %sapper.head%
+        </head>
+        <body>
+          <div id="sapper">%sapper.html%</div>
+      
+          %sapper.scripts%
+          <!-- Cloudflare Web Analytics -->
+          <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "477d2f960abf4a47b775638d604c616a"}'></script>
+          <!-- End Cloudflare Web Analytics -->
+        </body>
+      </html>

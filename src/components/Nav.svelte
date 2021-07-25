@@ -75,7 +75,7 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 160;
+  let starsCount = 161;
 
   const userAction = async () => {
     const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");
@@ -112,7 +112,7 @@
 <svelte:window on:click={closeWindow} />
 
 <nav>
-  <div class="logoOuter">
+  <div class="logoOuter grid items-center">
     <a aria-current={segment === undefined ? "page" : undefined} href="." class="justify-self-start">
       <div class="logo" style="color: var(--secondary-color)">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" viewBox="0 0 128 128" data-inline="false">
@@ -184,7 +184,7 @@
     </div>
   </div>
 
-  <div class="rightLinks justify-self-end">
+  <div class="rightLinks grid grid-flow-col items-center justify-self-end">
     <a rel="noopener noreferrer" title={strings.buyCoffee} class="bmc" target="_blank" href="https://www.buymeacoffee.com/naveencs">
       {@html Constants.bmcHeader}
     </a>

@@ -30,16 +30,16 @@
   onDestroy(() => clearTimeout(timeoutId));
 </script>
 
-<footer>
-  <div class="footerOuter container mx-auto justify-center">
+<footer class="flex">
+  <div class="footerOuter grid container mx-auto justify-center items-center">
     <a name="subscribe" />
     <div class="subscribe-bottom grid mx-auto">
       <p class="text-center pb-5">{strings.signUp}</p>
       <script async data-uid="1f3a13ab3c" src="https://crafty-artist-9316.ck.page/1f3a13ab3c/index.js">
       </script>
     </div>
-    <div class="grid justify-center">
-      <div class="iconLinks grid justify-center">
+    <div class="grid justify-center px-6">
+      <div class="textLinks justify-center">
         <a href="changelog/">{strings.changelog}</a>
         <a href="features/">{strings.features}</a>
         <a href="privacy-policy/">{strings.privacy}</a>
@@ -86,18 +86,18 @@
 
 <style>
   .footerOuter {
-    display: grid;
+    /* display: grid; */
     font-size: 0.9em;
     grid-auto-flow: column;
     grid-template-columns: 0 1fr 1fr;
     padding-top: 10px;
     padding-bottom: 20px;
-    align-items: center;
+    /* align-items: center; */
     background-color: var(--main-bg-color);
   }
 
   .footer {
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     padding: 0.5rem;
     color: white;
@@ -126,7 +126,16 @@
     gap: 1.5em;
     padding: 0.5em 0 1em;
   }
+  .textLinks {
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75em;
+  }
 
+  .textLinks a {
+    margin: 0.5em 0.75em;
+  }
   a {
     color: var(--secondary-color);
     text-decoration: none;
