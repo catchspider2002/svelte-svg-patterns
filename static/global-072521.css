@@ -328,7 +328,7 @@ nav {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
-  gap: 1em;
+  /* gap: 1em; */
   align-items: center;
   font-size: 0.9em;
 }
@@ -420,7 +420,8 @@ nav a {
   grid-auto-flow: column;
   align-items: center;
   justify-content: start;
-  gap: 0.75em;
+  gap: 0.5em;
+  padding: 0 0.8em;
 }
 
 .gitHubIcon,
@@ -451,6 +452,88 @@ nav a {
   color: white;
   background-color: red;
   right: 0.9em;
+}
+
+.notifications {
+  z-index: 20;
+  display: none;
+  width: min(calc(100vw - 31.2px), 360px);
+  top: 4.2em;
+  position: fixed;
+  font-size: 0.8em;
+  border: 1px solid var(--accent-text);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+  color: var(--secondary-text-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.notifications h3 {
+  background-color: var(--accent-text);
+  color: var(--accent-text-color);
+  padding: 0.7em 1em;
+  margin: 0;
+}
+
+.notifications a {
+  display: inline;
+  color: var(--accent-text);
+  text-underline-offset: 0.15em;
+  text-decoration: underline;
+  text-decoration-thickness: 0.15em;
+}
+
+.notifications a:hover {
+  color: var(--accent-hover);
+}
+
+.viewLink {
+  margin: 0;
+  background-color: var(--card-bg);
+  padding-top: 0.5em;
+}
+.viewLink a {
+  text-decoration: none;
+  display: grid;
+  grid-auto-flow: column;
+  place-content: start;
+  border-top: 1px solid var(--gray-text);
+  padding: 1.25em 1em;
+  gap: 0.5em;
+  font-size: 1.1em;
+}
+.notifications ul {
+  padding: var(--notification-list-padding);
+  overflow: auto;
+  max-height: 80vh;
+  margin: 0;
+  background-color: var(--card-bg);
+}
+.notifications li:is(.versionHeader) {
+  list-style: none;
+  margin: var(--notification-header-margin);
+  font-weight: 600;
+  border-top: 1px solid var(--gray-text);
+  padding: var(--notification-header-padding);
+  font-size: 1.1em;
+}
+.notifications li:not(.versionHeader) {
+  padding-bottom: 0.5em;
+  color: var(--gray-text);
+}
+.notifications li:first-child {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 1em;
+}
+
+button.bellIcon:focus,
+button.bellIcon:hover,
+button.bellIcon:active {
+  background-color: transparent;
 }
 
 @media (max-width: 1440px) {
@@ -524,3 +607,5 @@ nav a {
     display: none;
   }
 }
+
+
