@@ -788,7 +788,7 @@
           {:else}
             <div class="numColors">{post.colors} {strings.colors}</div>
           {/if}
-          <div class="postDate" title="Date Updated">
+          <div class="postDate" title={strings.updateDate}>
             {dayjs().to(dayjs(post.creationDate), false)}
           </div>
         </div>

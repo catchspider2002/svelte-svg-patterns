@@ -212,10 +212,10 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 50px;
+    line-height: 44px;
     padding: 0 7.5px;
     text-decoration: none;
-    align-items: baseline;
+    align-items: center;
   }
   .button-gumroad span {
     padding: 0 7.5px;

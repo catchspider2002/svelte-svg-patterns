@@ -459,18 +459,21 @@
   <section class="container grid mx-auto px-5 py-24 items-center text-center">
     <h2 class="accent-text">{strings.feature11}</h2>
     <p class="subtitle ">
-      A pattern maker app to create abstract and cool patterns. Save time by making royalty free SVG backgrounds for your projects. Easy to use tool
-      to generate your desired image. Ideal for branding and logo design projects, business cards, creating custom tees and apparel, posters, flyers,
-      web design projects, or your social media posts, Instagram stories and blogs.
+      {strings.feature12}
+      {strings.feature13}
+      {strings.feature14}
+      {strings.feature15}
     </p>
-    <div class="flex justify-center"><button class="accent-bg cta2" onclick="location.href='#subscribe'" type="button">Know more</button></div>
+    <div class="flex justify-center">
+      <button class="accent-bg cta2" onclick="location.href='#subscribe'" type="button">{strings.knowMore}</button>
+    </div>
   </section>
 </div>
 
 <div class="overlapCard accent-bg text-center">
   <div class="container mx-auto">
-    Create beautiful print assets from a wealth of versatile and useful patterns without any design skills. Ideal for branding projects, fabrics,
-    packaging, fashion apparel, posters, wrapping paper, posters or calendars.
+    {strings.feature16}
+    {strings.feature17}
   </div>
 </div>
 <div class="triangleOuter">

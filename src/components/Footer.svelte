@@ -77,7 +77,7 @@
       >
       <div class="footer flex justify-center light-text">
         Made with&nbsp;
-        <span style="color:#ff9a9a">❤</span>
+        <span style="color:#ff5454">❤</span>
         &nbsp;by&nbsp;<a rel="noopener noreferrer" class="secondary-text" href="https://twitter.com/MrNaveenCS">Naveen CS</a>
       </div>
     </div>
