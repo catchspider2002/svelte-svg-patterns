@@ -631,7 +631,7 @@
     overflow-y: auto;
     z-index: 99;
     padding: 10px 0;
-    top: 0px;
+    top: 0;
     border: 1px solid #999;
     max-height: calc(15 * (1rem + 10px) + 15px);
     user-select: none;
