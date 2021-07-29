@@ -24,7 +24,7 @@
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
 
-let newPosts;// = posts;
+  let newPosts; // = posts;
 
   // let count_value;
   // themeStore.subscribe(value => {
@@ -33,9 +33,10 @@ let newPosts;// = posts;
   // });
 
   export let ptrns;
-  let patternsCount = ptrns.length
+  let patternsCount = ptrns.length;
   let count = 0;
   import { onMount, afterUpdate, onDestroy } from "svelte";
+  
   export let posts =  [
     {title: 'Waves - 1', slug: 'waves-1', mode: 'stroke', colors: 5, maxStroke: 6.5, maxScale: 16, maxSpacing: [0, 10], width: 120, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-50.129 12.685C-33.346 12.358-16.786 4.918 0 5c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 32.685C-33.346 32.358-16.786 24.918 0 25c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 52.685C-33.346 52.358-16.786 44.918 0 45c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>~<path d='M-50.129 72.685C-33.346 72.358-16.786 64.918 0 65c16.787.082 43.213 10 60 10s43.213-9.918 60-10c16.786-.082 33.346 7.358 50.129 7.685'/>", creationDate: '13 Nov 2020'},
     {title: 'Waves - 2', slug: 'waves-2', mode: 'stroke', colors: 5, maxStroke: 5.5, maxScale: 16, maxSpacing: [0, 10], width: 80, height: 80, vHeight: 20, tags: ['waves','curves'], path: "<path d='M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 24.568C-13.178 24.932-6.452 27.376 0 30c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 44.568C-13.178 44.932-6.452 47.376 0 50c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>~<path d='M-20.133 64.568C-13.178 64.932-6.452 67.376 0 70c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432'/>", creationDate: '13 Nov 2020'},
@@ -61,22 +62,16 @@ let newPosts;// = posts;
 
   import "dayjs/locale/de";
 
-  if($langStore === 'de'){
+  if ($langStore === "de") {
     dayjs.locale("de");
     dayjs.extend(relativeTime);
-  }
-  else
-  dayjs.extend(relativeTime);
-
+  } else dayjs.extend(relativeTime);
 
   // dayjs().locale("de").format();
 
   let searchBar;
   let w;
-  $: placeholderSearch =
-    w > 640
-      ? strings.searchPattern + " (" + strings.pressFocus + ")"
-      : strings.searchPattern;
+  $: placeholderSearch = w > 640 ? strings.searchPattern + " (" + strings.pressFocus + ")" : strings.searchPattern;
 
   let homeTimeout;
   // let homeShow = false;
@@ -86,8 +81,8 @@ let newPosts;// = posts;
     searchBar = document.getElementById("search");
     // await tick();
     // newPosts = posts;
-    if($langStore !== 'en') {
-      console.log('homeTimeout')
+    if ($langStore !== "en") {
+      console.log("homeTimeout");
       homeTimeout = setTimeout(() => {
         // homeShow = true;
 
@@ -98,23 +93,22 @@ let newPosts;// = posts;
         email.setAttribute("placeholder", strings.email2);
 
         let sendButton = document.querySelector(".subscribe-waitlist button > span");
-        sendButton.innerHTML = strings.waitlist
-
+        sendButton.innerHTML = strings.waitlist;
       }, 400);
-  }
+    }
   });
 
   onDestroy(() => {
-    if($langStore !== 'en') clearTimeout(homeTimeout)
+    if ($langStore !== "en") clearTimeout(homeTimeout);
   });
 
   afterUpdate(() => {
     // console.log("afterUpdate")
-    if (count===0){
+    if (count === 0) {
       getPosts();
       // updateCount()
     }
-    count++
+    count++;
   });
 
   // function updateCount() {
@@ -172,21 +166,14 @@ let newPosts;// = posts;
 
   function filterChanged() {
     // console.log("filterChanged: " + mode.value)
-    if (mode.value === "fill")
-      newPosts = posts.filter((pattern) => pattern.mode === "fill");
-    else if (mode.value === "stroke")
-      newPosts = posts.filter(
-        (pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join"
-      );
+    if (mode.value === "fill") newPosts = posts.filter((pattern) => pattern.mode === "fill");
+    else if (mode.value === "stroke") newPosts = posts.filter((pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join");
     else newPosts = posts;
   }
 
   function colorsChanged() {
     // console.log("colorsChanged")
-    if (colorsCount.value > 1)
-      newPosts = posts.filter(
-        (pattern) => pattern.colors === colorsCount.value
-      );
+    if (colorsCount.value > 1) newPosts = posts.filter((pattern) => pattern.colors === colorsCount.value);
     else newPosts = posts;
   }
 
@@ -269,10 +256,8 @@ let newPosts;// = posts;
     let strokeGroup = "";
 
     for (let i = 0; i < path.split("~").length; i++) {
-      let strokeFill =
-        "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
-      if (mode === "fill")
-        strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
+      let strokeFill = "stroke-width='1' stroke='" + colors[i + 1] + "' fill='none'";
+      if (mode === "fill") strokeFill = "stroke='none' fill='" + colors[i + 1] + "'";
 
       strokeGroup += path.split("~")[i].replace("/>", " " + strokeFill + "/>");
     }
@@ -292,13 +277,8 @@ let newPosts;// = posts;
       "'/>" +
       strokeGroup +
       "</pattern></defs><rect width='100%' height='100%' fill='url(#a)'/></svg>";
-    return (
-      'background-image: url("data:image/svg+xml,' +
-      patternNew.replace("#", "%23") +
-      '")'
-    );
+    return 'background-image: url("data:image/svg+xml,' + patternNew.replace("#", "%23") + '")';
   };
-
 
   // const api = "https://hn.algolia.com/api/v1/search_by_date?tags=story";
 
@@ -340,7 +320,140 @@ let newPosts;// = posts;
   //   list = [];
   //   infiniteId += 50;
   // }
+
+  let stats = [
+    {
+      path: Values.icons.trending,
+      text: patternsCount + " " + strings.patterns,
+    },
+    {
+      path: Values.icons.download,
+      text: "CSS, SVG, PNG",
+    },
+    {
+      path: Values.icons.license,
+      text: strings.license,
+    },
+    {
+      path: Values.icons.release,
+      text: strings.free,
+    },
+  ];
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+  <link rel="canonical" href={url} />
+  {#if versions}
+    {#each versions as version}
+      <link rel="alternate" href={version.website} hreflang={version.lang} />
+    {/each}
+  {/if}
+  <meta name="description" content={desc} />
+  <meta name="keywords" content={keywords} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:image" content={image} />
+
+  <!-- Twitter -->
+  <meta name="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:src" content={image} />
+  <meta name="twitter:image:alt" content={title} />
+</svelte:head>
+
+<svelte:window on:keydown={handleKeydown} />
+
+<div bind:clientWidth={w} class="patternsList">
+  <h1>{@html strings.heading}</h1>
+  <div class="stats">
+    {#each stats as stat}
+      <div class="grid grid-flow-col gap-2 gray-text place-content-start">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d={stat.path} /></svg>
+        {stat.text}
+      </div>
+    {/each}
+  </div>
+  <p class="container mx-auto">{strings.description} {strings.description2} {strings.description3}</p>
+
+  <div class="subscribe-waitlist grid">
+    <span>{strings.apiAccess}</span>
+    <script async data-uid="f146eb0e2c" src="https://crafty-artist-9316.ck.page/f146eb0e2c/index.js"></script>
+  </div>
+
+  <div class="outerGrid">
+    <div class="searchBox">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={Values.icons.search} />
+      </svg>
+      <input
+        id="search"
+        class="search"
+        type="text"
+        aria-label={strings.searchPattern}
+        bind:value={searchText}
+        placeholder={placeholderSearch}
+        on:input={searchChanged}
+      />
+    </div>
+    <div class="filterGrid grid grid-flow-col">
+      {strings.filter}
+      <AutoComplete
+        inputId="filterMode"
+        placeholder={strings.filterMode}
+        items={filterOptions}
+        bind:selectedItem={mode}
+        labelFieldName="text"
+        ariaLabel={strings.filterMode}
+        onChange={filterChanged}
+      />
+      <AutoComplete
+        inputId="filterColor"
+        placeholder={strings.filterColors}
+        items={colorOptions}
+        bind:selectedItem={colorsCount}
+        labelFieldName="text"
+        ariaLabel={strings.filterColors}
+        onChange={colorsChanged}
+      />
+    </div>
+    <div class="sortGrid grid grid-flow-col">
+      <span>{strings.sort}</span>
+      <div class="sortInner flex items-center justify-self-end">
+        <button on:click={sortLatest}>{strings.latest}</button>
+        <button on:click={sortOldest}>{strings.oldest}</button>
+        <button on:click={sortAlphabetical}>A-Z</button>
+        <button on:click={sortAlphabeticalReverse}>Z-A</button>
+      </div>
+    </div>
+  </div>
+  <div class="samples">
+    {#each newPosts as post}
+      <div class="outerPattern">
+        <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+          <span>{post.title}</span>
+        </a>
+        <div class="details">
+          {#if post.colors > 2}
+            <div class="numColors">2 - {post.colors} {strings.colors}</div>
+          {:else}
+            <div class="numColors">{post.colors} {strings.colors}</div>
+          {/if}
+          <div class="justify-self-end" title={strings.updateDate}>
+            {dayjs().to(dayjs(post.creationDate), false)}
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
+</div>
+
+<Footer />
 
 <style>
   .patternsList {
@@ -371,11 +484,10 @@ let newPosts;// = posts;
     gap: 2em;
     align-items: center;
     color: var(--secondary-text-color);
-    margin-top:1em
+    margin-top: 1em;
   }
   .outerPattern {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
     overflow: hidden;
   }
@@ -419,14 +531,7 @@ let newPosts;// = posts;
     row-gap: 0.5em;
     place-content: center;
   }
-  .stats-grid {
-    display: grid;
-    grid-auto-flow: column;
-    color: var(--gray-text);
-    gap: 0.5em;
-    place-content: start;
-  }
-  
+
   .outerGrid {
     display: grid;
     grid-auto-flow: column;
@@ -438,17 +543,15 @@ let newPosts;// = posts;
     background-color: var(--pattern-bg);
   }
   @media (min-width: 640px) {
-  .outerGrid {
-    position: sticky;
-    top: 2.86em;
-    z-index: 1;
-    margin: 0 -2em;
-    padding: 1em 2em;
+    .outerGrid {
+      position: sticky;
+      top: 2.86em;
+      z-index: 1;
+      margin: 0 -2em;
+      padding: 1em 2em;
+    }
   }
-}
   .filterGrid {
-    /* display: grid;
-    grid-auto-flow: column; */
     place-content: start;
     place-items: center;
     justify-self: start;
@@ -460,7 +563,7 @@ let newPosts;// = posts;
     align-items: center;
     justify-self: end;
     order: 1;
-    gap: 1em
+    gap: 1em;
   }
   .sortInner {
     place-items: start;
@@ -516,7 +619,6 @@ let newPosts;// = posts;
     -moz-appearance: none;
     appearance: none;
     font-size: 0.85em;
-    /* border: 0; */
     outline: 0;
     background-color: transparent;
     width: 100%;
@@ -601,169 +703,26 @@ let newPosts;// = posts;
       grid-template-columns: auto;
     }
   }
-  .subscribe-waitlist{
+  .subscribe-waitlist {
     padding: 0 0.5rem;
-    /* max-width: 840px; */
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     font-size: 0.85em;
-    /* display: grid; */
     grid-auto-flow: row;
-    /* justify-items: center; */
     margin: -1em auto 2em;
     width: 716px;
-    /* width: auto; */
-    }
-  .subscribe-waitlist span
-  {
+  }
+  .subscribe-waitlist span {
     padding: 1em 8px 0.5em;
     font-weight: 600;
   }
-    
+
   @media (max-width: 804px) {
-  .subscribe-waitlist{
-    width: auto;
+    .subscribe-waitlist {
+      width: auto;
     }
-  .subscribe-waitlist span
-  {
-    padding: 1em 8px 0.75em;
+    .subscribe-waitlist span {
+      padding: 1em 8px 0.75em;
+    }
   }
-  }
-
 </style>
-
-<svelte:head>
-	<title>{title}</title>
-	<link rel="canonical" href={url} />
-  {#if versions}
-    {#each versions as version}
-      <link rel="alternate" href={version.website} hreflang={version.lang} />
-    {/each}
-  {/if}
-	<meta name="description" content={desc} />
-	<meta name="keywords" content={keywords} />
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:url" content={url} />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={desc} />
-	<meta property="og:image" content={image} />
-
-	<!-- Twitter -->
-	<meta name="twitter:url" content={url} />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={desc} />
-	<meta name="twitter:image" content={image} />
-	<meta name="twitter:image:src" content={image} />
-	<meta name="twitter:image:alt" content={title} />
-</svelte:head>
-
-<svelte:window on:keydown={handleKeydown} />
-
-<div bind:clientWidth={w} class="patternsList">
-  <h1>{@html strings.heading}</h1>
-  <div class="stats">
-    <div class="stats-grid">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Values.icons.trending} />
-      </svg>
-      <!-- {patternsCount} -->
-      {patternsCount}
-      {strings.patterns}
-      <!-- <span id="patternsCount" data-target="{patternsCount}">0</span>{strings.patterns} -->
-    </div>
-    <div class="stats-grid">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Values.icons.download} />
-      </svg>
-      CSS, SVG, PNG
-    </div>
-    <div class="stats-grid">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Values.icons.license} />
-      </svg>
-      {strings.license}
-    </div>
-    <div class="stats-grid">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Values.icons.release} />
-      </svg>
-      {strings.free}
-    </div>
-  </div>
-  <p class="container mx-auto">{strings.description} {strings.description2} {strings.description3}</p>
-  
-  <div class="subscribe-waitlist grid">
-    <span>{strings.apiAccess}</span>
-    <script async data-uid="f146eb0e2c" src="https://crafty-artist-9316.ck.page/f146eb0e2c/index.js"></script>
-  </div>
-  
-  <div class="outerGrid">
-    <div class="searchBox">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={Values.icons.search} />
-      </svg>
-      <input
-        id="search"
-        class="search"
-        type="text"
-        aria-label={strings.searchPattern}
-        bind:value={searchText}
-        placeholder={placeholderSearch}
-        on:input={searchChanged} />
-    </div>
-    <div class="filterGrid grid grid-flow-col">
-      {strings.filter}
-      <AutoComplete
-        inputId="filterMode"
-        placeholder={strings.filterMode}
-        items={filterOptions}
-        bind:selectedItem={mode}
-        labelFieldName="text"
-        ariaLabel={strings.filterMode}
-        onChange={filterChanged} />
-      <AutoComplete
-        inputId="filterColor"
-        placeholder={strings.filterColors}
-        items={colorOptions}
-        bind:selectedItem={colorsCount}
-        labelFieldName="text"
-        ariaLabel={strings.filterColors}
-        onChange={colorsChanged} />
-    </div>
-    <div class="sortGrid grid grid-flow-col">
-      <span>{strings.sort}</span>
-      <div class="sortInner flex items-center justify-self-end">
-        <button on:click={sortLatest}>{strings.latest}</button>
-        <button on:click={sortOldest}>{strings.oldest}</button>
-        <button on:click={sortAlphabetical}>A-Z</button>
-        <button on:click={sortAlphabeticalReverse}>Z-A</button>
-      </div>
-    </div>
-  </div>
-  <div class="samples">
-    {#each newPosts as post}
-      <div class="outerPattern">
-        <a
-          rel="prefetch"
-          href="{post.slug}/"
-          class="pattern"
-          style={svgPattern(post.width, post.height, post.path, post.mode)}>
-          <span>{post.title}</span>
-        </a>
-        <div class="details">
-          {#if post.colors > 2}
-            <div class="numColors">2 - {post.colors} {strings.colors}</div>
-          {:else}
-            <div class="numColors">{post.colors} {strings.colors}</div>
-          {/if}
-          <div class="justify-self-end" title={strings.updateDate}>
-            {dayjs().to(dayjs(post.creationDate), false)}
-          </div>
-        </div>
-      </div>
-    {/each}
-  </div>
-</div>
-
-<Footer />

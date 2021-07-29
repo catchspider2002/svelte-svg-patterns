@@ -130,7 +130,7 @@
   <script defer src="https://gumroad.com/js/gumroad.js"></script>
 </svelte:head>
 <div class="outer">
-  <h1>{strings.downloads}</h1>
+  <h1 class="text-center mt-0">{strings.downloads}</h1>
 
   <div class="downloadGrid">
     {#each newPosts as post, i}
@@ -165,12 +165,10 @@
 <style>
   h1 {
     font-size: 2em;
-    text-align: center;
     font-weight: 600;
     padding: 0.5em;
     color: var(--secondary-text-color);
     margin-bottom: 0.5em;
-    margin-top: 0;
     text-transform: uppercase;
   }
   h2 {

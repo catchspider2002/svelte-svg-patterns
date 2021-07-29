@@ -34,32 +34,9 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
-<div>
-  <h1>{strings.privacy}</h1>
-  <p>{strings.privacyFull}</p>
+<div class="secondary-text-color pattern-bg p-8">
+  <h1 class="text-center mt-6 p-2 mb-2 font-semibold text-4xl uppercase">{strings.privacy}</h1>
+  <p class="text-center pt-2 pb-6">{strings.privacyFull}</p>
 </div>
 
 <Footer />
-
-<style>
-  h1 {
-    font-size: 2em;
-    text-align: center;
-    font-weight: 600;
-    padding: 0.5em;
-    color: var(--secondary-text-color);
-    margin-bottom: 0.5em;
-    margin-top: 0;
-    text-transform: uppercase;
-  }
-  p {
-    color: var(--secondary-text-color);
-    padding-bottom: 1.5em;
-    padding-top: 0.5em;
-    text-align: center;
-  }
-  div {
-    background-color: var(--pattern-bg);
-    padding: 2em;
-  }
-</style>

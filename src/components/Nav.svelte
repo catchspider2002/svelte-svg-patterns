@@ -12,6 +12,8 @@
   let visible = true;
   let bellCount = "0";
 
+  let starsCount = 174;
+
   // const dispatch = createEventDispatcher();
 
   // const triggerEvent = () => {
@@ -75,7 +77,6 @@
 
     // dispatch("theme", themeColor);
   }
-  let starsCount = 167;
 
   const userAction = async () => {
     const response = await fetch("https://api.github.com/search/repositories?q=svelte-svg-patterns");

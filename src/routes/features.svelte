@@ -501,8 +501,10 @@
 
   button:hover,
   button:focus {
-    /* background-color: var(--secondary-color-hover); */
     background-color: var(--accent-color-hover);
+  }
+  h1 {
+    color: var(--secondary-color);
   }
 
   .cta {

@@ -10,15 +10,12 @@
 
 <script>
   export let post;
-  // import constants from "./_constants.js";
   import lang from "./_lang.js";
   let strings = lang.strings;
 
   import { onMount } from "svelte";
-
   import { themeStore } from "./stores.js";
 
-  // import { bind } from "svelte/internal";
   let w;
 
   import Constants from "./_constants.js";
@@ -30,7 +27,6 @@
   keywords = post.tags + ", random, " + strings.keywords;
   desc = post.title + " - " + strings.description + " " + strings.description3;
 
-  // import { fly, fade, slide } from "svelte/transition";
   let changing = false;
 
   let Pickr, svg;
@@ -723,10 +719,7 @@
 
   .colors {
     display: flex;
-    /* grid-template-columns: auto auto auto auto 1fr; */
-    /* gap: 1em; */
     align-items: center;
-    /* padding: 2em 0; */
     padding: 0;
     flex-wrap: wrap;
     margin-right: -1em;
@@ -738,31 +731,17 @@
 
   .colorLabel {
     align-self: flex-start;
-    /* margin-top: 1em; */
   }
-
-  /* .p-0 {
-    padding: 0;
-  } */
 
   .uneditable {
     border: 0 none;
     background-color: var(--accent-text);
     color: var(--accent-text-color);
-    /* height: 24px; */
     font-size: 0.9em;
     padding: 5px 2px 0 2px;
     text-align: center;
     min-width: 2.5em;
     border-radius: var(--border-radius);
-    /* width: 36px; */
-    /* cursor: none; */
-    /* -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none; */
-    /* user-select: none; */
   }
 
   .bottomBar {
@@ -878,8 +857,6 @@
 
   h1 {
     font-size: 2em;
-    /* text-align: center; */
-    /* padding: 0.5em; */
     color: var(--secondary-text-color);
   }
 
@@ -941,8 +918,6 @@
       height: 1px;
       background: var(--secondary-text-color);
       background-image: linear-gradient(to right, var(--pattern-bg), var(--secondary-text-color), var(--pattern-bg));
-      /* background: rgba(var(--text-color), 0.8);
-  background-image: linear-gradient(to right, rgba(var(--bg-color), 0.8), rgba(var(--text-color), 0.8), rgba(var(--bg-color), 0.8)); */
     }
   }
   @media (max-width: 408px) {
