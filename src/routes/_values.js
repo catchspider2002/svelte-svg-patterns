@@ -1,5 +1,12 @@
 let changeLog = [
   {
+    date: "August 3, 2021",
+    updates: [
+      'Added Portuguese translation by Pedro Conrad Junior, which can be accessed <a href="https://pt.pattern.monster">here</a>',
+      'Updates to the Italian, Turkish, Romanian and Polish translations',
+    ],
+  },
+  {
     date: "July 25, 2021",
     updates: [
       'Added Arabic translation, thanks to Khaled Ahmed, which can be accessed <a href="https://ar.pattern.monster">here</a>',
