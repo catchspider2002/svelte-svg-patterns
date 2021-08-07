@@ -588,7 +588,9 @@ nav a {
   /* font-family: var(--defaultFont); */
   z-index: 20;
   display: none;
-  width: min(80vw, 360px);
+  /* width: min(80vw, 360px); */
+  width: 80vw;
+  max-width: 360px;
   top: 4.2em;
   position: fixed;
   font-size: 0.85em;
@@ -598,9 +600,10 @@ nav a {
   color: var(--secondary-text-color);
   border-radius: var(--border-radius);
   overflow: hidden;
-  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  /* --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --tw-ring-offset-shadow: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
 }
 .notifications h3 {
   background-color: var(--accent-text);
