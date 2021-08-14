@@ -327,6 +327,10 @@ button:active {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;

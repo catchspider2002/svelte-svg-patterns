@@ -97,16 +97,6 @@
     justify-items: end;
     font-size: 1em;
   }
-
-  .px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-
   .translateLink {
     border-top: 2px solid var(--secondary-color);
   }
