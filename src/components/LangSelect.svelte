@@ -16,6 +16,7 @@
     { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
     { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
     { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
+    { id: "zh-cn", name: "中文(简体)", link: "https://cn.pattern.monster" },
   ];
 
   const languageName = languageList.find(({ id }) => id === language).name;

@@ -83,6 +83,10 @@ const strings = {
       lang: "pt",
       website: "https://pt.pattern.monster",
     },
+    {
+      lang: "zh-cn",
+      website: "https://cn.pattern.monster",
+    },
   ],
 };
 
