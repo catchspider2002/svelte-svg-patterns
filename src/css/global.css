@@ -427,6 +427,9 @@ button:active {
 .place-content-start {
   place-content: start;
 }
+.place-content-center {
+  place-content: center;
+}
 
 .capitalize {
   text-transform: capitalize;
@@ -797,4 +800,52 @@ button.bellIcon:active {
   .lg\:hidden {
     display: none;
   }
+}
+
+.brightgreen {
+  background-color: #34d399;
+  color: rgba(0, 0, 0, 0.8);
+}
+.green {
+  background-color: #bef264;
+  color: rgba(0, 0, 0, 0.8);
+}
+.yellow {
+  background-color: #facc15;
+  color: rgba(0, 0, 0, 0.8);
+}
+.orange {
+  background-color: #f97316;
+  color: rgba(255, 255, 255, 0.8);
+}
+.red {
+  background-color: #ef4444;
+  color: rgba(255, 255, 255, 0.8);
+}
+.langOuter {
+  display: inline-grid;
+  grid-auto-flow: column;
+  font-size: 0.75em;
+  place-content: start;
+  justify-items: center;
+  letter-spacing: 0.05em;
+  color: #fff;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  margin: 0.45em;
+  cursor: pointer;
+}
+.langOuter:active,
+.langOuter:hover,
+.langOuter:visited {
+  color: #fff;
+}
+.langOuter > span:first-child {
+  padding: 1px 6px;
+  border-radius: 4px 0 0 4px;
+  background-color: #555;
+}
+.langOuter > span:last-child {
+  padding: 1px 6px;
+  border-radius: 0 4px 4px 0;
 }

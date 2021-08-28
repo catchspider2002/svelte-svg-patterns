@@ -28,6 +28,84 @@
     }, 400);
   });
   onDestroy(() => clearTimeout(timeoutId));
+
+  let crowdinLang = {
+    title: [
+      "Afrikaans30% • 30%",
+      "Arabic50% • 50%",
+      "Catalan2% • 2%",
+      "Chinese Simplified100% • 100%",
+      "Chinese Traditional2% • 2%",
+      "Czech2% • 2%",
+      "Danish2% • 2%",
+      "Dutch2% • 2%",
+      "Finnish5% • 5%",
+      "French34% • 34%",
+      "German43% • 43%",
+      "Greek2% • 2%",
+      "Hebrew2% • 2%",
+      "Hungarian2% • 2%",
+      "Italian100% • 100%",
+      "Japanese3% • 3%",
+      "Korean2% • 2%",
+      "Norwegian Bokmal2% • 2%",
+      "Norwegian Nynorsk0% • 0%",
+      "Polish52% • 52%",
+      "Portuguese2% • 2%",
+      "Portuguese, Brazilian100% • 100%",
+      "Romanian100% • 100%",
+      "Russian2% • 2%",
+      "Serbian (Cyrillic)2% • 2%",
+      "Spanish50% • 50%",
+      "Swedish2% • 2%",
+      "Turkish100% • 100%",
+      "Ukrainian27% • 27%",
+      "Vietnamese2% • 2%",
+    ],
+    percent: [
+      "30% • 30%",
+      "50% • 50%",
+      "2% • 2%",
+      "100% • 100%",
+      "2% • 2%",
+      "2% • 2%",
+      "2% • 2%",
+      "2% • 2%",
+      "5% • 5%",
+      "34% • 34%",
+      "43% • 43%",
+      "2% • 2%",
+      "2% • 2%",
+      "2% • 2%",
+      "100% • 100%",
+      "3% • 3%",
+      "2% • 2%",
+      "2% • 2%",
+      "0% • 0%",
+      "52% • 52%",
+      "2% • 2%",
+      "100% • 100%",
+      "100% • 100%",
+      "2% • 2%",
+      "2% • 2%",
+      "50% • 50%",
+      "2% • 2%",
+      "100% • 100%",
+      "27% • 27%",
+      "2% • 2%",
+    ],
+  };
+
+  let concatList = crowdinLang.title.map(
+    (a, i) => a.replace(crowdinLang.percent[i], "") + "-" + crowdinLang.percent[i].replace(/ • /g, "-").replace(/%/g, "")
+  );
+
+  let languages = [];
+  for (const lang of concatList) {
+    let splitString = lang.split("-");
+    languages.push(splitString);
+    // 	languages.push({name: splitString[0], translated: splitString[1], approved: splitString[2]})
+  }
 </script>
 
 <footer>
@@ -92,4 +170,23 @@
       </div>
     </div>
   </div>
+
+  <section class="container mx-auto pb-6 mb-4 pt-2 px-4 flex flex-wrap place-content-center">
+    {#each languages as lang}
+      <a class="langOuter" target="_blank" href="https://crowdin.com/project/pattern-monster"
+        ><span>{lang[0]}</span>
+        {#if lang[1] == 100}
+          <span class="brightgreen">{lang[1]}%</span>
+        {:else if lang[1] > 79}
+          <span class="green">{lang[1]}%</span>
+        {:else if lang[1] > 64}
+          <span class="yellow">{lang[1]}%</span>
+        {:else if lang[1] > 49}
+          <span class="orange">{lang[1]}%</span>
+        {:else}
+          <span class="red">{lang[1]}%</span>
+        {/if}
+      </a>
+    {/each}
+  </section>
 </footer>
