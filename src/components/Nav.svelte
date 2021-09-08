@@ -12,7 +12,7 @@
   let visible = true;
   let bellCount = "0";
 
-  let starsCount = 199;
+  let starsCount = 203;
 
   // const dispatch = createEventDispatcher();
 
@@ -100,6 +100,7 @@
       toClose = menu;
     } else closeAll();
   }
+  
   function closeAll() {
     toClose.style.display = "none";
     toClose = false;

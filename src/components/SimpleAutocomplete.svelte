@@ -634,6 +634,9 @@
     top: 0;
     border: 1px solid #999;
     max-height: calc(15 * (1rem + 10px) + 15px);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
   }
   .autocomplete-list:empty {

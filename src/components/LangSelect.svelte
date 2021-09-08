@@ -81,13 +81,11 @@
   </button>
   <ul class="menuItems p-0">
     {#each languageList as lang}
-      {#if lang.name === languageName}
-        <a href={lang.link}><li class="px-4 py-3 selectedLang">{lang.name}</li></a>
-      {:else}
-        <a href={lang.link}><li class="px-4 py-3">{lang.name}</li></a>
-      {/if}
+      <li>
+        <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a>
+      </li>
     {/each}
-    <a href="https://crwd.in/pattern-monster" target="_blank"><li class="px-4 py-3 translateLink">{strings.translate}</li></a>
+    <li class="translateLink"><a class="px-4 py-3" href="https://crwd.in/pattern-monster" target="_blank">{strings.translate}</a></li>
   </ul>
 </div>
 
@@ -105,7 +103,7 @@
   /* .menu:focus,
   .menu:active {
     outline: 1px solid #fff; */
-    /* outline-offset: -4px; */
+  /* outline-offset: -4px; */
   /* } */
   /* .menu:hover {
     border-radius: var(--border-radius);
@@ -124,7 +122,7 @@
   }
   .menuButton:active,
   .menuButton:focus {
-     /* outline: none; */
+    /* outline: none; */
     background-color: var(--gray-800);
     outline: 1px solid #fff;
   }
@@ -141,9 +139,10 @@
     background-color: var(--main-bg-color);
     border: 1px solid var(--main-bg-color);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border-radius: var(--border-radius);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
     /* --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --tw-ring-offset-shadow: 0 0 #0000;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
@@ -151,16 +150,16 @@
   }
   .menuItems a {
     text-decoration: none;
-    padding: 0;
+    /* padding: 0; */
   }
-  .menuItems a li {
+  .menuItems li a {
     color: var(--gray-300);
   }
-  .menuItems a li.selectedLang {
+  .menuItems li a.selectedLang {
     color: var(--secondary-color);
     background-color: var(--gray-800);
   }
-  .menuItems a li:hover {
+  .menuItems li a:hover {
     background-color: var(--gray-700);
   }
 </style>

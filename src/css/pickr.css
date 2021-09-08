@@ -9,6 +9,8 @@
   outline: none;
   border: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .pickr .pcr-button {
   position: relative;
@@ -62,6 +64,8 @@
   outline: none;
   border: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .pcr-app button.pcr-active,
 .pcr-app button:focus,
@@ -271,14 +275,14 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-  cursor: grab;
   cursor: -webkit-grab;
+  cursor: grab;
 }
 .pcr-app .pcr-selection .pcr-color-chooser:active,
 .pcr-app .pcr-selection .pcr-color-opacity:active,
 .pcr-app .pcr-selection .pcr-color-palette:active {
-  cursor: grabbing;
   cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 .pcr-app[data-theme="monolith"] {
   width: 14.25em;

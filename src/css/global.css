@@ -12,6 +12,7 @@
   --accent-color-hover: rgba(68, 51, 122, 0.8);
   --secondary-color-hover: rgba(255, 200, 0, 0.8);
   --border-radius: 4px;
+  --blockquote-color: 103, 106, 109;
   --gray-300: #e2e8f0;
   --gray-400: #cbd5e0;
   --gray-500: #a0aec0;
@@ -43,6 +44,7 @@
   --svg-bg: rgb(42, 42, 48);
   --gray-bg: var(--gray-700);
   --gray-text: var(--gray-500);
+  --blockquote-color: 148, 146, 143;
   --input-background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='300px' height='300px' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round'><path fill='none' stroke='%23f7fafc' stroke-width='1' d='m 6,9 6,6 6,-6'/></svg>"),
     linear-gradient(to bottom, var(--card-bg) 0%, var(--card-bg) 100%);
   /* --list-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-checkbox' width='1.5em' height='2em' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23f7fafc' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpolyline points='9 11 12 14 20 6' /%3E%3Cpath d='M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9' /%3E%3C/svg%3E"); */
@@ -150,7 +152,9 @@ input[type="number"] {
   padding: 0.5rem;
   font-size: 1rem;
   width: 80px;
+  -webkit-appearance: textfield;
   -moz-appearance: textfield; /* Hide arrows for input number - Firefox */
+  appearance: textfield;
   border-radius: var(--border-radius);
   background-color: var(--gray-bg);
 }
@@ -224,6 +228,7 @@ button {
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
 }
 
 button:hover,
@@ -603,6 +608,7 @@ nav a {
   font-size: 0.85em;
   border: 1px solid var(--accent-text);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-background-clip: padding-box;
   background-clip: padding-box;
   color: var(--secondary-text-color);
   border-radius: var(--border-radius);
@@ -848,4 +854,25 @@ button.bellIcon:active {
 .langOuter > span:last-child {
   padding: 1px 6px;
   border-radius: 0 4px 4px 0;
+}
+
+/* Scrollbar */
+@media (pointer: fine) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: rgba(var(--blockquote-color), 0.5) rgba(var(--blockquote-color), 0.2);
+  }
+
+  ::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgba(var(--blockquote-color), 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--blockquote-color), 0.5);
+  }
 }
