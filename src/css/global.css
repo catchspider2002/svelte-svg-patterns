@@ -393,6 +393,9 @@ button:active {
 .text-center {
   text-align: center;
 }
+.text-end {
+  text-align: end;
+}
 .text-4xl {
   font-size: 2em;
 }
