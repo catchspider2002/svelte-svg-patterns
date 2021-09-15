@@ -4,18 +4,11 @@
   let strings = lang.strings;
 
   import Constants from "./_constants.js";
-  import Values from "./_values.js";
   import Index from "./_index.js";
-  let page = "changelog";
+  let page = "api";
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
 
   let array = Index;
-  // [
-  //   { id: 1, val: "hello" },
-  //   { id: 2, val: "world" },
-  //   { id: 3, val: "sorted" },
-  //   { id: 4, val: "table" },
-  // ];
 
   // Holds table sort state.  Initialized to reflect table sorted by id column ascending.
   let sortBy = { col: "id", ascending: true };
@@ -67,7 +60,7 @@
 
 <div class="secondary-text-color pattern-bg p-8">
   <div class="container mx-auto">
-    <h1 class="text-center mt-6 p-2 mb-2 font-semibold text-4xl uppercase">{strings.changelog}</h1>
+    <h1 class="text-center mt-6 p-2 mb-2 font-semibold text-4xl uppercase">API</h1>
     <div>
       <table class="mx-auto">
         <thead>

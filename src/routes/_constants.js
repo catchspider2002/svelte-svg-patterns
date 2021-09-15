@@ -41,6 +41,13 @@ const strings = {
       description: "Privacy Policy for Pattern Monster.",
       image: "",
     },
+    {
+      page: "api",
+      title: "API",
+      keywords: "api",
+      description: "API for Pattern Monster.",
+      image: "",
+    },
   ],
   versions: [
     {
