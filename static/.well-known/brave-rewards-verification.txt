@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: pattern.monster
+Token: 7fe51d23d94af1ce16b38b6c624cd36bb8f5b9adce319cd70e4c8f26b365aeb1
