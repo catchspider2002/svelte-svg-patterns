@@ -23,6 +23,7 @@
   border-radius: 0.15em;
   background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" stroke="%2342445A" stroke-width="5px" stroke-linecap="round"><path d="M45,45L5,5"></path><path d="M45,5L5,45"></path></svg>')
     no-repeat 50%;
+  color: var(--pcr-color);
   background-size: 0;
   transition: all 0.3s;
 }

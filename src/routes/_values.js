@@ -1,5 +1,13 @@
 let changeLog = [
   {
+    date: "September 25, 2021",
+    updates: [
+      'Added 10 new patterns',
+      'Updated the scrollbar color and language dropdown',
+      'Added translation status to the footer',
+    ],
+  },
+  {
     date: "August 20, 2021",
     updates: [
       'Added Chinese (Simplified) translation by Maplex available <a href="https://cn.pattern.monster">here</a>',

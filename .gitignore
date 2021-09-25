@@ -14,3 +14,5 @@ airtable.js
 redbubble
 SVGtoPNG.js
 test-worker/
+*.pattern.monster/
+src/css/*-*
