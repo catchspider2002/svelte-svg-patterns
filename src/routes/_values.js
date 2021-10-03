@@ -1,5 +1,11 @@
 let changeLog = [
   {
+    date: "October 4, 2021",
+    updates: [
+      'Added 12 patterns including 6 halloween patterns',
+    ],
+  },
+  {
     date: "September 25, 2021",
     updates: [
       'Added 10 new patterns',
