@@ -1,5 +1,12 @@
 let changeLog = [
   {
+    date: "October 10, 2021",
+    updates: [
+      'Added 8 new patterns',
+      'Added Shop section to purchase products from RedBubble across the categories - Accessories, Home & Living, Phone Cases, Stationery & Office, Stickers & Skins and Wall Art'
+    ],
+  },
+  {
     date: "October 4, 2021",
     updates: [
       'Added 12 patterns including 6 halloween patterns',

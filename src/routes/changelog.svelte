@@ -35,9 +35,9 @@
   <meta name="twitter:image:alt" content={title} />
 </svelte:head>
 
-<div class="secondary-text-color pattern-bg p-8">
+<div class="secondary-text-color pattern-bg p-2">
   <div class="container mx-auto">
-    <h1 class="text-center mt-6 p-2 mb-2 font-semibold text-4xl uppercase">{strings.changelog}</h1>
+    <h1 class="text-center mt-12 p-2 mb-2 font-semibold text-4xl uppercase">{strings.changelog}</h1>
     <div>
       <ul id="logs">
         {#each Values.changeLog as log}

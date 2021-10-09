@@ -7,6 +7,7 @@ yarn-error.log
 Samples.md
 createScreenshot.js
 createPattern.js
+createPatternImage.js
 airtable.js
 /static/archive
 /static/social
@@ -16,3 +17,4 @@ SVGtoPNG.js
 test-worker/
 *.pattern.monster/
 src/css/*-*
+*.env

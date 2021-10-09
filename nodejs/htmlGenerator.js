@@ -164,7 +164,18 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       });
       writeStream.end();
 
-      let sitePath = ["features", "downloads", "changelog", "privacy-policy"];
+      let sitePath = [
+        "features",
+        "downloads",
+        "changelog",
+        "privacy-policy",
+        "pattern-accessories",
+        "pattern-home-living",
+        "pattern-phone-cases",
+        "pattern-stationery-office",
+        "pattern-stickers-skins",
+        "pattern-wall-art",
+      ];
 
       // sitemap.xml
       writeStream = fs.createWriteStream(language.path + "static/sitemap.xml");
@@ -230,6 +241,12 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
         "index.json.js",
         // "index.svelte", -- Don't copy this - have to change the language
         "privacy-policy.svelte",
+        "pattern-accessories.svelte",
+        "pattern-home-living.svelte",
+        "pattern-phone-cases.svelte",
+        "pattern-stationery-office.svelte",
+        "pattern-stickers-skins.svelte",
+        "pattern-wall-art.svelte",
       ];
 
       routesFiles.forEach((filename) => {
@@ -238,6 +255,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
 
       copyFile("../src/css/" + globalCSS, language.path + "static/" + globalCSS);
       copyFile("../src/css/" + pickrCSS, language.path + "static/" + pickrCSS);
+      copyFile("../src/server.js", language.path + "src/server.js");
 
       function copyFile(source, dest) {
         fs.copyFile(source, dest, (err) => {

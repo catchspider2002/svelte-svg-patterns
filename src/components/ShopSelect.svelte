@@ -6,17 +6,12 @@
 
   let language = $langStore || "en";
   let languageList = [
-    { id: "en", name: "English", link: "https://pattern.monster" },
-    { id: "de", name: "Deutsch", link: "https://de.pattern.monster" },
-    { id: "es", name: "Español", link: "https://es.pattern.monster" },
-    { id: "fr", name: "Français", link: "https://fr.pattern.monster" },
-    { id: "it", name: "Italiano", link: "https://it.pattern.monster" },
-    { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
-    { id: "pt", name: "Português", link: "https://pt.pattern.monster" },
-    { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
-    { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
-    { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
-    { id: "zh-cn", name: "中文(简体)", link: "https://cn.pattern.monster" },
+    { id: "en", name: "Accessories", link: "pattern-accessories" },
+    { id: "de", name: "Home & Living", link: "pattern-home-living" },
+    { id: "fr", name: "Phone Cases", link: "pattern-phone-cases" },
+    { id: "it", name: "Stationery & Office", link: "pattern-stationery-office" },
+    { id: "es", name: "Stickers & Skins", link: "pattern-stickers-skins" },
+    { id: "pl", name: "Wall Art", link: "pattern-wall-art" },
   ];
 
   const languageName = languageList.find(({ id }) => id === language).name;
@@ -49,11 +44,11 @@
 <svelte:window on:click={closeWindow} />
 
 <div class="menu">
-  <button class="menuButton flex items-center" title={strings.translate} on:click={toggle}>
+  <button class="menuButton flex items-center" title={strings.shop} on:click={toggle}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="2em"
-      height="2em"
+      width="1.5em"
+      height="1.4em"
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
@@ -61,10 +56,13 @@
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <path d="M5 7h7m-2 -2v2a5 8 0 0 1 -5 8m1 -4a7 4 0 0 0 6.7 4" />
-      <path d="M11 19l4 -9l4 9m-.9 -2h-6.2" />
+      <line x1="3" y1="21" x2="21" y2="21" />
+      <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+      <line x1="5" y1="21" x2="5" y2="10.85" />
+      <line x1="19" y1="21" x2="19" y2="10.85" />
+      <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
     </svg>
-    <span class="dropDownName">{languageName}</span>
+    <span class="dropDownName">{strings.shop}</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.5em"
@@ -82,10 +80,10 @@
   <ul class="menuItems p-0">
     {#each languageList as lang}
       <li>
-        <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a>
+        <!-- <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a> -->
+        <a class="px-4 py-3" href={lang.link}>{lang.name}</a>
       </li>
     {/each}
-    <li class="translateLink"><a class="px-4 py-3" href="https://crwd.in/pattern-monster" target="_blank">{strings.translate}</a></li>
   </ul>
 </div>
 
@@ -95,23 +93,12 @@
     margin: 0 auto;
     justify-items: end;
     font-size: 1em;
+    padding-left: 0.5em;
   }
-  .translateLink {
-    border-top: 2px solid var(--secondary-color);
-  }
-
-  /* .menu:focus,
-  .menu:active {
-    outline: 1px solid #fff; */
-  /* outline-offset: -4px; */
-  /* } */
-  /* .menu:hover {
-    border-radius: var(--border-radius);
-    background-color: var(--gray-800);
-  } */
   .menuButton {
     font-weight: 500;
     border-radius: var(--border-radius);
+    padding: 0.5em 0.25em;
   }
   .menuButton > span {
     padding: 0 0.5em;
@@ -154,10 +141,6 @@
   }
   .menuItems li a {
     color: var(--gray-300);
-  }
-  .menuItems li a.selectedLang {
-    color: var(--secondary-color);
-    background-color: var(--gray-800);
   }
   .menuItems li a:hover {
     background-color: var(--gray-700);

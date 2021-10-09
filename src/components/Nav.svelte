@@ -7,12 +7,13 @@
   import Values from "../routes/_values.js";
   import { themeStore } from "../routes/stores.js";
   import LangSelect from "./LangSelect.svelte";
+  import ShopSelect from "./ShopSelect.svelte";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
   let visible = true;
   let bellCount = "0";
 
-  let starsCount = 213;
+  let starsCount = 219;
 
   // const dispatch = createEventDispatcher();
 
@@ -190,7 +191,8 @@
     <a rel="noopener noreferrer" title={strings.buyCoffee} class="bmc" target="_blank" href="https://www.buymeacoffee.com/naveencs">
       {@html Constants.bmcHeader}
     </a>
-    <a class="downloadsButton" title={strings.downloads} href="downloads">{strings.downloads}</a>
+    <ShopSelect />
+    <!-- <a class="downloadsButton" title={strings.downloads} href="downloads">{strings.downloads}</a> -->
     <LangSelect />
     <a
       class="tweetNav"
