@@ -10,6 +10,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@simonwep/pickr": "^1.7.4",
     "@supabase/supabase-js": "^1.24.0",
     "compression": "^1.7.4",
