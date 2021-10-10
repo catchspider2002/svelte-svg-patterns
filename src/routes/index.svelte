@@ -373,7 +373,7 @@
   <div class="container flex mx-auto pb-20 pt-2">
     <div class="alert">
       <div class="innerShop">
-    <span class="text-sm uppercase font-semibold tracking-wider">Shop Product Range</span>
+        <span class="text-sm uppercase font-semibold tracking-wider">Shop Product Range</span>
     <div class="shop-buttons">
     <a class="shop-button" href="pattern-accessories">{strings["accessories"]}</a>
     <a class="shop-button" href="pattern-home-living">{strings["home-living"]}</a>
@@ -382,7 +382,7 @@
     <a class="shop-button" href="pattern-stickers-skins">{strings["stickers-skins"]}</a>
     <a class="shop-button" href="pattern-wall-art">{strings["wall-art"]}</a>
   </div></div></div></div>
-  
+
   <h1>{@html strings.heading}</h1>
   <div class="stats">
     {#each stats as stat}

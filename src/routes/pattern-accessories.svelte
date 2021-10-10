@@ -28,7 +28,6 @@
 
   let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
   data.sort((a, b) => strings[a.item_id].localeCompare(strings[b.item_id]));
-  // data.sort((a, b) => a.creation_date.localeCompare(b.creation_date));
 
   let selection = data[0].category_id;
 
@@ -43,8 +42,7 @@
     };
   });
   const uniqCategories = [...new Map(categories.map((item) => [item["category_id"], item])).values()];
-  // uniqCategories.sort((a, b) => strings[a.item_id].localeCompare(strings[b.item_id]));
-
+  
   $: selectedUnique = uniqCategories.filter((category) => category.category_id === selection);
 </script>
 
@@ -143,12 +141,12 @@
   .radio-toolbar {
     box-sizing: border-box;
     width: 100%;
-    /* max-width: 1536px; */
+    margin: -0.5rem;
     margin-left: auto;
     margin-right: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
-    gap: 1rem;
+    /* gap: 1rem; */
     padding: 1rem;
   }
   img,
@@ -222,6 +220,7 @@
     gap: 0.25em;
     grid-auto-flow: column;
     padding: 0.35rem 0.6rem;
+    margin: 0.5rem;
     place-items: center;
     font-size: 1rem;
     background-color: var(--gray-bg);

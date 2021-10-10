@@ -1,24 +1,22 @@
 <script>
-  import { langStore } from "../routes/stores.js";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
   let toClose = false;
 
-  let language = $langStore || "en";
-  let languageList = [
-    { id: "en", name: "Accessories", link: "pattern-accessories" },
-    { id: "de", name: "Home & Living", link: "pattern-home-living" },
-    { id: "fr", name: "Phone Cases", link: "pattern-phone-cases" },
-    { id: "it", name: "Stationery & Office", link: "pattern-stationery-office" },
-    { id: "es", name: "Stickers & Skins", link: "pattern-stickers-skins" },
-    { id: "pl", name: "Wall Art", link: "pattern-wall-art" },
+  let shopList = [
+    { name: "Accessories", link: "pattern-accessories" },
+    { name: "Home & Living", link: "pattern-home-living" },
+    { name: "Phone Cases", link: "pattern-phone-cases" },
+    { name: "Stationery & Office", link: "pattern-stationery-office" },
+    { name: "Stickers & Skins", link: "pattern-stickers-skins" },
+    { name: "Wall Art", link: "pattern-wall-art" },
   ];
-
-  const languageName = languageList.find(({ id }) => id === language).name;
 
   function toggle(e) {
     e.stopPropagation();
     let menu = this.nextSibling;
+    // let menu = document.getElementById('shopMenu')
+    document.getElementById('langMenu').style.display = "none";
 
     while (menu && menu.nodeType != 1) {
       menu = menu.nextSibling;
@@ -77,12 +75,9 @@
       <polyline points="6 9 12 15 18 9" />
     </svg>
   </button>
-  <ul class="menuItems p-0">
-    {#each languageList as lang}
-      <li>
-        <!-- <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a> -->
-        <a class="px-4 py-3" href={lang.link}>{lang.name}</a>
-      </li>
+  <ul id="shopMenu" class="menuItems p-0">
+    {#each shopList as shop}
+      <li><a class="px-4 py-3" href={shop.link}>{shop.name}</a></li>
     {/each}
   </ul>
 </div>
@@ -130,14 +125,9 @@
     background-clip: padding-box;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
-    /* --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --tw-ring-offset-shadow: 0 0 #0000;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
-    /* padding: 0; */
   }
   .menuItems a {
     text-decoration: none;
-    /* padding: 0; */
   }
   .menuItems li a {
     color: var(--gray-300);

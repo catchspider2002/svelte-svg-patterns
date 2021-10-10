@@ -24,6 +24,8 @@
   function toggle(e) {
     e.stopPropagation();
     let menu = this.nextSibling;
+    // let menu = document.getElementById('langMenu')
+    document.getElementById('shopMenu').style.display = "none";
 
     while (menu && menu.nodeType != 1) {
       menu = menu.nextSibling;
@@ -79,7 +81,7 @@
       <polyline points="6 9 12 15 18 9" />
     </svg>
   </button>
-  <ul class="menuItems p-0">
+  <ul id="langMenu" class="menuItems p-0">
     {#each languageList as lang}
       <li>
         <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a>
