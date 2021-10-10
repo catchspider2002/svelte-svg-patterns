@@ -908,6 +908,21 @@ button.bellIcon:active {
     background-position: 0% 50%;
   }
 }
+.shopFeatures {
+  padding-inline-start: 1.5em;
+}
+.shopFeatures li {
+  list-style: none;
+  position: relative;
+  padding: 1px 0 9px 25px;
+}
+
+.shopFeatures li::before {
+  content: "-";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .shop-button {
   display: inline-block;
   background-color: transparent;

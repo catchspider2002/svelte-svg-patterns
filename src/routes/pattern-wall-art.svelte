@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="container mx-auto gray-text p-4 pt-12 pb-4 title">
-    <h2 class="inline-block font-semibold">{strings[selectedUnique[0].item_id]}</h2>
+    <h2 class="inline-block font-semibold secondary-text-color">{strings[selectedUnique[0].item_id]}</h2>
     <h3 class="inline-block font-normal">
       &nbsp;({selectedUnique[0].from_cost ? "From " : ""}
       {selectedUnique[0].cost})
@@ -268,7 +268,6 @@
     position: relative;
     display: block;
     width: 100%;
-    /* h-64 */
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -278,21 +277,6 @@
     font-size: 0.9em;
   }
   h3 {
-    color: rgba(var(--blockquote-color), 0.7);
-  }
-  .shopFeatures {
-    padding-inline-start: 1.5em;
-  }
-  :global(.shopFeatures li) {
-    list-style: none;
-    position: relative;
-    padding: 1px 0 9px 25px;
-  }
-
-  :global(.shopFeatures li::before) {
-    content: "-";
-    position: absolute;
-    top: 0;
-    left: 0;
+    color: rgba(var(--blockquote-color), 0.8);
   }
 </style>
