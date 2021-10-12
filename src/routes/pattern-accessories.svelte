@@ -42,7 +42,7 @@
     };
   });
   const uniqCategories = [...new Map(categories.map((item) => [item["category_id"], item])).values()];
-  
+
   $: selectedUnique = uniqCategories.filter((category) => category.category_id === selection);
 </script>
 
@@ -76,14 +76,14 @@
   <h1 class="text-center mt-12 p-2 mb-2 pb-6 font-semibold text-4xl uppercase">{strings[page]}</h1>
 
   <div class="container mx-auto">
-    <div class="range2Controls mt-8">
-      <div class="radio-toolbar">
-        {#each uniqCategories as cat}
-          <input type="radio" id={cat.category_id} name="bg" value={cat.category_id} bind:group={selection} />
-          <label class="disable-select" for={cat.category_id}>{strings[cat.item_id]}</label>
-        {/each}
-      </div>
+    <!-- <div class="range2Controls mt-8"> -->
+    <div class="radio-toolbar">
+      {#each uniqCategories as cat}
+        <input type="radio" id={cat.category_id} name="bg" value={cat.category_id} bind:group={selection} />
+        <label class="disable-select" for={cat.category_id}>{strings[cat.item_id]}</label>
+      {/each}
     </div>
+    <!-- </div> -->
   </div>
   <div class="container mx-auto gray-text p-4 pt-12 pb-4 title">
     <h2 class="inline-block font-semibold secondary-text-color">{strings[selectedUnique[0].item_id]}</h2>

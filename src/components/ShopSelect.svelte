@@ -88,7 +88,7 @@
     margin: 0 auto;
     justify-items: end;
     font-size: 1em;
-    padding-left: 0.5em;
+    padding: var(--shop-menu-padding);
   }
   .menuButton {
     font-weight: 500;

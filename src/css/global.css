@@ -33,6 +33,10 @@
   --notification-list-padding: 0.5em 1em 0.5em 2.5em;
   --notification-header-padding: 1.5em 1em 0.5em 1.5em;
   --notification-header-margin: 1em -0.8em 0 -2.5em;
+  --list-style-before-left: 0;
+  --list-style-before-right: auto;
+  --list-style-padding: 1px 0 9px 25px;
+  --shop-menu-padding: 0 0 0 0.5em;
 }
 [data-theme="dark"] {
   --pattern-bg: rgb(24, 24, 30);
@@ -56,6 +60,10 @@
   --notification-list-padding: 0.5em 2.5em 0.5em 1em;
   --notification-header-padding: 1.5em 1.5em 0.5em 1em;
   --notification-header-margin: 1em -2.5em 0 -0.8em;
+  --list-style-before-left: auto;
+  --list-style-before-right: 0;
+  --list-style-padding: 1px 25px 9px 0;
+  --shop-menu-padding: 0 0.5em 0 0;
 }
 
 *,
@@ -914,14 +922,15 @@ button.bellIcon:active {
 .shopFeatures li {
   list-style: none;
   position: relative;
-  padding: 1px 0 9px 25px;
+  padding: var(--list-style-padding);
 }
 
 .shopFeatures li::before {
   content: "-";
   position: absolute;
   top: 0;
-  left: 0;
+  left: var(--list-style-before-left);
+  right: var(--list-style-before-right);
 }
 .shop-button {
   display: inline-block;

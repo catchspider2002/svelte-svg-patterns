@@ -1,5 +1,11 @@
 let changeLog = [
   {
+    date: "October 12, 2021",
+    updates: [
+      'Added Dutch translation by Maarten van der Velde which can be accessed <a href="https://nl.pattern.monster">here</a>',
+    ],
+  },
+  {
     date: "October 10, 2021",
     updates: [
       'Added 8 new patterns',
