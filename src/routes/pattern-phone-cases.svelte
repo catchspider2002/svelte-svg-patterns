@@ -261,7 +261,7 @@
   }
 
   .transition:hover {
-    transform: scaleX(1.05) scaleY(1.05);
+    transform: scaleX(1.15) scaleY(1.15);
   }
 
   a {

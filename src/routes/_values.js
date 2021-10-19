@@ -1,5 +1,13 @@
 let changeLog = [
   {
+    date: "October 20, 2021",
+    updates: [
+      'Added 4 new patterns',
+      'Added 5 patterns to the Shop section',
+      'Updated the Spanish translation by XENWILLIAM',
+    ],
+  },
+  {
     date: "October 12, 2021",
     updates: [
       'Added Dutch translation by Maarten van der Velde which can be accessed <a href="https://nl.pattern.monster">here</a>',
@@ -9,7 +17,7 @@ let changeLog = [
     date: "October 10, 2021",
     updates: [
       'Added 8 new patterns',
-      'Added Shop section to purchase products from RedBubble across the categories - Accessories, Home & Living, Phone Cases, Stationery & Office, Stickers & Skins and Wall Art'
+      'Added Shop section to purchase products from RedBubble across the categories - <a href="pattern-accessories">Accessories</a>, <a href="pattern-home-living">Home & Living</a>, <a href="pattern-phone-cases">Phone Cases</a>, <a href="pattern-stationery-office">Stationery & Office</a>, <a href="pattern-stickers-skins">Stickers & Skins</a> and <a href="pattern-wall-art">Wall Art</a>'
     ],
   },
   {
