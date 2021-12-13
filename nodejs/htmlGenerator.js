@@ -39,6 +39,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
     { lang: "pt", name: "Português", col: 10, site: "https://pt.pattern.monster", path: "../pt.pattern.monster/" },
     { lang: "zh-cn", name: "中文(简体)", col: 11, site: "https://cn.pattern.monster", path: "../cn.pattern.monster/" },
     { lang: "nl", name: "Nederlands", col: 12, site: "https://nl.pattern.monster", path: "../nl.pattern.monster/" },
+    { lang: "sv", name: "Svenska", col: 13, site: "https://sv.pattern.monster", path: "../sv.pattern.monster/" },
 
     // { lang: "uk", name: "Українська", col: 13, path: "../../uk.pattern.monster/" },
     // { lang: "af", name: "Afrikaans", col: 14, path: "../../af.pattern.monster/" },

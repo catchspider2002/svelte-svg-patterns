@@ -15,6 +15,7 @@
     { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
     { id: "pt", name: "Português", link: "https://pt.pattern.monster" },
     { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
+    { id: "sv", name: "Svenska", link: "https://sv.pattern.monster" },
     { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
     { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
     { id: "zh-cn", name: "中文(简体)", link: "https://cn.pattern.monster" },
