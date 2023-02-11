@@ -29,7 +29,7 @@
     e.stopPropagation();
     let menu = this.nextSibling;
     // let menu = document.getElementById('langMenu')
-    document.getElementById("shopMenu").style.display = "none";
+    // document.getElementById("shopMenu").style.display = "none";
 
     while (menu && menu.nodeType != 1) {
       menu = menu.nextSibling;

@@ -371,28 +371,51 @@
 
 <div bind:clientWidth={w} class="patternsList">
   <div class="container flex mx-auto pb-20 pt-2">
-    <div class="alert">
+    <!-- <div class="alert">
       <div class="innerShop">
-        <span class="text-sm uppercase font-semibold tracking-wider">Shop Product Range</span>
-    <div class="shop-buttons">
-    <a class="shop-button" href="pattern-accessories">{strings["accessories"]}</a>
-    <a class="shop-button" href="pattern-home-living">{strings["home-living"]}</a>
-    <a class="shop-button" href="pattern-phone-cases">{strings["phone-cases"]}</a>
-    <a class="shop-button" href="pattern-stationery-office">{strings["stationery-office"]}</a>
-    <a class="shop-button" href="pattern-stickers-skins">{strings["stickers-skins"]}</a>
-    <a class="shop-button" href="pattern-wall-art">{strings["wall-art"]}</a>
-  </div></div></div></div>
+        <span class="text-sm uppercase font-semibold tracking-wider"
+          >Shop Product Range</span
+        >
+        <div class="shop-buttons">
+          <a class="shop-button" href="pattern-accessories"
+            >{strings["accessories"]}</a
+          >
+          <a class="shop-button" href="pattern-home-living"
+            >{strings["home-living"]}</a
+          >
+          <a class="shop-button" href="pattern-phone-cases"
+            >{strings["phone-cases"]}</a
+          >
+          <a class="shop-button" href="pattern-stationery-office"
+            >{strings["stationery-office"]}</a
+          >
+          <a class="shop-button" href="pattern-stickers-skins"
+            >{strings["stickers-skins"]}</a
+          >
+          <a class="shop-button" href="pattern-wall-art"
+            >{strings["wall-art"]}</a
+          >
+        </div>
+      </div>
+    </div> -->
+  </div>
 
   <h1>{@html strings.heading}</h1>
   <div class="stats">
     {#each stats as stat}
       <div class="grid grid-flow-col gap-2 gray-text place-content-start">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d={stat.path} /></svg>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          ><path d={stat.path} /></svg
+        >
         {stat.text}
       </div>
     {/each}
   </div>
-  <p class="container mx-auto">{strings.description} {strings.description2} {strings.description3}</p>
+  <p class="container mx-auto">
+    {strings.description}
+    {strings.description2}
+    {strings.description3}
+  </p>
 
   <!-- <div class="subscribe-waitlist grid">
     <span>{strings.apiAccess}</span>
@@ -448,7 +471,12 @@
   <div class="samples">
     {#each newPosts as post}
       <div class="outerPattern">
-        <a rel="prefetch" href="{post.slug}/" class="pattern" style={svgPattern(post.width, post.height, post.path, post.mode)}>
+        <a
+          rel="prefetch"
+          href="{post.slug}/"
+          class="pattern"
+          style={svgPattern(post.width, post.height, post.path, post.mode)}
+        >
           <span>{post.title}</span>
         </a>
         <div class="details">
@@ -500,7 +528,8 @@
     margin-top: 1em;
   }
   .outerPattern {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
     overflow: hidden;
   }

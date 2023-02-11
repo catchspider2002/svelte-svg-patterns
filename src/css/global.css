@@ -919,7 +919,7 @@ button.bellIcon:active {
   border-radius: 0 4px 4px 0;
 }
 
-.alert {
+/* .alert {
   background: var(--shop-gradient);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
@@ -928,9 +928,9 @@ button.bellIcon:active {
   display: flex;
   border-radius: var(--border-radius);
   color: var(--secondary-text-color);
-}
+} */
 
-@keyframes gradient {
+/* @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -940,8 +940,8 @@ button.bellIcon:active {
   100% {
     background-position: 0% 50%;
   }
-}
-.shopFeatures {
+} */
+/* .shopFeatures {
   padding-inline-start: 1.5em;
 }
 .shopFeatures li {
@@ -968,9 +968,9 @@ button.bellIcon:active {
 .shop-button:hover {
   border: 0.125em solid var(--secondary-text-color);
   color: var(--secondary-text-color);
-}
+} */
 
-.innerShop {
+/* .innerShop {
   padding: 1em;
   margin: 0.25em;
   background-color: var(--pattern-bg);
@@ -979,13 +979,13 @@ button.bellIcon:active {
 
 .innerShop span {
   color: var(--accent-text);
-}
-.shop-buttons {
+} */
+/* .shop-buttons {
   display: flex;
   flex-wrap: wrap;
   margin: -0.3em;
   padding: 0.6em 0 0.3em;
-}
+} */
 
 /* Scrollbar */
 @media (pointer: fine) {

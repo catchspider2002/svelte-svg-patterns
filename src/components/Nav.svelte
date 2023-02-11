@@ -7,7 +7,7 @@
   import Values from "../routes/_values.js";
   import { themeStore } from "../routes/stores.js";
   import LangSelect from "./LangSelect.svelte";
-  import ShopSelect from "./ShopSelect.svelte";
+  // import ShopSelect from "./ShopSelect.svelte";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
   let visible = true;
@@ -259,7 +259,7 @@
         <span class="coffee">{strings.buyCoffee}</span>
       </div>
     </a>
-    <ShopSelect />
+    <!-- <ShopSelect /> -->
     <!-- <a class="downloadsButton" title={strings.downloads} href="downloads">{strings.downloads}</a> -->
     <LangSelect />
     <a
