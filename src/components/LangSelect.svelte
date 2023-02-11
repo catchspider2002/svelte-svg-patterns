@@ -29,7 +29,7 @@
     e.stopPropagation();
     let menu = this.nextSibling;
     // let menu = document.getElementById('langMenu')
-    document.getElementById('shopMenu').style.display = "none";
+    document.getElementById("shopMenu").style.display = "none";
 
     while (menu && menu.nodeType != 1) {
       menu = menu.nextSibling;
@@ -55,7 +55,11 @@
 <svelte:window on:click={closeWindow} />
 
 <div class="menu">
-  <button class="menuButton flex items-center" title={strings.translate} on:click={toggle}>
+  <button
+    class="menuButton flex items-center"
+    title={strings.translate}
+    on:click={toggle}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="2em"
@@ -88,10 +92,20 @@
   <ul id="langMenu" class="menuItems p-0">
     {#each languageList as lang}
       <li>
-        <a class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}" href={lang.link}>{lang.name}</a>
+        <a
+          class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}"
+          href={lang.link}>{lang.name}</a
+        >
       </li>
     {/each}
-    <li class="translateLink"><a class="px-4 py-3" href="https://crwd.in/pattern-monster" target="_blank">{strings.translate}</a></li>
+    <li class="translateLink">
+      <a
+        class="px-4 py-3"
+        href="https://crwd.in/pattern-monster"
+        target="_blank"
+        rel="noopener noreferrer">{strings.translate}</a
+      >
+    </li>
   </ul>
 </div>
 
@@ -148,7 +162,8 @@
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
     /* --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --tw-ring-offset-shadow: 0 0 #0000;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */

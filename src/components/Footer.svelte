@@ -268,6 +268,7 @@
       <a
         class="langOuter"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://crowdin.com/project/pattern-monster"
         ><span>{lang[0]}</span>
         {#if lang[1] == 100}

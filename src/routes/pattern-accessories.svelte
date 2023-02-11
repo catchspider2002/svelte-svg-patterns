@@ -6,7 +6,9 @@
 
       const { data, error } = await supabase
         .from("patterns_v")
-        .select("pattern_id,pattern_name,category_id,category_name,image_id,item_id,creation_date,cost,from_cost,short_name,image_suffix")
+        .select(
+          "pattern_id,pattern_name,category_id,category_name,image_id,item_id,creation_date,cost,from_cost,short_name,image_suffix"
+        )
         .match({ category_name: page })
         .order("creation_date", { ascending: false });
 
@@ -26,12 +28,15 @@
   import { createClient } from "@supabase/supabase-js";
   export let data;
 
-  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+  let { title, url, keywords, desc, image, versions } =
+    Constants.pageDetails(page);
   data.sort((a, b) => strings[a.item_id].localeCompare(strings[b.item_id]));
 
   let selection = data[0].category_id;
 
-  $: selectedCategory = data.filter((category) => category.category_id === selection);
+  $: selectedCategory = data.filter(
+    (category) => category.category_id === selection
+  );
 
   let categories = data.map((cat) => {
     return {
@@ -41,9 +46,13 @@
       from_cost: cat.from_cost,
     };
   });
-  const uniqCategories = [...new Map(categories.map((item) => [item["category_id"], item])).values()];
+  const uniqCategories = [
+    ...new Map(categories.map((item) => [item["category_id"], item])).values(),
+  ];
 
-  $: selectedUnique = uniqCategories.filter((category) => category.category_id === selection);
+  $: selectedUnique = uniqCategories.filter(
+    (category) => category.category_id === selection
+  );
 </script>
 
 <svelte:head>
@@ -73,20 +82,32 @@
 </svelte:head>
 
 <section class="p-2 py-6 secondary-text-color pattern-bg pb-20">
-  <h1 class="text-center mt-12 p-2 mb-2 pb-6 font-semibold text-4xl uppercase">{strings[page]}</h1>
+  <h1 class="text-center mt-12 p-2 mb-2 pb-6 font-semibold text-4xl uppercase">
+    {strings[page]}
+  </h1>
 
   <div class="container mx-auto">
     <!-- <div class="range2Controls mt-8"> -->
     <div class="radio-toolbar">
       {#each uniqCategories as cat}
-        <input type="radio" id={cat.category_id} name="bg" value={cat.category_id} bind:group={selection} />
-        <label class="disable-select" for={cat.category_id}>{strings[cat.item_id]}</label>
+        <input
+          type="radio"
+          id={cat.category_id}
+          name="bg"
+          value={cat.category_id}
+          bind:group={selection}
+        />
+        <label class="disable-select" for={cat.category_id}
+          >{strings[cat.item_id]}</label
+        >
       {/each}
     </div>
     <!-- </div> -->
   </div>
   <div class="container mx-auto gray-text p-4 pt-12 pb-4 title">
-    <h2 class="inline-block font-semibold secondary-text-color">{strings[selectedUnique[0].item_id]}</h2>
+    <h2 class="inline-block font-semibold secondary-text-color">
+      {strings[selectedUnique[0].item_id]}
+    </h2>
     <h3 class="inline-block font-normal">
       &nbsp;({selectedUnique[0].from_cost ? "From " : ""}
       {selectedUnique[0].cost})
@@ -100,34 +121,51 @@
       {#if i % 10 == 4}
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
           )}-Pattern-Monster-by-catchspider2002/{link.pattern_id}.{link.category_id}?asc=u"
-          class="col-span-2 row-span-2 md:col-start-3 md:row-start-{(i % 10) * Math.round(i / 10) + 1}"
+          class="col-span-2 row-span-2 md:col-start-3 md:row-start-{(i % 10) *
+            Math.round(i / 10) +
+            1}"
         >
-          <img src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg" alt="" class="right min-h-96 transition" />
+          <img
+            src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg"
+            alt=""
+            class="right min-h-96 transition"
+          />
         </a>
       {:else if i % 10 == 5}
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
           )}-Pattern-Monster-by-catchspider2002/{link.pattern_id}.{link.category_id}?asc=u"
           class="col-span-2 row-span-2 md:col-start-1 md:row-start-3"
         >
-          <img src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg" alt="" class="left rounded min-h-96 transition" />
+          <img
+            src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg"
+            alt=""
+            class="left rounded min-h-96 transition"
+          />
         </a>
       {:else}
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
           )}-Pattern-Monster-by-catchspider2002/{link.pattern_id}.{link.category_id}?asc=u"
         >
-          <img src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg" alt="" class="min-h-48 transition" />
+          <img
+            src="https://ih1.redbubble.net/image.{link.image_id}/{link.image_suffix}.jpg"
+            alt=""
+            class="min-h-48 transition"
+          />
         </a>
       {/if}
     {/each}
@@ -167,7 +205,8 @@
     border-radius: 0.25rem;
     --tw-bg-opacity: 1;
     background-color: rgba(var(--gray-500), var(--tw-bg-opacity));
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .col-span-2 {
@@ -254,7 +293,8 @@
 
   .transition {
     transform: scaleX(1) scaleY(1);
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter,
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
       -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
     transition-duration: 500ms;
@@ -270,7 +310,8 @@
     width: 100%;
     overflow: hidden;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   .title {

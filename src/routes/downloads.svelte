@@ -5,7 +5,8 @@
 
   import Constants from "./_constants.js";
   let page = "downloads";
-  let { title, url, keywords, desc, image, versions } = Constants.pageDetails(page);
+  let { title, url, keywords, desc, image, versions } =
+    Constants.pageDetails(page);
 
   export let newPosts = [
     "Christmas Joy",
@@ -98,7 +99,9 @@
   ];
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
-  const diffDays = Math.round(Math.abs((new Date() - new Date(2020, 11, 19)) / oneDay));
+  const diffDays = Math.round(
+    Math.abs((new Date() - new Date(2020, 11, 19)) / oneDay)
+  );
 
   let imagePrefix = "https://giguom.com/pattern.monster/images/";
 </script>
@@ -136,9 +139,24 @@
     {#each newPosts as post, i}
       {#if i < diffDays}
         <div class="elementGrid">
-          <img loading="lazy" src={imagePrefix + "downloads/" + post.toLowerCase().replace(/ /g, "-") + "_Twitter.png"} alt={post} title={post} />
+          <img
+            loading="lazy"
+            src={imagePrefix +
+              "downloads/" +
+              post.toLowerCase().replace(/ /g, "-") +
+              "_Twitter.png"}
+            alt={post}
+            title={post}
+          />
           <h2>{post} patterns</h2>
-          <a class="button-gumroad" href={"https://gum.co/" + post.toLowerCase().replace(/ /g, "-") + "?wanted=true"} target="_blank">
+          <a
+            class="button-gumroad"
+            href={"https://gum.co/" +
+              post.toLowerCase().replace(/ /g, "-") +
+              "?wanted=true"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span class="logo" />
             <span>{strings.download}</span></a
           >
@@ -156,12 +174,6 @@
 
 <Footer />
 
-<!-- <a
-          rel="prefetch"
-          href="https://www.redbubble.com/shop/ap/64961293"
-          class="pattern">
-          <span>{post.title}</span>
-        </a> -->
 <style>
   h1 {
     font-size: 2em;
@@ -193,7 +205,8 @@
     display: grid;
     gap: 0.75em;
     justify-items: center;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
     overflow: hidden;
     padding-bottom: 2em;
@@ -206,7 +219,8 @@
     box-shadow: rgb(0 0 0 / 40%) 0 0 2px;
     color: #999;
     display: flex;
-    font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;

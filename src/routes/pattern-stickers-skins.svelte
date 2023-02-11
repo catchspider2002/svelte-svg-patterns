@@ -99,7 +99,7 @@
     {#each selectedCategory as link, i}
       {#if i % 10 == 4}
         <a
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
@@ -110,7 +110,7 @@
         </a>
       {:else if i % 10 == 5}
         <a
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
@@ -121,7 +121,7 @@
         </a>
       {:else}
         <a
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           href="https://www.redbubble.com/i/{link.short_name}/{link.pattern_name.replace(
             ' ',
             '-'
