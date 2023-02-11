@@ -394,10 +394,10 @@
   </div>
   <p class="container mx-auto">{strings.description} {strings.description2} {strings.description3}</p>
 
-  <div class="subscribe-waitlist grid">
+  <!-- <div class="subscribe-waitlist grid">
     <span>{strings.apiAccess}</span>
     <script async data-uid="f146eb0e2c" src="https://crafty-artist-9316.ck.page/f146eb0e2c/index.js"></script>
-  </div>
+  </div> -->
 
   <div class="outerGrid">
     <div class="searchBox">

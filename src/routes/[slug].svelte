@@ -83,7 +83,7 @@
         else if (colorCounts === 2) defColor = colors[1];
         // console.log("colorCounts: " + colorCounts + ", maxColors: " + maxColors + ", defColor: " + defColor);
         // console.log("colors: " + colors);
-      }
+      } 
 
       if (mode === "stroke-join") {
         strokeFill = " stroke='" + defColor + "' fill='none'";
@@ -129,6 +129,7 @@
       "," +
       scale * moveTop +
       ")' fill='url(#a)'/></svg>";
+    // return patternNew
     return patternNew.replace("#", "%23");
   };
 
@@ -570,7 +571,7 @@
         <div class="exportGrid">
           <span>{strings.copy}</span>
           <button id="cssExport" on:click={copyText(cssOutput, "CSS", this.id)} title={strings.copyCSS}>CSS</button>
-          <button id="svgExport" on:click={copyText(svgFile, "SVG", this.id)} title={strings.copySVG}>SVG</button>
+          <button id="svgExport" on:click={copyText(svgFile.replace("%23", "#"), "SVG", this.id)} title={strings.copySVG}>SVG</button>
         </div>
         <div class="downloadGrid">
           <span>{strings.download}</span>
@@ -627,7 +628,7 @@
   <div class="exportGrid">
     <span>{strings.copy}</span>
     <button id="cssBottom" on:click={copyText(cssOutput, "CSS", this.id)} title={strings.copyCSS}>CSS</button>
-    <button id="svgBottom" on:click={copyText(svgFile, "SVG", this.id)} title={strings.copySVG}>SVG</button>
+    <button id="svgBottom" on:click={copyText(svgFile.replace("%23", "#"), "SVG", this.id)} title={strings.copySVG}>SVG</button>
   </div>
   <div class="downloadGrid">
     <span>{strings.download}</span>

@@ -92,6 +92,21 @@ video {
   /* vertical-align: middle; */
 }
 
+@font-face {
+  font-family: Coffee;
+  src: local("Coffee"), local("coffee"), url("/coffeefont.ttf");
+  font-weight: normal;
+  font-display: swap;
+}
+
+.coffee {
+  font-family: Coffee, "Arial Narrow Bold", sans-serif;
+  margin-left: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: black;
+}
+
 html {
   /* font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: var(--font);
@@ -415,12 +430,21 @@ button:active {
 .text-center {
   text-align: center;
 }
+.text-start {
+  text-align: start;
+}
 .text-end {
   text-align: end;
 }
 .text-sm {
   font-size: 0.85em;
 }
+
+.test-xl {
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+}
+
 .text-4xl {
   font-size: 2em;
 }
@@ -736,11 +760,11 @@ button.bellIcon:active {
   opacity: 0.85;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .footerOuter {
     grid-template-columns: 0 1fr 1fr;
   }
-}
+} */
 
 /* Changelog */
 
@@ -875,7 +899,8 @@ button.bellIcon:active {
   letter-spacing: 0.05em;
   color: #fff;
   font-weight: 600;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
   margin: 0.45em;
   cursor: pointer;
 }
@@ -966,7 +991,8 @@ button.bellIcon:active {
 @media (pointer: fine) {
   * {
     scrollbar-width: auto;
-    scrollbar-color: rgba(var(--blockquote-color), 0.5) rgba(var(--blockquote-color), 0.2);
+    scrollbar-color: rgba(var(--blockquote-color), 0.5)
+      rgba(var(--blockquote-color), 0.2);
   }
 
   ::-webkit-scrollbar {

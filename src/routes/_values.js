@@ -1,5 +1,14 @@
 let changeLog = [
   {
+    date: "February 10, 2023",
+    updates: [
+      'Added 12 new patterns',
+      'Added Ukranian translation by Олег Ярощук and Tomizaki available <a href="https://uk.pattern.monster">here</a>',
+      'Added Russian translation by Flay Design available <a href="https://ru.pattern.monster">here</a>',
+      'Updated the Spanish, French and Arabic translations',
+    ],
+  },
+  {
     date: "December 14, 2021",
     updates: [
       'Added 8 new patterns',

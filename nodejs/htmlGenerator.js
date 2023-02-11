@@ -25,7 +25,9 @@ minify({
   callback: function (err, min) {},
 });
 
-xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).then((rows) => {
+xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
+  sheet: "Patterns",
+}).then((rows) => {
   let languages = [
     { lang: "en", name: "English", col: 1, site: "https://pattern.monster", path: "../" },
     { lang: "de", name: "Deutsch", col: 2, site: "https://de.pattern.monster", path: "../de.pattern.monster/" },
@@ -40,19 +42,38 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
     { lang: "zh-cn", name: "中文(简体)", col: 11, site: "https://cn.pattern.monster", path: "../cn.pattern.monster/" },
     { lang: "nl", name: "Nederlands", col: 12, site: "https://nl.pattern.monster", path: "../nl.pattern.monster/" },
     { lang: "sv", name: "Svenska", col: 13, site: "https://sv.pattern.monster", path: "../sv.pattern.monster/" },
-
-    // { lang: "uk", name: "Українська", col: 13, path: "../../uk.pattern.monster/" },
+    { lang: "uk", name: "Українська", col: 14, site: "https://uk.pattern.monster", path: "../uk.pattern.monster/" },
+    { lang: "ru", name: "Русский", col: 15, site: "https://ru.pattern.monster", path: "../ru.pattern.monster/" },
     // { lang: "af", name: "Afrikaans", col: 14, path: "../../af.pattern.monster/" },
   ];
 
   languages.forEach((language) => {
-    xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Translation" }).then((transRows) => {
+    xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
+      sheet: "Translation",
+    }).then((transRows) => {
       let array = getArray(language.col);
 
       function getArray(col) {
         let o = {};
         for (let j = 63; j < transRows.length; j++) {
-          o[transRows[j][1].toLowerCase()] = transRows[j][col] === "" || !transRows[j][col] ? transRows[j][1] : transRows[j][col];
+          o[transRows[j][1].toLowerCase()] =
+            transRows[j][col] === "" || !transRows[j][col]
+              ? transRows[j][1]
+              : transRows[j][col];
+        }
+
+        return o;
+      }
+
+      let translations = getTranslation(language.col);
+
+      function getTranslation(col) {
+        let o = {};
+        for (let j = 0; j < transRows.length; j++) {
+          o[transRows[j][0]] =
+            transRows[j][col] === "" || !transRows[j][col]
+              ? transRows[j][1]
+              : transRows[j][col];
         }
 
         return o;
@@ -61,7 +82,10 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       function getStrings(col) {
         let o = {};
         for (let j = 1; j < transRows.length; j++) {
-          o[transRows[j][0]] = transRows[j][col] === "" || !transRows[j][col] ? transRows[j][1] : transRows[j][col];
+          o[transRows[j][0]] =
+            transRows[j][col] === "" || !transRows[j][col]
+              ? transRows[j][1]
+              : transRows[j][col];
         }
 
         return o;
@@ -138,12 +162,18 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
         </body>
       </html>`;
 
-      fs.writeFile(language.path + "src/template.html", templateFile, function (err) {
-        if (err) return console.log(err);
-      });
+      fs.writeFile(
+        language.path + "src/template.html",
+        templateFile,
+        function (err) {
+          if (err) return console.log(err);
+        }
+      );
 
       // _lang.js
-      let writeStream = fs.createWriteStream(language.path + "src/routes/_lang.js");
+      let writeStream = fs.createWriteStream(
+        language.path + "src/routes/_lang.js"
+      );
       writeStream.write("const strings = ");
       writeStream.write(JSON.stringify(getStrings(language.col)));
       writeStream.write(";export default { strings };");
@@ -156,7 +186,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       // _index.js
       let langValues = printObject(language.col);
 
-      writeStream = fs.createWriteStream(language.path + "src/routes/_index.js");
+      writeStream = fs.createWriteStream(
+        language.path + "src/routes/_index.js"
+      );
       writeStream.write("const index = ");
       writeStream.write(JSON.stringify(langValues));
       writeStream.write("; export default index;");
@@ -185,7 +217,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       let date = new Date().toISOString();
 
       writeStream.write('<?xml version="1.0" encoding="UTF-8"?>\n');
-      writeStream.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n');
+      writeStream.write(
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+      );
       writeStream.write("    <url>\n");
       writeStream.write("        <loc>" + language.site + "</loc>\n");
       writeStream.write("        <lastmod>" + date + "</lastmod>\n");
@@ -194,7 +228,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
 
       sitePath.forEach((path) => {
         writeStream.write("    <url>\n");
-        writeStream.write("        <loc>" + language.site + "/" + path + "/</loc>\n");
+        writeStream.write(
+          "        <loc>" + language.site + "/" + path + "/</loc>\n"
+        );
         writeStream.write("        <lastmod>" + date + "</lastmod>\n");
         writeStream.write("        <priority>0.8</priority>\n");
         writeStream.write("    </url>\n");
@@ -202,7 +238,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
 
       langValues.forEach((path) => {
         writeStream.write("    <url>\n");
-        writeStream.write("        <loc>" + language.site + "/" + path.slug + "/</loc>\n");
+        writeStream.write(
+          "        <loc>" + language.site + "/" + path.slug + "/</loc>\n"
+        );
         writeStream.write("        <lastmod>" + date + "</lastmod>\n");
         writeStream.write("        <priority>0.8</priority>\n");
         writeStream.write("    </url>\n");
@@ -252,10 +290,17 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
       ];
 
       routesFiles.forEach((filename) => {
-        if (language.lang !== "en") copyFile("../src/routes/" + filename, language.path + "src/routes/" + filename);
+        if (language.lang !== "en")
+          copyFile(
+            "../src/routes/" + filename,
+            language.path + "src/routes/" + filename
+          );
       });
 
-      copyFile("../src/css/" + globalCSS, language.path + "static/" + globalCSS);
+      copyFile(
+        "../src/css/" + globalCSS,
+        language.path + "static/" + globalCSS
+      );
       copyFile("../src/css/" + pickrCSS, language.path + "static/" + pickrCSS);
       copyFile("../src/server.js", language.path + "src/server.js");
 
@@ -265,6 +310,223 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
         });
       }
 
+      let createConstants = () => {
+        let writeStream = fs.createWriteStream(
+          `${language.path}src/routes/_constants.js`
+        );
+
+        // console.log(translations);
+
+        writeStream.write(`const strings = {
+  website: "${language.site}",
+  title: "Pattern Monster",
+  description:
+    "${translations.description}",
+  description2: "${translations.description2}",
+  description3: 
+    "${translations.description3}",
+  keywords:
+    "${translations.keywords}",
+  pages: [
+    {
+      page: "index",
+      title: "${translations.title}",
+      keywords: "",
+      description: "",
+      image: "",
+    },
+    {
+      page: "changelog",
+      title: "${translations.changelog}",
+      keywords: "${translations.changelog.toLowerCase()}",
+      description: "Changelog for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "downloads",
+      title: "${translations.downloads}",
+      keywords: "${translations.downloads.toLowerCase()}",
+      description: "Downloads for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "features",
+      title: "${translations.features}",
+      keywords: "${translations.features.toLowerCase()}",
+      description: "Features for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "privacy-policy",
+      title: "${translations.privacy}",
+      keywords: "${translations.privacy.toLowerCase()}",
+      description: "Privacy Policy for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "api",
+      title: "API",
+      keywords: "api",
+      description: "API for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "accessories",
+      title: "Accessories",
+      keywords: "accessories, shop",
+      description: "Accessories for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "home-living",
+      title: "Home & Living",
+      keywords: "home, living, shop",
+      description: "Home Living for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "phone-cases",
+      title: "Phone Cases",
+      keywords: "phone, cases, shop",
+      description: "Phone Cases for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "stationery-office",
+      title: "Stationery & Office",
+      keywords: "stationery, office, shop",
+      description: "Stationery & Office for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "stickers-skins",
+      title: "Stickers & Skins",
+      keywords: "stickers, skins, shop",
+      description: "Stickers & Skins for Pattern Monster.",
+      image: "",
+    },
+    {
+      page: "wall-art",
+      title: "Wall Art",
+      keywords: "wall-art, shop",
+      description: "Wall Art for Pattern Monster.",
+      image: "",
+    },
+  ],
+  versions: [
+    {
+      lang: "en",
+      website: "https://pattern.monster",
+    },
+    {
+      lang: "de",
+      website: "https://de.pattern.monster",
+    },
+    {
+      lang: "pl",
+      website: "https://pl.pattern.monster",
+    },
+    {
+      lang: "tr",
+      website: "https://tr.pattern.monster",
+    },
+    {
+      lang: "es",
+      website: "https://es.pattern.monster",
+    },
+    {
+      lang: "it",
+      website: "https://it.pattern.monster",
+    },
+    {
+      lang: "ro",
+      website: "https://ro.pattern.monster",
+    },
+    {
+      lang: "fr",
+      website: "https://fr.pattern.monster",
+    },
+    {
+      lang: "ar",
+      website: "https://ar.pattern.monster",
+    },
+    {
+      lang: "pt",
+      website: "https://pt.pattern.monster",
+    },
+    {
+      lang: "zh-cn",
+      website: "https://cn.pattern.monster",
+    },
+    {
+      lang: "nl",
+      website: "https://nl.pattern.monster",
+    },
+    {
+      lang: "sv",
+      website: "https://sv.pattern.monster",
+    },
+    {
+      lang: "ru",
+      website: "https://ru.pattern.monster",
+    },
+    {
+      lang: "uk",
+      website: "https://uk.pattern.monster",
+    },
+  ],
+};
+
+const pageDetails = (page) => {
+  let imagePrefix = "https://giguom.com/pattern.monster/images/";
+  let pageValues =
+    strings.pages.filter((currentPage) => currentPage.page === page)[0] ||
+    strings.pages.filter((currentPage) => currentPage.page === "index")[0];
+
+  let website = strings.website;
+  let title = strings.title + " - " + strings.pages[0].title;
+  let url = website;
+  let keywords = strings.keywords;
+  let desc = strings.description + " " + strings.description3;
+  let image =
+    pageValues.image == "" ? imagePrefix + "/TwitterBG2.png" : pageValues.image;
+
+  let versions = strings.versions.map((version) => {
+    return {
+      lang: version.lang,
+      website: version.website + (page === "index" ? "" : "/" + page + "/"),
+    };
+  });
+
+  if (page != "index") {
+    title =
+      pageValues.title + " - " + strings.title + " | " + strings.pages[0].title;
+    url = website + "/" + page + "/";
+    desc =
+      pageValues.description +
+      " " +
+      strings.description +
+      " " +
+      strings.description3;
+    keywords = pageValues.keywords + ", " + strings.keywords;
+  }
+
+  return { title, url, keywords, desc, image, versions };
+};
+
+export default { strings, pageDetails };
+        `);
+        // writeStream.write(JSON.stringify(getStrings(language.col)));
+        // writeStream.write(';export default { strings };');
+
+        writeStream.on("finish", () => {
+          console.log("Created strings");
+        });
+        writeStream.end();
+      };
+
+      createConstants();
+
       function printObject(col) {
         let p = [];
         for (let j = 1; j < rows.length; j++) {
@@ -273,16 +535,25 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", { sheet: "Patterns" }).
           let title = rows[j][1];
           let tags = rows[j][11];
 
-          var newTitle = title.indexOf(" -") > 0 ? title.substring(0, title.indexOf(" -")) : title;
+          var newTitle =
+            title.indexOf(" -") > 0
+              ? title.substring(0, title.indexOf(" -"))
+              : title;
           var newArray = tags.split(",");
           let newTag = newArray;
 
           newArray.forEach((val) => {
-            if (array[val.toLowerCase()] && array[val.toLowerCase()].toLowerCase() !== val) newTag.push(array[val.toLowerCase()].toLowerCase());
+            if (
+              array[val.toLowerCase()] &&
+              array[val.toLowerCase()].toLowerCase() !== val
+            )
+              newTag.push(array[val.toLowerCase()].toLowerCase());
           });
 
           p.push({
-            title: array[newTitle.toLowerCase()] ? title.replace(newTitle, array[newTitle.toLowerCase()]) : title,
+            title: array[newTitle.toLowerCase()]
+              ? title.replace(newTitle, array[newTitle.toLowerCase()])
+              : title,
             slug: row[2],
             mode: row[3],
             colors: row[4],
