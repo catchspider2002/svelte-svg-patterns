@@ -94,7 +94,8 @@ video {
 
 @font-face {
   font-family: Coffee;
-  src: local("Coffee"), local("coffee"), url("https://giguom.com/pattern.monster/fonts/coffeefont.ttf");
+  src: local("Coffee"), local("coffee"),
+    url("https://giguom.com/pattern.monster/fonts/coffeefont.ttf");
   font-weight: normal;
   font-display: swap;
 }
@@ -104,7 +105,7 @@ video {
   margin-left: 0.6rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: black;
+  color: white;
 }
 
 html {
@@ -755,7 +756,9 @@ button.bellIcon:active {
   justify-self: center;
 }
 
+.bmc:hover,
 .bmcCta:hover,
+.bmc:focus,
 .bmcCta:focus {
   opacity: 0.85;
 }
