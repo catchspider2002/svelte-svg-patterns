@@ -51,48 +51,6 @@ const strings = {
       description: "API for Pattern Monster.",
       image: "",
     },
-    {
-      page: "accessories",
-      title: "Accessories",
-      keywords: "accessories, shop",
-      description: "Accessories for Pattern Monster.",
-      image: "",
-    },
-    {
-      page: "home-living",
-      title: "Home & Living",
-      keywords: "home, living, shop",
-      description: "Home Living for Pattern Monster.",
-      image: "",
-    },
-    {
-      page: "phone-cases",
-      title: "Phone Cases",
-      keywords: "phone, cases, shop",
-      description: "Phone Cases for Pattern Monster.",
-      image: "",
-    },
-    {
-      page: "stationery-office",
-      title: "Stationery & Office",
-      keywords: "stationery, office, shop",
-      description: "Stationery & Office for Pattern Monster.",
-      image: "",
-    },
-    {
-      page: "stickers-skins",
-      title: "Stickers & Skins",
-      keywords: "stickers, skins, shop",
-      description: "Stickers & Skins for Pattern Monster.",
-      image: "",
-    },
-    {
-      page: "wall-art",
-      title: "Wall Art",
-      keywords: "wall-art, shop",
-      description: "Wall Art for Pattern Monster.",
-      image: "",
-    },
   ],
   versions: [
     {
