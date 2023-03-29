@@ -147,10 +147,9 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
           <meta name="twitter:card" content="summary_large_image" />
       
           %sapper.styles%
-      
-          <!-- This contains the contents of the <svelte:head> component, if
-             the current page has one -->
           %sapper.head%
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2799761399763923"
+     crossorigin="anonymous"></script>
         </head>
         <body>
           <div id="sapper">%sapper.html%</div>

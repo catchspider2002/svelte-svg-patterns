@@ -13,7 +13,7 @@
   let visible = true;
   let bellCount = "0";
 
-  let starsCount = 383;
+  let starsCount = 384;
 
   // const dispatch = createEventDispatcher();
 
