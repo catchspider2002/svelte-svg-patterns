@@ -3,7 +3,7 @@
   import Values from "../routes/_values.js";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
-  import { onMount, onDestroy } from "svelte";
+  // import { onMount, onDestroy } from "svelte";
 
   let show = false;
   // const timeoutId = setTimeout(() => {
@@ -15,100 +15,19 @@
   // }, 400);
   // onDestroy(() => clearTimeout(timeoutId));
 
-  let timeoutId;
-  onMount(async () => {
-    timeoutId = setTimeout(() => {
-      show = true;
+  // let timeoutId;
+  // onMount(async () => {
+  //   timeoutId = setTimeout(() => {
+  //     show = true;
 
-      let element = document.querySelector('[aria-label="Your email address"]');
-      if (element) element.setAttribute("placeholder", strings.email);
+  //     let element = document.querySelector('[aria-label="Your email address"]');
+  //     if (element) element.setAttribute("placeholder", strings.email);
 
-      let sendButton = document.querySelector(".subscribe-bottom span");
-      if (sendButton) sendButton.innerHTML = strings.sendPatterns;
-    }, 400);
-  });
-  onDestroy(() => clearTimeout(timeoutId));
-
-  let crowdinLang = {
-    title: [
-      "Afrikaans30% • 30%",
-      "Arabic100% • 100%",
-      "Catalan2% • 2%",
-      "Chinese Simplified100% • 100%",
-      "Chinese Traditional2% • 2%",
-      "Czech6% • 6%",
-      "Danish2% • 2%",
-      "Dutch100% • 100%",
-      "Finnish5% • 5%",
-      "French100% • 100%",
-      "German100% • 100%",
-      "Greek2% • 2%",
-      "Hebrew17% • 17%",
-      "Hungarian36% • 36%",
-      "Italian100% • 100%",
-      "Japanese3% • 3%",
-      "Korean2% • 2%",
-      "Norwegian Bokmal2% • 2%",
-      "Norwegian Nynorsk0% • 0%",
-      "Polish54% • 54%",
-      "Portuguese7% • 7%",
-      "Portuguese, Brazilian100% • 100%",
-      "Romanian100% • 100%",
-      "Russian81% • 81%",
-      "Serbian (Cyrillic)2% • 2%",
-      "Spanish100% • 100%",
-      "Swedish100% • 100%",
-      "Turkish100% • 100%",
-      "Ukrainian100% • 100%",
-      "Vietnamese5% • 5%",
-    ],
-    percent: [
-      "30% • 30%",
-      "100% • 100%",
-      "2% • 2%",
-      "100% • 100%",
-      "2% • 2%",
-      "6% • 6%",
-      "2% • 2%",
-      "100% • 100%",
-      "5% • 5%",
-      "100% • 100%",
-      "100% • 100%",
-      "2% • 2%",
-      "17% • 17%",
-      "36% • 36%",
-      "100% • 100%",
-      "3% • 3%",
-      "2% • 2%",
-      "2% • 2%",
-      "0% • 0%",
-      "54% • 54%",
-      "7% • 7%",
-      "100% • 100%",
-      "100% • 100%",
-      "81% • 81%",
-      "2% • 2%",
-      "100% • 100%",
-      "100% • 100%",
-      "100% • 100%",
-      "100% • 100%",
-      "5% • 5%",
-    ],
-  };
-
-  let concatList = crowdinLang.title.map(
-    (a, i) =>
-      a.replace(crowdinLang.percent[i], "") +
-      "-" +
-      crowdinLang.percent[i].replace(/ • /g, "-").replace(/%/g, "")
-  );
-
-  let languages = [];
-  for (const lang of concatList) {
-    let splitString = lang.split("-");
-    languages.push(splitString);
-    // 	languages.push({name: splitString[0], translated: splitString[1], approved: splitString[2]})
-  }
+  //     let sendButton = document.querySelector(".subscribe-bottom span");
+  //     if (sendButton) sendButton.innerHTML = strings.sendPatterns;
+  //   }, 400);
+  // });
+  // onDestroy(() => clearTimeout(timeoutId));
 </script>
 
 <footer>
@@ -258,23 +177,23 @@
   <section
     class="container mx-auto pb-6 mb-4 pt-2 px-4 flex flex-wrap place-content-center"
   >
-    {#each languages as lang}
+    {#each Constants.strings.langs as lang}
       <a
         class="langOuter"
         target="_blank"
         rel="noopener noreferrer"
         href="https://crowdin.com/project/pattern-monster"
-        ><span>{lang[0]}</span>
-        {#if lang[1] == 100}
-          <span class="brightgreen">{lang[1]}%</span>
-        {:else if lang[1] > 79}
-          <span class="green">{lang[1]}%</span>
-        {:else if lang[1] > 64}
-          <span class="yellow">{lang[1]}%</span>
-        {:else if lang[1] > 49}
-          <span class="orange">{lang[1]}%</span>
+        ><span>{lang.name}</span>
+        {#if lang.approval == 100}
+          <span class="brightgreen">{lang.approval}%</span>
+        {:else if lang.approval > 79}
+          <span class="green">{lang.approval}%</span>
+        {:else if lang.approval > 64}
+          <span class="yellow">{lang.approval}%</span>
+        {:else if lang.approval > 49}
+          <span class="orange">{lang.approval}%</span>
         {:else}
-          <span class="red">{lang[1]}%</span>
+          <span class="red">{lang.approval}%</span>
         {/if}
       </a>
     {/each}

@@ -1,9 +1,16 @@
 let changeLog = [
   {
-    date: "March 24, 2023",
+    date: "May 17, 2023",
     updates: [
-      "Added 12 new patterns",
+      "Added 16 new patterns",
+      "Updated Polish and Russian translations",
+      "Added Afrikaans translation by RaphaelAlves available <a href='https://af.pattern.monster'>here</a>",
+      "Added Hungarian translation available <a href='https://hu.pattern.monster'>here</a>",
     ],
+  },
+  {
+    date: "March 24, 2023",
+    updates: ["Added 12 new patterns"],
   },
   {
     date: "February 10, 2023",
@@ -11,7 +18,7 @@ let changeLog = [
       "Added 12 new patterns",
       'Added Ukranian translation by Олег Ярощук and Tomizaki available <a href="https://uk.pattern.monster">here</a>',
       'Added Russian translation by Flay Design available <a href="https://ru.pattern.monster">here</a>',
-      "Updated the Spanish, French and Arabic translations",
+      "Updated Spanish, French and Arabic translations",
     ],
   },
   {

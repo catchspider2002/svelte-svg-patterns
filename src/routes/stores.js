@@ -1,7 +1,4 @@
-import { writable } from 'svelte/store';
-// import { onMount } from "svelte";
+import { writable } from "svelte/store";
 
 export const themeStore = writable("light");
 export const langStore = writable("en");
-
-// export let themeStore;

@@ -1,11 +1,21 @@
-const fs = require("fs");
-const fsextra = require("fs-extra");
+// const fs = require("fs");
+// const fsextra = require("fs-extra");
 
-const xlsxFile = require("read-excel-file/node");
+// const xlsxFile = require("read-excel-file/node");
 
-const minify = require("@node-minify/core");
-const cleanCSS = require("@node-minify/clean-css");
-const glob = require("glob");
+// const minify = require("@node-minify/core");
+// const cleanCSS = require("@node-minify/clean-css");
+// const glob = require("glob");
+
+import fs from "fs";
+import fsextra from "fs-extra";
+import xlsxFile from "read-excel-file/node";
+import minify from "@node-minify/core";
+import cleanCSS from "@node-minify/clean-css";
+import glob from "glob";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "../.env" });
 
 let timestamp = Math.round(+new Date() / 1000);
 let globalCSS = "global-" + timestamp + ".min.css";
@@ -25,28 +35,189 @@ minify({
   callback: function (err, min) {},
 });
 
+let prog = async () => {
+  const CROWDIN = process.env.VITE_CROWDIN;
+
+  var requestOptions = {
+    method: "GET",
+    headers: { Authorization: `Bearer ${CROWDIN}` },
+    redirect: "follow",
+  };
+
+  const targetLanguages = await (
+    await fetch(
+      "https://api.crowdin.com/api/v2/projects/431524?limit=50",
+      requestOptions
+    )
+  ).json();
+
+  // console.log(JSON.stringify(targetLanguages.data))
+
+  const targetLang = await targetLanguages.data.targetLanguages.map((val) => ({
+    id: val.id,
+    name: val.name,
+    code:
+      val.editorCode.length > 2
+        ? val.editorCode.slice(0, 2) + "-" + val.editorCode.substring(2)
+        : val.editorCode,
+  }));
+
+  const progress = await (
+    await fetch(
+      "https://api.crowdin.com/api/v2/projects/431524/languages/progress?limit=50",
+      requestOptions
+    )
+  ).json();
+
+  const translationStatus = progress.data.map((val) => ({
+    id: val.data.languageId,
+    translation: val.data.translationProgress,
+    approval: val.data.approvalProgress,
+  }));
+
+  const mergedArray = targetLang.map((lang) => {
+    const status = translationStatus.find((status) => status.id === lang.id);
+    return { ...lang, ...status };
+  });
+
+  mergedArray.sort((a, b) => a.name.localeCompare(b.name));
+
+  return mergedArray;
+};
+
+let langs = await prog();
+
+let languages = [
+  {
+    lang: "en",
+    name: "English",
+    col: 1,
+    site: "https://pattern.monster",
+    path: "../",
+  },
+  {
+    lang: "de",
+    name: "Deutsch",
+    col: 2,
+    site: "https://de.pattern.monster",
+    path: "../de.pattern.monster/",
+  },
+  {
+    lang: "pl",
+    name: "Polski",
+    col: 3,
+    site: "https://pl.pattern.monster",
+    path: "../pl.pattern.monster/",
+  },
+  {
+    lang: "tr",
+    name: "Türkçe",
+    col: 4,
+    site: "https://tr.pattern.monster",
+    path: "../tr.pattern.monster/",
+  },
+  {
+    lang: "es",
+    name: "Español",
+    col: 5,
+    site: "https://es.pattern.monster",
+    path: "../es.pattern.monster/",
+  },
+  {
+    lang: "it",
+    name: "Italiano",
+    col: 6,
+    site: "https://it.pattern.monster",
+    path: "../it.pattern.monster/",
+  },
+  {
+    lang: "ro",
+    name: "Română",
+    col: 7,
+    site: "https://ro.pattern.monster",
+    path: "../ro.pattern.monster/",
+  },
+  {
+    lang: "fr",
+    name: "Français",
+    col: 8,
+    site: "https://fr.pattern.monster",
+    path: "../fr.pattern.monster/",
+  },
+  {
+    lang: "ar",
+    name: "العربية",
+    col: 9,
+    site: "https://ar.pattern.monster",
+    path: "../ar.pattern.monster/",
+  },
+  {
+    lang: "pt",
+    name: "Português",
+    col: 10,
+    site: "https://pt.pattern.monster",
+    path: "../pt.pattern.monster/",
+  },
+  {
+    lang: "zh-cn",
+    name: "中文(简体)",
+    col: 11,
+    site: "https://cn.pattern.monster",
+    path: "../cn.pattern.monster/",
+  },
+  {
+    lang: "nl",
+    name: "Nederlands",
+    col: 12,
+    site: "https://nl.pattern.monster",
+    path: "../nl.pattern.monster/",
+  },
+  {
+    lang: "sv",
+    name: "Svenska",
+    col: 13,
+    site: "https://sv.pattern.monster",
+    path: "../sv.pattern.monster/",
+  },
+  {
+    lang: "uk",
+    name: "Українська",
+    col: 14,
+    site: "https://uk.pattern.monster",
+    path: "../uk.pattern.monster/",
+  },
+  {
+    lang: "ru",
+    name: "Русский",
+    col: 15,
+    site: "https://ru.pattern.monster",
+    path: "../ru.pattern.monster/",
+  },
+  {
+    lang: "hu",
+    name: "Magyar",
+    col: 16,
+    site: "https://hu.pattern.monster",
+    path: "../hu.pattern.monster/",
+  },
+  {
+    lang: "af",
+    name: "Afrikaans",
+    col: 17,
+    site: "https://af.pattern.monster",
+    path: "../af.pattern.monster/",
+  },
+];
+
+let versions = languages.map((language) => ({
+  lang: language.lang,
+  name: language.name,
+  website: language.site,
+}));
+
 xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
   sheet: "Patterns",
 }).then((rows) => {
-  let languages = [
-    { lang: "en", name: "English", col: 1, site: "https://pattern.monster", path: "../" },
-    { lang: "de", name: "Deutsch", col: 2, site: "https://de.pattern.monster", path: "../de.pattern.monster/" },
-    { lang: "pl", name: "Polski", col: 3, site: "https://pl.pattern.monster", path: "../pl.pattern.monster/" },
-    { lang: "tr", name: "Türkçe", col: 4, site: "https://tr.pattern.monster", path: "../tr.pattern.monster/" },
-    { lang: "es", name: "Español", col: 5, site: "https://es.pattern.monster", path: "../es.pattern.monster/" },
-    { lang: "it", name: "Italiano", col: 6, site: "https://it.pattern.monster", path: "../it.pattern.monster/" },
-    { lang: "ro", name: "Română", col: 7, site: "https://ro.pattern.monster", path: "../ro.pattern.monster/" },
-    { lang: "fr", name: "Français", col: 8, site: "https://fr.pattern.monster", path: "../fr.pattern.monster/" },
-    { lang: "ar", name: "العربية", col: 9, site: "https://ar.pattern.monster", path: "../ar.pattern.monster/" },
-    { lang: "pt", name: "Português", col: 10, site: "https://pt.pattern.monster", path: "../pt.pattern.monster/" },
-    { lang: "zh-cn", name: "中文(简体)", col: 11, site: "https://cn.pattern.monster", path: "../cn.pattern.monster/" },
-    { lang: "nl", name: "Nederlands", col: 12, site: "https://nl.pattern.monster", path: "../nl.pattern.monster/" },
-    { lang: "sv", name: "Svenska", col: 13, site: "https://sv.pattern.monster", path: "../sv.pattern.monster/" },
-    { lang: "uk", name: "Українська", col: 14, site: "https://uk.pattern.monster", path: "../uk.pattern.monster/" },
-    { lang: "ru", name: "Русский", col: 15, site: "https://ru.pattern.monster", path: "../ru.pattern.monster/" },
-    // { lang: "af", name: "Afrikaans", col: 14, path: "../../af.pattern.monster/" },
-  ];
-
   languages.forEach((language) => {
     xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
       sheet: "Translation",
@@ -182,6 +353,31 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
       });
       writeStream.end();
 
+      // stores.js
+      writeStream = fs.createWriteStream(
+        language.path + "src/routes/stores.js"
+      );
+      writeStream.write(`import { writable } from "svelte/store";
+
+export const themeStore = writable("light");
+export const langStore = writable("${language.lang}");`);
+
+      writeStream.on("finish", () => {
+        console.log("Created ");
+      });
+      writeStream.end();
+
+      // robots.txt
+      writeStream = fs.createWriteStream(language.path + "static/robots.txt");
+      writeStream.write(`Sitemap: ${language.site}/sitemap.xml
+User-agent: * 
+Crawl-Delay: 20`);
+
+      writeStream.on("finish", () => {
+        console.log("Created ");
+      });
+      writeStream.end();
+
       // _index.js
       let langValues = printObject(language.col);
 
@@ -197,12 +393,7 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
       });
       writeStream.end();
 
-      let sitePath = [
-        "features",
-        "downloads",
-        "changelog",
-        "privacy-policy",
-      ];
+      let sitePath = ["features", "downloads", "changelog", "privacy-policy"];
 
       // sitemap.xml
       writeStream = fs.createWriteStream(language.path + "static/sitemap.xml");
@@ -247,6 +438,60 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
       });
 
       // close the stream
+      writeStream.end();
+
+      // package.json
+      writeStream = fs.createWriteStream(language.path + "package.json");
+      writeStream.write(`{
+  "name": "${language.site}",
+  "description": "SVG Patterns",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sapper dev",
+    "build": "sapper build --legacy",
+    "export": "sapper export --entry \\"index api features confirmed herringbone-7 herringbone-8 flower-1 flower-2 flower-3 flower-4 flower-5 flower-6 flower-7 plus-1 plus-2 plus-3 plus-4 circles-1 circles-2 circles-3 circles-4 circles-5 circles-6 circles-7 concentric-circles-1 concentric-circles-2 concentric-circles-3 adjointed-circles adjointed-diamonds diamonds-1 diamonds-2 diamonds-3 hexagon-1 hexagon-2 hexagon-3 hexagon-4 hexagon-5 hexagon-6 hexagon-7 hexagon-8 overlapping-hexagons squares-and-squares-1 squares-and-squares-2 squares-and-diamonds squares-and-circles-1 squares-and-circles-2 squares-and-plus-1 squares-and-plus-2 squares-and-stars-1 squares-and-stars-2 stars-and-lines-1 stars-and-lines-2 triangles-1 triangles-2 triangles-3 triangles-4 triangles-5 triangles-6 triangles-7 triangles-8 triangles-9 triangles-10 inverted-triangles checkerboard japanese-pattern-1 japanese-pattern-2 japanese-pattern-3 japanese-pattern-4 japanese-pattern-5 japanese-pattern-6 eyes-1 eyes-2 eyes-3 eyes-4 jigsaw railroad octagons-1 octagons-2 lines-1 lines-2 scales-1 scales-2 scales-3 scales-4 leaves-1 leaves-2 leaves-3 leaves-4 leaves-5 leaves-6 leaves-7 leaves-8 pipes zebra memphis-1 memphis-2 memphis-3 memphis-4 memphis-5 memphis-6 greek-key chinese-1 chinese-2 chinese-3 chinese-4 chinese-9 chinese-5 chinese-6 chinese-7 chinese-8 new-1 new-2 new-3 new-4 new-5 new-6 new-7 new-8 new-9 new-10 new-11 new-12 new-13 new-14 new-15 new-16 new-17 double-bubble-1 double-bubble-2 stars-1 stars-2 stars-3 stars-4 stars-5 stars-6 semicircles-1 songket-1 christmas-tree-1 candy-cane-1 christmas-bells-1 christmas-pattern-1 christmas-pattern-2 christmas-pattern-3 snowflakes-1 christmas-tree-balls santa-claus christmas-gift cubes-1 cubes-2 cubes-3 stained-glass tiles-1 rectangles-and-squares-1 mexican-pattern-1 mexican-pattern-2 ethnic-pattern-1 ethnic-pattern-2 ethnic-pattern-3 plaid-pattern-1 plaid-pattern-2 plaid-pattern-3 plaid-pattern-4 doodle-1 doodle-2 batik-1 batik-2 batik-3 batik-4 batik-5 batik-6 african-1 african-2 african-3 african-4 triangles-11 hexagon-9 tiles-2 tiles-3 tribal-1 tribal-2 waves-8 leaves-9 blobs african-5 triangles-12 squares-and-triangles-1 tribal-3 circles-8 triangles-13 triangles-14 triangles-15 triangles-16 circles-9 concentric-circles-4 concentric-circles-5 concentric-circles-6 stripes-1 stripes-2 chevron-4 chevron-5 terrazzo-1 geometric-1 halloween-1 halloween-2 halloween-3 halloween-4 halloween-5 halloween-6 hexagon-10 hexagon-11 squares-1 squares-2 sprinkles-1 cubes-4 geometric-2 geometric-3 geometric-4 circles-10 circles-11 circles-12 triangles-17 triangles-18 geometric-5 geometric-6 squiggle-1 moroccan-1 moroccan-2 japanese-pattern-7 waves-9 christmas-pattern-4 christmas-pattern-5 plaid-pattern-5 plaid-pattern-6 circles-13 circles-14 interlocked-hexagons-1 interlocked-hexagons-2 interlocked-hexagons-3 lanterns-1 leaves-10 lines-3 rope-1 waves-10 waves-11 lines-4 lines-5 lines-6 plus-5 plus-6 scales-5 scales-6 scales-7 scales-8 scales-9 triangles-19 triangles-20 batik-7 circles-15 circles-16 circles-17 circles-and-diamonds diamonds-4 diamonds-5 diamonds-6 geometric-7 geometric-8 geometric-9 geometric-10 waves-12 waves-13 waves-14 waves-15\\"",
+    "start": "node __sapper__/build",
+    "test": "run-p --race dev cy:run"
+  },
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@simonwep/pickr": "^1.8.2",
+    "compression": "^1.7.4",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "polka": "next",
+    "prettier": "^2.8.8",
+    "save-svg-as-png": "^1.4.17",
+    "sirv": "^1.0.7"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.33.3",
+    "rollup-plugin-svelte": "^6.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "sapper": "^0.29.1"`);
+
+      if (language.lang == "en")
+        writeStream.write(`,
+    "svelte": "^3.59.1",
+    "fs-extra": "^11.1.1",
+    "@node-minify/clean-css": "^8.0.6",
+    "@node-minify/core": "^8.0.6",
+    "read-excel-file": "^5.6.1",
+    "glob": "^8.1.0",
+    "tinycolor2": "^1.6.0",
+    "sharp": "^0.32.1",
+    "convert-svg-to-png": "^0.6.4"`);
+      writeStream.write(`
+  }
+}`);
+
+      writeStream.on("finish", () => {
+        console.log("Created ");
+      });
       writeStream.end();
 
       // fs.copyFile("global.css", lang + "/css/global.css", (err) => {
@@ -302,8 +547,6 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
           `${language.path}src/routes/_constants.js`
         );
 
-        // console.log(translations);
-
         writeStream.write(`const strings = {
   website: "${language.site}",
   title: "Pattern Monster",
@@ -358,68 +601,8 @@ xlsxFile("../../../../OneDrive/Documents/Patterns.xlsm", {
       image: "",
     },
   ],
-  versions: [
-    {
-      lang: "en",
-      website: "https://pattern.monster",
-    },
-    {
-      lang: "de",
-      website: "https://de.pattern.monster",
-    },
-    {
-      lang: "pl",
-      website: "https://pl.pattern.monster",
-    },
-    {
-      lang: "tr",
-      website: "https://tr.pattern.monster",
-    },
-    {
-      lang: "es",
-      website: "https://es.pattern.monster",
-    },
-    {
-      lang: "it",
-      website: "https://it.pattern.monster",
-    },
-    {
-      lang: "ro",
-      website: "https://ro.pattern.monster",
-    },
-    {
-      lang: "fr",
-      website: "https://fr.pattern.monster",
-    },
-    {
-      lang: "ar",
-      website: "https://ar.pattern.monster",
-    },
-    {
-      lang: "pt",
-      website: "https://pt.pattern.monster",
-    },
-    {
-      lang: "zh-cn",
-      website: "https://cn.pattern.monster",
-    },
-    {
-      lang: "nl",
-      website: "https://nl.pattern.monster",
-    },
-    {
-      lang: "sv",
-      website: "https://sv.pattern.monster",
-    },
-    {
-      lang: "ru",
-      website: "https://ru.pattern.monster",
-    },
-    {
-      lang: "uk",
-      website: "https://uk.pattern.monster",
-    },
-  ],
+  versions: ${JSON.stringify(versions)},
+  langs:${JSON.stringify(langs)}
 };
 
 const pageDetails = (page) => {

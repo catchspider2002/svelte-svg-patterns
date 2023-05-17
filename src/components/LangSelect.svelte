@@ -1,29 +1,43 @@
 <script>
   import { langStore } from "../routes/stores.js";
+  import Constants from "../routes/_constants.js";
   import lang from "../routes/_lang.js";
   let strings = lang.strings;
   let toClose = false;
 
   let language = $langStore || "en";
-  let languageList = [
-    { id: "en", name: "English", link: "https://pattern.monster" },
-    { id: "de", name: "Deutsch", link: "https://de.pattern.monster" },
-    { id: "es", name: "Español", link: "https://es.pattern.monster" },
-    { id: "fr", name: "Français", link: "https://fr.pattern.monster" },
-    { id: "it", name: "Italiano", link: "https://it.pattern.monster" },
-    { id: "nl", name: "Nederlands", link: "https://nl.pattern.monster" },
-    { id: "pl", name: "Polski", link: "https://pl.pattern.monster" },
-    { id: "pt", name: "Português", link: "https://pt.pattern.monster" },
-    { id: "ro", name: "Română", link: "https://ro.pattern.monster" },
-    { id: "sv", name: "Svenska", link: "https://sv.pattern.monster" },
-    { id: "tr", name: "Türkçe", link: "https://tr.pattern.monster" },
-    { id: "ru", name: "Русский", link: "https://ru.pattern.monster" },
-    { id: "uk", name: "Українська", link: "https://uk.pattern.monster" },
-    { id: "ar", name: "العربية", link: "https://ar.pattern.monster" },
-    { id: "zh-cn", name: "中文(简体)", link: "https://cn.pattern.monster" },
-  ];
+  let languageList = Constants.strings.versions;
+  // console.log(languageList)
 
-  const languageName = languageList.find(({ id }) => id === language).name;
+  // Helper function to get the script used in a language
+  function getScript(lang) {
+    return Intl.PluralRules.supportedLocalesOf(lang, { type: "cardinal" })[0];
+  }
+
+  languageList.sort((lang1, lang2) => {
+    if (lang1.name === "English") {
+      return -1; // Keep English at the first position
+    } else if (lang2.name === "English") {
+      return 1; // Move English to a later position
+    } else {
+      const script1 = getScript(lang1.lang);
+      const script2 = getScript(lang2.lang);
+
+      if (script1 === "Arabic" && script2 !== "Arabic") {
+        return 1; // Move Arabic to a later position
+      } else if (script1 !== "Arabic" && script2 === "Arabic") {
+        return -1; // Keep Arabic at the last position
+      } else if (script1 === "Hans" && script2 !== "Hans") {
+        return 1; // Move Chinese to a later position
+      } else if (script1 !== "Hans" && script2 === "Hans") {
+        return -1; // Keep Chinese at the last position
+      } else {
+        return lang1.name.localeCompare(lang2.name); // Sort the remaining languages by name
+      }
+    }
+  });
+
+  const languageName = languageList.find(({ lang }) => lang === language).name;
 
   function toggle(e) {
     e.stopPropagation();
@@ -94,7 +108,7 @@
       <li>
         <a
           class="px-4 py-3 {lang.name === languageName ? 'selectedLang' : ''}"
-          href={lang.link}>{lang.name}</a
+          href={lang.website}>{lang.name}</a
         >
       </li>
     {/each}
