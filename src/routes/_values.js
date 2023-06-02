@@ -1,5 +1,14 @@
 let changeLog = [
   {
+    date: "June 2, 2023",
+    updates: [
+      "Added 12 new patterns",
+      "Fixed the search and filters to consider the existing filters",
+      "Added Catalan translation available <a href='https://ca.pattern.monster'>here</a>",
+      "Added Chinese (Traditional) translation available <a href='https://tw.pattern.monster'>here</a>",
+    ],
+  },
+  {
     date: "May 17, 2023",
     updates: [
       "Added 16 new patterns",

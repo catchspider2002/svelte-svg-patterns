@@ -342,12 +342,9 @@
 
   import "dayjs/locale/de";
 
-  if ($langStore === "de") {
-    dayjs.locale("de");
-    dayjs.extend(relativeTime);
-  } else dayjs.extend(relativeTime);
+  if ($langStore === "de") dayjs.locale("de");
 
-  // dayjs().locale("de").format();
+  dayjs.extend(relativeTime);
 
   let searchBar;
   let w;
@@ -356,70 +353,15 @@
       ? strings.searchPattern + " (" + strings.pressFocus + ")"
       : strings.searchPattern;
 
-  let homeTimeout;
-  // let homeShow = false;
-
   onMount(async () => {
-    // console.log("onMount")
     searchBar = document.getElementById("search");
-    // await tick();
-    // newPosts = posts;
-    if ($langStore !== "en") {
-      console.log("homeTimeout");
-      homeTimeout = setTimeout(() => {
-        // homeShow = true;
-
-        let firstName = document.querySelector('[aria-label="First Name"]');
-        firstName.setAttribute("placeholder", strings.firstName);
-
-        let email = document.querySelector('[aria-label="Email Address"]');
-        email.setAttribute("placeholder", strings.email2);
-
-        let sendButton = document.querySelector(
-          ".subscribe-waitlist button > span"
-        );
-        sendButton.innerHTML = strings.waitlist;
-      }, 400);
-    }
-  });
-
-  onDestroy(() => {
-    if ($langStore !== "en") clearTimeout(homeTimeout);
   });
 
   afterUpdate(() => {
-    // console.log("afterUpdate")
-    if (count === 0) {
-      getPosts();
-      // updateCount()
-    }
+    if (count === 0) getPosts();
+
     count++;
   });
-
-  // function updateCount() {
-  //   const counter = document.getElementById('patternsCount');
-  //   const speed = 0.5; // The lower the slower
-
-  //       const target = counter.getAttribute('data-target');
-  //       const count = counter.innerText;
-
-  //       // Lower inc to slow and higher to slow
-  //       const inc = target / speed;
-
-  //       console.log(target);
-  //       console.log(inc);
-  //       console.log(count);
-
-  //       // Check if target is reached
-  //       if (count < target) {
-  //           // Add inc to count and output in counter
-  //           counter.innerText = parseInt(count) + parseInt( inc);
-  //           // Call function every ms
-  //           setTimeout(updateCount, 1);
-  //       } else {
-  //           counter.innerText = target;
-  //       }
-  //   };
 
   function getPosts() {
     return fetch(`index.json`)
@@ -447,38 +389,28 @@
     { text: "5 " + strings.colors, value: 5 },
   ];
 
-  let searchText;
+  let searchText = "";
 
-  function filterChanged() {
-    // console.log("filterChanged: " + mode.value)
-    if (mode.value === "fill")
-      newPosts = posts.filter((pattern) => pattern.mode === "fill");
-    else if (mode.value === "stroke")
-      newPosts = posts.filter(
-        (pattern) => pattern.mode === "stroke" || pattern.mode === "stroke-join"
+  let filterData = () => {
+    newPosts = posts
+      .filter((pattern) =>
+        mode.value === "fill"
+          ? pattern.mode === "fill"
+          : mode.value === "stroke"
+          ? pattern.mode === "stroke" || pattern.mode === "stroke-join"
+          : pattern
+      )
+      .filter((pattern) =>
+        colorsCount.value > 1 ? pattern.colors === colorsCount.value : pattern
+      )
+      .filter((pattern) =>
+        searchText.length > 0
+          ? pattern.tags.find(function (tag) {
+              return tag.includes(searchText.toLowerCase());
+            })
+          : pattern
       );
-    else newPosts = posts;
-  }
-
-  function colorsChanged() {
-    // console.log("colorsChanged")
-    if (colorsCount.value > 1)
-      newPosts = posts.filter(
-        (pattern) => pattern.colors === colorsCount.value
-      );
-    else newPosts = posts;
-  }
-
-  function searchChanged() {
-    // console.log("searchChanged")
-    if (searchText.length > 0) {
-      newPosts = posts.filter((pattern) =>
-        pattern.tags.find(function (tag) {
-          return tag.includes(searchText.toLowerCase());
-        })
-      );
-    } else newPosts = posts;
-  }
+  };
 
   function sortAlphabetical() {
     newPosts = newPosts.sort(function (x, y) {
@@ -669,37 +601,9 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div bind:clientWidth={w} class="patternsList">
-  <div class="container flex mx-auto pb-20 pt-2">
-    <!-- <div class="alert">
-      <div class="innerShop">
-        <span class="text-sm uppercase font-semibold tracking-wider"
-          >Shop Product Range</span
-        >
-        <div class="shop-buttons">
-          <a class="shop-button" href="pattern-accessories"
-            >{strings["accessories"]}</a
-          >
-          <a class="shop-button" href="pattern-home-living"
-            >{strings["home-living"]}</a
-          >
-          <a class="shop-button" href="pattern-phone-cases"
-            >{strings["phone-cases"]}</a
-          >
-          <a class="shop-button" href="pattern-stationery-office"
-            >{strings["stationery-office"]}</a
-          >
-          <a class="shop-button" href="pattern-stickers-skins"
-            >{strings["stickers-skins"]}</a
-          >
-          <a class="shop-button" href="pattern-wall-art"
-            >{strings["wall-art"]}</a
-          >
-        </div>
-      </div>
-    </div> -->
+  <div class="container flex mx-auto pb-2 pt-12">
+    <div class="alert" />
   </div>
-
-
 
   <h1>{@html strings.heading}</h1>
   <div class="stats">
@@ -718,13 +622,6 @@
     {strings.description3}
   </p>
 
-
-
-  <!-- <div class="subscribe-waitlist grid">
-    <span>{strings.apiAccess}</span>
-    <script async data-uid="f146eb0e2c" src="https://crafty-artist-9316.ck.page/f146eb0e2c/index.js"></script>
-  </div> -->
-
   <div class="outerGrid">
     <div class="searchBox">
       <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -737,7 +634,7 @@
         aria-label={strings.searchPattern}
         bind:value={searchText}
         placeholder={placeholderSearch}
-        on:input={searchChanged}
+        on:input={filterData}
       />
     </div>
     <div class="filterGrid grid grid-flow-col">
@@ -749,7 +646,7 @@
         bind:selectedItem={mode}
         labelFieldName="text"
         ariaLabel={strings.filterMode}
-        onChange={filterChanged}
+        onChange={filterData}
       />
       <AutoComplete
         inputId="filterColor"
@@ -758,7 +655,7 @@
         bind:selectedItem={colorsCount}
         labelFieldName="text"
         ariaLabel={strings.filterColors}
-        onChange={colorsChanged}
+        onChange={filterData}
       />
     </div>
     <div class="sortGrid grid grid-flow-col">
@@ -1048,26 +945,4 @@
       grid-template-columns: auto;
     }
   }
-  /* .subscribe-waitlist {
-    padding: 0 0.5rem;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    font-size: 0.85em;
-    grid-auto-flow: row;
-    margin: -1em auto 2em;
-    width: 716px;
-  }
-  .subscribe-waitlist span {
-    padding: 1em 8px 0.5em;
-    font-weight: 600;
-  }
-
-  @media (max-width: 804px) {
-    .subscribe-waitlist {
-      width: auto;
-    }
-    .subscribe-waitlist span {
-      padding: 1em 8px 0.75em;
-    }
-  } */
 </style>
