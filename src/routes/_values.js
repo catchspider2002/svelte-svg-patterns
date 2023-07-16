@@ -1,5 +1,16 @@
 let changeLog = [
   {
+    date: "July 16, 2023",
+    updates: [
+      "Added 12 new patterns",
+      "Updated Russian translation",
+      "Added Czech translation by Jan Drochytka available <a href='https://cs.pattern.monster'>here</a>",
+      "Added Danish translation available <a href='https://da.pattern.monster'>here</a>",
+      "Added Finnish translation available <a href='https://fi.pattern.monster'>here</a>",
+      "Added footer link to Creze certificate generator <a href='https://creaze.co/certificate-creator' rel='noopener noreferrer' title='Creaze - Certificate Creator' target='_blank'>here</a>",
+    ],
+  },
+  {
     date: "June 2, 2023",
     updates: [
       "Added 12 new patterns",
