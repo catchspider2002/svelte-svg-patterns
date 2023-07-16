@@ -13,8 +13,8 @@
     "@rollup/plugin-json": "^4.1.0",
     "@simonwep/pickr": "^1.8.2",
     "compression": "^1.7.4",
-    "dayjs": "^1.11.7",
-    "dotenv": "^16.0.3",
+    "dayjs": "^1.11.9",
+    "dotenv": "^16.3.1",
     "polka": "next",
     "prettier": "^2.8.8",
     "save-svg-as-png": "^1.4.17",
@@ -36,7 +36,7 @@
     "read-excel-file": "^5.6.1",
     "glob": "^8.1.0",
     "tinycolor2": "^1.6.0",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.3",
     "convert-svg-to-png": "^0.6.4"
   }
 }
