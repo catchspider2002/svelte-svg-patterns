@@ -10,6 +10,7 @@
 
 <script>
   export let post;
+  console.log(post)
   import lang from "./_lang.js";
   let strings = lang.strings;
 
